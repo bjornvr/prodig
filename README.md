@@ -1,4 +1,5 @@
 # prodig
 De online git voor PRODIG
 
-testupload #1
+Hierboven kun je bij Projects het kanban bord terugvinden met issues en wat de status is per issue,
+bij issues hierboven kun je de uitgebreide status en comments van een issue terugvinden.
