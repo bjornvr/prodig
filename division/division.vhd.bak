@@ -1,0 +1,47 @@
+-- Name:				division
+-- Description:	psuedo-divides tix to calculate RPM
+-- Date:				23-09-2019
+-- Author:			Björn van Rozelaar for PRODIG-PETERS-PG1
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity division is
+	port (tix_mem	: in std_logic_vector;
+			areset	: in std_logic;
+			calc		: in std_logic;
+			);
+end entity division;
+
+architecture csa of division is
+	signal x			: std_logic_vector (19 downto 0);
+	signal rpm		: std_logic_vector (7 downto 0);
+	signal stop		: std_logic;
+	
+begin
+	process (areset, calc, tix_mem)
+	begin
+		
+		--Asynchronous reset or start calculation
+		if areset = '0' then
+			tix_int <= 0;
+			RPM <= 0;
+			stop <= 1;
+			x <= 600000;
+			
+		elsif rising_edge (clock) then
+			if calc = '1' then
+				tix_int <= tix_mem;
+				RPM <= 0;
+				x <= 600000;	
+			elsif stop = '0' then
+				if tix_int > 3000
+					if tix_int < 30000
+						if x > tix_int
+							x <= x-tix_int;
+							rpm <= rpm+1;
+						else
+							rpm_mem <= rpm;
+							stop <= 1;
+							
+end architecture csa;
