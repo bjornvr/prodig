@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Tue Sep 24 10:30:29 2019
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition
+Revision Name : PRODIG_RPM
+Top-level Entity Name : PRODIG_RPM
+Family : Cyclone II
+Total logic elements : 566
+    Total combinational functions : 551
+    Dedicated logic registers : 56
+Total registers : 56
+Total pins : 86
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
