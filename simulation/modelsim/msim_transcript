@@ -1,0 +1,155 @@
+# Reading C:/altera/13.0sp1/modelsim_ase/tcl/vsim/pref.tcl 
+# do PRODIG_RPM_run_msim_rtl_vhdl.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vcom -93 -work work {H:/QUARTUS/PRODIG/PRODIG_RPM/prescaler.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity prescaler
+# -- Compiling architecture behav of prescaler
+# vcom -93 -work work {H:/QUARTUS/PRODIG/PRODIG_RPM/RPM_counter.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity prodig_RPM_counter
+# -- Compiling architecture main of prodig_RPM_counter
+# vcom -93 -work work {H:/QUARTUS/PRODIG/PRODIG_RPM/PRODIG_RPM.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity PRODIG_RPM
+# -- Compiling architecture code of PRODIG_RPM
+# vcom -93 -work work {H:/QUARTUS/PRODIG/PRODIG_RPM/prodig_7_seg_decoder.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity prodig_7_seg_decoder
+# -- Compiling architecture rtl of prodig_7_seg_decoder
+# 
+# do "H:/QUARTUS/PRODIG/PRODIG_RPM/tb_PRODIG_RPM.do"
+# Filename : tb_PRODIG_RPM.do
+# Filetype : Modelsim Script File
+# Date : 20-06-2011
+# 
+# Set transcript on
+# transcript on
+# 
+# Recreate the work directory and map to work
+# if {[file exists rtl_work]} {
+#  vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Modifying modelsim.ini
+# 
+# Compile the Double Dabble VHDL description and testbench
+# vcom -93 -work work ../../PRODIG_RPM.vhd
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity PRODIG_RPM
+# -- Compiling architecture code of PRODIG_RPM
+# vcom -93 -work work ../../tb_PRODIG_RPM.vhd
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity tb_PRODIG_RPM
+# -- Compiling architecture test of tb_PRODIG_RPM
+#vcom -93 -work work ../../ontdender.vhd
+# vcom -93 -work work ../../prescaler.vhd
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity prescaler
+# -- Compiling architecture behav of prescaler
+# vcom -93 -work work ../../prodig_7_seg_decoder.vhd
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity prodig_7_seg_decoder
+# -- Compiling architecture rtl of prodig_7_seg_decoder
+# vcom -93 -work work ../../RPM_counter.vhd
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity prodig_RPM_counter
+# -- Compiling architecture main of prodig_RPM_counter
+# 
+# Start the simulator with 1 ns time resolution
+# vsim -t 1ns -L rtl_work -L work -voptargs="+acc" tb_PRODIG_RPM
+# vsim -L rtl_work -L work -voptargs=\"+acc\" -t 1ns tb_PRODIG_RPM 
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_prodig_rpm(test)
+# Loading work.prodig_rpm(code)
+# Loading work.prodig_rpm_counter(main)
+# Loading work.prescaler(behav)
+# Loading work.prodig_7_seg_decoder(rtl)
+# 
+# Log all signals in the design, good if the number
+# of signals is small.
+# add log -r *
+# 
+# Add all toplevel signals
+# Add a number of signals of the simulated design
+# add list *
+# 
+# Add all toplevel signals
+# Add a number of signals of the simulated design
+# add wave -divider "Inputs"
+# add wave areset
+# add wave CLOCK_50
+# add wave hall_sens
+# add wave -divider "Internals"
+# add wave clock1
+# add wave tix_mem
+# add wave -divider "Outputs"
+# add wave HEX0_D
+# add wave HEX1_D
+# add wave HEX2_D
+# 
+# 
+# Open Structure, Signals (waveform) and List window
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view list
+# .main_pane.list.interior.cs.body
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# view wave
+# .main_pane.wave.interior.cs.body.pw.wf
+# 
+# Run simulation for 5000 us
+# run 25000 us
+# 
+# Fill up the waveform in the window
+# wave zoom full
+# 0 ns
+# 26250 us

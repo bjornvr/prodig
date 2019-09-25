@@ -1,0 +1,51 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+use IEEE.NUMERIC_STD.ALL;
+
+entity tb_RPM_counter is
+end entity;
+
+architecture test of tb_RPM_counter is
+	signal clock : std_logic;
+	signal areset : std_logic;
+	signal hall_sens : std_logic;
+	signal tix_mem : unsigned(15 downto 0);
+	
+component prodig_RPM_counter is
+	port (
+		clock : in std_logic;
+		areset : in std_logic;
+		hall_sens : in std_logic;
+		tix_mem : out unsigned(15 downto 0)
+		);
+end component;
+
+begin
+
+dut: prodig_RPM_counter
+port map (areset => areset, clock => clock, hall_sens => hall_sens, tix_mem => tix_mem);
+
+
+clockgen : process is
+begin
+	clock <= '0';
+	wait for 100 us;
+	clock <= '1';
+	wait for 100 us;
+end process;
+
+process is
+begin
+	areset <= '0';
+	wait for 100 us;
+	areset <= '1';
+	wait for 100 us;
+	hall_sens <= '0';
+	wait for 200 us;
+	hall_sens <= '1';
+	wait for 4200 us;
+	hall_sens <= '0';
+	wait;
+end process;
+
+end architecture;
