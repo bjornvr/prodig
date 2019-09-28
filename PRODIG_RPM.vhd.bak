@@ -1,0 +1,18 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity main is
+	port(
+		areset : in std_logic;
+		hall_sens : in std_logic;
+		HEX0_D : out std_logic_vector(6 downto 0);
+		HEX1_D : out std_logic_vector(6 downto 0);
+		HEX2_D : out std_logic_vector(6 downto 0);
+		);
+end entity;
+
+architecture code of main is
+
+signal clock : std_logic;
+signal tix_mem : unsigned(15 downto 0);
