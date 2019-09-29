@@ -1,5 +1,5 @@
 Analysis & Synthesis report for division
-Mon Sep 23 17:28:29 2019
+Sun Sep 29 22:55:50 2019
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -43,7 +43,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Sep 23 17:28:29 2019           ;
+; Analysis & Synthesis Status        ; Successful - Sun Sep 29 22:55:50 2019           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; division                                        ;
 ; Top-level Entity Name              ; division                                        ;
@@ -155,13 +155,13 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                      ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path               ; Library ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------+---------+
-; division.vhd                     ; yes             ; User VHDL File  ; C:/Git/PRODIG/prodig/division/division.vhd ;         ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------+---------+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                            ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                     ; Library ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------+---------+
+; division.vhd                     ; yes             ; User VHDL File  ; C:/Git/PRODIG/prodig/Clock/division/division.vhd ;         ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------+---------+
 
 
 +-----------------------------------------------------+
@@ -263,12 +263,15 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Mon Sep 23 17:28:27 2019
+    Info: Processing started: Sun Sep 29 22:55:48 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off division -c division
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file division.vhd
     Info (12022): Found design unit 1: division-rtl
     Info (12023): Found entity 1: division
+Info (12021): Found 2 design units, including 1 entities, in source file tb_division.vhd
+    Info (12022): Found design unit 1: tb_division-sim
+    Info (12023): Found entity 1: tb_division
 Info (12127): Elaborating entity "division" for the top level hierarchy
 Info (13000): Registers with preset signals will power-up high
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
@@ -279,9 +282,9 @@ Info (21057): Implemented 122 device resources after synthesis - the final resou
     Info (21059): Implemented 8 output pins
     Info (21061): Implemented 95 logic cells
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4644 megabytes
-    Info: Processing ended: Mon Sep 23 17:28:29 2019
+    Info: Peak virtual memory: 4633 megabytes
+    Info: Processing ended: Sun Sep 29 22:55:50 2019
     Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Total CPU time (on all processors): 00:00:01
 
 

@@ -1,6 +1,8 @@
 vendor_name = ModelSim
-source_file = 1, C:/Git/PRODIG/prodig/division/division.vhd
-source_file = 1, C:/Git/PRODIG/prodig/division/db/division.cbx.xml
+source_file = 1, C:/Git/PRODIG/prodig/Clock/division/division.vhd
+source_file = 1, C:/Git/PRODIG/prodig/Clock/division/tb_division.vhd
+source_file = 1, C:/Git/PRODIG/prodig/Clock/division/tb_division.do
+source_file = 1, C:/Git/PRODIG/prodig/Clock/division/db/division.cbx.xml
 source_file = 1, c:/altera/13.0sp1/quartus/libraries/vhdl/ieee/prmtvs_b.vhd
 source_file = 1, c:/altera/13.0sp1/quartus/libraries/vhdl/ieee/prmtvs_p.vhd
 source_file = 1, c:/altera/13.0sp1/quartus/libraries/vhdl/ieee/timing_b.vhd

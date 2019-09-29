@@ -35,17 +35,17 @@ begin
 			tix_int := "0000000000000000";
 			RPM := "00000000";
 			stop := '1';
-			x := "10010010011111000000";
+			x := "10010010011111000000"; -- 600.000 to x
 			
 		elsif rising_edge (clock) then
 			if calc = '1' then
 				tix_int := tix_mem;
 				rpm := "00000000";
-				x := "10010010011111000000";
+				x := "10010010011111000000"; -- 600.000 to x
 				stop := '0';
 			elsif stop = '0' then
-				if (tix_int > "000101110111000") then
-					if (tix_int < "111010100110000") then
+				if (tix_int > "000101110111000") then -- Als tix_int > next check
+					if (tix_int < "111010100110000") then -- Alx tix_int < 30.000 ga rekenen
 						if x > tix_int then
 							x    := x - tix_int;
 							rpm  := rpm + 1;  
