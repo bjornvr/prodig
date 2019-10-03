@@ -1,5 +1,5 @@
 Analysis & Synthesis report for PRODIG_RPM
-Sun Sep 29 21:15:55 2019
+Mon Sep 30 17:56:53 2019
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -16,9 +16,8 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   8. General Register Statistics
   9. Inverted Register Statistics
  10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Parameter Settings for Inferred Entity Instance: lpm_divide:Div0
- 12. Elapsed Time Per Partition
- 13. Analysis & Synthesis Messages
+ 11. Elapsed Time Per Partition
+ 12. Analysis & Synthesis Messages
 
 
 
@@ -44,16 +43,16 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Sep 29 21:15:55 2019           ;
+; Analysis & Synthesis Status        ; Successful - Mon Sep 30 17:56:53 2019           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; PRODIG_RPM                                      ;
 ; Top-level Entity Name              ; PRODIG_RPM                                      ;
 ; Family                             ; Cyclone II                                      ;
-; Total logic elements               ; 566                                             ;
-;     Total combinational functions  ; 551                                             ;
-;     Dedicated logic registers      ; 56                                              ;
-; Total registers                    ; 56                                              ;
-; Total pins                         ; 86                                              ;
+; Total logic elements               ; 229                                             ;
+;     Total combinational functions  ; 190                                             ;
+;     Dedicated logic registers      ; 110                                             ;
+; Total registers                    ; 110                                             ;
+; Total pins                         ; 70                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -157,25 +156,17 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                         ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                     ; Library ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------+---------+
-; prescaler.vhd                    ; yes             ; User VHDL File               ; /mnt/OS/Git/PRODIG/prodig/prescaler.vhd                                          ;         ;
-; RPM_counter.vhd                  ; yes             ; User VHDL File               ; /mnt/OS/Git/PRODIG/prodig/RPM_counter.vhd                                        ;         ;
-; PRODIG_RPM.vhd                   ; yes             ; User VHDL File               ; /mnt/OS/Git/PRODIG/prodig/PRODIG_RPM.vhd                                         ;         ;
-; prodig_7_seg_decoder.vhd         ; yes             ; User VHDL File               ; /mnt/OS/Git/PRODIG/prodig/prodig_7_seg_decoder.vhd                               ;         ;
-; lpm_divide.tdf                   ; yes             ; Megafunction                 ; /home/bjornvr/altera/13.0sp1/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
-; abs_divider.inc                  ; yes             ; Megafunction                 ; /home/bjornvr/altera/13.0sp1/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
-; sign_div_unsign.inc              ; yes             ; Megafunction                 ; /home/bjornvr/altera/13.0sp1/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
-; aglobal130.inc                   ; yes             ; Megafunction                 ; /home/bjornvr/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc      ;         ;
-; db/lpm_divide_ufm.tdf            ; yes             ; Auto-Generated Megafunction  ; /mnt/OS/Git/PRODIG/prodig/db/lpm_divide_ufm.tdf                                  ;         ;
-; db/sign_div_unsign_8nh.tdf       ; yes             ; Auto-Generated Megafunction  ; /mnt/OS/Git/PRODIG/prodig/db/sign_div_unsign_8nh.tdf                             ;         ;
-; db/alt_u_div_i5f.tdf             ; yes             ; Auto-Generated Megafunction  ; /mnt/OS/Git/PRODIG/prodig/db/alt_u_div_i5f.tdf                                   ;         ;
-; db/add_sub_lkc.tdf               ; yes             ; Auto-Generated Megafunction  ; /mnt/OS/Git/PRODIG/prodig/db/add_sub_lkc.tdf                                     ;         ;
-; db/add_sub_mkc.tdf               ; yes             ; Auto-Generated Megafunction  ; /mnt/OS/Git/PRODIG/prodig/db/add_sub_mkc.tdf                                     ;         ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                         ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                  ; Library ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------+---------+
+; division.vhd                     ; yes             ; User VHDL File  ; C:/Git/PRODIG/prodig/division.vhd             ;         ;
+; prescaler.vhd                    ; yes             ; User VHDL File  ; C:/Git/PRODIG/prodig/prescaler.vhd            ;         ;
+; RPM_counter.vhd                  ; yes             ; User VHDL File  ; C:/Git/PRODIG/prodig/RPM_counter.vhd          ;         ;
+; PRODIG_RPM.vhd                   ; yes             ; User VHDL File  ; C:/Git/PRODIG/prodig/PRODIG_RPM.vhd           ;         ;
+; prodig_7_seg_decoder.vhd         ; yes             ; User VHDL File  ; C:/Git/PRODIG/prodig/prodig_7_seg_decoder.vhd ;         ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------+---------+
 
 
 +-------------------------------------------------------------------+
@@ -183,45 +174,42 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+---------------------+
 ; Resource                                    ; Usage               ;
 +---------------------------------------------+---------------------+
-; Estimated Total logic elements              ; 566                 ;
+; Estimated Total logic elements              ; 229                 ;
 ;                                             ;                     ;
-; Total combinational functions               ; 551                 ;
+; Total combinational functions               ; 190                 ;
 ; Logic element usage by number of LUT inputs ;                     ;
-;     -- 4 input functions                    ; 193                 ;
-;     -- 3 input functions                    ; 271                 ;
-;     -- <=2 input functions                  ; 87                  ;
+;     -- 4 input functions                    ; 72                  ;
+;     -- 3 input functions                    ; 51                  ;
+;     -- <=2 input functions                  ; 67                  ;
 ;                                             ;                     ;
 ; Logic elements by mode                      ;                     ;
-;     -- normal mode                          ; 321                 ;
-;     -- arithmetic mode                      ; 230                 ;
+;     -- normal mode                          ; 113                 ;
+;     -- arithmetic mode                      ; 77                  ;
 ;                                             ;                     ;
-; Total registers                             ; 56                  ;
-;     -- Dedicated logic registers            ; 56                  ;
+; Total registers                             ; 110                 ;
+;     -- Dedicated logic registers            ; 110                 ;
 ;     -- I/O registers                        ; 0                   ;
 ;                                             ;                     ;
-; I/O pins                                    ; 86                  ;
+; I/O pins                                    ; 70                  ;
 ; Embedded Multiplier 9-bit elements          ; 0                   ;
 ; Maximum fan-out node                        ; prescaler:u1|clkint ;
-; Maximum fan-out                             ; 45                  ;
-; Total fan-out                               ; 1949                ;
-; Average fan-out                             ; 2.81                ;
+; Maximum fan-out                             ; 99                  ;
+; Total fan-out                               ; 1029                ;
+; Average fan-out                             ; 2.78                ;
 +---------------------------------------------+---------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                             ;
-+----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------+--------------+
-; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                         ; Library Name ;
-+----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------+--------------+
-; |PRODIG_RPM                            ; 551 (17)          ; 56 (0)       ; 0           ; 0            ; 0       ; 0         ; 86   ; 0            ; |PRODIG_RPM                                                                                                 ; work         ;
-;    |lpm_divide:Div0|                   ; 414 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|lpm_divide:Div0                                                                                 ; work         ;
-;       |lpm_divide_ufm:auto_generated|  ; 414 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|lpm_divide:Div0|lpm_divide_ufm:auto_generated                                                   ; work         ;
-;          |sign_div_unsign_8nh:divider| ; 414 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|lpm_divide:Div0|lpm_divide_ufm:auto_generated|sign_div_unsign_8nh:divider                       ; work         ;
-;             |alt_u_div_i5f:divider|    ; 414 (414)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|lpm_divide:Div0|lpm_divide_ufm:auto_generated|sign_div_unsign_8nh:divider|alt_u_div_i5f:divider ; work         ;
-;    |prescaler:u1|                      ; 21 (21)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|prescaler:u1                                                                                    ; work         ;
-;    |prodig_7_seg_decoder:u2|           ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|prodig_7_seg_decoder:u2                                                                         ; work         ;
-;    |prodig_RPM_counter:u0|             ; 48 (48)           ; 43 (43)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|prodig_RPM_counter:u0                                                                           ; work         ;
-+----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                           ;
++------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------+--------------+
+; Compilation Hierarchy Node   ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                 ; Library Name ;
++------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------+--------------+
+; |PRODIG_RPM                  ; 190 (1)           ; 110 (0)      ; 0           ; 0            ; 0       ; 0         ; 70   ; 0            ; |PRODIG_RPM                         ; work         ;
+;    |division:u3|             ; 69 (69)           ; 53 (53)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|division:u3             ; work         ;
+;    |prescaler:u1|            ; 21 (21)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|prescaler:u1            ; work         ;
+;    |prodig_7_seg_decoder:u2| ; 50 (50)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|prodig_7_seg_decoder:u2 ; work         ;
+;    |prodig_RPM_counter:u0|   ; 49 (49)           ; 44 (44)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|prodig_RPM_counter:u0   ; work         ;
++------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -230,24 +218,33 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 56    ;
+; Total registers                              ; 110   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 16    ;
-; Number of registers using Asynchronous Clear ; 29    ;
+; Number of registers using Synchronous Load   ; 36    ;
+; Number of registers using Asynchronous Clear ; 74    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 20    ;
+; Number of registers using Clock Enable       ; 73    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+--------------------------------------------------+
-; Inverted Register Statistics                     ;
-+----------------------------------------+---------+
-; Inverted Register                      ; Fan out ;
-+----------------------------------------+---------+
-; prodig_RPM_counter:u0|count[0]         ; 3       ;
-; Total number of inverted registers = 1 ;         ;
-+----------------------------------------+---------+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; division:u3|x[13]                       ; 2       ;
+; division:u3|x[10]                       ; 2       ;
+; division:u3|x[9]                        ; 2       ;
+; division:u3|x[8]                        ; 2       ;
+; division:u3|x[7]                        ; 2       ;
+; division:u3|x[6]                        ; 2       ;
+; division:u3|x[19]                       ; 2       ;
+; division:u3|x[16]                       ; 2       ;
+; prodig_RPM_counter:u0|count[0]          ; 3       ;
+; division:u3|stop                        ; 3       ;
+; Total number of inverted registers = 10 ;         ;
++-----------------------------------------+---------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -255,32 +252,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                     ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
-; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |PRODIG_RPM|prodig_RPM_counter:u0|count[9]     ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |PRODIG_RPM|prodig_RPM_counter:u0|wait_time[4] ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |PRODIG_RPM|prodig_RPM_counter:u0|count[13]    ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |PRODIG_RPM|prodig_RPM_counter:u0|wait_time[0] ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |PRODIG_RPM|division:u3|rpm[7]                 ;
+; 6:1                ; 12 bits   ; 48 LEs        ; 12 LEs               ; 36 LEs                 ; Yes        ; |PRODIG_RPM|division:u3|x[5]                   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 8 LEs                ; 24 LEs                 ; Yes        ; |PRODIG_RPM|division:u3|x[8]                   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
-
-
-+------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: lpm_divide:Div0 ;
-+------------------------+----------------+------------------------+
-; Parameter Name         ; Value          ; Type                   ;
-+------------------------+----------------+------------------------+
-; LPM_WIDTHN             ; 20             ; Untyped                ;
-; LPM_WIDTHD             ; 16             ; Untyped                ;
-; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
-; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
-; LPM_PIPELINE           ; 0              ; Untyped                ;
-; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
-; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
-; CBXI_PARAMETER         ; lpm_divide_ufm ; Untyped                ;
-; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
-; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
-; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
-; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
-; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
-; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
-+------------------------+----------------+------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +-------------------------------+
@@ -298,22 +275,25 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sun Sep 29 21:15:52 2019
+    Info: Processing started: Mon Sep 30 17:56:49 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off PRODIG_RPM -c PRODIG_RPM
 Warning (20028): Parallel compilation is not licensed and has been disabled
-Info (12021): Found 2 design units, including 1 entities, in source file tb_RPM_counter.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file division.vhd
+    Info (12022): Found design unit 1: division-rtl
+    Info (12023): Found entity 1: division
+Info (12021): Found 2 design units, including 1 entities, in source file tb_rpm_counter.vhd
     Info (12022): Found design unit 1: tb_RPM_counter-test
     Info (12023): Found entity 1: tb_RPM_counter
-Info (12021): Found 2 design units, including 1 entities, in source file tb_PRODIG_RPM.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file tb_prodig_rpm.vhd
     Info (12022): Found design unit 1: tb_PRODIG_RPM-test
     Info (12023): Found entity 1: tb_PRODIG_RPM
 Info (12021): Found 2 design units, including 1 entities, in source file prescaler.vhd
     Info (12022): Found design unit 1: prescaler-behav
     Info (12023): Found entity 1: prescaler
-Info (12021): Found 2 design units, including 1 entities, in source file RPM_counter.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file rpm_counter.vhd
     Info (12022): Found design unit 1: prodig_RPM_counter-main
     Info (12023): Found entity 1: prodig_RPM_counter
-Info (12021): Found 2 design units, including 1 entities, in source file PRODIG_RPM.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file prodig_rpm.vhd
     Info (12022): Found design unit 1: PRODIG_RPM-code
     Info (12023): Found entity 1: PRODIG_RPM
 Info (12021): Found 2 design units, including 1 entities, in source file prodig_7_seg_decoder.vhd
@@ -336,32 +316,13 @@ Warning (10540): VHDL Signal Declaration warning at PRODIG_RPM.vhd(26): used exp
 Warning (10540): VHDL Signal Declaration warning at PRODIG_RPM.vhd(27): used explicit default value for signal "HEX5_DP" because signal was never assigned a value
 Warning (10540): VHDL Signal Declaration warning at PRODIG_RPM.vhd(28): used explicit default value for signal "HEX6_DP" because signal was never assigned a value
 Warning (10540): VHDL Signal Declaration warning at PRODIG_RPM.vhd(29): used explicit default value for signal "HEX7_DP" because signal was never assigned a value
-Warning (10492): VHDL Process Statement warning at PRODIG_RPM.vhd(93): signal "tix_mem" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at PRODIG_RPM.vhd(94): signal "rpm_mem2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at PRODIG_RPM.vhd(95): signal "rpm_mem2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at PRODIG_RPM.vhd(99): signal "tix_mem" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Info (12128): Elaborating entity "prodig_RPM_counter" for hierarchy "prodig_RPM_counter:u0"
-Warning (10492): VHDL Process Statement warning at RPM_counter.vhd(25): signal "areset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at RPM_counter.vhd(26): signal "areset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Info (12128): Elaborating entity "prescaler" for hierarchy "prescaler:u1"
 Info (12128): Elaborating entity "prodig_7_seg_decoder" for hierarchy "prodig_7_seg_decoder:u2"
-Info (278001): Inferred 1 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0"
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0"
-Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter:
-    Info (12134): Parameter "LPM_WIDTHN" = "20"
-    Info (12134): Parameter "LPM_WIDTHD" = "16"
-    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
-    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
-Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_ufm.tdf
-    Info (12023): Found entity 1: lpm_divide_ufm
-Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_8nh.tdf
-    Info (12023): Found entity 1: sign_div_unsign_8nh
-Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_i5f.tdf
-    Info (12023): Found entity 1: alt_u_div_i5f
-Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_lkc.tdf
-    Info (12023): Found entity 1: add_sub_lkc
-Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_mkc.tdf
-    Info (12023): Found entity 1: add_sub_mkc
+Info (12128): Elaborating entity "division" for hierarchy "division:u3"
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "HEX2_D[1]" is stuck at GND
     Warning (13410): Pin "HEX3_D[0]" is stuck at VCC
@@ -409,14 +370,14 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "HEX7_DP" is stuck at VCC
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 652 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 301 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
-    Info (21059): Implemented 83 output pins
-    Info (21061): Implemented 566 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 64 warnings
-    Info: Peak virtual memory: 655 megabytes
-    Info: Processing ended: Sun Sep 29 21:15:55 2019
-    Info: Elapsed time: 00:00:03
+    Info (21059): Implemented 67 output pins
+    Info (21061): Implemented 231 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 60 warnings
+    Info: Peak virtual memory: 4650 megabytes
+    Info: Processing ended: Mon Sep 30 17:56:53 2019
+    Info: Elapsed time: 00:00:04
     Info: Total CPU time (on all processors): 00:00:03
 
 

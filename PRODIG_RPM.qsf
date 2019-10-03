@@ -121,6 +121,7 @@ set_location_assignment PIN_W27 -to led
 set_location_assignment PIN_W25 -to led2
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS COMMAND_MACRO_MODE -section_id eda_simulation
 set_global_assignment -name EDA_SIMULATION_RUN_SCRIPT tb_PRODIG_RPM.do -section_id eda_simulation
+set_global_assignment -name VHDL_FILE division.vhd
 set_global_assignment -name VHDL_FILE tb_RPM_counter.vhd
 set_global_assignment -name COMMAND_MACRO_FILE tb_RPM_counter.do
 set_global_assignment -name COMMAND_MACRO_FILE tb_PRODIG_RPM.do

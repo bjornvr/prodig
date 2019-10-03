@@ -4,10 +4,11 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity prodig_RPM_counter is
 	port (
-		clock : in std_logic;
-		areset : in std_logic;
-		hall_sens : in std_logic;
-		tix_mem : out unsigned(15 downto 0)
+		clock		: in  std_logic;
+		areset	: in  std_logic;
+		hall_sens: in  std_logic;
+		calc		: out std_logic;
+		tix_mem	: out unsigned(15 downto 0)
 		);
 end entity;
 
@@ -31,6 +32,7 @@ begin
 			if hall_sens = '1' and wait_time = 2000 then
 				tix_mem <= count;
 				count := "0000000000000001";
+				calc <= '1';
 				wait_time := 0;
 			else 
 				if count > 30000 then
@@ -41,6 +43,7 @@ begin
 				if wait_time /= 2000 then
 					wait_time := wait_time + 1;
 				end if;
+				calc <= '0';
 			end if;
 		end if;
 	end if;
