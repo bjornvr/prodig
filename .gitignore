@@ -6,3 +6,4 @@
 /incremental_db
 /simulation/modelsim/*
 *.qws
+*.tmw_info
