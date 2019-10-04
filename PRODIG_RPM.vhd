@@ -99,7 +99,7 @@ port map(rpm_mem => rpm_mem, bcd_hun => HEX2_D, bcd_ten => HEX1_D, bcd_one => HE
 --u3: ontdender
 --port map(input => hall_sens, clock => clock, output => hall_sens_ontd, areset => areset);
 
-u3: division
+u5: division
 port map(tix_mem => tix_mem, areset => areset, calc => calc_int, clock => clock_int, rpm_mem => rpm_mem);
 
 --process (clock_int) is
