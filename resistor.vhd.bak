@@ -1,0 +1,35 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+use IEEE.NUMERIC_STD.ALL;
+
+entity resistor is
+	port (
+		clock		: in  std_logic;
+		areset	: in	std_logic;
+		res_busy	: in  std_logic;
+		res_data : in  std_logic_vector(7 downto 0);
+		res_up	: out std_logic;
+		res_down	: out std_logic;
+		N_readADC: out std_logic;
+		N_convst : out std_logic;
+		resistance: out std_logic_vector(7 downto 0);
+		);
+end entity;
+
+architecture main of resistor is
+
+begin
+
+process (clock) is
+signal resstart : std_logic := '0';
+signal 
+begin
+	if areset = '0' then
+		resistance <= "0000000";
+		resstart <= '0';
+	else
+		
+		
+end process;
+
+end architecture;

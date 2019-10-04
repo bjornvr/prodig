@@ -53,11 +53,11 @@ begin
 							stop := '1';
 						end if;
 					else
-						rpm  := "00000000";
+						rpm  := "11001000";
 						stop := '1';
 					end if;
 				else
-					rpm  := "11001000";
+					rpm  := "00000000";
 					stop := '1'  ;
 				end if;
 			else

@@ -2,12 +2,12 @@ m255
 K3
 13
 cModel Technology
-Z0 dH:\QUARTUS\PRODIG\PRODIG_RPM\simulation\modelsim
+Z0 dC:\Git\PRODIG\prodig\simulation\modelsim
 Eprescaler
-Z1 w1569312851
+Z1 w1569314364
 Z2 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
 Z3 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
-Z4 dH:\QUARTUS\PRODIG\PRODIG_RPM\simulation\modelsim
+Z4 dC:\Git\PRODIG\prodig\simulation\modelsim
 Z5 8../../prescaler.vhd
 Z6 F../../prescaler.vhd
 l0
@@ -15,7 +15,7 @@ L30
 V_HeWZaHdXOUhCMVQn7f]A1
 Z7 OV;C;10.1d;51
 31
-Z8 !s108 1569312957.062000
+Z8 !s108 1570190007.489000
 Z9 !s90 -reportprogress|300|-93|-work|work|../../prescaler.vhd|
 Z10 !s107 ../../prescaler.vhd|
 Z11 o-93 -work work -O0
@@ -39,27 +39,27 @@ R12
 !s100 Zz[_nP7fZ`G3UCo>hAe>^2
 !i10b 1
 Eprodig_7_seg_decoder
-Z13 w1569252082
-Z14 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+R1
+Z13 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
 R2
 R3
 R4
-Z15 8../../prodig_7_seg_decoder.vhd
-Z16 F../../prodig_7_seg_decoder.vhd
+Z14 8../../prodig_7_seg_decoder.vhd
+Z15 F../../prodig_7_seg_decoder.vhd
 l0
 L5
 V38k7mz8`BU7==9WM=P89_1
 R7
 31
-Z17 !s108 1569312957.202000
-Z18 !s90 -reportprogress|300|-93|-work|work|../../prodig_7_seg_decoder.vhd|
-Z19 !s107 ../../prodig_7_seg_decoder.vhd|
+Z16 !s108 1570190007.734000
+Z17 !s90 -reportprogress|300|-93|-work|work|../../prodig_7_seg_decoder.vhd|
+Z18 !s107 ../../prodig_7_seg_decoder.vhd|
 R11
 R12
 !s100 MWUaG2jB[1i;biViTQ:lm1
 !i10b 1
 Artl
-R14
+R13
 R2
 R3
 DEx4 work 20 prodig_7_seg_decoder 0 22 38k7mz8`BU7==9WM=P89_1
@@ -68,109 +68,109 @@ L14
 V=NCB6T4RcJDYz5LQER:TS3
 R7
 31
+R16
 R17
 R18
-R19
 R11
 R12
 !s100 UW8E;6@2gIGmBC^A<k<>13
 !i10b 1
 Eprodig_rpm
-Z20 w1569310127
-R14
+Z19 w1569858978
+R13
 R2
 R3
 R4
-Z21 8../../PRODIG_RPM.vhd
-Z22 F../../PRODIG_RPM.vhd
+Z20 8../../PRODIG_RPM.vhd
+Z21 F../../PRODIG_RPM.vhd
 l0
 L5
-V]8]AInJH;?<`Ma6oc<DY33
+VH4mZe3_kWDCjme?]=J:GM2
 R7
 31
-Z23 !s108 1569312956.609000
-Z24 !s90 -reportprogress|300|-93|-work|work|../../PRODIG_RPM.vhd|
-Z25 !s107 ../../PRODIG_RPM.vhd|
+Z22 !s108 1570190006.973000
+Z23 !s90 -reportprogress|300|-93|-work|work|../../PRODIG_RPM.vhd|
+Z24 !s107 ../../PRODIG_RPM.vhd|
 R11
 R12
-!s100 >VLLziZjNd?6ZoU5hch3J1
+!s100 PE32IbM=`Yd47n?zZA8Jl0
 !i10b 1
 Acode
-R14
+R13
 R2
 R3
-DEx4 work 10 prodig_rpm 0 22 ]8]AInJH;?<`Ma6oc<DY33
-l63
-L20
-V]PE9^:n2B651z;=LQdW7L0
+DEx4 work 10 prodig_rpm 0 22 H4mZe3_kWDCjme?]=J:GM2
+l88
+L33
+VOGKJmc9j5Aa`m?Ti<aD@@0
 R7
 31
+R22
 R23
 R24
-R25
 R11
 R12
-!s100 dF`_K7^Kl?DFEkc0WniEB3
+!s100 R5:JF3<8EfEJXd0h]>PEn3
 !i10b 1
 Eprodig_rpm_counter
-Z26 w1569312923
-R14
+Z25 w1570189377
+R13
 R2
 R3
 R4
-Z27 8../../RPM_counter.vhd
-Z28 F../../RPM_counter.vhd
+Z26 8../../RPM_counter.vhd
+Z27 F../../RPM_counter.vhd
 l0
 L5
-VM=6_@G:]R`mP8Qm5NeWcS3
-!s100 NEDZ[DUJP>DCLWNCE1_o91
+V=To1Da6@9lR0nJc63@jHY1
+!s100 LUc@UN2_OAUT=?hCz^Pgn0
 R7
 31
 !i10b 1
-Z29 !s108 1569312957.342000
-Z30 !s90 -reportprogress|300|-93|-work|work|../../RPM_counter.vhd|
-Z31 !s107 ../../RPM_counter.vhd|
+Z28 !s108 1570190007.913000
+Z29 !s90 -reportprogress|300|-93|-work|work|../../RPM_counter.vhd|
+Z30 !s107 ../../RPM_counter.vhd|
 R11
 R12
 Amain
-R14
+R13
 R2
 R3
-DEx4 work 18 prodig_rpm_counter 0 22 M=6_@G:]R`mP8Qm5NeWcS3
-l18
-L14
-Vdb4Omc>ILn6fIc?aIEWOP2
-!s100 zSoYhnR9RVe6TKf2f9@X00
+DEx4 work 18 prodig_rpm_counter 0 22 =To1Da6@9lR0nJc63@jHY1
+l19
+L15
+VYBIIfn3GGJLhPnXb5lni_0
+!s100 VPLS7H]`HB<nL`:j_LXWT2
 R7
 31
 !i10b 1
+R28
 R29
 R30
-R31
 R11
 R12
 Etb_prodig_rpm
-Z32 w1569312162
-R14
+Z31 w1569314361
+R13
 R2
 R3
 R4
-Z33 8../../tb_PRODIG_RPM.vhd
-Z34 F../../tb_PRODIG_RPM.vhd
+Z32 8../../tb_PRODIG_RPM.vhd
+Z33 F../../tb_PRODIG_RPM.vhd
 l0
 L5
 V2QEKCG?bH`I7zCGR5`UCI0
 R7
 31
-Z35 !s108 1569312956.833000
-Z36 !s90 -reportprogress|300|-93|-work|work|../../tb_PRODIG_RPM.vhd|
-Z37 !s107 ../../tb_PRODIG_RPM.vhd|
+Z34 !s108 1570190007.207000
+Z35 !s90 -reportprogress|300|-93|-work|work|../../tb_PRODIG_RPM.vhd|
+Z36 !s107 ../../tb_PRODIG_RPM.vhd|
 R11
 R12
 !s100 PXIR@TLkLkh9`=B:JP4@j0
 !i10b 1
 Atest
-R14
+R13
 R2
 R3
 DEx4 work 13 tb_prodig_rpm 0 22 2QEKCG?bH`I7zCGR5`UCI0
@@ -179,9 +179,9 @@ L8
 V5CLU;[nKhnnim50DDo2e:1
 R7
 31
+R34
 R35
 R36
-R37
 R11
 R12
 !s100 _`f8dQ@oP_S3O[h<Y0@LN0

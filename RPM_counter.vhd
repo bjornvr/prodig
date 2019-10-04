@@ -35,8 +35,10 @@ begin
 				calc <= '1';
 				wait_time := 0;
 			else 
-				if count > 30000 then
+				if count > 30000 then				--Als geen signaal
 					count := "0000000000000001";
+					tix_mem <= count;
+					calc <= '1';
 				else
 					count := count + "0000000000000001";
 				end if;
