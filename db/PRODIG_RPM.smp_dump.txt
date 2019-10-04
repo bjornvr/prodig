@@ -1,6 +1,87 @@
 
-State Machine - |PRODIG_RPM|ontdender:u3|state
-Name state.aan state.wait_time state.idle 
-state.idle 0 0 0 
-state.wait_time 0 1 1 
-state.aan 1 0 1 
+State Machine - |PRODIG_RPM|display:u4|state
+Name state.hold2 state.hold state.write_char_4 state.write_char_3 state.write_char_2_wait state.write_char_2 state.write_char_1_wait state.write_char_1 state.update_linecount_wait state.update_linecount state.update state.write_char_wait state.write_char state.reset 
+state.reset 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.write_char 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.write_char_wait 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.update 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.update_linecount 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.update_linecount_wait 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.write_char_1 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.write_char_1_wait 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.write_char_2 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.write_char_2_wait 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.write_char_3 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.write_char_4 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.hold 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.hold2 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|return_state
+Name return_state.pulse_busy_flag_5 return_state.pulse_busy_flag_4 return_state.pulse_busy_flag_3 return_state.pulse_busy_flag_2 return_state.pulse_busy_flag_1 return_state.pulse_busy_flag return_state.pulse_e_4 return_state.pulse_e_3 return_state.pulse_e_2 return_state.pulse_e_1 return_state.pulse_e return_state.command_wr return_state.command_goto30 return_state.command_goto20 return_state.command_goto10 return_state.command_home return_state.command_cls return_state.wait_for_command return_state.command_init12 return_state.command_init_11 return_state.command_init_10 return_state.command_init_9 return_state.command_init_8 return_state.command_init_7 return_state.command_init_6 return_state.command_init_5 return_state.command_init_4 return_state.command_init_3 return_state.command_init_2 return_state.command_init_1 return_state.command_init return_state.reset 
+return_state.reset 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+return_state.command_init 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+return_state.command_init_1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+return_state.command_init_2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+return_state.command_init_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+return_state.command_init_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+return_state.command_init_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+return_state.command_init_6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+return_state.command_init_7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+return_state.command_init_8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+return_state.command_init_9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+return_state.command_init_10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+return_state.command_init_11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+return_state.command_init12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+return_state.wait_for_command 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+return_state.command_cls 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+return_state.command_home 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+return_state.command_goto10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+return_state.command_goto20 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+return_state.command_goto30 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+return_state.command_wr 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+return_state.pulse_e 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+return_state.pulse_e_1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+return_state.pulse_e_2 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+return_state.pulse_e_3 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+return_state.pulse_e_4 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+return_state.pulse_busy_flag 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+return_state.pulse_busy_flag_1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+return_state.pulse_busy_flag_2 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+return_state.pulse_busy_flag_3 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+return_state.pulse_busy_flag_4 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+return_state.pulse_busy_flag_5 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|current_state
+Name current_state.pulse_busy_flag_5 current_state.pulse_busy_flag_4 current_state.pulse_busy_flag_3 current_state.pulse_busy_flag_2 current_state.pulse_busy_flag_1 current_state.pulse_busy_flag current_state.pulse_e_4 current_state.pulse_e_3 current_state.pulse_e_2 current_state.pulse_e_1 current_state.pulse_e current_state.command_wr current_state.command_goto30 current_state.command_goto20 current_state.command_goto10 current_state.command_home current_state.command_cls current_state.wait_for_command current_state.command_init12 current_state.command_init_11 current_state.command_init_10 current_state.command_init_9 current_state.command_init_8 current_state.command_init_7 current_state.command_init_6 current_state.command_init_5 current_state.command_init_4 current_state.command_init_3 current_state.command_init_2 current_state.command_init_1 current_state.command_init current_state.reset 
+current_state.reset 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+current_state.command_init 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+current_state.command_init_1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+current_state.command_init_2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+current_state.command_init_3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+current_state.command_init_4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+current_state.command_init_5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+current_state.command_init_6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+current_state.command_init_7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+current_state.command_init_8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+current_state.command_init_9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+current_state.command_init_10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+current_state.command_init_11 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.command_init12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.wait_for_command 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.command_cls 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.command_home 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.command_goto10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.command_goto20 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.command_goto30 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.command_wr 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.pulse_e 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.pulse_e_1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.pulse_e_2 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.pulse_e_3 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.pulse_e_4 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.pulse_busy_flag 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.pulse_busy_flag_1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.pulse_busy_flag_2 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.pulse_busy_flag_3 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.pulse_busy_flag_4 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.pulse_busy_flag_5 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
