@@ -107,6 +107,14 @@
 # -- Loading package NUMERIC_STD
 # -- Compiling entity prodig_RPM_counter
 # -- Compiling architecture main of prodig_RPM_counter
+# vcom -93 -work work ../../division.vhd
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity division
+# -- Compiling architecture rtl of division
 # 
 # Start the simulator with 1 ns time resolution
 # vsim -t 1ns -L rtl_work -L work -voptargs="+acc" tb_PRODIG_RPM
@@ -117,18 +125,49 @@
 # Loading ieee.numeric_std(body)
 # Loading work.tb_prodig_rpm(test)
 # Loading work.prodig_rpm(code)
-# ** Error: (vsim-3732) ../../tb_PRODIG_RPM.vhd(43): No default binding for component instance 'dut'.
-# 
-#    The following component port is not on the entity:
-#           tix_mem1
-# 
-#         Region: /tb_prodig_rpm/dut
 # Loading work.prodig_rpm_counter(main)
 # Loading work.prescaler(behav)
 # Loading work.prodig_7_seg_decoder(rtl)
-# ** Warning: (vsim-3473) Component instance "u3 : division" is not bound.
-#    Time: 0 ns  Iteration: 0  Instance: /tb_prodig_rpm/dut File: ../../PRODIG_RPM.vhd
-# Error loading design
-# Error: Error loading design 
-#        Pausing macro execution 
-# MACRO C:\Git\PRODIG\prodig\tb_PRODIG_RPM.do PAUSED at line 24
+# Loading work.division(rtl)
+# 
+# Log all signals in the design, good if the number
+# of signals is small.
+# add log -r *
+# 
+# Add all toplevel signals
+# Add a number of signals of the simulated design
+# add list *
+# 
+# Add all toplevel signals
+# Add a number of signals of the simulated design
+# add wave -divider "Inputs"
+# add wave areset
+# add wave CLOCK_50
+# add wave hall_sens
+# add wave -divider "Internals"
+# add wave clock1
+# add wave rpm_mem_sim
+# add wave tix_mem_sim
+# add wave -divider "Outputs"
+# add wave HEX0_D
+# add wave HEX1_D
+# add wave HEX2_D
+# 
+# 
+# Open Structure, Signals (waveform) and List window
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view list
+# .main_pane.list.interior.cs.body
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# view wave
+# .main_pane.wave.interior.cs.body.pw.wf
+# 
+# Run simulation for 5000 us
+# run 25000 us
+# 
+# Fill up the waveform in the window
+# wave zoom full
+# 0 ns
+# 26250 us

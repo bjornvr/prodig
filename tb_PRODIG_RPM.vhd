@@ -17,7 +17,8 @@ architecture test of tb_PRODIG_RPM is
 	signal led : std_logic;
 	signal led2 : std_logic;
 	signal clock : std_logic;
-	signal tix_mem : unsigned(15 downto 0);
+	signal tix_mem_sim : unsigned(15 downto 0);
+	signal rpm_mem_sim : unsigned(7 downto 0);
 	signal hall_sens_in : std_logic;
 	signal areset2 : std_logic;
 	
@@ -31,8 +32,9 @@ component PRODIG_RPM is
 		HEX1_D : out std_logic_vector(6 downto 0);
 		HEX2_D : out std_logic_vector(6 downto 0);
 		led : out std_logic;
-		led2 : out std_logic;
-		tix_mem1 : out unsigned(15 downto 0)
+		tix_mem_sim : out unsigned(15 downto 0);
+		rpm_mem_sim : out unsigned( 7 downto 0);
+		led2 : out std_logic
 		);
 end component;
 
@@ -40,7 +42,7 @@ begin
 
 dut: PRODIG_RPM
 port map (CLOCK_50 => CLOCK_50, clock1 => clock1, areset => areset, hall_sens => hall_sens, 
-			HEX0_D => HEX0_D, HEX1_D => HEX1_D, HEX2_D => HEX2_D, led => led, led2 => led2, tix_mem1 => tix_mem);
+			HEX0_D => HEX0_D, HEX1_D => HEX1_D, HEX2_D => HEX2_D, led => led, led2 => led2, tix_mem_sim => tix_mem_sim, rpm_mem_sim => rpm_mem_sim);
 
 clockgen : process is
 begin

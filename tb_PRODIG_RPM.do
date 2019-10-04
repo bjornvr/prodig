@@ -19,6 +19,7 @@ vcom -93 -work work ../../tb_PRODIG_RPM.vhd
 vcom -93 -work work ../../prescaler.vhd
 vcom -93 -work work ../../prodig_7_seg_decoder.vhd
 vcom -93 -work work ../../RPM_counter.vhd
+vcom -93 -work work ../../division.vhd
 
 # Start the simulator with 1 ns time resolution
 vsim -t 1ns -L rtl_work -L work -voptargs="+acc" tb_PRODIG_RPM
@@ -39,7 +40,8 @@ add wave CLOCK_50
 add wave hall_sens
 add wave -divider "Internals"
 add wave clock1
-add wave tix_mem
+add wave rpm_mem_sim
+add wave tix_mem_sim
 add wave -divider "Outputs"
 add wave HEX0_D
 add wave HEX1_D

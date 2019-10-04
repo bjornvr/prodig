@@ -13,7 +13,8 @@ entity PRODIG_RPM is
 		HEX2_D : out std_logic_vector(6 downto 0);
 		led : out std_logic;
 		led2 : out std_logic;
---		tix_meml : out unsigned(15 downto 0);
+		tix_mem_sim : out unsigned(15 downto 0);	-- Voor simulatie, verwijderen uit definitieve code	
+		rpm_mem_sim : out unsigned( 7 downto 0);	-- Voor simulatie, verwijderen uit definitieve code	
 		HEX3_D : out std_logic_vector(6 downto 0) := "1111111";
 		HEX4_D : out std_logic_vector(6 downto 0) := "1111111";
 		HEX5_D : out std_logic_vector(6 downto 0) := "1111111";
@@ -37,7 +38,6 @@ signal clock_int : std_logic;
 signal tix_mem : unsigned(15 downto 0);
 signal rpm_mem : unsigned(7 downto 0);
 signal calc_int: std_logic;
---signal rpm_mem2 : unsigned(15 downto 0);
 
 component prodig_RPM_counter is
 	port (
@@ -119,5 +119,6 @@ hall_sens_ontd <= hall_sens;
 led2 <= hall_sens;
 led <= hall_sens_ontd;
 clock1 <= clock_int;
-
+tix_mem_sim <= tix_mem;	-- Voor simulatie, verwijderen uit definitieve code	
+rpm_mem_sim <= rpm_mem; -- Voor simulatie, verwijderen uit definitieve code	
 end architecture;
