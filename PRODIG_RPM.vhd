@@ -79,7 +79,9 @@ component RPM_counter is
 		areset	: in  std_logic;
 		hall_sens: in  std_logic;
 		calc		: out std_logic;
-		tix_mem	: out unsigned(15 downto 0)
+		tix_mem	: out unsigned(15 downto 0);
+		-- Voor de totale omwentelingen
+		tot_omwentel : out unsigned(14 downto 0)
 		);
 end component;
 

@@ -33,6 +33,7 @@ end entity display;
 
 -- The architecture!
 architecture hardware of display is
+
 -- Component declaration of the LCD module driver
 component lcd_driver_hd44780_module is
 	generic (freq         : integer := 50000000;
@@ -106,6 +107,20 @@ signal character_counter : integer range 1 to 16;
 -- Counts the lines.
 signal line_counter : integer range 1 to 4;
 
+signal line1_message : string(1 to 16) := "                ";
+signal line2_message : string(1 to 16) := "                ";
+signal line3_message : string(1 to 16) := "                ";
+signal line4_message : string(1 to 16) := "                ";
+signal letter : character;
+
+
+subtype rawchar is std_logic_vector(7 downto 0);
+type rawstring is array(natural range <>) of rawchar;
+signal rpm_in : rawstring(2 downto 0);
+signal kmh : rawstring(2 downto 0);
+
+
+
 begin
 
 	-- Push buttons are active low.
@@ -124,7 +139,10 @@ begin
 				 
 	-- The client side
 	drive: process (clk, areset) is
+	
+	
 	variable aline : string16_type;
+	
 	
 	
 --------------------------------------------------------------------------------------------------------------------	
@@ -151,6 +169,19 @@ begin
 			goto20 <= '0';
 			goto30 <= '0';
 			data <= "00000000";
+			
+			--update lines 
+			line1_message <= "RPM=" & character'val(to_integer(RPM)) & "           ";
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 			case state is
 
@@ -163,11 +194,20 @@ begin
 					character_counter <= 1;
 					line_counter <= 1;
 					
+					
+					
 				when write_char =>
 					-- Set up WRITE!
 					-- Use the data from the string
-					aline := message(line_counter);
-					data <= std_logic_vector( to_unsigned( character'pos(aline(character_counter)),8));
+					case line_counter is
+						when 1 => aline := line1_message;
+						when 2 => aline := line2_message;
+						when 3 => aline := line3_message;
+						when 4 => aline := line4_message;
+						when others => null;
+					end case;
+					--aline := message(line_counter);		--word gebruikt om een hele array door te sturen.
+					data <= std_logic_vector(to_unsigned( character'pos(aline(character_counter)),8));
  					wr <= '1';
 					state <= write_char_wait;
 
