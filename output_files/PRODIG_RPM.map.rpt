@@ -1,5 +1,5 @@
 Analysis & Synthesis report for PRODIG_RPM
-Mon Oct 07 19:55:16 2019
+Mon Oct 07 22:34:20 2019
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -16,17 +16,21 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   8. State Machine - |PRODIG_RPM|display:u4|state
   9. State Machine - |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|return_state
  10. State Machine - |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|current_state
- 11. Registers Removed During Synthesis
- 12. Removed Registers Triggering Further Register Optimizations
- 13. General Register Statistics
- 14. Inverted Register Statistics
- 15. Multiplexer Restructuring Statistics (Restructuring Performed)
- 16. Parameter Settings for User Entity Instance: display:u4|lcd_driver_hd44780_module:lcdm
- 17. Port Connectivity Checks: "display:u4|bin_bcd:tijd_minbcd"
- 18. Port Connectivity Checks: "display:u4|bin_bcd:tijd_secbcd"
- 19. Port Connectivity Checks: "display:u4"
- 20. Elapsed Time Per Partition
- 21. Analysis & Synthesis Messages
+ 11. User-Specified and Inferred Latches
+ 12. Registers Removed During Synthesis
+ 13. Removed Registers Triggering Further Register Optimizations
+ 14. General Register Statistics
+ 15. Inverted Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Parameter Settings for User Entity Instance: display:u4|lcd_driver_hd44780_module:lcdm
+ 18. Parameter Settings for User Entity Instance: timer:u7
+ 19. Port Connectivity Checks: "timer:u7"
+ 20. Port Connectivity Checks: "display:u4|bin_bcd:totale_omw_1bcd"
+ 21. Port Connectivity Checks: "display:u4|bin_bcd:tijd_minbcd"
+ 22. Port Connectivity Checks: "display:u4|bin_bcd:tijd_secbcd"
+ 23. Port Connectivity Checks: "display:u4"
+ 24. Elapsed Time Per Partition
+ 25. Analysis & Synthesis Messages
 
 
 
@@ -52,15 +56,15 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Oct 07 19:55:16 2019           ;
+; Analysis & Synthesis Status        ; Successful - Mon Oct 07 22:34:20 2019           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; PRODIG_RPM                                      ;
 ; Top-level Entity Name              ; PRODIG_RPM                                      ;
 ; Family                             ; Cyclone II                                      ;
-; Total logic elements               ; 602                                             ;
-;     Total combinational functions  ; 553                                             ;
-;     Dedicated logic registers      ; 229                                             ;
-; Total registers                    ; 229                                             ;
+; Total logic elements               ; 896                                             ;
+;     Total combinational functions  ; 845                                             ;
+;     Dedicated logic registers      ; 315                                             ;
+; Total registers                    ; 315                                             ;
 ; Total pins                         ; 161                                             ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
@@ -178,6 +182,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; PRODIG_RPM.vhd                   ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/PRODIG_RPM.vhd                ;         ;
 ; prodig_7_seg_decoder.vhd         ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/prodig_7_seg_decoder.vhd      ;         ;
 ; bin_bcd.vhd                      ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/bin_bcd.vhd                   ;         ;
+; Max_rpm.vhd                      ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/Max_rpm.vhd                   ;         ;
+; Timer.vhd                        ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/Timer.vhd                     ;         ;
 +----------------------------------+-----------------+-----------------+----------------------------------------------------------+---------+
 
 
@@ -186,28 +192,28 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 602       ;
+; Estimated Total logic elements              ; 896       ;
 ;                                             ;           ;
-; Total combinational functions               ; 553       ;
+; Total combinational functions               ; 845       ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 305       ;
-;     -- 3 input functions                    ; 121       ;
-;     -- <=2 input functions                  ; 127       ;
+;     -- 4 input functions                    ; 503       ;
+;     -- 3 input functions                    ; 141       ;
+;     -- <=2 input functions                  ; 201       ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 452       ;
-;     -- arithmetic mode                      ; 101       ;
+;     -- normal mode                          ; 682       ;
+;     -- arithmetic mode                      ; 163       ;
 ;                                             ;           ;
-; Total registers                             ; 229       ;
-;     -- Dedicated logic registers            ; 229       ;
+; Total registers                             ; 315       ;
+;     -- Dedicated logic registers            ; 315       ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
 ; I/O pins                                    ; 161       ;
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ; Maximum fan-out node                        ; BUTTON[3] ;
-; Maximum fan-out                             ; 206       ;
-; Total fan-out                               ; 2736      ;
-; Average fan-out                             ; 2.90      ;
+; Maximum fan-out                             ; 316       ;
+; Total fan-out                               ; 4001      ;
+; Average fan-out                             ; 3.03      ;
 +---------------------------------------------+-----------+
 
 
@@ -216,13 +222,20 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                   ; Library Name ;
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------+--------------+
-; |PRODIG_RPM                            ; 553 (1)           ; 229 (0)      ; 0           ; 0            ; 0       ; 0         ; 161  ; 0            ; |PRODIG_RPM                                           ; work         ;
-;    |RPM_counter:u0|                    ; 50 (50)           ; 45 (45)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|RPM_counter:u0                            ; work         ;
-;    |display:u4|                        ; 361 (198)         ; 118 (38)     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4                                ; work         ;
-;       |lcd_driver_hd44780_module:lcdm| ; 163 (163)         ; 80 (80)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm ; work         ;
+; |PRODIG_RPM                            ; 845 (1)           ; 315 (0)      ; 0           ; 0            ; 0       ; 0         ; 161  ; 0            ; |PRODIG_RPM                                           ; work         ;
+;    |RPM_counter:u0|                    ; 101 (101)         ; 45 (45)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|RPM_counter:u0                            ; work         ;
+;    |display:u4|                        ; 515 (241)         ; 160 (80)     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4                                ; work         ;
+;       |bin_bcd:maximale2bcd|           ; 32 (32)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|bin_bcd:maximale2bcd           ; work         ;
+;       |bin_bcd:tijd_minbcd|            ; 9 (9)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|bin_bcd:tijd_minbcd            ; work         ;
+;       |bin_bcd:tijd_secbcd|            ; 9 (9)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|bin_bcd:tijd_secbcd            ; work         ;
+;       |bin_bcd:totale_omw_1bcd|        ; 24 (24)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|bin_bcd:totale_omw_1bcd        ; work         ;
+;       |bin_bcd:totale_omw_2bcd|        ; 32 (32)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|bin_bcd:totale_omw_2bcd        ; work         ;
+;       |lcd_driver_hd44780_module:lcdm| ; 168 (168)         ; 80 (80)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm ; work         ;
 ;    |division:u5|                       ; 70 (70)           ; 53 (53)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|division:u5                               ; work         ;
+;    |max_rpm:u6|                        ; 16 (16)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|max_rpm:u6                                ; work         ;
 ;    |prescaler:u1|                      ; 21 (21)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|prescaler:u1                              ; work         ;
 ;    |prodig_7_seg_decoder:u2|           ; 50 (50)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|prodig_7_seg_decoder:u2                   ; work         ;
+;    |timer:u7|                          ; 71 (71)           ; 44 (44)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|timer:u7                                  ; work         ;
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -330,6 +343,40 @@ Encoding Type:  One-Hot
 ; current_state.pulse_busy_flag_4 ; 0                               ; 1                               ; 0                               ; 0                               ; 0                               ; 0                             ; 0                       ; 0                       ; 0                       ; 0                       ; 0                     ; 0                        ; 0                            ; 0                            ; 0                            ; 0                          ; 0                         ; 0                              ; 0                            ; 0                             ; 0                             ; 0                            ; 0                            ; 0                            ; 0                            ; 0                            ; 0                            ; 0                            ; 0                            ; 0                            ; 0                          ; 1                   ;
 ; current_state.pulse_busy_flag_5 ; 1                               ; 0                               ; 0                               ; 0                               ; 0                               ; 0                             ; 0                       ; 0                       ; 0                       ; 0                       ; 0                     ; 0                        ; 0                            ; 0                            ; 0                            ; 0                          ; 0                         ; 0                              ; 0                            ; 0                             ; 0                             ; 0                            ; 0                            ; 0                            ; 0                            ; 0                            ; 0                            ; 0                            ; 0                            ; 0                            ; 0                          ; 1                   ;
 +---------------------------------+---------------------------------+---------------------------------+---------------------------------+---------------------------------+---------------------------------+-------------------------------+-------------------------+-------------------------+-------------------------+-------------------------+-----------------------+--------------------------+------------------------------+------------------------------+------------------------------+----------------------------+---------------------------+--------------------------------+------------------------------+-------------------------------+-------------------------------+------------------------------+------------------------------+------------------------------+------------------------------+------------------------------+------------------------------+------------------------------+------------------------------+------------------------------+----------------------------+---------------------+
+
+
++--------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                          ;
++-----------------------------------------------------+-------------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal           ; Free of Timing Hazards ;
++-----------------------------------------------------+-------------------------------+------------------------+
+; RPM_counter:u0|omwentel255[7]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
+; RPM_counter:u0|omwentel255[5]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
+; RPM_counter:u0|omwentel255[6]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
+; RPM_counter:u0|omwentel255[4]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
+; RPM_counter:u0|omwentel255[3]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
+; RPM_counter:u0|omwentel255[2]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
+; max_rpm:u6|rpm_max_int[6]                           ; max_rpm:u6|LessThan0          ; yes                    ;
+; max_rpm:u6|rpm_max_int[5]                           ; max_rpm:u6|LessThan0          ; yes                    ;
+; max_rpm:u6|rpm_max_int[7]                           ; max_rpm:u6|LessThan0          ; yes                    ;
+; max_rpm:u6|rpm_max_int[4]                           ; max_rpm:u6|LessThan0          ; yes                    ;
+; max_rpm:u6|rpm_max_int[3]                           ; max_rpm:u6|LessThan0          ; yes                    ;
+; max_rpm:u6|rpm_max_int[2]                           ; max_rpm:u6|LessThan0          ; yes                    ;
+; RPM_counter:u0|omwentel99[0]                        ; hall_sens                     ; yes                    ;
+; RPM_counter:u0|omwentel99[4]                        ; hall_sens                     ; yes                    ;
+; RPM_counter:u0|omwentel99[5]                        ; hall_sens                     ; yes                    ;
+; RPM_counter:u0|omwentel99[7]                        ; hall_sens                     ; yes                    ;
+; RPM_counter:u0|omwentel99[6]                        ; hall_sens                     ; yes                    ;
+; RPM_counter:u0|omwentel99[3]                        ; hall_sens                     ; yes                    ;
+; RPM_counter:u0|omwentel99[2]                        ; hall_sens                     ; yes                    ;
+; RPM_counter:u0|omwentel99[1]                        ; hall_sens                     ; yes                    ;
+; max_rpm:u6|rpm_max_int[0]                           ; max_rpm:u6|LessThan0          ; yes                    ;
+; RPM_counter:u0|omwentel255[0]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
+; RPM_counter:u0|omwentel255[1]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
+; max_rpm:u6|rpm_max_int[1]                           ; max_rpm:u6|LessThan0          ; yes                    ;
+; Number of user-specified and inferred latches = 24  ;                               ;                        ;
++-----------------------------------------------------+-------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -666,43 +713,20 @@ Encoding Type:  One-Hot
 ; display:u4|totale_omw_line[10][7]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[10][6]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[10][5]                                        ; Stuck at VCC due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[10][4]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[10][3]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[10][2]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[10][1]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[10][0]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[11][7]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[11][6]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[11][5]                                        ; Stuck at VCC due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[11][4]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[11][3]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[11][2]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[11][1]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[11][0]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[12][7]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[12][6]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[12][5]                                        ; Stuck at VCC due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[12][4]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[12][3]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[12][2]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[12][1]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[12][0]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[13][7]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[13][6]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[13][5]                                        ; Stuck at VCC due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[13][4]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[13][3]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[13][2]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[13][1]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[13][0]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[14][7]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[14][6]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[14][5]                                        ; Stuck at VCC due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[14][4]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[14][3]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[14][2]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[14][1]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[14][0]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[15][7]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[15][6]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[15][5]                                        ; Stuck at VCC due to stuck port data_in                                          ;
@@ -906,23 +930,7 @@ Encoding Type:  One-Hot
 ; display:u4|weerstand_line[16][0]                                         ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|lcd_driver_hd44780_module:lcdm|use_bf_int                     ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[7][3]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[7][2]                                               ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[10][3]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[10][2]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|maximale_line[10][1]                                          ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[8][1]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[11][1]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[7][0]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[8][3]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[8][2]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[10][0]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[11][3]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[11][2]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|maximale_line[11][0]                                          ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|maximale_line[12][3]                                          ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|maximale_line[12][2]                                          ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|maximale_line[11][3]                                          ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|maximale_line[11][2]                                          ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|weerstand_line[1][5]                                          ; Merged with display:u4|maximale_line[1][5]                                      ;
 ; display:u4|maximale_line[1][5]                                           ; Merged with display:u4|totale_omw_line[1][5]                                    ;
 ; display:u4|totale_omw_line[1][5]                                         ; Merged with display:u4|gemiddelde_line[1][5]                                    ;
@@ -958,13 +966,9 @@ Encoding Type:  One-Hot
 ; display:u4|weerstand_line[1][1]                                          ; Merged with display:u4|weerstand_line[1][2]                                     ;
 ; display:u4|weerstand_line[1][2]                                          ; Merged with display:u4|weerstand_line[1][4]                                     ;
 ; display:u4|weerstand_line[1][4]                                          ; Merged with display:u4|weerstand_line[1][6]                                     ;
-; display:u4|weerstand_line[1][6]                                          ; Merged with display:u4|maximale_line[12][0]                                     ;
-; display:u4|maximale_line[12][0]                                          ; Merged with display:u4|maximale_line[12][1]                                     ;
-; display:u4|maximale_line[12][1]                                          ; Merged with display:u4|maximale_line[12][4]                                     ;
-; display:u4|maximale_line[12][4]                                          ; Merged with display:u4|maximale_line[11][1]                                     ;
-; display:u4|maximale_line[11][1]                                          ; Merged with display:u4|maximale_line[11][4]                                     ;
-; display:u4|maximale_line[11][4]                                          ; Merged with display:u4|maximale_line[10][0]                                     ;
-; display:u4|maximale_line[10][0]                                          ; Merged with display:u4|maximale_line[10][4]                                     ;
+; display:u4|weerstand_line[1][6]                                          ; Merged with display:u4|maximale_line[12][4]                                     ;
+; display:u4|maximale_line[12][4]                                          ; Merged with display:u4|maximale_line[11][4]                                     ;
+; display:u4|maximale_line[11][4]                                          ; Merged with display:u4|maximale_line[10][4]                                     ;
 ; display:u4|maximale_line[10][4]                                          ; Merged with display:u4|maximale_line[8][1]                                      ;
 ; display:u4|maximale_line[8][1]                                           ; Merged with display:u4|maximale_line[8][3]                                      ;
 ; display:u4|maximale_line[8][3]                                           ; Merged with display:u4|maximale_line[8][4]                                      ;
@@ -986,7 +990,12 @@ Encoding Type:  One-Hot
 ; display:u4|maximale_line[1][0]                                           ; Merged with display:u4|maximale_line[1][2]                                      ;
 ; display:u4|maximale_line[1][2]                                           ; Merged with display:u4|maximale_line[1][3]                                      ;
 ; display:u4|maximale_line[1][3]                                           ; Merged with display:u4|maximale_line[1][6]                                      ;
-; display:u4|maximale_line[1][6]                                           ; Merged with display:u4|totale_omw_line[8][1]                                    ;
+; display:u4|maximale_line[1][6]                                           ; Merged with display:u4|totale_omw_line[14][4]                                   ;
+; display:u4|totale_omw_line[14][4]                                        ; Merged with display:u4|totale_omw_line[13][4]                                   ;
+; display:u4|totale_omw_line[13][4]                                        ; Merged with display:u4|totale_omw_line[12][4]                                   ;
+; display:u4|totale_omw_line[12][4]                                        ; Merged with display:u4|totale_omw_line[11][4]                                   ;
+; display:u4|totale_omw_line[11][4]                                        ; Merged with display:u4|totale_omw_line[10][4]                                   ;
+; display:u4|totale_omw_line[10][4]                                        ; Merged with display:u4|totale_omw_line[8][1]                                    ;
 ; display:u4|totale_omw_line[8][1]                                         ; Merged with display:u4|totale_omw_line[8][3]                                    ;
 ; display:u4|totale_omw_line[8][3]                                         ; Merged with display:u4|totale_omw_line[8][4]                                    ;
 ; display:u4|totale_omw_line[8][4]                                         ; Merged with display:u4|totale_omw_line[7][0]                                    ;
@@ -1042,17 +1051,13 @@ Encoding Type:  One-Hot
 ; display:u4|gemiddelde_line[2][6]                                         ; Merged with display:u4|gemiddelde_line[1][0]                                    ;
 ; display:u4|gemiddelde_line[1][0]                                         ; Merged with display:u4|weerstand_line[12][2]                                    ;
 ; display:u4|weerstand_line[12][2]                                         ; Merged with display:u4|gemiddelde_line[1][6]                                    ;
-; display:u4|gemiddelde_line[1][6]                                         ; Merged with display:u4|tijd_line[11][0]                                         ;
-; display:u4|tijd_line[11][0]                                              ; Merged with display:u4|tijd_line[11][4]                                         ;
-; display:u4|tijd_line[11][4]                                              ; Merged with display:u4|tijd_line[10][1]                                         ;
-; display:u4|tijd_line[10][1]                                              ; Merged with display:u4|tijd_line[10][4]                                         ;
+; display:u4|gemiddelde_line[1][6]                                         ; Merged with display:u4|tijd_line[11][4]                                         ;
+; display:u4|tijd_line[11][4]                                              ; Merged with display:u4|tijd_line[10][4]                                         ;
 ; display:u4|tijd_line[10][4]                                              ; Merged with display:u4|tijd_line[9][1]                                          ;
 ; display:u4|tijd_line[9][1]                                               ; Merged with display:u4|tijd_line[9][3]                                          ;
 ; display:u4|tijd_line[9][3]                                               ; Merged with display:u4|tijd_line[9][4]                                          ;
-; display:u4|tijd_line[9][4]                                               ; Merged with display:u4|tijd_line[8][0]                                          ;
-; display:u4|tijd_line[8][0]                                               ; Merged with display:u4|tijd_line[8][4]                                          ;
-; display:u4|tijd_line[8][4]                                               ; Merged with display:u4|tijd_line[7][1]                                          ;
-; display:u4|tijd_line[7][1]                                               ; Merged with display:u4|tijd_line[7][4]                                          ;
+; display:u4|tijd_line[9][4]                                               ; Merged with display:u4|tijd_line[8][4]                                          ;
+; display:u4|tijd_line[8][4]                                               ; Merged with display:u4|tijd_line[7][4]                                          ;
 ; display:u4|tijd_line[7][4]                                               ; Merged with display:u4|tijd_line[5][1]                                          ;
 ; display:u4|tijd_line[5][1]                                               ; Merged with display:u4|tijd_line[5][3]                                          ;
 ; display:u4|tijd_line[5][3]                                               ; Merged with display:u4|tijd_line[5][4]                                          ;
@@ -1130,7 +1135,7 @@ Encoding Type:  One-Hot
 ; display:u4|state.write_char_1                                            ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|lcd_driver_hd44780_module:lcdm|current_state.command_cls      ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|state.write_char_wait                                         ; Merged with display:u4|wr                                                       ;
-; Total Number of Removed Registers = 793                                  ;                                                                                 ;
+; Total Number of Removed Registers = 751                                  ;                                                                                 ;
 +--------------------------------------------------------------------------+---------------------------------------------------------------------------------+
 
 
@@ -1153,12 +1158,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 229   ;
+; Total registers                              ; 315   ;
 ; Number of registers using Synchronous Clear  ; 8     ;
 ; Number of registers using Synchronous Load   ; 37    ;
-; Number of registers using Asynchronous Clear ; 176   ;
+; Number of registers using Asynchronous Clear ; 220   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 130   ;
+; Number of registers using Clock Enable       ; 184   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -1179,38 +1184,38 @@ Encoding Type:  One-Hot
 ; division:u5|x[16]                              ; 2       ;
 ; RPM_counter:u0|tix_mem[0]                      ; 2       ;
 ; division:u5|stop                               ; 3       ;
-; display:u4|lcd_driver_hd44780_module:lcdm|busy ; 9       ;
-; display:u4|character_counter[0]                ; 26      ;
-; display:u4|line_counter[0]                     ; 59      ;
+; display:u4|lcd_driver_hd44780_module:lcdm|busy ; 14      ;
+; display:u4|character_counter[0]                ; 27      ;
+; display:u4|line_counter[0]                     ; 75      ;
 ; Total number of inverted registers = 14        ;         ;
 +------------------------------------------------+---------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                         ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                               ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------+
-; 3:1                ; 14 bits   ; 28 LEs        ; 0 LEs                ; 28 LEs                 ; Yes        ; |PRODIG_RPM|RPM_counter:u0|tix_mem[10]                                   ;
-; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |PRODIG_RPM|RPM_counter:u0|count[13]                                     ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |PRODIG_RPM|RPM_counter:u0|wait_time[6]                                  ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|goto20                                            ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |PRODIG_RPM|division:u5|rpm[3]                                           ;
-; 6:1                ; 12 bits   ; 48 LEs        ; 12 LEs               ; 36 LEs                 ; Yes        ; |PRODIG_RPM|division:u5|x[0]                                             ;
-; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[2]   ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[20]  ;
-; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[8]   ;
-; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[10]  ;
-; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[7]   ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 8 LEs                ; 24 LEs                 ; Yes        ; |PRODIG_RPM|division:u5|x[9]                                             ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |PRODIG_RPM|display:u4|character_counter                                 ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |PRODIG_RPM|display:u4|line_counter                                      ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |PRODIG_RPM|display:u4|Selector7                                         ;
-; 5:1                ; 23 bits   ; 69 LEs        ; 23 LEs               ; 46 LEs                 ; No         ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|return_state.reset ;
-; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |PRODIG_RPM|display:u4|Selector4                                         ;
-; 12:1               ; 18 bits   ; 144 LEs       ; 90 LEs               ; 54 LEs                 ; No         ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|Selector37         ;
-; 13:1               ; 2 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; No         ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|Selector52         ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------+
+; 3:1                ; 14 bits   ; 28 LEs        ; 0 LEs                ; 28 LEs                 ; Yes        ; |PRODIG_RPM|RPM_counter:u0|tix_mem[1]                                                ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |PRODIG_RPM|RPM_counter:u0|count[11]                                                 ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |PRODIG_RPM|RPM_counter:u0|wait_time[8]                                              ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|goto30                                                        ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |PRODIG_RPM|division:u5|rpm[0]                                                       ;
+; 6:1                ; 12 bits   ; 48 LEs        ; 12 LEs               ; 36 LEs                 ; Yes        ; |PRODIG_RPM|division:u5|x[12]                                                        ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[11]              ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[20]              ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[8]               ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[15]              ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[7]               ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 8 LEs                ; 24 LEs                 ; Yes        ; |PRODIG_RPM|division:u5|x[9]                                                         ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |PRODIG_RPM|display:u4|character_counter                                             ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |PRODIG_RPM|display:u4|line_counter                                                  ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |PRODIG_RPM|display:u4|Selector7                                                     ;
+; 5:1                ; 23 bits   ; 69 LEs        ; 23 LEs               ; 46 LEs                 ; No         ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|return_state.pulse_busy_flag_5 ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |PRODIG_RPM|display:u4|Selector1                                                     ;
+; 12:1               ; 18 bits   ; 144 LEs       ; 90 LEs               ; 54 LEs                 ; No         ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|Selector40                     ;
+; 13:1               ; 2 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; No         ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|Selector53                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------+
@@ -1234,6 +1239,35 @@ Encoding Type:  One-Hot
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++-------------------------------------------------------+
+; Parameter Settings for User Entity Instance: timer:u7 ;
++------------------+-------+----------------------------+
+; Parameter Name   ; Value ; Type                       ;
++------------------+-------+----------------------------+
+; ClockFrequencyHz ; 10000 ; Signed Integer             ;
++------------------+-------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "timer:u7"                                                                                  ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                             ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; seconds_max ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; minutes_max ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "display:u4|bin_bcd:totale_omw_1bcd"                                                           ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port           ; Type   ; Severity ; Details                                                                             ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; bcd_out[11..8] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
 +--------------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "display:u4|bin_bcd:tijd_minbcd"                                                               ;
 +----------------+--------+----------+-------------------------------------------------------------------------------------+
@@ -1254,32 +1288,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+--------------------------------------------------+
-; Port Connectivity Checks: "display:u4"           ;
-+----------------+-------+----------+--------------+
-; Port           ; Type  ; Severity ; Details      ;
-+----------------+-------+----------+--------------+
-; weerstand[3]   ; Input ; Info     ; Stuck at GND ;
-; weerstand[2]   ; Input ; Info     ; Stuck at VCC ;
-; weerstand[1]   ; Input ; Info     ; Stuck at GND ;
-; weerstand[0]   ; Input ; Info     ; Stuck at VCC ;
-; maximale[6..3] ; Input ; Info     ; Stuck at VCC ;
-; maximale[1..0] ; Input ; Info     ; Stuck at VCC ;
-; maximale[7]    ; Input ; Info     ; Stuck at GND ;
-; maximale[2]    ; Input ; Info     ; Stuck at GND ;
-; tijd_sec[5]    ; Input ; Info     ; Stuck at GND ;
-; tijd_sec[4]    ; Input ; Info     ; Stuck at VCC ;
-; tijd_sec[3]    ; Input ; Info     ; Stuck at GND ;
-; tijd_sec[2]    ; Input ; Info     ; Stuck at VCC ;
-; tijd_sec[1]    ; Input ; Info     ; Stuck at GND ;
-; tijd_sec[0]    ; Input ; Info     ; Stuck at VCC ;
-; tijd_min[5]    ; Input ; Info     ; Stuck at GND ;
-; tijd_min[4]    ; Input ; Info     ; Stuck at VCC ;
-; tijd_min[3]    ; Input ; Info     ; Stuck at GND ;
-; tijd_min[2]    ; Input ; Info     ; Stuck at VCC ;
-; tijd_min[1]    ; Input ; Info     ; Stuck at GND ;
-; tijd_min[0]    ; Input ; Info     ; Stuck at VCC ;
-+----------------+-------+----------+--------------+
++------------------------------------------------+
+; Port Connectivity Checks: "display:u4"         ;
++--------------+-------+----------+--------------+
+; Port         ; Type  ; Severity ; Details      ;
++--------------+-------+----------+--------------+
+; weerstand[3] ; Input ; Info     ; Stuck at GND ;
+; weerstand[2] ; Input ; Info     ; Stuck at VCC ;
+; weerstand[1] ; Input ; Info     ; Stuck at GND ;
+; weerstand[0] ; Input ; Info     ; Stuck at VCC ;
++--------------+-------+----------+--------------+
 
 
 +-------------------------------+
@@ -1287,7 +1305,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:04     ;
+; Top            ; 00:00:11     ;
 +----------------+--------------+
 
 
@@ -1297,7 +1315,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Mon Oct 07 19:55:08 2019
+    Info: Processing started: Mon Oct 07 22:34:04 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off PRODIG_RPM -c PRODIG_RPM
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 0 design units, including 0 entities, in source file resistor.vhd
@@ -1337,36 +1355,93 @@ Info (12021): Found 2 design units, including 1 entities, in source file ontdend
 Info (12021): Found 2 design units, including 1 entities, in source file bin_bcd.vhd
     Info (12022): Found design unit 1: bin_bcd-rtl
     Info (12023): Found entity 1: bin_bcd
+Info (12021): Found 2 design units, including 1 entities, in source file max_rpm.vhd
+    Info (12022): Found design unit 1: max_rpm-rtl
+    Info (12023): Found entity 1: max_rpm
+Info (12021): Found 2 design units, including 1 entities, in source file timer.vhd
+    Info (12022): Found design unit 1: timer-rtl
+    Info (12023): Found entity 1: timer
 Info (12127): Elaborating entity "PRODIG_RPM" for the top level hierarchy
-Warning (10540): VHDL Signal Declaration warning at PRODIG_RPM.vhd(75): used explicit default value for signal "tijd_sec" because signal was never assigned a value
-Warning (10540): VHDL Signal Declaration warning at PRODIG_RPM.vhd(76): used explicit default value for signal "tijd_min" because signal was never assigned a value
 Warning (10540): VHDL Signal Declaration warning at PRODIG_RPM.vhd(77): used explicit default value for signal "weerstand" because signal was never assigned a value
-Warning (10540): VHDL Signal Declaration warning at PRODIG_RPM.vhd(78): used explicit default value for signal "maximale_rpm" because signal was never assigned a value
-Warning (10541): VHDL Signal Declaration warning at PRODIG_RPM.vhd(80): used implicit default value for signal "gemiddelde" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at PRODIG_RPM.vhd(81): used implicit default value for signal "gemiddelde" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10036): Verilog HDL or VHDL warning at PRODIG_RPM.vhd(83): object "seconds_max" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at PRODIG_RPM.vhd(84): object "minutes_max" assigned a value but never read
 Info (12128): Elaborating entity "RPM_counter" for hierarchy "RPM_counter:u0"
-Warning (10492): VHDL Process Statement warning at RPM_counter.vhd(33): signal "hall_sens" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10631): VHDL Process Statement warning at RPM_counter.vhd(20): inferring latch(es) for signal or variable "omwentel", which holds its previous value in one or more paths through the process
-Info (10041): Inferred latch for "omwentel[0]" at RPM_counter.vhd(27)
-Info (10041): Inferred latch for "omwentel[1]" at RPM_counter.vhd(27)
-Info (10041): Inferred latch for "omwentel[2]" at RPM_counter.vhd(27)
-Info (10041): Inferred latch for "omwentel[3]" at RPM_counter.vhd(27)
-Info (10041): Inferred latch for "omwentel[4]" at RPM_counter.vhd(27)
-Info (10041): Inferred latch for "omwentel[5]" at RPM_counter.vhd(27)
-Info (10041): Inferred latch for "omwentel[6]" at RPM_counter.vhd(27)
-Info (10041): Inferred latch for "omwentel[7]" at RPM_counter.vhd(27)
-Info (10041): Inferred latch for "omwentel[8]" at RPM_counter.vhd(27)
-Info (10041): Inferred latch for "omwentel[9]" at RPM_counter.vhd(27)
-Info (10041): Inferred latch for "omwentel[10]" at RPM_counter.vhd(27)
-Info (10041): Inferred latch for "omwentel[11]" at RPM_counter.vhd(27)
-Info (10041): Inferred latch for "omwentel[12]" at RPM_counter.vhd(27)
-Info (10041): Inferred latch for "omwentel[13]" at RPM_counter.vhd(27)
-Info (10041): Inferred latch for "omwentel[14]" at RPM_counter.vhd(27)
+Warning (10492): VHDL Process Statement warning at RPM_counter.vhd(36): signal "hall_sens" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at RPM_counter.vhd(21): inferring latch(es) for signal or variable "omwentel99", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at RPM_counter.vhd(21): inferring latch(es) for signal or variable "omwentel255", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "omwentel255[0]" at RPM_counter.vhd(29)
+Info (10041): Inferred latch for "omwentel255[1]" at RPM_counter.vhd(29)
+Info (10041): Inferred latch for "omwentel255[2]" at RPM_counter.vhd(29)
+Info (10041): Inferred latch for "omwentel255[3]" at RPM_counter.vhd(29)
+Info (10041): Inferred latch for "omwentel255[4]" at RPM_counter.vhd(29)
+Info (10041): Inferred latch for "omwentel255[5]" at RPM_counter.vhd(29)
+Info (10041): Inferred latch for "omwentel255[6]" at RPM_counter.vhd(29)
+Info (10041): Inferred latch for "omwentel255[7]" at RPM_counter.vhd(29)
+Info (10041): Inferred latch for "omwentel99[0]" at RPM_counter.vhd(29)
+Info (10041): Inferred latch for "omwentel99[1]" at RPM_counter.vhd(29)
+Info (10041): Inferred latch for "omwentel99[2]" at RPM_counter.vhd(29)
+Info (10041): Inferred latch for "omwentel99[3]" at RPM_counter.vhd(29)
+Info (10041): Inferred latch for "omwentel99[4]" at RPM_counter.vhd(29)
+Info (10041): Inferred latch for "omwentel99[5]" at RPM_counter.vhd(29)
+Info (10041): Inferred latch for "omwentel99[6]" at RPM_counter.vhd(29)
+Info (10041): Inferred latch for "omwentel99[7]" at RPM_counter.vhd(29)
 Info (12128): Elaborating entity "prescaler" for hierarchy "prescaler:u1"
 Info (12128): Elaborating entity "prodig_7_seg_decoder" for hierarchy "prodig_7_seg_decoder:u2"
 Info (12128): Elaborating entity "display" for hierarchy "display:u4"
 Info (12128): Elaborating entity "lcd_driver_hd44780_module" for hierarchy "display:u4|lcd_driver_hd44780_module:lcdm"
 Info (12128): Elaborating entity "bin_bcd" for hierarchy "display:u4|bin_bcd:RPM2bcd"
 Info (12128): Elaborating entity "division" for hierarchy "division:u5"
+Info (12128): Elaborating entity "max_rpm" for hierarchy "max_rpm:u6"
+Warning (10492): VHDL Process Statement warning at Max_rpm.vhd(22): signal "areset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Max_rpm.vhd(26): signal "rpm_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Max_rpm.vhd(27): signal "rpm_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at Max_rpm.vhd(18): inferring latch(es) for signal or variable "rpm_max_int", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "rpm_max_int[0]" at Max_rpm.vhd(22)
+Info (10041): Inferred latch for "rpm_max_int[1]" at Max_rpm.vhd(22)
+Info (10041): Inferred latch for "rpm_max_int[2]" at Max_rpm.vhd(22)
+Info (10041): Inferred latch for "rpm_max_int[3]" at Max_rpm.vhd(22)
+Info (10041): Inferred latch for "rpm_max_int[4]" at Max_rpm.vhd(22)
+Info (10041): Inferred latch for "rpm_max_int[5]" at Max_rpm.vhd(22)
+Info (10041): Inferred latch for "rpm_max_int[6]" at Max_rpm.vhd(22)
+Info (10041): Inferred latch for "rpm_max_int[7]" at Max_rpm.vhd(22)
+Info (12128): Elaborating entity "timer" for hierarchy "timer:u7"
+Warning (10492): VHDL Process Statement warning at Timer.vhd(30): signal "areset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Timer.vhd(61): signal "seconds_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Timer.vhd(62): signal "minutes_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Timer.vhd(63): signal "rpm_max" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Timer.vhd(64): signal "minutes_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Timer.vhd(65): signal "seconds_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at Timer.vhd(28): inferring latch(es) for signal or variable "seconds_max", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at Timer.vhd(28): inferring latch(es) for signal or variable "minutes_max", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "minutes_max[0]" at Timer.vhd(28)
+Info (10041): Inferred latch for "minutes_max[1]" at Timer.vhd(28)
+Info (10041): Inferred latch for "minutes_max[2]" at Timer.vhd(28)
+Info (10041): Inferred latch for "minutes_max[3]" at Timer.vhd(28)
+Info (10041): Inferred latch for "minutes_max[4]" at Timer.vhd(28)
+Info (10041): Inferred latch for "minutes_max[5]" at Timer.vhd(28)
+Info (10041): Inferred latch for "seconds_max[0]" at Timer.vhd(28)
+Info (10041): Inferred latch for "seconds_max[1]" at Timer.vhd(28)
+Info (10041): Inferred latch for "seconds_max[2]" at Timer.vhd(28)
+Info (10041): Inferred latch for "seconds_max[3]" at Timer.vhd(28)
+Info (10041): Inferred latch for "seconds_max[4]" at Timer.vhd(28)
+Info (10041): Inferred latch for "seconds_max[5]" at Timer.vhd(28)
+Warning (13012): Latch RPM_counter:u0|omwentel255[7] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal RPM_counter:u0|Equal0~synth
+Warning (13012): Latch RPM_counter:u0|omwentel255[5] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal RPM_counter:u0|Equal0~synth
+Warning (13012): Latch RPM_counter:u0|omwentel255[6] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal RPM_counter:u0|Equal0~synth
+Warning (13012): Latch RPM_counter:u0|omwentel255[4] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal RPM_counter:u0|Equal0~synth
+Warning (13012): Latch RPM_counter:u0|omwentel255[3] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal RPM_counter:u0|Equal0~synth
+Warning (13012): Latch RPM_counter:u0|omwentel255[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal RPM_counter:u0|Equal0~synth
+Warning (13012): Latch RPM_counter:u0|omwentel255[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal RPM_counter:u0|Equal0~synth
+Warning (13012): Latch RPM_counter:u0|omwentel255[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal RPM_counter:u0|Equal0~synth
 Info (13000): Registers with preset signals will power-up high
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
@@ -1472,15 +1547,15 @@ Warning (21074): Design contains 34 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "DB[6]"
     Warning (15610): No output dependent on input pin "DB[7]"
     Warning (15610): No output dependent on input pin "BUSY"
-Info (21057): Implemented 775 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1074 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 39 input pins
     Info (21059): Implemented 114 output pins
     Info (21060): Implemented 8 bidirectional pins
-    Info (21061): Implemented 614 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 109 warnings
-    Info: Peak virtual memory: 4652 megabytes
-    Info: Processing ended: Mon Oct 07 19:55:16 2019
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:07
+    Info (21061): Implemented 913 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 137 warnings
+    Info: Peak virtual memory: 4659 megabytes
+    Info: Processing ended: Mon Oct 07 22:34:21 2019
+    Info: Elapsed time: 00:00:17
+    Info: Total CPU time (on all processors): 00:00:14
 
 

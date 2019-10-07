@@ -76,9 +76,12 @@ signal tijd_sec : std_logic_vector (5 downto 0) := "010101";
 signal tijd_min : std_logic_vector (5 downto 0) := "010101";
 signal weerstand : std_logic_vector (3 downto 0) := "0101";
 signal maximale_rpm : std_logic_vector (7 downto 0) := "01111011";
-signal totale_omw : unsigned (14 downto 0) := "000000000000000";
+signal totale_omw_1 : std_logic_vector (7 downto 0) := "00000000";
+signal totale_omw_2 : std_logic_vector (7 downto 0) := "00000000";
 signal gemiddelde : std_logic_vector (7 downto 0);
-
+signal time_save : std_logic;
+signal seconds_max : std_logic_vector (5 downto 0);
+signal minutes_max : std_logic_vector (5 downto 0);
 
 
 component RPM_counter is
@@ -89,7 +92,8 @@ component RPM_counter is
 		calc		: out std_logic;
 		tix_mem	: out unsigned(15 downto 0);
 		-- Voor de totale omwentelingen
-		tot_omwentel : out unsigned(14 downto 0)
+		tot_omwentel99 : out std_logic_vector(7 downto 0); -- telt tot 99 en begint daarna weer vanaf 0
+		tot_omwentel255 : out std_logic_vector(7 downto 0) -- wordt groter met 1 zodra de teller van omwentel99 opnieuw begint
 		);
 end component;
 
@@ -124,7 +128,8 @@ component Display is
 			RPM		: in unsigned (7 downto 0);
 			weerstand: in std_logic_vector (3 downto 0);
 			gemiddelde: in std_logic_vector(7 downto 0);
-			totale_omw	: in unsigned (14 downto 0);
+			totale_omw_1 : in std_logic_vector (7 downto 0);
+			totale_omw_2 : in std_logic_vector (7 downto 0);
 			maximale : in std_logic_vector (7 downto 0);
 			tijd_sec	: in std_logic_vector (5 downto 0);
 			tijd_min : in std_logic_vector (5 downto 0)
@@ -141,6 +146,27 @@ component division is
 		);
 end component;
 
+component max_rpm is
+	port (
+			areset : in std_logic;
+			rpm_in : in unsigned (7 downto 0);
+			rpm_max : out std_logic_vector (7 downto 0);
+			time_save: out std_logic
+			);
+end component;
+
+component timer is
+	port(
+		 clk     		: 	in std_logic;
+		 areset    		: 	in std_logic;
+		 seconds			:  out std_logic_vector(5 downto 0);
+		 minutes 		:  out std_logic_vector(5 downto 0);
+		 seconds_max	:	out std_logic_vector(5 downto 0);
+		 minutes_max	:	out std_logic_vector(5 downto 0);
+		 rpm_max			:	in std_logic
+		 );
+end component;
+
 --component ontdender is
 --	port(
 --		clock : in std_logic;
@@ -153,7 +179,7 @@ end component;
 begin
 
 u0: RPM_counter
-port map(clock => clock_int, areset => BUTTON(3), hall_sens => hall_sens_ontd, tix_mem => tix_mem, calc => calc_int, tot_omwentel => totale_omw);
+port map(clock => clock_int, areset => BUTTON(3), hall_sens => hall_sens_ontd, tix_mem => tix_mem, calc => calc_int, tot_omwentel99 => totale_omw_1, tot_omwentel255 => totale_omw_2);
 
 u1: prescaler
 port map(clkin => CLOCK_50, areset => button(3), clkout => clock_int);
@@ -166,12 +192,16 @@ port map(rpm_mem => rpm_mem, bcd_hun => HEX2_D, bcd_ten => HEX1_D, bcd_one => HE
 
 u4: Display
 port map(clk_in => CLOCK_50, areset_in => button(3), LCD_EN => LCD_EN, LCD_RS => LCD_RS, LCD_RW => LCD_RW, LCD_DATA => LCD_DATA, modus => knop(1), start_screen => sw(0),
-			RPM => RPM_mem, weerstand => weerstand, gemiddelde => gemiddelde, totale_omw => totale_omw, maximale => maximale_rpm, tijd_sec => tijd_sec, tijd_min => tijd_min);
+			RPM => RPM_mem, weerstand => weerstand, gemiddelde => gemiddelde, totale_omw_1 => totale_omw_1, totale_omw_2 => totale_omw_2, maximale => maximale_rpm, tijd_sec => tijd_sec, tijd_min => tijd_min);
 
 u5: division
 port map(tix_mem => tix_mem, areset => button(3), calc => calc_int, clock => clock_int, rpm_mem => rpm_mem);
 
+u6: max_rpm
+port map(areset => BUTTON(3), rpm_in => rpm_mem, rpm_max => maximale_rpm, time_save => time_save);
 
+u7: timer
+port map (clk => clock_int, areset => BUTTON(3), seconds => tijd_sec, minutes => tijd_min, rpm_max => time_save, seconds_max => seconds_max, minutes_max => minutes_max);
 
 hall_sens_ontd <= hall_sens;
 LEDG(1) <= hall_sens;

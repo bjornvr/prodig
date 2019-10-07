@@ -32,7 +32,8 @@ entity display is
 			RPM		: in std_logic_vector (7 downto 0);
 			weerstand: in std_logic_vector (3 downto 0);
 			gemiddelde: in std_logic_vector(7 downto 0);
-			totale_omw	: in std_logic_vector (14 downto 0);
+			totale_omw_1 : in std_logic_vector (7 downto 0);
+			totale_omw_2 : in std_logic_vector (7 downto 0);
 			maximale : in std_logic_vector (7 downto 0);
 			tijd_sec	: in std_logic_vector (5 downto 0);
 			tijd_min : in std_logic_vector (5 downto 0)
@@ -174,6 +175,12 @@ begin
 		
 	tijd_minbcd: bin_bcd
 		port map(bin_in => ("00" & tijd_min), bcd_out => tijd_min_bcd);
+	
+	totale_omw_1bcd: bin_bcd
+		port map (bin_in => totale_omw_1, bcd_out => totale_omw_BCD(11 downto 0));
+		
+	totale_omw_2bcd: bin_bcd
+		port map (bin_in => totale_omw_2, bcd_out => totale_omw_BCD(23 downto 12));	
 		
 	
 	
@@ -236,7 +243,13 @@ begin
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & Gemiddelde_BCD(3 downto 0))))))) & 
 							"    ");
 			totale_omw_line <= ("Tot omw: " & 
-							"       ");
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(23 downto 20))))))) & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(19 downto 16))))))) & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(15 downto 12))))))) & 
+							--character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(11 downto 8))))))) & -- valt weg omdat we de eerste alleen maar laten tellen tot 99
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(7 downto 4))))))) & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(3 downto 0))))))) &
+							"  ");
 			maximale_line <= ("Max rpm: " &
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & maximale_BCD(11 downto 8))))))) & 
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & maximale_BCD(7 downto 4))))))) & 
