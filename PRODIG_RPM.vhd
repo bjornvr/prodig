@@ -72,6 +72,14 @@ signal clock_int : std_logic;
 signal tix_mem : unsigned(15 downto 0);
 signal rpm_mem : unsigned(7 downto 0);
 signal calc_int: std_logic;
+signal tijd_sec : std_logic_vector (5 downto 0) := "010101";
+signal tijd_min : std_logic_vector (5 downto 0) := "010101";
+signal weerstand : std_logic_vector (3 downto 0) := "0101";
+signal maximale_rpm : std_logic_vector (7 downto 0) := "01111011";
+signal totale_omw : unsigned (14 downto 0) := "000000000000000";
+signal gemiddelde : std_logic_vector (7 downto 0);
+
+
 
 component RPM_counter is
 	port (
@@ -105,13 +113,21 @@ end component;
 component Display is
 	port (clk_in : in std_logic;
 			areset_in   : in std_logic;
-			-- LCD
+			-- LCD of the DE0 board
 			LCD_EN   : out std_logic;
 			LCD_RS   : out std_logic;
 			LCD_RW   : out std_logic;
 			LCD_DATA : inout std_logic_vector(7 downto 0);
+			start_screen : in std_logic;
 			-- Daadwerkelijke waardes
-			RPM		: in unsigned (7 downto 0)
+			modus 	: in std_logic;
+			RPM		: in unsigned (7 downto 0);
+			weerstand: in std_logic_vector (3 downto 0);
+			gemiddelde: in std_logic_vector(7 downto 0);
+			totale_omw	: in unsigned (14 downto 0);
+			maximale : in std_logic_vector (7 downto 0);
+			tijd_sec	: in std_logic_vector (5 downto 0);
+			tijd_min : in std_logic_vector (5 downto 0)
 	);
 end component;
 
@@ -137,7 +153,7 @@ end component;
 begin
 
 u0: RPM_counter
-port map(clock => clock_int, areset => BUTTON(3), hall_sens => hall_sens_ontd, tix_mem => tix_mem, calc => calc_int);
+port map(clock => clock_int, areset => BUTTON(3), hall_sens => hall_sens_ontd, tix_mem => tix_mem, calc => calc_int, tot_omwentel => totale_omw);
 
 u1: prescaler
 port map(clkin => CLOCK_50, areset => button(3), clkout => clock_int);
@@ -149,7 +165,8 @@ port map(rpm_mem => rpm_mem, bcd_hun => HEX2_D, bcd_ten => HEX1_D, bcd_one => HE
 --port map(input => hall_sens, clock => clock, output => hall_sens_ontd, areset => button(3));
 
 u4: Display
-port map(clk_in => CLOCK_50, areset_in => button(3), LCD_EN => LCD_EN, LCD_RS => LCD_RS, LCD_RW => LCD_RW, LCD_DATA => LCD_DATA, RPM => RPM_mem);
+port map(clk_in => CLOCK_50, areset_in => button(3), LCD_EN => LCD_EN, LCD_RS => LCD_RS, LCD_RW => LCD_RW, LCD_DATA => LCD_DATA, modus => knop(1), start_screen => sw(0),
+			RPM => RPM_mem, weerstand => weerstand, gemiddelde => gemiddelde, totale_omw => totale_omw, maximale => maximale_rpm, tijd_sec => tijd_sec, tijd_min => tijd_min);
 
 u5: division
 port map(tix_mem => tix_mem, areset => button(3), calc => calc_int, clock => clock_int, rpm_mem => rpm_mem);

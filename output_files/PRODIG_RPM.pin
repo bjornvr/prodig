@@ -83,11 +83,11 @@ GND                          : A13       : gnd    :                   :         
 GND*                         : A14       :        :                   :         : 3         :                
 VCCIO3                       : A15       : power  :                   : 3.3V    : 3         :                
 VCCIO4                       : A16       : power  :                   : 3.3V    : 4         :                
-tix_mem_sim[10]              : A17       : output : 3.3-V LVTTL       :         : 4         : N              
+tix_mem_sim[15]              : A17       : output : 3.3-V LVTTL       :         : 4         : N              
 GND                          : A18       : gnd    :                   :         :           :                
-rpm_mem_sim[5]               : A19       : output : 3.3-V LVTTL       :         : 4         : N              
-rpm_mem_sim[6]               : A20       : output : 3.3-V LVTTL       :         : 4         : N              
-GND*                         : A21       :        :                   :         : 4         :                
+tix_mem_sim[8]               : A19       : output : 3.3-V LVTTL       :         : 4         : N              
+tix_mem_sim[6]               : A20       : output : 3.3-V LVTTL       :         : 4         : N              
+rpm_mem_sim[4]               : A21       : output : 3.3-V LVTTL       :         : 4         : N              
 GND*                         : A22       :        :                   :         : 4         :                
 GND*                         : A23       :        :                   :         : 4         :                
 GND*                         : A24       :        :                   :         : 4         :                
@@ -171,7 +171,7 @@ GND*                         : AC12      :        :                   :         
 GND*                         : AC13      :        :                   :         : 8         :                
 LEDG[8]                      : AC14      : output : 3.3-V LVTTL       :         : 8         : Y              
 GND+                         : AC15      :        :                   :         : 7         :                
-rpm_mem_sim[1]               : AC16      : output : 3.3-V LVTTL       :         : 7         : N              
+GND*                         : AC16      :        :                   :         : 7         :                
 HEX1_DP                      : AC17      : output : 3.3-V LVTTL       :         : 7         : Y              
 GND*                         : AC18      :        :                   :         : 7         :                
 HEX2_DP                      : AC19      : output : 3.3-V LVTTL       :         : 7         : Y              
@@ -292,7 +292,7 @@ HEX1_D[0]                    : AG13      : output : 3.3-V LVTTL       :         
 GND*                         : AG14      :        :                   :         : 8         :                
 GND+                         : AG15      :        :                   :         : 8         :                
 HEX1_D[3]                    : AG16      : output : 3.3-V LVTTL       :         : 7         : Y              
-rpm_mem_sim[2]               : AG17      : output : 3.3-V LVTTL       :         : 7         : N              
+GND*                         : AG17      :        :                   :         : 7         :                
 GND*                         : AG18      :        :                   :         : 7         :                
 GND*                         : AG19      :        :                   :         : 7         :                
 GND*                         : AG20      :        :                   :         : 7         :                
@@ -322,7 +322,7 @@ GND*                         : AH13      :        :                   :         
 GND+                         : AH14      :        :                   :         : 8         :                
 GND*                         : AH15      :        :                   :         : 8         :                
 GND*                         : AH16      :        :                   :         : 7         :                
-rpm_mem_sim[0]               : AH17      : output : 3.3-V LVTTL       :         : 7         : N              
+GND*                         : AH17      :        :                   :         : 7         :                
 GND*                         : AH18      :        :                   :         : 7         :                
 GND*                         : AH19      :        :                   :         : 7         :                
 GND*                         : AH20      :        :                   :         : 7         :                
@@ -352,7 +352,7 @@ GND*                         : AJ13      :        :                   :         
 GND*                         : AJ14      :        :                   :         : 8         :                
 GND*                         : AJ15      :        :                   :         : 8         :                
 GND*                         : AJ16      :        :                   :         : 7         :                
-GND*                         : AJ17      :        :                   :         : 7         :                
+rpm_mem_sim[0]               : AJ17      : output : 3.3-V LVTTL       :         : 7         : N              
 GND*                         : AJ18      :        :                   :         : 7         :                
 GND*                         : AJ19      :        :                   :         : 7         :                
 GND*                         : AJ20      :        :                   :         : 7         :                
@@ -409,11 +409,11 @@ GND*                         : B12       :        :                   :         
 GND*                         : B13       :        :                   :         : 3         :                
 GND*                         : B14       :        :                   :         : 3         :                
 GND*                         : B15       :        :                   :         : 3         :                
-tix_mem_sim[8]               : B16       : output : 3.3-V LVTTL       :         : 4         : N              
-tix_mem_sim[5]               : B17       : output : 3.3-V LVTTL       :         : 4         : N              
-tix_mem_sim[3]               : B18       : output : 3.3-V LVTTL       :         : 4         : N              
-rpm_mem_sim[4]               : B19       : output : 3.3-V LVTTL       :         : 4         : N              
-tix_mem_sim[7]               : B20       : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : B16       :        :                   :         : 4         :                
+tix_mem_sim[12]              : B17       : output : 3.3-V LVTTL       :         : 4         : N              
+tix_mem_sim[1]               : B18       : output : 3.3-V LVTTL       :         : 4         : N              
+tix_mem_sim[14]              : B19       : output : 3.3-V LVTTL       :         : 4         : N              
+tix_mem_sim[13]              : B20       : output : 3.3-V LVTTL       :         : 4         : N              
 GND*                         : B21       :        :                   :         : 4         :                
 GND*                         : B22       :        :                   :         : 4         :                
 GND*                         : B23       :        :                   :         : 4         :                
@@ -440,9 +440,9 @@ GND*                         : C13       :        :                   :         
 GND*                         : C14       :        :                   :         : 3         :                
 GND*                         : C15       :        :                   :         : 3         :                
 GND*                         : C16       :        :                   :         : 4         :                
-tix_mem_sim[12]              : C17       : output : 3.3-V LVTTL       :         : 4         : N              
-tix_mem_sim[1]               : C18       : output : 3.3-V LVTTL       :         : 4         : N              
-GND*                         : C19       :        :                   :         : 4         :                
+GND*                         : C17       :        :                   :         : 4         :                
+tix_mem_sim[7]               : C18       : output : 3.3-V LVTTL       :         : 4         : N              
+rpm_mem_sim[1]               : C19       : output : 3.3-V LVTTL       :         : 4         : N              
 VCCIO4                       : C20       : power  :                   : 3.3V    : 4         :                
 GND*                         : C21       :        :                   :         : 4         :                
 GND*                         : C22       :        :                   :         : 4         :                
@@ -470,9 +470,9 @@ GND*                         : D13       :        :                   :         
 GND*                         : D14       :        :                   :         : 3         :                
 GND*                         : D15       :        :                   :         : 3         :                
 GND+                         : D16       :        :                   :         : 4         :                
-tix_mem_sim[4]               : D17       : output : 3.3-V LVTTL       :         : 4         : N              
-rpm_mem_sim[3]               : D18       : output : 3.3-V LVTTL       :         : 4         : N              
-GND*                         : D19       :        :                   :         : 4         :                
+tix_mem_sim[9]               : D17       : output : 3.3-V LVTTL       :         : 4         : N              
+rpm_mem_sim[5]               : D18       : output : 3.3-V LVTTL       :         : 4         : N              
+rpm_mem_sim[6]               : D19       : output : 3.3-V LVTTL       :         : 4         : N              
 GND                          : D20       : gnd    :                   :         :           :                
 GND*                         : D21       :        :                   :         : 4         :                
 GND*                         : D22       :        :                   :         : 4         :                
@@ -500,9 +500,9 @@ GND*                         : E13       :        :                   :         
 GND*                         : E14       :        :                   :         : 3         :                
 GND*                         : E15       :        :                   :         : 3         :                
 GND+                         : E16       :        :                   :         : 4         :                
-tix_mem_sim[9]               : E17       : output : 3.3-V LVTTL       :         : 4         : N              
+tix_mem_sim[3]               : E17       : output : 3.3-V LVTTL       :         : 4         : N              
 VCCIO4                       : E18       : power  :                   : 3.3V    : 4         :                
-GND*                         : E19       :        :                   :         : 4         :                
+tix_mem_sim[4]               : E19       : output : 3.3-V LVTTL       :         : 4         : N              
 GND*                         : E20       :        :                   :         : 4         :                
 GND*                         : E21       :        :                   :         : 4         :                
 GND*                         : E22       :        :                   :         : 4         :                
@@ -529,11 +529,11 @@ GND*                         : F12       :        :                   :         
 GND*                         : F13       :        :                   :         : 3         :                
 GND                          : F14       : gnd    :                   :         :           :                
 VCCIO3                       : F15       : power  :                   : 3.3V    : 3         :                
-tix_mem_sim[15]              : F16       : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : F16       :        :                   :         : 4         :                
 GND                          : F17       : gnd    :                   :         :           :                
 tix_mem_sim[2]               : F18       : output : 3.3-V LVTTL       :         : 4         : N              
-GND*                         : F19       :        :                   :         : 4         :                
-GND*                         : F20       :        :                   :         : 4         :                
+rpm_mem_sim[3]               : F19       : output : 3.3-V LVTTL       :         : 4         : N              
+tix_mem_sim[0]               : F20       : output : 3.3-V LVTTL       :         : 4         : N              
 VCCIO4                       : F21       : power  :                   : 3.3V    : 4         :                
 GND                          : F22       : gnd    :                   :         :           :                
 GND*                         : F23       :        :                   :         : 4         :                
@@ -559,9 +559,9 @@ GND*                         : G12       :        :                   :         
 GND*                         : G13       :        :                   :         : 3         :                
 GND*                         : G14       :        :                   :         : 3         :                
 GND+                         : G15       :        :                   :         : 3         :                
-tix_mem_sim[11]              : G16       : output : 3.3-V LVTTL       :         : 4         : N              
-tix_mem_sim[6]               : G17       : output : 3.3-V LVTTL       :         : 4         : N              
-tix_mem_sim[0]               : G18       : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : G16       :        :                   :         : 4         :                
+tix_mem_sim[10]              : G17       : output : 3.3-V LVTTL       :         : 4         : N              
+rpm_mem_sim[7]               : G18       : output : 3.3-V LVTTL       :         : 4         : N              
 GND*                         : G19       :        :                   :         : 4         :                
 GND*                         : G20       :        :                   :         : 4         :                
 GND*                         : G21       :        :                   :         : 4         :                
@@ -589,9 +589,9 @@ GND*                         : H12       :        :                   :         
 GND*                         : H13       :        :                   :         : 3         :                
 GND*                         : H14       :        :                   :         : 3         :                
 GND+                         : H15       :        :                   :         : 3         :                
-tix_mem_sim[14]              : H16       : output : 3.3-V LVTTL       :         : 4         : N              
-tix_mem_sim[13]              : H17       : output : 3.3-V LVTTL       :         : 4         : N              
-GND*                         : H18       :        :                   :         : 4         :                
+GND*                         : H16       :        :                   :         : 4         :                
+tix_mem_sim[11]              : H17       : output : 3.3-V LVTTL       :         : 4         : N              
+tix_mem_sim[5]               : H18       : output : 3.3-V LVTTL       :         : 4         : N              
 GND*                         : H19       :        :                   :         : 4         :                
 GND*                         : H20       :        :                   :         : 4         :                
 GND*                         : H21       :        :                   :         : 4         :                
@@ -621,7 +621,7 @@ GND                          : J14       : gnd    :                   :         
 VCCIO3                       : J15       : power  :                   : 3.3V    : 3         :                
 VCCIO4                       : J16       : power  :                   : 3.3V    : 4         :                
 GND                          : J17       : gnd    :                   :         :           :                
-rpm_mem_sim[7]               : J18       : output : 3.3-V LVTTL       :         : 4         : N              
+rpm_mem_sim[2]               : J18       : output : 3.3-V LVTTL       :         : 4         : N              
 GND*                         : J19       :        :                   :         : 4         :                
 VCCIO4                       : J20       : power  :                   : 3.3V    : 4         :                
 GND                          : J21       : gnd    :                   :         :           :                

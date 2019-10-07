@@ -26,13 +26,16 @@ entity display is
 			LCD_RS   : out std_logic;
 			LCD_RW   : out std_logic;
 			LCD_DATA : inout std_logic_vector(7 downto 0);
+			start_screen : in std_logic;
 			-- Daadwerkelijke waardes
 			modus 	: in std_logic;
 			RPM		: in std_logic_vector (7 downto 0);
 			weerstand: in std_logic_vector (3 downto 0);
 			gemiddelde: in std_logic_vector(7 downto 0);
 			totale_omw	: in std_logic_vector (14 downto 0);
-			maximale : in std_logic_vector (7 downto 0)
+			maximale : in std_logic_vector (7 downto 0);
+			tijd_sec	: in std_logic_vector (5 downto 0);
+			tijd_min : in std_logic_vector (5 downto 0)
 	);
 	
 end entity display;
@@ -112,10 +115,10 @@ type message4x16_type is array (1 to 4) of string16_type;
 
 -- The four-line message
 constant message : message4x16_type :=
-							( 1 => "1Het werkt      ",
-							  2 => "2               ",
-							  3 => "3   RPM         ",
-							  4 => "4               ");
+							( 1 => "                ",
+							  2 => "    Kettler     ",
+							  3 => "    Groep 1     ",
+							  4 => "                ");
 
 -- Counts the characters on a line.
 signal character_counter : integer range 1 to 16;
@@ -129,7 +132,13 @@ signal totale_omw_line	: string(1 to 16) := "                ";
 signal maximale_line 	: string(1 to 16) := "                ";
 signal weerstand_line	: string(1 to 16) := "                ";
 
-signal RPM_BCD				: std_logic_vector (11 downto 0);
+signal RPM_BCD				: std_logic_vector (11 downto 0);	-- 3 digits
+signal tijd_sec_BCD		: std_logic_vector (11 downto 0);	-- 2 digits 	> blijft 3 om de bin_bcd te gebruiken
+signal tijd_min_BCD		: std_logic_vector (11 downto 0);	-- 2 digits		> blijft 3 om de bin_bcd te gebruiken
+signal gemiddelde_BCD	: std_logic_vector (11 downto 0);	-- 3 digits
+signal maximale_BCD		: std_logic_vector (11 downto 0);	-- 3 digits
+--signal weerstand_BCD		: std_logic_vector (11 downto 0);	-- 1 digits > dus hoeft deze niet omgezet te worden
+signal totale_omw_BCD	: std_logic_vector (23 downto 0);	-- 5 digits
 
 
 
@@ -151,8 +160,23 @@ begin
 			
 	
 	
-	u1: bin_bcd
+	RPM2bcd: bin_bcd
 		port map (bin_in => RPM, bcd_out => RPM_BCD);
+		
+	gemiddelde2bcd: bin_bcd
+		port map (bin_in => gemiddelde, bcd_out => gemiddelde_BCD);
+		
+	maximale2bcd: bin_bcd
+		port map (bin_in => maximale, bcd_out => maximale_BCD);
+		
+	tijd_secbcd: bin_bcd
+		port map (bin_in => ("00" & tijd_sec), bcd_out => tijd_sec_bcd);
+		
+	tijd_minbcd: bin_bcd
+		port map(bin_in => ("00" & tijd_min), bcd_out => tijd_min_bcd);
+		
+	
+	
 
 
 	-- The client side
@@ -160,9 +184,7 @@ begin
 	
 	
 	variable aline : string16_type;
-	variable RPM_BCD_IN : std_logic_vector(11 downto 0);
-	--variable rpm_bcd_integer : integer (7 downto 0);
-	variable hundreds : integer range 0 to 7;
+
 	
 	
 	
@@ -195,19 +217,34 @@ begin
 			goto30 <= '0';
 			data <= "00000000";
 			
-			--update lines 
+			--update lines doe dit voor elke soort waarde
 			rpm_line <= ("RPM: " & 
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & RPM_BCD(11 downto 8))))))) & 
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & RPM_BCD(7 downto 4))))))) & 
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & RPM_BCD(3 downto 0))))))) & 
 							"        ");
 			tijd_line <= ("Tijd: " &
-							"          ");
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_min_BCD(7 downto 4))))))) & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_min_BCD(3 downto 0))))))) & 
+							":" &
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_sec_BCD(7 downto 4))))))) & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_sec_BCD(3 downto 0))))))) & 
+							"     ");
 			gemiddelde_line <= ("Avarage: " & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & Gemiddelde_BCD(11 downto 8))))))) & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & Gemiddelde_BCD(7 downto 4))))))) & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & Gemiddelde_BCD(3 downto 0))))))) & 
+							"    ");
+			totale_omw_line <= ("Tot omw: " & 
 							"       ");
---			totale_omw_line
---			maximale_line
---			weerstand_line
+			maximale_line <= ("Max rpm: " &
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & maximale_BCD(11 downto 8))))))) & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & maximale_BCD(7 downto 4))))))) & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & maximale_BCD(3 downto 0))))))) & 
+							"    ");
+			weerstand_line <= ("Weerstand: " &
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & weerstand(3 downto 0))))))) &
+							"    ");
 		
 		
 		
@@ -232,8 +269,12 @@ begin
 					
 				when write_char =>
 					-- Set up WRITE!
-					-- Use the data from the string
-					if modus = '1' then
+					-- Gebruik de lijnen die eerder gedeclareerd zijn. 
+					-- modus zorgt er voor dat er verschillende beelden kunnen worden weergegeven.
+					
+					if start_screen = '1' then
+						aline := message(line_counter);		--word gebruikt om een hele array door te sturen, dit is het welkoms scherm.
+					elsif modus = '1' then
 						case line_counter is
 							when 1 => aline := tijd_line;
 							when 2 => aline := RPM_line;
@@ -250,7 +291,7 @@ begin
 							when others => null;
 						end case;
 					end if;
-					--aline := message(line_counter);		--word gebruikt om een hele array door te sturen.
+					
 					
 					data <= std_logic_vector(conv_unsigned( character'pos(aline(character_counter)),8));
  					wr <= '1';
