@@ -1,4 +1,4 @@
--- Filename:     Display.vhd
+-- Filename:     PRODIG_RPM.vhd
 -- Filetype:     VHDL Source Code
 -- Led explain
 --		Rode leds is om iets te testen Groen is vrijblijfend vrij
