@@ -14,7 +14,8 @@
 -- Libraries
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+--use ieee.numeric_std.all;
+use ieee.std_logic_arith.all;
 
 -- The entity
 entity display is
@@ -26,10 +27,17 @@ entity display is
 			LCD_RW   : out std_logic;
 			LCD_DATA : inout std_logic_vector(7 downto 0);
 			-- Daadwerkelijke waardes
-			RPM		: in unsigned (7 downto 0)
+			modus 	: in std_logic;
+			RPM		: in std_logic_vector (7 downto 0);
+			weerstand: in std_logic_vector (3 downto 0);
+			gemiddelde: in std_logic_vector(7 downto 0);
+			totale_omw	: in std_logic_vector (14 downto 0);
+			maximale : in std_logic_vector (7 downto 0)
 	);
 	
 end entity display;
+
+ 
 
 -- The architecture!
 architecture hardware of display is
@@ -69,6 +77,13 @@ component lcd_driver_hd44780_module is
 			  );
 end component lcd_driver_hd44780_module;
 
+component bin_bcd is
+	port(
+			bin_in 	: in std_logic_vector(7 downto 0);
+			bcd_out	: out std_logic_vector (11 downto 0)
+			);
+end component bin_bcd;
+
 -- The system's frequency
 constant sys_freq : integer := 50000000;
 
@@ -107,17 +122,14 @@ signal character_counter : integer range 1 to 16;
 -- Counts the lines.
 signal line_counter : integer range 1 to 4;
 
-signal line1_message : string(1 to 16) := "                ";
-signal line2_message : string(1 to 16) := "                ";
-signal line3_message : string(1 to 16) := "                ";
-signal line4_message : string(1 to 16) := "                ";
-signal letter : character;
+signal RPM_line 			: string(1 to 16) := "                ";
+signal tijd_line 			: string(1 to 16) := "                ";
+signal gemiddelde_line 	: string(1 to 16) := "                ";
+signal totale_omw_line	: string(1 to 16) := "                ";
+signal maximale_line 	: string(1 to 16) := "                ";
+signal weerstand_line	: string(1 to 16) := "                ";
 
-
-subtype rawchar is std_logic_vector(7 downto 0);
-type rawstring is array(natural range <>) of rawchar;
-signal rpm_in : rawstring(2 downto 0);
-signal kmh : rawstring(2 downto 0);
+signal RPM_BCD				: std_logic_vector (11 downto 0);
 
 
 
@@ -136,12 +148,25 @@ begin
 	port map (clk => clk, areset => areset, init => init, data => data, wr => wr, cls => cls,
 				 home => home, goto10 => goto10, goto20 => goto20, goto30 => goto30, busy => busy,
 				 LCD_E => LCD_EN, LCD_RS => LCD_RS, LCD_RW => LCD_RW, LCD_DB => LCD_DATA);
-				 
+			
+	
+	
+	u1: bin_bcd
+		port map (bin_in => RPM, bcd_out => RPM_BCD);
+
+
 	-- The client side
 	drive: process (clk, areset) is
 	
 	
 	variable aline : string16_type;
+	variable RPM_BCD_IN : std_logic_vector(11 downto 0);
+	--variable rpm_bcd_integer : integer (7 downto 0);
+	variable hundreds : integer range 0 to 7;
+	
+	
+	
+	
 	
 	
 	
@@ -171,9 +196,18 @@ begin
 			data <= "00000000";
 			
 			--update lines 
-			line1_message <= "RPM=" & character'val(to_integer(RPM)) & "           ";
-		
-		
+			rpm_line <= ("RPM: " & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & RPM_BCD(11 downto 8))))))) & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & RPM_BCD(7 downto 4))))))) & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & RPM_BCD(3 downto 0))))))) & 
+							"        ");
+			tijd_line <= ("Tijd: " &
+							"          ");
+			gemiddelde_line <= ("Avarage: " & 
+							"       ");
+--			totale_omw_line
+--			maximale_line
+--			weerstand_line
 		
 		
 		
@@ -199,15 +233,26 @@ begin
 				when write_char =>
 					-- Set up WRITE!
 					-- Use the data from the string
-					case line_counter is
-						when 1 => aline := line1_message;
-						when 2 => aline := line2_message;
-						when 3 => aline := line3_message;
-						when 4 => aline := line4_message;
-						when others => null;
-					end case;
+					if modus = '1' then
+						case line_counter is
+							when 1 => aline := tijd_line;
+							when 2 => aline := RPM_line;
+							when 3 => aline := gemiddelde_line;
+							when 4 => aline := "Modus: RPM      ";
+							when others => null;
+						end case;
+					else
+						case line_counter is
+							when 1 => aline := totale_omw_line;
+							when 2 => aline := maximale_line;
+							when 3 => aline := weerstand_line;
+							when 4 => aline := "Modus: extra inf";
+							when others => null;
+						end case;
+					end if;
 					--aline := message(line_counter);		--word gebruikt om een hele array door te sturen.
-					data <= std_logic_vector(to_unsigned( character'pos(aline(character_counter)),8));
+					
+					data <= std_logic_vector(conv_unsigned( character'pos(aline(character_counter)),8));
  					wr <= '1';
 					state <= write_char_wait;
 
