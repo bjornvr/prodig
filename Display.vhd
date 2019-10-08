@@ -140,7 +140,7 @@ signal gemiddelde_BCD	: std_logic_vector (11 downto 0);	-- 3 digits
 signal maximale_BCD		: std_logic_vector (11 downto 0);	-- 3 digits
 --signal weerstand_BCD		: std_logic_vector (11 downto 0);	-- 1 digits > dus hoeft deze niet omgezet te worden
 signal totale_omw_BCD	: std_logic_vector (23 downto 0);	-- 5 digits
-
+signal start				: std_logic;
 
 
 begin
@@ -214,6 +214,7 @@ begin
 			data <= "00000000";
 			character_counter <= 1;
 			state <= reset;
+			start <= '0';
 		elsif rising_edge(clk) then
 			wr <= '0';
 			init <= '0';
@@ -237,7 +238,7 @@ begin
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_sec_BCD(7 downto 4))))))) & 
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_sec_BCD(3 downto 0))))))) & 
 							"     ");
-			gemiddelde_line <= ("Avarage: " & 
+			gemiddelde_line <= ("Average: " & 
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & Gemiddelde_BCD(11 downto 8))))))) & 
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & Gemiddelde_BCD(7 downto 4))))))) & 
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & Gemiddelde_BCD(3 downto 0))))))) & 
@@ -259,8 +260,9 @@ begin
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & weerstand(3 downto 0))))))) &
 							"    ");
 		
-		
-		
+			if start_screen = '1' then
+				start <= '1';
+			end if;		
 		
 		
 		
@@ -285,14 +287,14 @@ begin
 					-- Gebruik de lijnen die eerder gedeclareerd zijn. 
 					-- modus zorgt er voor dat er verschillende beelden kunnen worden weergegeven.
 					
-					if start_screen = '1' then
+					if start = '0' then
 						aline := message(line_counter);		--word gebruikt om een hele array door te sturen, dit is het welkoms scherm.
 					elsif modus = '1' then
 						case line_counter is
 							when 1 => aline := tijd_line;
 							when 2 => aline := RPM_line;
 							when 3 => aline := gemiddelde_line;
-							when 4 => aline := "Modus: RPM      ";
+							when 4 => aline := "Modus:RPM       ";
 							when others => null;
 						end case;
 					else
@@ -300,7 +302,7 @@ begin
 							when 1 => aline := totale_omw_line;
 							when 2 => aline := maximale_line;
 							when 3 => aline := weerstand_line;
-							when 4 => aline := "Modus: extra inf";
+							when 4 => aline := "Modus:extra info";
 							when others => null;
 						end case;
 					end if;

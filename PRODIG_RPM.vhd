@@ -78,10 +78,13 @@ signal weerstand : std_logic_vector (3 downto 0) := "0101";
 signal maximale_rpm : std_logic_vector (7 downto 0) := "01111011";
 signal totale_omw_1 : std_logic_vector (7 downto 0) := "00000000";
 signal totale_omw_2 : std_logic_vector (7 downto 0) := "00000000";
-signal gemiddelde : std_logic_vector (7 downto 0);
+signal gemiddelde : unsigned (7 downto 0);
 signal time_save : std_logic;
 signal seconds_max : std_logic_vector (5 downto 0);
 signal minutes_max : std_logic_vector (5 downto 0);
+
+signal start : std_logic := '0';
+signal start_stop_state : std_logic := '0';
 
 
 component RPM_counter is
@@ -127,7 +130,7 @@ component Display is
 			modus 	: in std_logic;
 			RPM		: in unsigned (7 downto 0);
 			weerstand: in std_logic_vector (3 downto 0);
-			gemiddelde: in std_logic_vector(7 downto 0);
+			gemiddelde: in unsigned(7 downto 0);
 			totale_omw_1 : in std_logic_vector (7 downto 0);
 			totale_omw_2 : in std_logic_vector (7 downto 0);
 			maximale : in std_logic_vector (7 downto 0);
@@ -159,12 +162,39 @@ component timer is
 	port(
 		 clk     		: 	in std_logic;
 		 areset    		: 	in std_logic;
+		 reset			:  in std_logic;
+		 start_stop		:  in std_logic;
 		 seconds			:  out std_logic_vector(5 downto 0);
 		 minutes 		:  out std_logic_vector(5 downto 0);
 		 seconds_max	:	out std_logic_vector(5 downto 0);
 		 minutes_max	:	out std_logic_vector(5 downto 0);
 		 rpm_max			:	in std_logic
 		 );
+end component;
+
+component gem_RPM is
+	port(
+		clock : in std_logic;
+		areset : in std_logic;
+		reset : in std_logic;
+		RPM : in unsigned(7 downto 0);
+		gem_RPM : out unsigned(7 downto 0)
+		);
+end component;
+
+component resistor is
+	port (
+		clock		: in  std_logic;
+		areset	: in	std_logic;
+		res_busy	: in  std_logic;
+		res_data : in  std_logic_vector(7 downto 0);
+		res_up	: out std_logic;
+		res_down	: out std_logic;
+		N_readADC: out std_logic;
+		N_convst : out std_logic;
+		ADC_data_out:	out std_logic_vector(7 downto 0) := "00000000";
+		resistance: out std_logic_vector(3 downto 0)
+		);
 end component;
 
 --component ontdender is
@@ -191,8 +221,9 @@ port map(rpm_mem => rpm_mem, bcd_hun => HEX2_D, bcd_ten => HEX1_D, bcd_one => HE
 --port map(input => hall_sens, clock => clock, output => hall_sens_ontd, areset => button(3));
 
 u4: Display
-port map(clk_in => CLOCK_50, areset_in => button(3), LCD_EN => LCD_EN, LCD_RS => LCD_RS, LCD_RW => LCD_RW, LCD_DATA => LCD_DATA, modus => knop(1), start_screen => sw(0),
-			RPM => RPM_mem, weerstand => weerstand, gemiddelde => gemiddelde, totale_omw_1 => totale_omw_1, totale_omw_2 => totale_omw_2, maximale => maximale_rpm, tijd_sec => tijd_sec, tijd_min => tijd_min);
+port map(clk_in => CLOCK_50, areset_in => button(3), LCD_EN => LCD_EN, LCD_RS => LCD_RS, LCD_RW => LCD_RW, LCD_DATA => LCD_DATA, modus => KNOP(2), start_screen => start,
+			RPM => RPM_mem, weerstand => weerstand, gemiddelde => gemiddelde, totale_omw_1 => totale_omw_1, totale_omw_2 => totale_omw_2, maximale => maximale_rpm, tijd_sec => tijd_sec, 
+			tijd_min => tijd_min);
 
 u5: division
 port map(tix_mem => tix_mem, areset => button(3), calc => calc_int, clock => clock_int, rpm_mem => rpm_mem);
@@ -201,21 +232,42 @@ u6: max_rpm
 port map(areset => BUTTON(3), rpm_in => rpm_mem, rpm_max => maximale_rpm, time_save => time_save);
 
 u7: timer
-port map (clk => clock_int, areset => BUTTON(3), seconds => tijd_sec, minutes => tijd_min, rpm_max => time_save, seconds_max => seconds_max, minutes_max => minutes_max);
+port map (clk => clock_int, areset => BUTTON(3), reset => KNOP(6), start_stop => start, seconds => tijd_sec, minutes => tijd_min, rpm_max => time_save, seconds_max => seconds_max, 
+minutes_max => minutes_max);
+
+u8: gem_RPM
+port map (clock => clock_int, areset => BUTTON(3), reset => KNOP(6), RPM => RPM_mem, gem_RPM => gemiddelde);
+
+u9: resistor 
+port map(clock => clock_int, areset => button(3), res_busy => BUSY, res_data => DB, res_up => open, res_down => open, N_readADC => RD, N_convst => Convstart, resistance => weerstand, 
+ADC_data_out => LEDR(7 downto 0));
+
 
 hall_sens_ontd <= hall_sens;
 LEDG(1) <= hall_sens;
 LEDG(0) <= hall_sens_ontd;
+
+drive: process (clock_int) is
+begin
+	if button(3) = '0' then
+	start <= '0';
+	elsif rising_edge(clock_int) then
+		if KNOP(3) = '0' and start_stop_state = '1' then
+			start <= not(start);
+		end if;
+		start_stop_state <= KNOP(3);
+	end if;
+end process;
+
 
 tix_mem_sim <= tix_mem;	-- Voor simulatie, verwijderen uit definitieve code	
 rpm_mem_sim <= rpm_mem; -- Voor simulatie, verwijderen uit definitieve code	
 
 
 -- Nog te gebruiken outputs TIJDELIJK 0 VOOR MINDER WARNINGS
-MOTOR_UP <= '0';	
-MOTOR_DOWN <= '0';
-RD <= '0'; 
-Convstart <= '0';
+MOTOR_UP <= sw(1);	
+MOTOR_DOWN <= sw(2);
+
 
 -- niet gebruikte outputs
 hex3_D <= "1111111";
@@ -232,6 +284,6 @@ HEX5_DP <= '1';
 HEX6_DP <= '1';
 HEX7_DP <= '1';
 LEDG(8 downto 2) <= (others => '0');
-LEDR(9 downto 0) <= (others => '0');
+LEDR(9 downto 8) <= (others => '0');
 
 end architecture;

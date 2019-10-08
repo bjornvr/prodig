@@ -193,6 +193,10 @@ set_location_assignment PIN_N22 -to KNOP[3]
 set_location_assignment PIN_N25 -to KNOP[4]
 set_location_assignment PIN_N21 -to KNOP[5]
 set_location_assignment PIN_N24 -to KNOP[6]
+set_global_assignment -name USE_CONFIGURATION_DEVICE ON
+set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_ASDO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name VHDL_FILE gem_RPM.vhd
 set_global_assignment -name VHDL_FILE resistor.vhd
 set_global_assignment -name VHDL_FILE tb_Display.vhd
 set_global_assignment -name VHDL_FILE lcd_driver_hd44780_module.vhd
@@ -208,9 +212,6 @@ set_global_assignment -name VHDL_FILE PRODIG_RPM.vhd
 set_global_assignment -name VHDL_FILE prodig_7_seg_decoder.vhd
 set_global_assignment -name VHDL_FILE ontdender.vhd
 set_global_assignment -name CDF_FILE output_files/Chain10.cdf
-set_global_assignment -name USE_CONFIGURATION_DEVICE ON
-set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
-set_global_assignment -name RESERVE_ASDO_AFTER_CONFIGURATION "USE AS REGULAR IO"
 set_global_assignment -name VHDL_FILE bin_bcd.vhd
 set_global_assignment -name VHDL_FILE Max_rpm.vhd
 set_global_assignment -name VHDL_FILE Timer.vhd

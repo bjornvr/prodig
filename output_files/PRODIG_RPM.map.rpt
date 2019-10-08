@@ -1,5 +1,5 @@
 Analysis & Synthesis report for PRODIG_RPM
-Mon Oct 07 22:34:20 2019
+Tue Oct 08 12:34:53 2019
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -24,11 +24,11 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
  16. Multiplexer Restructuring Statistics (Restructuring Performed)
  17. Parameter Settings for User Entity Instance: display:u4|lcd_driver_hd44780_module:lcdm
  18. Parameter Settings for User Entity Instance: timer:u7
- 19. Port Connectivity Checks: "timer:u7"
- 20. Port Connectivity Checks: "display:u4|bin_bcd:totale_omw_1bcd"
- 21. Port Connectivity Checks: "display:u4|bin_bcd:tijd_minbcd"
- 22. Port Connectivity Checks: "display:u4|bin_bcd:tijd_secbcd"
- 23. Port Connectivity Checks: "display:u4"
+ 19. Port Connectivity Checks: "resistor:u9"
+ 20. Port Connectivity Checks: "timer:u7"
+ 21. Port Connectivity Checks: "display:u4|bin_bcd:totale_omw_1bcd"
+ 22. Port Connectivity Checks: "display:u4|bin_bcd:tijd_minbcd"
+ 23. Port Connectivity Checks: "display:u4|bin_bcd:tijd_secbcd"
  24. Elapsed Time Per Partition
  25. Analysis & Synthesis Messages
 
@@ -56,15 +56,15 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Oct 07 22:34:20 2019           ;
+; Analysis & Synthesis Status        ; Successful - Tue Oct 08 12:34:53 2019           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; PRODIG_RPM                                      ;
 ; Top-level Entity Name              ; PRODIG_RPM                                      ;
 ; Family                             ; Cyclone II                                      ;
-; Total logic elements               ; 896                                             ;
-;     Total combinational functions  ; 845                                             ;
-;     Dedicated logic registers      ; 315                                             ;
-; Total registers                    ; 315                                             ;
+; Total logic elements               ; 1,037                                           ;
+;     Total combinational functions  ; 969                                             ;
+;     Dedicated logic registers      ; 408                                             ;
+; Total registers                    ; 408                                             ;
 ; Total pins                         ; 161                                             ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
@@ -174,6 +174,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------+-----------------+-----------------+----------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                             ; Library ;
 +----------------------------------+-----------------+-----------------+----------------------------------------------------------+---------+
+; gem_RPM.vhd                      ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/gem_RPM.vhd                   ;         ;
+; resistor.vhd                     ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/resistor.vhd                  ;         ;
 ; lcd_driver_hd44780_module.vhd    ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/lcd_driver_hd44780_module.vhd ;         ;
 ; Display.vhd                      ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/Display.vhd                   ;         ;
 ; division.vhd                     ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/division.vhd                  ;         ;
@@ -192,28 +194,28 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 896       ;
+; Estimated Total logic elements              ; 1,037     ;
 ;                                             ;           ;
-; Total combinational functions               ; 845       ;
+; Total combinational functions               ; 969       ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 503       ;
-;     -- 3 input functions                    ; 141       ;
-;     -- <=2 input functions                  ; 201       ;
+;     -- 4 input functions                    ; 525       ;
+;     -- 3 input functions                    ; 187       ;
+;     -- <=2 input functions                  ; 257       ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 682       ;
-;     -- arithmetic mode                      ; 163       ;
+;     -- normal mode                          ; 750       ;
+;     -- arithmetic mode                      ; 219       ;
 ;                                             ;           ;
-; Total registers                             ; 315       ;
-;     -- Dedicated logic registers            ; 315       ;
+; Total registers                             ; 408       ;
+;     -- Dedicated logic registers            ; 408       ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
 ; I/O pins                                    ; 161       ;
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ; Maximum fan-out node                        ; BUTTON[3] ;
-; Maximum fan-out                             ; 316       ;
-; Total fan-out                               ; 4001      ;
-; Average fan-out                             ; 3.03      ;
+; Maximum fan-out                             ; 400       ;
+; Total fan-out                               ; 4777      ;
+; Average fan-out                             ; 3.11      ;
 +---------------------------------------------+-----------+
 
 
@@ -222,20 +224,23 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                   ; Library Name ;
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------+--------------+
-; |PRODIG_RPM                            ; 845 (1)           ; 315 (0)      ; 0           ; 0            ; 0       ; 0         ; 161  ; 0            ; |PRODIG_RPM                                           ; work         ;
+; |PRODIG_RPM                            ; 969 (2)           ; 408 (2)      ; 0           ; 0            ; 0       ; 0         ; 161  ; 0            ; |PRODIG_RPM                                           ; work         ;
 ;    |RPM_counter:u0|                    ; 101 (101)         ; 45 (45)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|RPM_counter:u0                            ; work         ;
-;    |display:u4|                        ; 515 (241)         ; 160 (80)     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4                                ; work         ;
+;    |display:u4|                        ; 548 (247)         ; 173 (93)     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4                                ; work         ;
+;       |bin_bcd:gemiddelde2bcd|         ; 32 (32)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|bin_bcd:gemiddelde2bcd         ; work         ;
 ;       |bin_bcd:maximale2bcd|           ; 32 (32)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|bin_bcd:maximale2bcd           ; work         ;
 ;       |bin_bcd:tijd_minbcd|            ; 9 (9)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|bin_bcd:tijd_minbcd            ; work         ;
 ;       |bin_bcd:tijd_secbcd|            ; 9 (9)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|bin_bcd:tijd_secbcd            ; work         ;
 ;       |bin_bcd:totale_omw_1bcd|        ; 24 (24)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|bin_bcd:totale_omw_1bcd        ; work         ;
 ;       |bin_bcd:totale_omw_2bcd|        ; 32 (32)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|bin_bcd:totale_omw_2bcd        ; work         ;
-;       |lcd_driver_hd44780_module:lcdm| ; 168 (168)         ; 80 (80)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm ; work         ;
+;       |lcd_driver_hd44780_module:lcdm| ; 163 (163)         ; 80 (80)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm ; work         ;
 ;    |division:u5|                       ; 70 (70)           ; 53 (53)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|division:u5                               ; work         ;
+;    |gem_RPM:u8|                        ; 79 (79)           ; 63 (63)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|gem_RPM:u8                                ; work         ;
 ;    |max_rpm:u6|                        ; 16 (16)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|max_rpm:u6                                ; work         ;
 ;    |prescaler:u1|                      ; 21 (21)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|prescaler:u1                              ; work         ;
 ;    |prodig_7_seg_decoder:u2|           ; 50 (50)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|prodig_7_seg_decoder:u2                   ; work         ;
-;    |timer:u7|                          ; 71 (71)           ; 44 (44)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|timer:u7                                  ; work         ;
+;    |resistor:u9|                       ; 14 (14)           ; 15 (15)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|resistor:u9                               ; work         ;
+;    |timer:u7|                          ; 68 (68)           ; 44 (44)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|timer:u7                                  ; work         ;
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -350,19 +355,6 @@ Encoding Type:  One-Hot
 +-----------------------------------------------------+-------------------------------+------------------------+
 ; Latch Name                                          ; Latch Enable Signal           ; Free of Timing Hazards ;
 +-----------------------------------------------------+-------------------------------+------------------------+
-; RPM_counter:u0|omwentel255[7]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
-; RPM_counter:u0|omwentel255[5]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
-; RPM_counter:u0|omwentel255[6]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
-; RPM_counter:u0|omwentel255[4]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
-; RPM_counter:u0|omwentel255[3]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
-; RPM_counter:u0|omwentel255[2]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
-; max_rpm:u6|rpm_max_int[6]                           ; max_rpm:u6|LessThan0          ; yes                    ;
-; max_rpm:u6|rpm_max_int[5]                           ; max_rpm:u6|LessThan0          ; yes                    ;
-; max_rpm:u6|rpm_max_int[7]                           ; max_rpm:u6|LessThan0          ; yes                    ;
-; max_rpm:u6|rpm_max_int[4]                           ; max_rpm:u6|LessThan0          ; yes                    ;
-; max_rpm:u6|rpm_max_int[3]                           ; max_rpm:u6|LessThan0          ; yes                    ;
-; max_rpm:u6|rpm_max_int[2]                           ; max_rpm:u6|LessThan0          ; yes                    ;
-; RPM_counter:u0|omwentel99[0]                        ; hall_sens                     ; yes                    ;
 ; RPM_counter:u0|omwentel99[4]                        ; hall_sens                     ; yes                    ;
 ; RPM_counter:u0|omwentel99[5]                        ; hall_sens                     ; yes                    ;
 ; RPM_counter:u0|omwentel99[7]                        ; hall_sens                     ; yes                    ;
@@ -370,10 +362,23 @@ Encoding Type:  One-Hot
 ; RPM_counter:u0|omwentel99[3]                        ; hall_sens                     ; yes                    ;
 ; RPM_counter:u0|omwentel99[2]                        ; hall_sens                     ; yes                    ;
 ; RPM_counter:u0|omwentel99[1]                        ; hall_sens                     ; yes                    ;
-; max_rpm:u6|rpm_max_int[0]                           ; max_rpm:u6|LessThan0          ; yes                    ;
+; max_rpm:u6|rpm_max_int[6]                           ; max_rpm:u6|LessThan0          ; yes                    ;
+; max_rpm:u6|rpm_max_int[5]                           ; max_rpm:u6|LessThan0          ; yes                    ;
+; max_rpm:u6|rpm_max_int[7]                           ; max_rpm:u6|LessThan0          ; yes                    ;
+; max_rpm:u6|rpm_max_int[4]                           ; max_rpm:u6|LessThan0          ; yes                    ;
+; max_rpm:u6|rpm_max_int[3]                           ; max_rpm:u6|LessThan0          ; yes                    ;
+; max_rpm:u6|rpm_max_int[2]                           ; max_rpm:u6|LessThan0          ; yes                    ;
+; RPM_counter:u0|omwentel255[7]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
+; RPM_counter:u0|omwentel255[5]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
+; RPM_counter:u0|omwentel255[6]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
+; RPM_counter:u0|omwentel255[4]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
+; RPM_counter:u0|omwentel255[3]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
+; RPM_counter:u0|omwentel255[2]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
+; RPM_counter:u0|omwentel99[0]                        ; hall_sens                     ; yes                    ;
 ; RPM_counter:u0|omwentel255[0]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
-; RPM_counter:u0|omwentel255[1]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
+; max_rpm:u6|rpm_max_int[0]                           ; max_rpm:u6|LessThan0          ; yes                    ;
 ; max_rpm:u6|rpm_max_int[1]                           ; max_rpm:u6|LessThan0          ; yes                    ;
+; RPM_counter:u0|omwentel255[1]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
 ; Number of user-specified and inferred latches = 24  ;                               ;                        ;
 +-----------------------------------------------------+-------------------------------+------------------------+
 Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
@@ -589,7 +594,6 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|gemiddelde_line[3][5]                                         ; Stuck at VCC due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[3][4]                                         ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[3][3]                                         ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|gemiddelde_line[3][2]                                         ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[3][1]                                         ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[4][7]                                         ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[4][5]                                         ; Stuck at VCC due to stuck port data_in                                          ;
@@ -894,8 +898,6 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|weerstand_line[12][7]                                         ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|weerstand_line[12][6]                                         ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|weerstand_line[12][5]                                         ; Stuck at VCC due to stuck port data_in                                          ;
-; display:u4|weerstand_line[12][3]                                         ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|weerstand_line[12][1]                                         ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|weerstand_line[13][7]                                         ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|weerstand_line[13][6]                                         ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|weerstand_line[13][5]                                         ; Stuck at VCC due to stuck port data_in                                          ;
@@ -931,15 +933,15 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|lcd_driver_hd44780_module:lcdm|use_bf_int                     ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[7][3]                                               ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[10][3]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|weerstand_line[1][5]                                          ; Merged with display:u4|maximale_line[1][5]                                      ;
-; display:u4|maximale_line[1][5]                                           ; Merged with display:u4|totale_omw_line[1][5]                                    ;
+; resistor:u9|resistance[3]                                                ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|weerstand_line[12][3]                                         ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|maximale_line[1][5]                                           ; Merged with display:u4|weerstand_line[1][5]                                     ;
+; display:u4|weerstand_line[1][5]                                          ; Merged with display:u4|totale_omw_line[1][5]                                    ;
 ; display:u4|totale_omw_line[1][5]                                         ; Merged with display:u4|gemiddelde_line[1][5]                                    ;
 ; display:u4|gemiddelde_line[1][5]                                         ; Merged with display:u4|tijd_line[1][5]                                          ;
 ; display:u4|tijd_line[1][5]                                               ; Merged with display:u4|RPM_line[3][5]                                           ;
 ; display:u4|RPM_line[3][5]                                                ; Merged with display:u4|RPM_line[2][5]                                           ;
 ; display:u4|RPM_line[2][5]                                                ; Merged with display:u4|RPM_line[1][5]                                           ;
-; display:u4|weerstand_line[9][2]                                          ; Merged with display:u4|weerstand_line[9][6]                                     ;
-; display:u4|weerstand_line[9][6]                                          ; Merged with display:u4|weerstand_line[8][1]                                     ;
 ; display:u4|weerstand_line[8][1]                                          ; Merged with display:u4|weerstand_line[8][2]                                     ;
 ; display:u4|weerstand_line[8][2]                                          ; Merged with display:u4|weerstand_line[8][3]                                     ;
 ; display:u4|weerstand_line[8][3]                                          ; Merged with display:u4|weerstand_line[8][6]                                     ;
@@ -953,8 +955,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|weerstand_line[5][1]                                          ; Merged with display:u4|weerstand_line[5][4]                                     ;
 ; display:u4|weerstand_line[5][4]                                          ; Merged with display:u4|weerstand_line[5][6]                                     ;
 ; display:u4|weerstand_line[5][6]                                          ; Merged with display:u4|weerstand_line[4][1]                                     ;
-; display:u4|weerstand_line[4][1]                                          ; Merged with display:u4|weerstand_line[4][4]                                     ;
-; display:u4|weerstand_line[4][4]                                          ; Merged with display:u4|weerstand_line[4][6]                                     ;
+; display:u4|weerstand_line[4][1]                                          ; Merged with display:u4|weerstand_line[4][6]                                     ;
 ; display:u4|weerstand_line[4][6]                                          ; Merged with display:u4|weerstand_line[3][0]                                     ;
 ; display:u4|weerstand_line[3][0]                                          ; Merged with display:u4|weerstand_line[3][2]                                     ;
 ; display:u4|weerstand_line[3][2]                                          ; Merged with display:u4|weerstand_line[3][6]                                     ;
@@ -1011,8 +1012,8 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|totale_omw_line[5][0]                                         ; Merged with display:u4|totale_omw_line[5][1]                                    ;
 ; display:u4|totale_omw_line[5][1]                                         ; Merged with display:u4|totale_omw_line[5][2]                                    ;
 ; display:u4|totale_omw_line[5][2]                                         ; Merged with display:u4|totale_omw_line[5][3]                                    ;
-; display:u4|totale_omw_line[5][3]                                         ; Merged with display:u4|totale_omw_line[5][6]                                    ;
-; display:u4|totale_omw_line[5][6]                                         ; Merged with display:u4|totale_omw_line[3][2]                                    ;
+; display:u4|totale_omw_line[5][3]                                         ; Merged with display:u4|weerstand_line[4][4]                                     ;
+; display:u4|weerstand_line[4][4]                                          ; Merged with display:u4|totale_omw_line[3][2]                                    ;
 ; display:u4|totale_omw_line[3][2]                                         ; Merged with display:u4|totale_omw_line[3][4]                                    ;
 ; display:u4|totale_omw_line[3][4]                                         ; Merged with display:u4|totale_omw_line[3][6]                                    ;
 ; display:u4|totale_omw_line[3][6]                                         ; Merged with display:u4|totale_omw_line[2][0]                                    ;
@@ -1022,8 +1023,8 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|totale_omw_line[2][3]                                         ; Merged with display:u4|totale_omw_line[2][6]                                    ;
 ; display:u4|totale_omw_line[2][6]                                         ; Merged with display:u4|totale_omw_line[1][2]                                    ;
 ; display:u4|totale_omw_line[1][2]                                         ; Merged with display:u4|totale_omw_line[1][4]                                    ;
-; display:u4|totale_omw_line[1][4]                                         ; Merged with display:u4|weerstand_line[12][0]                                    ;
-; display:u4|weerstand_line[12][0]                                         ; Merged with display:u4|totale_omw_line[1][6]                                    ;
+; display:u4|totale_omw_line[1][4]                                         ; Merged with display:u4|weerstand_line[12][4]                                    ;
+; display:u4|weerstand_line[12][4]                                         ; Merged with display:u4|totale_omw_line[1][6]                                    ;
 ; display:u4|totale_omw_line[1][6]                                         ; Merged with display:u4|gemiddelde_line[12][4]                                   ;
 ; display:u4|gemiddelde_line[12][4]                                        ; Merged with display:u4|gemiddelde_line[11][4]                                   ;
 ; display:u4|gemiddelde_line[11][4]                                        ; Merged with display:u4|gemiddelde_line[10][4]                                   ;
@@ -1043,16 +1044,17 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|gemiddelde_line[4][1]                                         ; Merged with display:u4|gemiddelde_line[4][4]                                    ;
 ; display:u4|gemiddelde_line[4][4]                                         ; Merged with display:u4|gemiddelde_line[4][6]                                    ;
 ; display:u4|gemiddelde_line[4][6]                                         ; Merged with display:u4|gemiddelde_line[3][0]                                    ;
-; display:u4|gemiddelde_line[3][0]                                         ; Merged with display:u4|gemiddelde_line[3][6]                                    ;
+; display:u4|gemiddelde_line[3][0]                                         ; Merged with display:u4|gemiddelde_line[3][2]                                    ;
+; display:u4|gemiddelde_line[3][2]                                         ; Merged with display:u4|gemiddelde_line[3][6]                                    ;
 ; display:u4|gemiddelde_line[3][6]                                         ; Merged with display:u4|gemiddelde_line[2][1]                                    ;
 ; display:u4|gemiddelde_line[2][1]                                         ; Merged with display:u4|gemiddelde_line[2][2]                                    ;
 ; display:u4|gemiddelde_line[2][2]                                         ; Merged with display:u4|gemiddelde_line[2][4]                                    ;
 ; display:u4|gemiddelde_line[2][4]                                         ; Merged with display:u4|gemiddelde_line[2][6]                                    ;
 ; display:u4|gemiddelde_line[2][6]                                         ; Merged with display:u4|gemiddelde_line[1][0]                                    ;
-; display:u4|gemiddelde_line[1][0]                                         ; Merged with display:u4|weerstand_line[12][2]                                    ;
-; display:u4|weerstand_line[12][2]                                         ; Merged with display:u4|gemiddelde_line[1][6]                                    ;
-; display:u4|gemiddelde_line[1][6]                                         ; Merged with display:u4|tijd_line[11][4]                                         ;
-; display:u4|tijd_line[11][4]                                              ; Merged with display:u4|tijd_line[10][4]                                         ;
+; display:u4|gemiddelde_line[1][0]                                         ; Merged with display:u4|weerstand_line[10][1]                                    ;
+; display:u4|weerstand_line[10][1]                                         ; Merged with display:u4|gemiddelde_line[1][6]                                    ;
+; display:u4|gemiddelde_line[1][6]                                         ; Merged with display:u4|weerstand_line[10][3]                                    ;
+; display:u4|weerstand_line[10][3]                                         ; Merged with display:u4|tijd_line[10][4]                                         ;
 ; display:u4|tijd_line[10][4]                                              ; Merged with display:u4|tijd_line[9][1]                                          ;
 ; display:u4|tijd_line[9][1]                                               ; Merged with display:u4|tijd_line[9][3]                                          ;
 ; display:u4|tijd_line[9][3]                                               ; Merged with display:u4|tijd_line[9][4]                                          ;
@@ -1071,8 +1073,8 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|tijd_line[2][3]                                               ; Merged with display:u4|tijd_line[2][6]                                          ;
 ; display:u4|tijd_line[2][6]                                               ; Merged with display:u4|tijd_line[1][2]                                          ;
 ; display:u4|tijd_line[1][2]                                               ; Merged with display:u4|tijd_line[1][4]                                          ;
-; display:u4|tijd_line[1][4]                                               ; Merged with display:u4|weerstand_line[12][4]                                    ;
-; display:u4|weerstand_line[12][4]                                         ; Merged with display:u4|tijd_line[1][6]                                          ;
+; display:u4|tijd_line[1][4]                                               ; Merged with display:u4|totale_omw_line[5][6]                                    ;
+; display:u4|totale_omw_line[5][6]                                         ; Merged with display:u4|tijd_line[1][6]                                          ;
 ; display:u4|tijd_line[1][6]                                               ; Merged with display:u4|RPM_line[8][4]                                           ;
 ; display:u4|RPM_line[8][4]                                                ; Merged with display:u4|RPM_line[7][4]                                           ;
 ; display:u4|RPM_line[7][4]                                                ; Merged with display:u4|RPM_line[6][4]                                           ;
@@ -1082,27 +1084,20 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|RPM_line[4][4]                                                ; Merged with display:u4|RPM_line[3][0]                                           ;
 ; display:u4|RPM_line[3][0]                                                ; Merged with display:u4|RPM_line[3][2]                                           ;
 ; display:u4|RPM_line[3][2]                                                ; Merged with display:u4|RPM_line[3][3]                                           ;
-; display:u4|RPM_line[3][3]                                                ; Merged with display:u4|weerstand_line[10][1]                                    ;
-; display:u4|weerstand_line[10][1]                                         ; Merged with display:u4|RPM_line[3][6]                                           ;
+; display:u4|RPM_line[3][3]                                                ; Merged with display:u4|weerstand_line[10][4]                                    ;
+; display:u4|weerstand_line[10][4]                                         ; Merged with display:u4|RPM_line[3][6]                                           ;
 ; display:u4|RPM_line[3][6]                                                ; Merged with display:u4|RPM_line[2][4]                                           ;
-; display:u4|RPM_line[2][4]                                                ; Merged with display:u4|weerstand_line[10][3]                                    ;
-; display:u4|weerstand_line[10][3]                                         ; Merged with display:u4|RPM_line[2][6]                                           ;
+; display:u4|RPM_line[2][4]                                                ; Merged with display:u4|weerstand_line[9][2]                                     ;
+; display:u4|weerstand_line[9][2]                                          ; Merged with display:u4|RPM_line[2][6]                                           ;
 ; display:u4|RPM_line[2][6]                                                ; Merged with display:u4|RPM_line[1][1]                                           ;
 ; display:u4|RPM_line[1][1]                                                ; Merged with display:u4|RPM_line[1][4]                                           ;
-; display:u4|RPM_line[1][4]                                                ; Merged with display:u4|weerstand_line[10][4]                                    ;
-; display:u4|weerstand_line[10][4]                                         ; Merged with display:u4|RPM_line[1][6]                                           ;
-; display:u4|RPM_line[1][5]                                                ; Merged with display:u4|RPM_line[1][6]                                           ;
+; display:u4|RPM_line[1][4]                                                ; Merged with display:u4|weerstand_line[9][6]                                     ;
+; display:u4|weerstand_line[9][6]                                          ; Merged with display:u4|RPM_line[1][6]                                           ;
+; display:u4|RPM_line[1][6]                                                ; Merged with display:u4|tijd_line[11][4]                                         ;
+; display:u4|tijd_line[11][4]                                              ; Merged with display:u4|RPM_line[1][5]                                           ;
 ; display:u4|data[7]                                                       ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|gemiddelde_line[12][0]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|gemiddelde_line[10][1]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|gemiddelde_line[10][0]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|gemiddelde_line[11][3]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|gemiddelde_line[11][2]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|gemiddelde_line[11][1]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|gemiddelde_line[11][0]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|gemiddelde_line[12][3]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|gemiddelde_line[12][2]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|gemiddelde_line[12][1]                                        ; Stuck at GND due to stuck port data_in                                          ;
+; resistor:u9|resistance[2]                                                ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|weerstand_line[12][2]                                         ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|lcd_driver_hd44780_module:lcdm|current_state.command_init     ; Merged with display:u4|lcd_driver_hd44780_module:lcdm|current_state.command_cls ;
 ; display:u4|lcd_driver_hd44780_module:lcdm|current_state.command_init12   ; Merged with display:u4|lcd_driver_hd44780_module:lcdm|current_state.command_cls ;
 ; display:u4|lcd_driver_hd44780_module:lcdm|return_state.command_goto10    ; Merged with display:u4|lcd_driver_hd44780_module:lcdm|return_state.command_cls  ;
@@ -1135,7 +1130,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|state.write_char_1                                            ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|lcd_driver_hd44780_module:lcdm|current_state.command_cls      ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|state.write_char_wait                                         ; Merged with display:u4|wr                                                       ;
-; Total Number of Removed Registers = 751                                  ;                                                                                 ;
+; Total Number of Removed Registers = 741                                  ;                                                                                 ;
 +--------------------------------------------------------------------------+---------------------------------------------------------------------------------+
 
 
@@ -1148,6 +1143,10 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ;                                                                    ; due to stuck port data_in ;                                                                     ;
 ; display:u4|RPM_line[1][7]                                          ; Stuck at GND              ; display:u4|data[7]                                                  ;
 ;                                                                    ; due to stuck port data_in ;                                                                     ;
+; resistor:u9|resistance[3]                                          ; Stuck at GND              ; display:u4|weerstand_line[12][3]                                    ;
+;                                                                    ; due to stuck port data_in ;                                                                     ;
+; resistor:u9|resistance[2]                                          ; Stuck at GND              ; display:u4|weerstand_line[12][2]                                    ;
+;                                                                    ; due to stuck port data_in ;                                                                     ;
 ; display:u4|lcd_driver_hd44780_module:lcdm|return_state.command_cls ; Stuck at GND              ; display:u4|lcd_driver_hd44780_module:lcdm|current_state.command_cls ;
 ;                                                                    ; due to stuck port data_in ;                                                                     ;
 +--------------------------------------------------------------------+---------------------------+---------------------------------------------------------------------+
@@ -1158,12 +1157,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 315   ;
-; Number of registers using Synchronous Clear  ; 8     ;
-; Number of registers using Synchronous Load   ; 37    ;
-; Number of registers using Asynchronous Clear ; 220   ;
+; Total registers                              ; 408   ;
+; Number of registers using Synchronous Clear  ; 60    ;
+; Number of registers using Synchronous Load   ; 49    ;
+; Number of registers using Asynchronous Clear ; 287   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 184   ;
+; Number of registers using Clock Enable       ; 290   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -1184,38 +1183,48 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; division:u5|x[16]                              ; 2       ;
 ; RPM_counter:u0|tix_mem[0]                      ; 2       ;
 ; division:u5|stop                               ; 3       ;
-; display:u4|lcd_driver_hd44780_module:lcdm|busy ; 14      ;
+; display:u4|lcd_driver_hd44780_module:lcdm|busy ; 11      ;
 ; display:u4|character_counter[0]                ; 27      ;
-; display:u4|line_counter[0]                     ; 75      ;
-; Total number of inverted registers = 14        ;         ;
+; display:u4|line_counter[0]                     ; 81      ;
+; display:u4|RPM_line[1][5]                      ; 41      ;
+; gem_RPM:u8|stop                                ; 3       ;
+; resistor:u9|ADC_data[2]                        ; 1       ;
+; resistor:u9|ADC_data[1]                        ; 1       ;
+; resistor:u9|ADC_data[0]                        ; 1       ;
+; Total number of inverted registers = 19        ;         ;
 +------------------------------------------------+---------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------+
-; 3:1                ; 14 bits   ; 28 LEs        ; 0 LEs                ; 28 LEs                 ; Yes        ; |PRODIG_RPM|RPM_counter:u0|tix_mem[1]                                                ;
-; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |PRODIG_RPM|RPM_counter:u0|count[11]                                                 ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |PRODIG_RPM|RPM_counter:u0|wait_time[8]                                              ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|goto30                                                        ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |PRODIG_RPM|division:u5|rpm[0]                                                       ;
-; 6:1                ; 12 bits   ; 48 LEs        ; 12 LEs               ; 36 LEs                 ; Yes        ; |PRODIG_RPM|division:u5|x[12]                                                        ;
-; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[11]              ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[20]              ;
-; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[8]               ;
-; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[15]              ;
-; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[7]               ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 8 LEs                ; 24 LEs                 ; Yes        ; |PRODIG_RPM|division:u5|x[9]                                                         ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |PRODIG_RPM|display:u4|character_counter                                             ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |PRODIG_RPM|display:u4|line_counter                                                  ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |PRODIG_RPM|display:u4|Selector7                                                     ;
-; 5:1                ; 23 bits   ; 69 LEs        ; 23 LEs               ; 46 LEs                 ; No         ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|return_state.pulse_busy_flag_5 ;
-; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |PRODIG_RPM|display:u4|Selector1                                                     ;
-; 12:1               ; 18 bits   ; 144 LEs       ; 90 LEs               ; 54 LEs                 ; No         ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|Selector40                     ;
-; 13:1               ; 2 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; No         ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|Selector53                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------+
+; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |PRODIG_RPM|gem_RPM:u8|tot_RPM[9]                                                  ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 0 LEs                ; 28 LEs                 ; Yes        ; |PRODIG_RPM|RPM_counter:u0|tix_mem[10]                                             ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |PRODIG_RPM|RPM_counter:u0|count[13]                                               ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |PRODIG_RPM|RPM_counter:u0|wait_time[9]                                            ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|goto30                                                      ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 6 LEs                ; 12 LEs                 ; Yes        ; |PRODIG_RPM|timer:u7|seconds_int[1]                                                ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |PRODIG_RPM|gem_RPM:u8|gem_RPM_int[5]                                              ;
+; 5:1                ; 12 bits   ; 36 LEs        ; 24 LEs               ; 12 LEs                 ; Yes        ; |PRODIG_RPM|gem_RPM:u8|tot_RPM_int[6]                                              ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |PRODIG_RPM|timer:u7|minutes_int[0]                                                ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |PRODIG_RPM|division:u5|rpm[4]                                                     ;
+; 6:1                ; 12 bits   ; 48 LEs        ; 12 LEs               ; 36 LEs                 ; Yes        ; |PRODIG_RPM|division:u5|x[0]                                                       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[14]            ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[18]            ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[8]             ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[15]            ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[0]             ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 8 LEs                ; 24 LEs                 ; Yes        ; |PRODIG_RPM|division:u5|x[13]                                                      ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |PRODIG_RPM|display:u4|character_counter                                           ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |PRODIG_RPM|display:u4|line_counter                                                ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |PRODIG_RPM|display:u4|Selector11                                                  ;
+; 5:1                ; 23 bits   ; 69 LEs        ; 23 LEs               ; 46 LEs                 ; No         ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|return_state.pulse_busy_flag ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |PRODIG_RPM|display:u4|Selector4                                                   ;
+; 12:1               ; 18 bits   ; 144 LEs       ; 90 LEs               ; 54 LEs                 ; No         ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|Selector23                   ;
+; 13:1               ; 2 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; No         ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|Selector53                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------+
@@ -1247,6 +1256,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; ClockFrequencyHz ; 10000 ; Signed Integer             ;
 +------------------+-------+----------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "resistor:u9"                                                                            ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                             ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; res_up   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; res_down ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------+
@@ -1288,24 +1307,12 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+------------------------------------------------+
-; Port Connectivity Checks: "display:u4"         ;
-+--------------+-------+----------+--------------+
-; Port         ; Type  ; Severity ; Details      ;
-+--------------+-------+----------+--------------+
-; weerstand[3] ; Input ; Info     ; Stuck at GND ;
-; weerstand[2] ; Input ; Info     ; Stuck at VCC ;
-; weerstand[1] ; Input ; Info     ; Stuck at GND ;
-; weerstand[0] ; Input ; Info     ; Stuck at VCC ;
-+--------------+-------+----------+--------------+
-
-
 +-------------------------------+
 ; Elapsed Time Per Partition    ;
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:11     ;
+; Top            ; 00:00:06     ;
 +----------------+--------------+
 
 
@@ -1315,10 +1322,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Mon Oct 07 22:34:04 2019
+    Info: Processing started: Tue Oct 08 12:34:43 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off PRODIG_RPM -c PRODIG_RPM
 Warning (20028): Parallel compilation is not licensed and has been disabled
-Info (12021): Found 0 design units, including 0 entities, in source file resistor.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file gem_rpm.vhd
+    Info (12022): Found design unit 1: gem_RPM-rtl
+    Info (12023): Found entity 1: gem_RPM
+Info (12021): Found 2 design units, including 1 entities, in source file resistor.vhd
+    Info (12022): Found design unit 1: resistor-main
+    Info (12023): Found entity 1: resistor
 Info (12021): Found 2 design units, including 1 entities, in source file tb_display.vhd
     Info (12022): Found design unit 1: tb_Display-test
     Info (12023): Found entity 1: tb_Display
@@ -1362,10 +1374,9 @@ Info (12021): Found 2 design units, including 1 entities, in source file timer.v
     Info (12022): Found design unit 1: timer-rtl
     Info (12023): Found entity 1: timer
 Info (12127): Elaborating entity "PRODIG_RPM" for the top level hierarchy
-Warning (10540): VHDL Signal Declaration warning at PRODIG_RPM.vhd(77): used explicit default value for signal "weerstand" because signal was never assigned a value
-Warning (10541): VHDL Signal Declaration warning at PRODIG_RPM.vhd(81): used implicit default value for signal "gemiddelde" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (10036): Verilog HDL or VHDL warning at PRODIG_RPM.vhd(83): object "seconds_max" assigned a value but never read
 Warning (10036): Verilog HDL or VHDL warning at PRODIG_RPM.vhd(84): object "minutes_max" assigned a value but never read
+Warning (10492): VHDL Process Statement warning at PRODIG_RPM.vhd(252): signal "BUTTON" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Info (12128): Elaborating entity "RPM_counter" for hierarchy "RPM_counter:u0"
 Warning (10492): VHDL Process Statement warning at RPM_counter.vhd(36): signal "hall_sens" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10631): VHDL Process Statement warning at RPM_counter.vhd(21): inferring latch(es) for signal or variable "omwentel99", which holds its previous value in one or more paths through the process
@@ -1406,26 +1417,31 @@ Info (10041): Inferred latch for "rpm_max_int[5]" at Max_rpm.vhd(22)
 Info (10041): Inferred latch for "rpm_max_int[6]" at Max_rpm.vhd(22)
 Info (10041): Inferred latch for "rpm_max_int[7]" at Max_rpm.vhd(22)
 Info (12128): Elaborating entity "timer" for hierarchy "timer:u7"
-Warning (10492): VHDL Process Statement warning at Timer.vhd(30): signal "areset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Timer.vhd(61): signal "seconds_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Timer.vhd(62): signal "minutes_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Timer.vhd(63): signal "rpm_max" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Timer.vhd(64): signal "minutes_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Timer.vhd(65): signal "seconds_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10631): VHDL Process Statement warning at Timer.vhd(28): inferring latch(es) for signal or variable "seconds_max", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at Timer.vhd(28): inferring latch(es) for signal or variable "minutes_max", which holds its previous value in one or more paths through the process
-Info (10041): Inferred latch for "minutes_max[0]" at Timer.vhd(28)
-Info (10041): Inferred latch for "minutes_max[1]" at Timer.vhd(28)
-Info (10041): Inferred latch for "minutes_max[2]" at Timer.vhd(28)
-Info (10041): Inferred latch for "minutes_max[3]" at Timer.vhd(28)
-Info (10041): Inferred latch for "minutes_max[4]" at Timer.vhd(28)
-Info (10041): Inferred latch for "minutes_max[5]" at Timer.vhd(28)
-Info (10041): Inferred latch for "seconds_max[0]" at Timer.vhd(28)
-Info (10041): Inferred latch for "seconds_max[1]" at Timer.vhd(28)
-Info (10041): Inferred latch for "seconds_max[2]" at Timer.vhd(28)
-Info (10041): Inferred latch for "seconds_max[3]" at Timer.vhd(28)
-Info (10041): Inferred latch for "seconds_max[4]" at Timer.vhd(28)
-Info (10041): Inferred latch for "seconds_max[5]" at Timer.vhd(28)
+Warning (10492): VHDL Process Statement warning at Timer.vhd(66): signal "seconds_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Timer.vhd(67): signal "minutes_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Timer.vhd(68): signal "rpm_max" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Timer.vhd(69): signal "minutes_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Timer.vhd(70): signal "seconds_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at Timer.vhd(30): inferring latch(es) for signal or variable "seconds_max", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at Timer.vhd(30): inferring latch(es) for signal or variable "minutes_max", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "minutes_max[0]" at Timer.vhd(30)
+Info (10041): Inferred latch for "minutes_max[1]" at Timer.vhd(30)
+Info (10041): Inferred latch for "minutes_max[2]" at Timer.vhd(30)
+Info (10041): Inferred latch for "minutes_max[3]" at Timer.vhd(30)
+Info (10041): Inferred latch for "minutes_max[4]" at Timer.vhd(30)
+Info (10041): Inferred latch for "minutes_max[5]" at Timer.vhd(30)
+Info (10041): Inferred latch for "seconds_max[0]" at Timer.vhd(30)
+Info (10041): Inferred latch for "seconds_max[1]" at Timer.vhd(30)
+Info (10041): Inferred latch for "seconds_max[2]" at Timer.vhd(30)
+Info (10041): Inferred latch for "seconds_max[3]" at Timer.vhd(30)
+Info (10041): Inferred latch for "seconds_max[4]" at Timer.vhd(30)
+Info (10041): Inferred latch for "seconds_max[5]" at Timer.vhd(30)
+Info (12128): Elaborating entity "gem_RPM" for hierarchy "gem_RPM:u8"
+Warning (10492): VHDL Process Statement warning at gem_RPM.vhd(27): signal "areset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12128): Elaborating entity "resistor" for hierarchy "resistor:u9"
+Warning (10541): VHDL Signal Declaration warning at resistor.vhd(11): used implicit default value for signal "res_up" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at resistor.vhd(12): used implicit default value for signal "res_down" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10492): VHDL Process Statement warning at resistor.vhd(40): signal "areset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (13012): Latch RPM_counter:u0|omwentel255[7] has unsafe behavior
     Warning (13013): Ports D and ENA on the latch are fed by the same signal RPM_counter:u0|Equal0~synth
 Warning (13012): Latch RPM_counter:u0|omwentel255[5] has unsafe behavior
@@ -1489,14 +1505,6 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "HEX5_DP" is stuck at VCC
     Warning (13410): Pin "HEX6_DP" is stuck at VCC
     Warning (13410): Pin "HEX7_DP" is stuck at VCC
-    Warning (13410): Pin "LEDR[0]" is stuck at GND
-    Warning (13410): Pin "LEDR[1]" is stuck at GND
-    Warning (13410): Pin "LEDR[2]" is stuck at GND
-    Warning (13410): Pin "LEDR[3]" is stuck at GND
-    Warning (13410): Pin "LEDR[4]" is stuck at GND
-    Warning (13410): Pin "LEDR[5]" is stuck at GND
-    Warning (13410): Pin "LEDR[6]" is stuck at GND
-    Warning (13410): Pin "LEDR[7]" is stuck at GND
     Warning (13410): Pin "LEDR[8]" is stuck at GND
     Warning (13410): Pin "LEDR[9]" is stuck at GND
     Warning (13410): Pin "LEDG[2]" is stuck at GND
@@ -1506,15 +1514,14 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LEDG[6]" is stuck at GND
     Warning (13410): Pin "LEDG[7]" is stuck at GND
     Warning (13410): Pin "LEDG[8]" is stuck at GND
-    Warning (13410): Pin "MOTOR_UP" is stuck at GND
-    Warning (13410): Pin "MOTOR_DOWN" is stuck at GND
-    Warning (13410): Pin "RD" is stuck at GND
-    Warning (13410): Pin "Convstart" is stuck at GND
+Critical Warning (18061): Ignored Power-Up Level option on the following registers
+    Critical Warning (18010): Register resistor:u9|ADC_data[2] will power up to High
+    Critical Warning (18010): Register resistor:u9|ADC_data[1] will power up to High
+    Critical Warning (18010): Register resistor:u9|ADC_data[0] will power up to High
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 34 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "SW[1]"
-    Warning (15610): No output dependent on input pin "SW[2]"
+Warning (21074): Design contains 22 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "SW[0]"
     Warning (15610): No output dependent on input pin "SW[3]"
     Warning (15610): No output dependent on input pin "SW[4]"
     Warning (15610): No output dependent on input pin "SW[5]"
@@ -1533,29 +1540,18 @@ Warning (21074): Design contains 34 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "BUTTON[0]"
     Warning (15610): No output dependent on input pin "BUTTON[1]"
     Warning (15610): No output dependent on input pin "BUTTON[2]"
-    Warning (15610): No output dependent on input pin "KNOP[2]"
-    Warning (15610): No output dependent on input pin "KNOP[3]"
+    Warning (15610): No output dependent on input pin "KNOP[1]"
     Warning (15610): No output dependent on input pin "KNOP[4]"
     Warning (15610): No output dependent on input pin "KNOP[5]"
-    Warning (15610): No output dependent on input pin "KNOP[6]"
-    Warning (15610): No output dependent on input pin "DB[0]"
-    Warning (15610): No output dependent on input pin "DB[1]"
-    Warning (15610): No output dependent on input pin "DB[2]"
-    Warning (15610): No output dependent on input pin "DB[3]"
-    Warning (15610): No output dependent on input pin "DB[4]"
-    Warning (15610): No output dependent on input pin "DB[5]"
-    Warning (15610): No output dependent on input pin "DB[6]"
-    Warning (15610): No output dependent on input pin "DB[7]"
-    Warning (15610): No output dependent on input pin "BUSY"
-Info (21057): Implemented 1074 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1217 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 39 input pins
     Info (21059): Implemented 114 output pins
     Info (21060): Implemented 8 bidirectional pins
-    Info (21061): Implemented 913 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 137 warnings
-    Info: Peak virtual memory: 4659 megabytes
-    Info: Processing ended: Mon Oct 07 22:34:21 2019
-    Info: Elapsed time: 00:00:17
-    Info: Total CPU time (on all processors): 00:00:14
+    Info (21061): Implemented 1056 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 119 warnings
+    Info: Peak virtual memory: 4660 megabytes
+    Info: Processing ended: Tue Oct 08 12:34:53 2019
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:09
 
 

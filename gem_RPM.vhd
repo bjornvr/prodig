@@ -38,7 +38,7 @@ begin
 				else 
 					wait_gem_RPM <= wait_gem_RPM + 1;
 				end if;
-				if reset = '1' then 				-- wanneer de reset op de hometrainer wordt ingedrukt
+				if reset = '0' then 				-- wanneer de reset op de hometrainer wordt ingedrukt
 					tot_RPM <= "000000000000";
 					tot_RPM_int <= "000000000000";
 					count_RPM <= "00000000";
