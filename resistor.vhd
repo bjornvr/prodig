@@ -23,14 +23,14 @@ signal pass		 	: std_logic := '0';
 signal readADC		: std_logic := '0';
 signal ADC_data		: std_logic_vector(7 downto 0) := "00000000";
 
-constant levela		: std_logic_vector(7 downto 0) := "00000111";	-- level 0
-constant levelb		: std_logic_vector(7 downto 0) := "00000000";	-- level 1
-constant levelc		: std_logic_vector(7 downto 0) := "00000000";	-- level 2
-constant leveld		: std_logic_vector(7 downto 0) := "00000000";	-- level 3
-constant levele		: std_logic_vector(7 downto 0) := "00001111";	-- level 4
-constant levelf		: std_logic_vector(7 downto 0) := "00011111";	-- level 5
-constant levelg		: std_logic_vector(7 downto 0) := "00111111";	-- level 6
-constant levelh		: std_logic_vector(7 downto 0) := "01111111";	-- level 7
+constant levela		: std_logic_vector(7 downto 0) := "00001010";	-- level 0
+constant levelb		: std_logic_vector(7 downto 0) := "00011000";	-- level 1
+constant levelc		: std_logic_vector(7 downto 0) := "00100110";	-- level 2
+constant leveld		: std_logic_vector(7 downto 0) := "00110100";	-- level 3
+constant levele		: std_logic_vector(7 downto 0) := "01000010";	-- level 4
+constant levelf		: std_logic_vector(7 downto 0) := "01010000";	-- level 5
+constant levelg		: std_logic_vector(7 downto 0) := "01011110";	-- level 6
+constant levelh		: std_logic_vector(7 downto 0) := "01101100";	-- level 7
 
 begin
 
@@ -38,7 +38,7 @@ process (clock) is
 --Process voor bepalen huidige weerstand
 begin
 	if areset = '0' then
-		ADC_data <= levela;
+		--ADC_data <= levela;
 		resstart <= '0';
 		pass		<= '0';
 	else
@@ -71,29 +71,29 @@ begin
 			else
 				N_convst <= '1';
 				resstart <= '1';
-				if ADC_data > levela then
+				if ADC_data < levela then
 					resistance <= "0000"; -- Error / level 0 (te bepalen met marge)
 				else
 					if ADC_data > levele then-- Level 4: te bepalen
 						if ADC_data > levelh then -- Level 7: te bepalen
-							resistance <= "0111";
+							resistance <= "0111"; --RESISTOR7
 						else
 							if ADC_data > levelg then -- Level 6: te bepalen
-								resistance <= "0110";
+								resistance <= "0110"; --RESISTOR6
 							else
 								if ADC_data > levelf then -- Level 5: te bepalen
-									resistance <= "0101";
+									resistance <= "0101"; --RESISTOR5
 								else
-									resistance <= "0100";  -- Level 4 actief
+									resistance <= "0100";  --RESISTOR4
 								end if;
 							end if;
 						end if;
 					else
 						if ADC_data > leveld then -- Level 3: te bepalen
-							resistance <= "0011";
+							resistance <= "0011"; --RESISTOR3
 						else
 							if ADC_data > levelc then -- Level 2: te bepalen
-								resistance <= "0010";
+								resistance <= "0010"; --RESISTOR2
 							else
 								resistance <= "0001"; -- Level 1 actief
 							end if;

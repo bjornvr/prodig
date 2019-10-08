@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP2C70F896) Path("D:/Documents/GitHub/prodig/output_files/") File("PRODIG_RPM.sof") MfrSpec(OpMask(1));
+		Device PartName(EP2C70F896) Path("C:/Git/PRODIG/prodig/output_files/") File("PRODIG_RPM.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
