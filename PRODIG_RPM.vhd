@@ -186,6 +186,8 @@ component resistor is
 	port (
 		clock		: in  std_logic;
 		areset	: in	std_logic;
+		BUT_UP	: in	std_logic;
+		BUT_DOWN : in	std_logic;
 		res_busy	: in  std_logic;
 		res_data : in  std_logic_vector(7 downto 0);
 		res_up	: out std_logic;
@@ -239,8 +241,7 @@ u8: gem_RPM
 port map (clock => clock_int, areset => BUTTON(3), reset => KNOP(6), RPM => RPM_mem, gem_RPM => gemiddelde);
 
 u9: resistor 
-port map(clock => clock_int, areset => button(3), res_busy => BUSY, res_data => DB, res_up => open, res_down => open, N_readADC => RD, N_convst => Convstart, resistance => weerstand, 
-ADC_data_out => LEDR(7 downto 0));
+port map(clock => clock_int, areset => button(3), res_busy => BUSY, res_data => DB, res_up => MOTOR_UP, res_down => MOTOR_DOWN, N_readADC => RD, N_convst => Convstart, resistance => weerstand, BUT_UP => KNOP(1), BUT_DOWN => KNOP(5) , ADC_data_out => LEDR(7 downto 0));
 
 
 hall_sens_ontd <= hall_sens;
@@ -265,8 +266,8 @@ rpm_mem_sim <= rpm_mem; -- Voor simulatie, verwijderen uit definitieve code
 
 
 -- Nog te gebruiken outputs TIJDELIJK 0 VOOR MINDER WARNINGS
-MOTOR_UP <= sw(1);	
-MOTOR_DOWN <= sw(2);
+--MOTOR_UP <= sw(1);	
+--MOTOR_DOWN <= sw(2);
 
 
 -- niet gebruikte outputs

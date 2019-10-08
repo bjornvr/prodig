@@ -3,36 +3,36 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow Model Setup 'CLOCK_50'
-Slack : -6.797
-TNS   : -530.727
+Slack : -6.830
+TNS   : -513.064
 
 Type  : Slow Model Setup 'prescaler:u1|clkint'
-Slack : -4.181
-TNS   : -621.747
+Slack : -4.822
+TNS   : -654.084
 
 Type  : Slow Model Setup 'hall_sens'
-Slack : -3.568
-TNS   : -45.894
+Slack : -3.373
+TNS   : -43.111
 
 Type  : Slow Model Setup 'division:u5|rpm_mem[0]'
-Slack : 1.838
+Slack : 2.401
 TNS   : 0.000
 
 Type  : Slow Model Hold 'division:u5|rpm_mem[0]'
-Slack : -3.973
-TNS   : -20.539
+Slack : -4.190
+TNS   : -25.550
 
 Type  : Slow Model Hold 'CLOCK_50'
-Slack : -2.699
-TNS   : -6.473
+Slack : -2.659
+TNS   : -5.597
 
 Type  : Slow Model Hold 'prescaler:u1|clkint'
-Slack : -2.582
-TNS   : -22.206
+Slack : -2.172
+TNS   : -17.462
 
 Type  : Slow Model Hold 'hall_sens'
-Slack : -1.057
-TNS   : -3.232
+Slack : -0.819
+TNS   : -4.121
 
 Type  : Slow Model Minimum Pulse Width 'CLOCK_50'
 Slack : -1.380
@@ -44,43 +44,43 @@ TNS   : -1.222
 
 Type  : Slow Model Minimum Pulse Width 'prescaler:u1|clkint'
 Slack : -0.500
-TNS   : -223.000
+TNS   : -228.000
 
 Type  : Slow Model Minimum Pulse Width 'division:u5|rpm_mem[0]'
 Slack : 0.500
 TNS   : 0.000
 
 Type  : Fast Model Setup 'CLOCK_50'
-Slack : -2.868
-TNS   : -152.605
+Slack : -2.884
+TNS   : -139.624
 
 Type  : Fast Model Setup 'prescaler:u1|clkint'
-Slack : -1.804
-TNS   : -175.407
+Slack : -2.147
+TNS   : -189.810
 
 Type  : Fast Model Setup 'hall_sens'
-Slack : -0.994
-TNS   : -10.565
+Slack : -0.871
+TNS   : -9.005
 
 Type  : Fast Model Setup 'division:u5|rpm_mem[0]'
-Slack : 1.364
+Slack : 1.634
 TNS   : 0.000
 
 Type  : Fast Model Hold 'division:u5|rpm_mem[0]'
-Slack : -2.162
-TNS   : -9.469
+Slack : -2.257
+TNS   : -11.747
 
 Type  : Fast Model Hold 'CLOCK_50'
-Slack : -1.688
-TNS   : -6.913
+Slack : -1.651
+TNS   : -5.989
 
 Type  : Fast Model Hold 'prescaler:u1|clkint'
-Slack : -1.674
-TNS   : -22.409
+Slack : -1.470
+TNS   : -22.026
 
 Type  : Fast Model Hold 'hall_sens'
-Slack : -0.917
-TNS   : -4.940
+Slack : -0.805
+TNS   : -5.315
 
 Type  : Fast Model Minimum Pulse Width 'CLOCK_50'
 Slack : -1.380
@@ -92,7 +92,7 @@ TNS   : -1.222
 
 Type  : Fast Model Minimum Pulse Width 'prescaler:u1|clkint'
 Slack : -0.500
-TNS   : -223.000
+TNS   : -228.000
 
 Type  : Fast Model Minimum Pulse Width 'division:u5|rpm_mem[0]'
 Slack : 0.500
