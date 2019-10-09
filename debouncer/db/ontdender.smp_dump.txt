@@ -1,0 +1,6 @@
+
+State Machine - |ontdender|state
+Name state.aan state.wait_time state.idle 
+state.idle 0 0 0 
+state.wait_time 0 1 1 
+state.aan 1 0 1 
