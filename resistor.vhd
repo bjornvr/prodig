@@ -21,9 +21,7 @@ end entity;
 
 architecture main of resistor is
 signal resstart 	: std_logic := '0';
-variable pass		: integer range 0 to 2 := 0;
 signal readADC		: std_logic := '0';
-variable reset		: integer range 0 to 1 := 0;
 signal ADC_data	: std_logic_vector(7 downto 0) := "00000000";
 signal restarget	: std_logic_vector(3 downto 0) := "0010";		--Target level
 signal resist_int	: std_logic_vector(3 downto 0) := "0000";		--Current level
@@ -40,6 +38,9 @@ constant levelh		: std_logic_vector(7 downto 0) := "01100101";	-- level 7 / 105
 begin
 
 process (clock, areset) is
+variable pass		: integer range 0 to 3 := 0;
+variable reset		: integer range 0 to 1 := 0;
+
 --Process voor bepalen huidige weerstand
 begin
 	if areset = '0' then
@@ -70,6 +71,7 @@ begin
 						N_readADC <= '1';
 						pass := 0;
 						reset := 0;
+					end if;
 				end if;
 			elsif resstart = '1' then
 				N_convst <= '0';
