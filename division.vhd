@@ -16,7 +16,8 @@ entity division is
 			areset	: in std_logic;
 			calc		: in std_logic;
 			clock		: in std_logic;
-			rpm_mem  : out unsigned (7 downto 0)
+			rpm_mem  : out unsigned (7 downto 0);
+			te_hoog	: out std_logic
 			);
 end entity division;   
 
@@ -38,30 +39,40 @@ begin
 			x := "10010010011111000000"; -- 600.000 to x
 			
 		elsif rising_edge (clock) then
-			if calc = '1' then
-				tix_int := tix_mem;
+			if tix_mem > 30000 or tix_mem = 0 then
+				rpm_mem <= "00000000";
 				rpm := "00000000";
-				x := "10010010011111000000"; -- 600.000 to x
-				stop := '0';
-			elsif stop = '0' then
-				if (tix_int > "000101110111000") then -- Als tix_int > next check
-					if (tix_int < "111010100110000") then -- Alx tix_int < 30.000 ga rekenen
-						if x > tix_int then
-							x    := x - tix_int;
-							rpm  := rpm + 1;  
+				te_hoog <= '0';
+			elsif tix_mem < 3000 then
+				-- RPM te hoog
+				te_hoog <= '1';
+			else
+				te_hoog <= '0';
+				if calc = '1' then
+					tix_int := tix_mem;
+					rpm := "00000000";
+					x := "10010010011111000000"; -- 600.000 to x
+					stop := '0';
+				elsif stop = '0' then
+					if (tix_int > "000101110111000") then -- Als tix_int > next check
+						if (tix_int < "111010100110000") then -- Alx tix_int < 30.000 ga rekenen
+							if x > tix_int then
+								x    := x - tix_int;
+								rpm  := rpm + 1;  
+							else
+								stop := '1';
+							end if;
 						else
+							rpm  := "11001000";
 							stop := '1';
 						end if;
 					else
-						rpm  := "11001000";
-						stop := '1';
+						rpm  := "00000000";
+						stop := '1'  ;
 					end if;
 				else
-					rpm  := "00000000";
-					stop := '1'  ;
+					rpm_mem <= rpm;
 				end if;
-			else
-				rpm_mem <= rpm;
 			end if;
 		end if;
 	end process;

@@ -61,14 +61,18 @@ begin
 					--reset op button druk
 					seconds_int <= (others => '0');
 					minutes_int <= (others => '0');
+					seconds_max <= (others => '0');
+					minutes_max <= (others => '0');
 				end if;
-        end if;
-		   seconds <= std_logic_vector(seconds_int);
+				if rpm_max = '1' then
+					minutes_max <= std_logic_vector(minutes_int);
+					seconds_max	<= std_logic_vector(seconds_int);
+				end if;
+			seconds <= std_logic_vector(seconds_int);
 		   minutes <= std_logic_vector(minutes_int);
-		if rpm_max = '1' then
-			minutes_max <= std_logic_vector(minutes_int);
-			seconds_max	<= std_logic_vector(seconds_int);
-		end if;
+        end if;
+		   
+		
 		
     end process;
  

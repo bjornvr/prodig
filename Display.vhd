@@ -19,24 +19,28 @@ use ieee.std_logic_arith.all;
 
 -- The entity
 entity display is
-	port (clk_in : in std_logic;
-			areset_in   : in std_logic;
+	port (clk_in 			: in std_logic;
+			areset_in   	: in std_logic;
 			-- LCD of the DE0 board
-			LCD_EN   : out std_logic;
-			LCD_RS   : out std_logic;
-			LCD_RW   : out std_logic;
-			LCD_DATA : inout std_logic_vector(7 downto 0);
-			start_screen : in std_logic;
+			LCD_EN   		: out std_logic;
+			LCD_RS   		: out std_logic;
+			LCD_RW   		: out std_logic;
+			LCD_DATA 		: inout std_logic_vector(7 downto 0);
+			start_screen 	: in std_logic;
 			-- Daadwerkelijke waardes
-			modus 	: in std_logic;
-			RPM		: in std_logic_vector (7 downto 0);
-			weerstand: in std_logic_vector (3 downto 0);
-			gemiddelde: in std_logic_vector(7 downto 0);
-			totale_omw_1 : in std_logic_vector (7 downto 0);
-			totale_omw_2 : in std_logic_vector (7 downto 0);
-			maximale : in std_logic_vector (7 downto 0);
-			tijd_sec	: in std_logic_vector (5 downto 0);
-			tijd_min : in std_logic_vector (5 downto 0)
+			RPM				: in std_logic_vector (7 downto 0);
+			weerstand		: in std_logic_vector (3 downto 0);
+			gemiddelde		: in std_logic_vector(7 downto 0);
+			totale_omw_1 	: in std_logic_vector (7 downto 0);
+			totale_omw_2 	: in std_logic_vector (7 downto 0);
+			maximale 		: in std_logic_vector (7 downto 0);
+			tijd_sec			: in std_logic_vector (5 downto 0);
+			tijd_min 		: in std_logic_vector (5 downto 0);
+			tijd_sec_max	: in std_logic_vector (5 downto 0);
+			tijd_min_max 	: in std_logic_vector (5 downto 0);
+			-- Externe inputs
+			modus 			: in std_logic;
+			te_hoog			: in std_logic
 	);
 	
 end entity display;
@@ -81,6 +85,7 @@ component lcd_driver_hd44780_module is
 			  );
 end component lcd_driver_hd44780_module;
 
+-- Component voor het omzetten van bin(8bit) naar bcd(4x4bit)
 component bin_bcd is
 	port(
 			bin_in 	: in std_logic_vector(7 downto 0);
@@ -91,6 +96,7 @@ end component bin_bcd;
 -- The system's frequency
 constant sys_freq : integer := 50000000;
 
+--Signals behorende bij de lcd driver
 signal areset   : std_logic;
 signal clk      : std_logic;
 signal init     : std_logic;
@@ -103,39 +109,43 @@ signal goto20   : std_logic;
 signal goto30   : std_logic;
 signal busy		 : std_logic;
 
+-- alle gebruikte states
 type state_type is (reset, write_char, write_char_wait, update, update_linecount,
 						  update_linecount_wait, write_char_1, write_char_1_wait,
 						  write_char_2, write_char_2_wait, write_char_3, write_char_4, hold,
 						  hold2);
 signal state : state_type;
 
--- A string of 16 characters
+-- Opstart tekst string en array
 subtype string16_type is string(1 to 16);
--- An array of 4 strings of 16 characters.
 type message4x16_type is array (1 to 4) of string16_type;
 
--- The four-line message
+-- Het opstart scherm tekst
 constant message : message4x16_type :=
 							( 1 => "                ",
 							  2 => "    Kettler     ",
 							  3 => "    Groep 1     ",
 							  4 => "                ");
 
--- Counts the characters on a line.
+-- Houd bij welke characters al afgedrukt zijn op het scherm(per letter en regel)
 signal character_counter : integer range 1 to 16;
--- Counts the lines.
 signal line_counter : integer range 1 to 4;
 
+--Signals voor de verschillende waardes. Zijn strings voor de gehele regel
 signal RPM_line 			: string(1 to 16) := "                ";
 signal tijd_line 			: string(1 to 16) := "                ";
 signal gemiddelde_line 	: string(1 to 16) := "                ";
 signal totale_omw_line	: string(1 to 16) := "                ";
 signal maximale_line 	: string(1 to 16) := "                ";
 signal weerstand_line	: string(1 to 16) := "                ";
+signal tijd_line_max		: string(1 to 16) := "                ";
 
+-- De verschillende signals omgezet in bcd 4bit
 signal RPM_BCD				: std_logic_vector (11 downto 0);	-- 3 digits
 signal tijd_sec_BCD		: std_logic_vector (11 downto 0);	-- 2 digits 	> blijft 3 om de bin_bcd te gebruiken
 signal tijd_min_BCD		: std_logic_vector (11 downto 0);	-- 2 digits		> blijft 3 om de bin_bcd te gebruiken
+signal tijd_sec_max_BCD	: std_logic_vector (11 downto 0);	-- 2 digits 	> blijft 3 om de bin_bcd te gebruiken
+signal tijd_min_max_BCD	: std_logic_vector (11 downto 0);	-- 2 digits		> blijft 3 om de bin_bcd te gebruiken
 signal gemiddelde_BCD	: std_logic_vector (11 downto 0);	-- 3 digits
 signal maximale_BCD		: std_logic_vector (11 downto 0);	-- 3 digits
 --signal weerstand_BCD		: std_logic_vector (11 downto 0);	-- 1 digits > dus hoeft deze niet omgezet te worden
@@ -161,6 +171,7 @@ begin
 			
 	
 	
+	-- De omzetting van bin naar bcd 
 	RPM2bcd: bin_bcd
 		port map (bin_in => RPM, bcd_out => RPM_BCD);
 		
@@ -173,9 +184,15 @@ begin
 	tijd_secbcd: bin_bcd
 		port map (bin_in => ("00" & tijd_sec), bcd_out => tijd_sec_bcd);
 		
+	tijd_sec_maxbcd: bin_bcd
+		port map (bin_in => ("00" & tijd_sec_max), bcd_out => tijd_sec_max_bcd);
+		
 	tijd_minbcd: bin_bcd
 		port map(bin_in => ("00" & tijd_min), bcd_out => tijd_min_bcd);
-	
+		
+	tijd_min_maxbcd: bin_bcd
+		port map(bin_in => ("00" & tijd_min_max), bcd_out => tijd_min_max_bcd);
+		
 	totale_omw_1bcd: bin_bcd
 		port map (bin_in => totale_omw_1, bcd_out => totale_omw_BCD(11 downto 0));
 		
@@ -190,17 +207,8 @@ begin
 	drive: process (clk, areset) is
 	
 	
-	variable aline : string16_type;
+	variable aline : string16_type; -- variable voor het schrijven van de regel
 
-	
-	
-	
-	
-	
-	
-	
---------------------------------------------------------------------------------------------------------------------	
-	
 	
 	begin
 		if areset = '0' then
@@ -226,41 +234,56 @@ begin
 			data <= "00000000";
 			
 			--update lines doe dit voor elke soort waarde
-			rpm_line <= ("RPM: " & 
-							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & RPM_BCD(11 downto 8))))))) & 
-							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & RPM_BCD(7 downto 4))))))) & 
-							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & RPM_BCD(3 downto 0))))))) & 
-							"        ");
-			tijd_line <= ("Tijd: " &
+			if te_hoog = '0' then 
+				-- Schrijf alleen de gekregen waarde als deze geldig onder de 200 RPM blijft
+				rpm_line <= ("RPM:       " & 
+								character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & RPM_BCD(11 downto 8))))))) & 
+								character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & RPM_BCD(7 downto 4))))))) & 
+								character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & RPM_BCD(3 downto 0))))))) & 
+								"  ");
+			else 
+				-- Geen geldige RPM waarde schrijf dan XXX
+				rpm_line <= ("RPM:       XXX  ");
+			end if;	
+			
+			tijd_line <= ("Tijd:      " &
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_min_BCD(7 downto 4))))))) & 
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_min_BCD(3 downto 0))))))) & 
 							":" &
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_sec_BCD(7 downto 4))))))) & 
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_sec_BCD(3 downto 0))))))) & 
-							"     ");
-			gemiddelde_line <= ("Average: " & 
+							"");
+			tijd_line_max <= ("@ time:    " &
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_min_max_BCD(7 downto 4))))))) & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_min_max_BCD(3 downto 0))))))) & 
+							":" &
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_sec_max_BCD(7 downto 4))))))) & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_sec_max_BCD(3 downto 0))))))) & 
+							"");
+			gemiddelde_line <= ("Average:   " & 
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & Gemiddelde_BCD(11 downto 8))))))) & 
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & Gemiddelde_BCD(7 downto 4))))))) & 
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & Gemiddelde_BCD(3 downto 0))))))) & 
-							"    ");
-			totale_omw_line <= ("Tot omw: " & 
+							"  ");
+			totale_omw_line <= ("Tot omw:   " & 
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(23 downto 20))))))) & 
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(19 downto 16))))))) & 
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(15 downto 12))))))) & 
 							--character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(11 downto 8))))))) & -- valt weg omdat we de eerste alleen maar laten tellen tot 99
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(7 downto 4))))))) & 
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(3 downto 0))))))) &
-							"  ");
-			maximale_line <= ("Max rpm: " &
+							"");
+			maximale_line <= ("Max rpm:   " &
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & maximale_BCD(11 downto 8))))))) & 
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & maximale_BCD(7 downto 4))))))) & 
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & maximale_BCD(3 downto 0))))))) & 
-							"    ");
+							"  ");
 			weerstand_line <= ("Weerstand: " &
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & weerstand(3 downto 0))))))) &
 							"    ");
 		
 			if start_screen = '1' then
+				-- Bij opstarten wachten met schrijven van waardes tot gebruiker op start drukt.
 				start <= '1';
 			end if;		
 		
@@ -268,22 +291,9 @@ begin
 		
 		
 		
-		
+			
 			case state is
-
-				when reset =>
-					-- Wait for the LCD module ready
-					if busy = '0' then
-						state <= write_char;
-					end if;
-					-- Setup message counter, start at 1.
-					character_counter <= 1;
-					line_counter <= 1;
-					
-					
-					
 				when write_char =>
-					-- Set up WRITE!
 					-- Gebruik de lijnen die eerder gedeclareerd zijn. 
 					-- modus zorgt er voor dat er verschillende beelden kunnen worden weergegeven.
 					
@@ -301,8 +311,8 @@ begin
 						case line_counter is
 							when 1 => aline := totale_omw_line;
 							when 2 => aline := maximale_line;
-							when 3 => aline := weerstand_line;
-							when 4 => aline := "Modus:extra info";
+							when 3 => aline := tijd_line_max;
+							when 4 => aline := weerstand_line;
 							when others => null;
 						end case;
 					end if;
@@ -312,6 +322,18 @@ begin
  					wr <= '1';
 					state <= write_char_wait;
 
+					
+					
+-- Onderstaande behoord bij de lcd driver
+				when reset =>
+					-- Wait for the LCD module ready
+					if busy = '0' then
+						state <= write_char;
+					end if;
+					-- Setup message counter, start at 1.
+					character_counter <= 1;
+					line_counter <= 1;
+					
 				when write_char_wait =>
 					-- This state is needed so that the LCD driver
 					-- can process the write command. Note that data

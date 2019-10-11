@@ -1,5 +1,5 @@
 Flow report for PRODIG_RPM
-Tue Oct 08 17:03:16 2019
+Fri Oct 11 13:54:23 2019
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -40,18 +40,18 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Tue Oct 08 17:03:16 2019           ;
+; Flow Status                        ; Successful - Fri Oct 11 13:54:22 2019           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; PRODIG_RPM                                      ;
 ; Top-level Entity Name              ; PRODIG_RPM                                      ;
 ; Family                             ; Cyclone II                                      ;
 ; Device                             ; EP2C70F896C6                                    ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 1,033 / 68,416 ( 2 % )                          ;
-;     Total combinational functions  ; 1,001 / 68,416 ( 1 % )                          ;
-;     Dedicated logic registers      ; 415 / 68,416 ( < 1 % )                          ;
-; Total registers                    ; 415                                             ;
-; Total pins                         ; 161 / 622 ( 26 % )                              ;
+; Total logic elements               ; 1,290 / 68,416 ( 2 % )                          ;
+;     Total combinational functions  ; 1,239 / 68,416 ( 2 % )                          ;
+;     Dedicated logic registers      ; 566 / 68,416 ( < 1 % )                          ;
+; Total registers                    ; 566                                             ;
+; Total pins                         ; 137 / 622 ( 22 % )                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0 / 1,152,000 ( 0 % )                           ;
 ; Embedded Multiplier 9-bit elements ; 0 / 300 ( 0 % )                                 ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/08/2019 17:02:33 ;
+; Start date & time ; 10/11/2019 13:53:40 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; PRODIG_RPM          ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 172308996837256.157054695303364       ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 57827279326111.157079482003832        ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                                  ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_RUN_SCRIPT           ; tb_PRODIG_RPM.do                      ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)                ; <None>        ; --          ; --             ;
@@ -96,12 +96,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:09     ; 1.0                     ; 4652 MB             ; 00:00:09                           ;
-; Fitter                    ; 00:00:20     ; 1.0                     ; 4989 MB             ; 00:00:18                           ;
-; Assembler                 ; 00:00:05     ; 1.0                     ; 4579 MB             ; 00:00:04                           ;
-; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 4576 MB             ; 00:00:02                           ;
-; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 4536 MB             ; 00:00:01                           ;
-; Total                     ; 00:00:38     ; --                      ; --                  ; 00:00:34                           ;
+; Analysis & Synthesis      ; 00:00:09     ; 1.0                     ; 4657 MB             ; 00:00:09                           ;
+; Fitter                    ; 00:00:21     ; 1.0                     ; 4917 MB             ; 00:00:21                           ;
+; Assembler                 ; 00:00:04     ; 1.0                     ; 4572 MB             ; 00:00:04                           ;
+; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 4556 MB             ; 00:00:02                           ;
+; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 4537 MB             ; 00:00:01                           ;
+; Total                     ; 00:00:37     ; --                      ; --                  ; 00:00:37                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -110,11 +110,11 @@ applicable agreement for further details.
 +---------------------------+------------------+-----------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
 +---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; BJORN-XPS        ; Windows 7 ; 6.2        ; x86_64         ;
-; Fitter                    ; BJORN-XPS        ; Windows 7 ; 6.2        ; x86_64         ;
-; Assembler                 ; BJORN-XPS        ; Windows 7 ; 6.2        ; x86_64         ;
-; TimeQuest Timing Analyzer ; BJORN-XPS        ; Windows 7 ; 6.2        ; x86_64         ;
-; EDA Netlist Writer        ; BJORN-XPS        ; Windows 7 ; 6.2        ; x86_64         ;
+; Analysis & Synthesis      ; Mirko            ; Windows 7 ; 6.2        ; x86_64         ;
+; Fitter                    ; Mirko            ; Windows 7 ; 6.2        ; x86_64         ;
+; Assembler                 ; Mirko            ; Windows 7 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; Mirko            ; Windows 7 ; 6.2        ; x86_64         ;
+; EDA Netlist Writer        ; Mirko            ; Windows 7 ; 6.2        ; x86_64         ;
 +---------------------------+------------------+-----------+------------+----------------+
 
 

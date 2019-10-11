@@ -38,7 +38,7 @@ constant levelh		: std_logic_vector(7 downto 0) := "01100101";	-- level 7 / 105
 
 begin
 
-process (clock) is
+process (clock, areset) is
 --Process voor bepalen huidige weerstand
 begin
 	if areset = '0' then

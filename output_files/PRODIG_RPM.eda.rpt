@@ -1,5 +1,5 @@
 EDA Netlist Writer report for PRODIG_RPM
-Tue Oct 08 17:03:16 2019
+Fri Oct 11 13:54:23 2019
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -36,7 +36,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Tue Oct 08 17:03:16 2019 ;
+; EDA Netlist Writer Status ; Successful - Fri Oct 11 13:54:22 2019 ;
 ; Revision Name             ; PRODIG_RPM                            ;
 ; Top-level Entity Name     ; PRODIG_RPM                            ;
 ; Family                    ; Cyclone II                            ;
@@ -66,16 +66,16 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------------------------+------------------------+
 
 
-+------------------------------------------------------------------+
-; Simulation Generated Files                                       ;
-+------------------------------------------------------------------+
-; Generated Files                                                  ;
-+------------------------------------------------------------------+
-; C:/Git/PRODIG/prodig/simulation/modelsim/PRODIG_RPM.vho          ;
-; C:/Git/PRODIG/prodig/simulation/modelsim/PRODIG_RPM_fast.vho     ;
-; C:/Git/PRODIG/prodig/simulation/modelsim/PRODIG_RPM_vhd.sdo      ;
-; C:/Git/PRODIG/prodig/simulation/modelsim/PRODIG_RPM_vhd_fast.sdo ;
-+------------------------------------------------------------------+
++------------------------------------------------------------------------+
+; Simulation Generated Files                                             ;
++------------------------------------------------------------------------+
+; Generated Files                                                        ;
++------------------------------------------------------------------------+
+; D:/Documents/GitHub/prodig/simulation/modelsim/PRODIG_RPM.vho          ;
+; D:/Documents/GitHub/prodig/simulation/modelsim/PRODIG_RPM_fast.vho     ;
+; D:/Documents/GitHub/prodig/simulation/modelsim/PRODIG_RPM_vhd.sdo      ;
+; D:/Documents/GitHub/prodig/simulation/modelsim/PRODIG_RPM_vhd_fast.sdo ;
++------------------------------------------------------------------------+
 
 
 +-----------------------------+
@@ -84,12 +84,12 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit EDA Netlist Writer
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Tue Oct 08 17:03:14 2019
+    Info: Processing started: Fri Oct 11 13:54:21 2019
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off PRODIG_RPM -c PRODIG_RPM
-Info (204026): Generated files "PRODIG_RPM.vho", "PRODIG_RPM_fast.vho", "PRODIG_RPM_vhd.sdo" and "PRODIG_RPM_vhd_fast.sdo" in directory "C:/Git/PRODIG/prodig/simulation/modelsim/" for EDA simulation tool
+Info (204026): Generated files "PRODIG_RPM.vho", "PRODIG_RPM_fast.vho", "PRODIG_RPM_vhd.sdo" and "PRODIG_RPM_vhd_fast.sdo" in directory "D:/Documents/GitHub/prodig/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 4544 megabytes
-    Info: Processing ended: Tue Oct 08 17:03:16 2019
+    Info: Peak virtual memory: 4548 megabytes
+    Info: Processing ended: Fri Oct 11 13:54:23 2019
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 
