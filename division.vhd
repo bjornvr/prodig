@@ -5,7 +5,7 @@
 -- Author:			Bjoern van Rozelaar for PRODIG-PETERS-PG1
 -- State:			Release
 -- Error:			-
--- Version:			1.4
+-- Version:			1.4.1
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -16,7 +16,7 @@ entity division is
 			areset	: in std_logic;					-- Asynchronous reset of division
 			calc		: in std_logic;					-- Start het berekenen van de deling
 			clock		: in std_logic;					-- De 10 kHz klok uit de prescaler
-			rpm_mem  : out unsigned (7 downto 0)	-- De uitgang van de berekende RPM
+			rpm_mem  : out unsigned (7 downto 0);	-- De uitgang van de berekende RPM
 			te_hoog	: out std_logic					-- Intern uitgangsignaal indien RPM te hoog is
 			);
 end entity division;
