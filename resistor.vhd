@@ -21,8 +21,9 @@ end entity;
 
 architecture main of resistor is
 signal resstart 	: std_logic := '0';
-signal pass		 	: std_logic := '0';
+variable pass		: integer range 0 to 2 := 0;
 signal readADC		: std_logic := '0';
+variable reset		: integer range 0 to 1 := 0;
 signal ADC_data	: std_logic_vector(7 downto 0) := "00000000";
 signal restarget	: std_logic_vector(3 downto 0) := "0010";		--Target level
 signal resist_int	: std_logic_vector(3 downto 0) := "0000";		--Current level
@@ -42,23 +43,41 @@ process (clock, areset) is
 --Process voor bepalen huidige weerstand
 begin
 	if areset = '0' then
-		--ADC_data <= levela;
+--		ADC_data <= levela;
 		resstart <= '0';
-		pass		<= '0';
---		readADC	<= '1';
+		pass		:= 0;
+		readADC	<= '0';
 		res_up	<= '1';
 		res_down	<= '1';
---		N_readADC<= '1';
+		N_readADC<= '1';
 		N_convst	<= '0';
+		reset		:= 1;
 	else
 		if rising_edge(clock) then
-			if resstart = '1' then
+			if reset		= 1 then
+				N_readADC <= '1';
+				if res_busy = '0' then
+					if pass = 0 then
+						N_readADC <= '0';
+						pass := 1;
+					elsif pass = 1 then
+						N_readADC <= '1';
+						pass := 2;
+					elsif pass = 2 then
+						N_readADC <= '0';
+						pass := 3;
+					elsif pass = 3 then
+						N_readADC <= '1';
+						pass := 0;
+						reset := 0;
+				end if;
+			elsif resstart = '1' then
 				N_convst <= '0';
-				if pass = '1' then
+				if pass > 0 then
 					if readADC = '0' then
 						N_readADC <= '1';
 						readADC <= '0';
-						pass <= '0';
+						pass := 0;
 						resstart <= '0';
 					else
 						N_readADC <= '0';
@@ -70,7 +89,7 @@ begin
 							ADC_data <= res_data;
 							N_readADC <= '1';
 							readADC <= '1';
-							pass <= '1';
+							pass := 1;
 						else
 							N_readADC <= '1';
 							readADC <= '1';
