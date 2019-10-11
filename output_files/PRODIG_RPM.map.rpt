@@ -1,5 +1,5 @@
 Analysis & Synthesis report for PRODIG_RPM
-Tue Oct 08 17:02:42 2019
+Fri Oct 11 13:53:49 2019
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -16,20 +16,32 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   8. State Machine - |PRODIG_RPM|display:u4|state
   9. State Machine - |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|return_state
  10. State Machine - |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|current_state
- 11. User-Specified and Inferred Latches
- 12. Registers Removed During Synthesis
- 13. Removed Registers Triggering Further Register Optimizations
- 14. General Register Statistics
- 15. Inverted Register Statistics
- 16. Multiplexer Restructuring Statistics (Restructuring Performed)
- 17. Parameter Settings for User Entity Instance: display:u4|lcd_driver_hd44780_module:lcdm
- 18. Parameter Settings for User Entity Instance: timer:u7
- 19. Port Connectivity Checks: "timer:u7"
- 20. Port Connectivity Checks: "display:u4|bin_bcd:totale_omw_1bcd"
- 21. Port Connectivity Checks: "display:u4|bin_bcd:tijd_minbcd"
- 22. Port Connectivity Checks: "display:u4|bin_bcd:tijd_secbcd"
- 23. Elapsed Time Per Partition
- 24. Analysis & Synthesis Messages
+ 11. Registers Removed During Synthesis
+ 12. Removed Registers Triggering Further Register Optimizations
+ 13. General Register Statistics
+ 14. Inverted Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Parameter Settings for User Entity Instance: ontdender:u3a
+ 17. Parameter Settings for User Entity Instance: ontdender:u3b
+ 18. Parameter Settings for User Entity Instance: ontdender:u3c
+ 19. Parameter Settings for User Entity Instance: ontdender:u3d
+ 20. Parameter Settings for User Entity Instance: ontdender:u3e
+ 21. Parameter Settings for User Entity Instance: ontdender:u3f
+ 22. Parameter Settings for User Entity Instance: display:u4|lcd_driver_hd44780_module:lcdm
+ 23. Parameter Settings for User Entity Instance: timer:u7
+ 24. Port Connectivity Checks: "display:u4|bin_bcd:totale_omw_1bcd"
+ 25. Port Connectivity Checks: "display:u4|bin_bcd:tijd_min_maxbcd"
+ 26. Port Connectivity Checks: "display:u4|bin_bcd:tijd_minbcd"
+ 27. Port Connectivity Checks: "display:u4|bin_bcd:tijd_sec_maxbcd"
+ 28. Port Connectivity Checks: "display:u4|bin_bcd:tijd_secbcd"
+ 29. Port Connectivity Checks: "ontdender:u3f"
+ 30. Port Connectivity Checks: "ontdender:u3e"
+ 31. Port Connectivity Checks: "ontdender:u3d"
+ 32. Port Connectivity Checks: "ontdender:u3c"
+ 33. Port Connectivity Checks: "ontdender:u3b"
+ 34. Port Connectivity Checks: "ontdender:u3a"
+ 35. Elapsed Time Per Partition
+ 36. Analysis & Synthesis Messages
 
 
 
@@ -55,16 +67,16 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Oct 08 17:02:42 2019           ;
+; Analysis & Synthesis Status        ; Successful - Fri Oct 11 13:53:48 2019           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; PRODIG_RPM                                      ;
 ; Top-level Entity Name              ; PRODIG_RPM                                      ;
 ; Family                             ; Cyclone II                                      ;
-; Total logic elements               ; 1,072                                           ;
-;     Total combinational functions  ; 1,000                                           ;
-;     Dedicated logic registers      ; 415                                             ;
-; Total registers                    ; 415                                             ;
-; Total pins                         ; 161                                             ;
+; Total logic elements               ; 1,320                                           ;
+;     Total combinational functions  ; 1,238                                           ;
+;     Dedicated logic registers      ; 566                                             ;
+; Total registers                    ; 566                                             ;
+; Total pins                         ; 137                                             ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -163,29 +175,30 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 ; Processors                 ; Number ;
 +----------------------------+--------+
-; Number detected on machine ; 8      ;
+; Number detected on machine ; 4      ;
 ; Maximum allowed            ; 1      ;
 +----------------------------+--------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                              ;
-+----------------------------------+-----------------+-----------------+----------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                       ; Library ;
-+----------------------------------+-----------------+-----------------+----------------------------------------------------+---------+
-; gem_RPM.vhd                      ; yes             ; User VHDL File  ; C:/Git/PRODIG/prodig/gem_RPM.vhd                   ;         ;
-; resistor.vhd                     ; yes             ; User VHDL File  ; C:/Git/PRODIG/prodig/resistor.vhd                  ;         ;
-; lcd_driver_hd44780_module.vhd    ; yes             ; User VHDL File  ; C:/Git/PRODIG/prodig/lcd_driver_hd44780_module.vhd ;         ;
-; Display.vhd                      ; yes             ; User VHDL File  ; C:/Git/PRODIG/prodig/Display.vhd                   ;         ;
-; division.vhd                     ; yes             ; User VHDL File  ; C:/Git/PRODIG/prodig/division.vhd                  ;         ;
-; prescaler.vhd                    ; yes             ; User VHDL File  ; C:/Git/PRODIG/prodig/prescaler.vhd                 ;         ;
-; RPM_counter.vhd                  ; yes             ; User VHDL File  ; C:/Git/PRODIG/prodig/RPM_counter.vhd               ;         ;
-; PRODIG_RPM.vhd                   ; yes             ; User VHDL File  ; C:/Git/PRODIG/prodig/PRODIG_RPM.vhd                ;         ;
-; prodig_7_seg_decoder.vhd         ; yes             ; User VHDL File  ; C:/Git/PRODIG/prodig/prodig_7_seg_decoder.vhd      ;         ;
-; bin_bcd.vhd                      ; yes             ; User VHDL File  ; C:/Git/PRODIG/prodig/bin_bcd.vhd                   ;         ;
-; Max_rpm.vhd                      ; yes             ; User VHDL File  ; C:/Git/PRODIG/prodig/Max_rpm.vhd                   ;         ;
-; Timer.vhd                        ; yes             ; User VHDL File  ; C:/Git/PRODIG/prodig/Timer.vhd                     ;         ;
-+----------------------------------+-----------------+-----------------+----------------------------------------------------+---------+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                    ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                             ; Library ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------+---------+
+; ontdender.vhd                    ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/ontdender.vhd                 ;         ;
+; gem_RPM.vhd                      ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/gem_RPM.vhd                   ;         ;
+; resistor.vhd                     ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/resistor.vhd                  ;         ;
+; lcd_driver_hd44780_module.vhd    ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/lcd_driver_hd44780_module.vhd ;         ;
+; Display.vhd                      ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/Display.vhd                   ;         ;
+; division.vhd                     ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/division.vhd                  ;         ;
+; prescaler.vhd                    ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/prescaler.vhd                 ;         ;
+; RPM_counter.vhd                  ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/RPM_counter.vhd               ;         ;
+; PRODIG_RPM.vhd                   ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/PRODIG_RPM.vhd                ;         ;
+; prodig_7_seg_decoder.vhd         ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/prodig_7_seg_decoder.vhd      ;         ;
+; bin_bcd.vhd                      ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/bin_bcd.vhd                   ;         ;
+; Max_rpm.vhd                      ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/Max_rpm.vhd                   ;         ;
+; Timer.vhd                        ; yes             ; User VHDL File  ; D:/Documents/GitHub/prodig/Timer.vhd                     ;         ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------+---------+
 
 
 +---------------------------------------------------------+
@@ -193,27 +206,27 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 1,072     ;
+; Estimated Total logic elements              ; 1,320     ;
 ;                                             ;           ;
-; Total combinational functions               ; 1000      ;
+; Total combinational functions               ; 1238      ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 551       ;
-;     -- 3 input functions                    ; 191       ;
-;     -- <=2 input functions                  ; 258       ;
+;     -- 4 input functions                    ; 668       ;
+;     -- 3 input functions                    ; 220       ;
+;     -- <=2 input functions                  ; 350       ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 781       ;
-;     -- arithmetic mode                      ; 219       ;
+;     -- normal mode                          ; 969       ;
+;     -- arithmetic mode                      ; 269       ;
 ;                                             ;           ;
-; Total registers                             ; 415       ;
-;     -- Dedicated logic registers            ; 415       ;
+; Total registers                             ; 566       ;
+;     -- Dedicated logic registers            ; 566       ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
-; I/O pins                                    ; 161       ;
+; I/O pins                                    ; 137       ;
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ; Maximum fan-out node                        ; BUTTON[3] ;
-; Maximum fan-out                             ; 396       ;
-; Total fan-out                               ; 4911      ;
+; Maximum fan-out                             ; 485       ;
+; Total fan-out                               ; 6056      ;
 ; Average fan-out                             ; 3.12      ;
 +---------------------------------------------+-----------+
 
@@ -223,23 +236,31 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                   ; Library Name ;
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------+--------------+
-; |PRODIG_RPM                            ; 1000 (2)          ; 415 (2)      ; 0           ; 0            ; 0       ; 0         ; 161  ; 0            ; |PRODIG_RPM                                           ; work         ;
-;    |RPM_counter:u0|                    ; 101 (101)         ; 45 (45)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|RPM_counter:u0                            ; work         ;
-;    |display:u4|                        ; 550 (249)         ; 174 (94)     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4                                ; work         ;
-;       |bin_bcd:gemiddelde2bcd|         ; 32 (32)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|bin_bcd:gemiddelde2bcd         ; work         ;
+; |PRODIG_RPM                            ; 1238 (3)          ; 566 (4)      ; 0           ; 0            ; 0       ; 0         ; 137  ; 0            ; |PRODIG_RPM                                           ; work         ;
+;    |RPM_counter:u0|                    ; 97 (97)           ; 62 (62)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|RPM_counter:u0                            ; work         ;
+;    |display:u4|                        ; 580 (257)         ; 189 (109)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4                                ; work         ;
+;       |bin_bcd:gemiddelde2bcd|         ; 31 (31)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|bin_bcd:gemiddelde2bcd         ; work         ;
 ;       |bin_bcd:maximale2bcd|           ; 32 (32)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|bin_bcd:maximale2bcd           ; work         ;
+;       |bin_bcd:tijd_min_maxbcd|        ; 9 (9)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|bin_bcd:tijd_min_maxbcd        ; work         ;
 ;       |bin_bcd:tijd_minbcd|            ; 9 (9)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|bin_bcd:tijd_minbcd            ; work         ;
+;       |bin_bcd:tijd_sec_maxbcd|        ; 9 (9)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|bin_bcd:tijd_sec_maxbcd        ; work         ;
 ;       |bin_bcd:tijd_secbcd|            ; 9 (9)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|bin_bcd:tijd_secbcd            ; work         ;
 ;       |bin_bcd:totale_omw_1bcd|        ; 24 (24)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|bin_bcd:totale_omw_1bcd        ; work         ;
 ;       |bin_bcd:totale_omw_2bcd|        ; 32 (32)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|bin_bcd:totale_omw_2bcd        ; work         ;
-;       |lcd_driver_hd44780_module:lcdm| ; 163 (163)         ; 80 (80)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm ; work         ;
-;    |division:u5|                       ; 70 (70)           ; 53 (53)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|division:u5                               ; work         ;
-;    |gem_RPM:u8|                        ; 79 (79)           ; 63 (63)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|gem_RPM:u8                                ; work         ;
-;    |max_rpm:u6|                        ; 16 (16)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|max_rpm:u6                                ; work         ;
+;       |lcd_driver_hd44780_module:lcdm| ; 168 (168)         ; 80 (80)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm ; work         ;
+;    |division:u5|                       ; 99 (99)           ; 53 (53)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|division:u5                               ; work         ;
+;    |gem_RPM:u8|                        ; 80 (80)           ; 63 (63)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|gem_RPM:u8                                ; work         ;
+;    |max_rpm:u6|                        ; 26 (26)           ; 17 (17)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|max_rpm:u6                                ; work         ;
+;    |ontdender:u3a|                     ; 22 (22)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|ontdender:u3a                             ; work         ;
+;    |ontdender:u3b|                     ; 22 (22)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|ontdender:u3b                             ; work         ;
+;    |ontdender:u3c|                     ; 49 (49)           ; 26 (26)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|ontdender:u3c                             ; work         ;
+;    |ontdender:u3d|                     ; 22 (22)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|ontdender:u3d                             ; work         ;
+;    |ontdender:u3e|                     ; 22 (22)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|ontdender:u3e                             ; work         ;
+;    |ontdender:u3f|                     ; 22 (22)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|ontdender:u3f                             ; work         ;
 ;    |prescaler:u1|                      ; 21 (21)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|prescaler:u1                              ; work         ;
-;    |prodig_7_seg_decoder:u2|           ; 50 (50)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|prodig_7_seg_decoder:u2                   ; work         ;
+;    |prodig_7_seg_decoder:u2|           ; 49 (49)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|prodig_7_seg_decoder:u2                   ; work         ;
 ;    |resistor:u9|                       ; 43 (43)           ; 21 (21)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|resistor:u9                               ; work         ;
-;    |timer:u7|                          ; 68 (68)           ; 44 (44)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|timer:u7                                  ; work         ;
+;    |timer:u7|                          ; 81 (81)           ; 68 (68)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |PRODIG_RPM|timer:u7                                  ; work         ;
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -349,40 +370,6 @@ Encoding Type:  One-Hot
 +---------------------------------+---------------------------------+---------------------------------+---------------------------------+---------------------------------+---------------------------------+-------------------------------+-------------------------+-------------------------+-------------------------+-------------------------+-----------------------+--------------------------+------------------------------+------------------------------+------------------------------+----------------------------+---------------------------+--------------------------------+------------------------------+-------------------------------+-------------------------------+------------------------------+------------------------------+------------------------------+------------------------------+------------------------------+------------------------------+------------------------------+------------------------------+------------------------------+----------------------------+---------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                                          ;
-+-----------------------------------------------------+-------------------------------+------------------------+
-; Latch Name                                          ; Latch Enable Signal           ; Free of Timing Hazards ;
-+-----------------------------------------------------+-------------------------------+------------------------+
-; RPM_counter:u0|omwentel99[4]                        ; hall_sens                     ; yes                    ;
-; RPM_counter:u0|omwentel99[5]                        ; hall_sens                     ; yes                    ;
-; RPM_counter:u0|omwentel99[7]                        ; hall_sens                     ; yes                    ;
-; RPM_counter:u0|omwentel99[6]                        ; hall_sens                     ; yes                    ;
-; RPM_counter:u0|omwentel99[3]                        ; hall_sens                     ; yes                    ;
-; RPM_counter:u0|omwentel99[2]                        ; hall_sens                     ; yes                    ;
-; RPM_counter:u0|omwentel99[1]                        ; hall_sens                     ; yes                    ;
-; max_rpm:u6|rpm_max_int[6]                           ; max_rpm:u6|LessThan0          ; yes                    ;
-; max_rpm:u6|rpm_max_int[5]                           ; max_rpm:u6|LessThan0          ; yes                    ;
-; max_rpm:u6|rpm_max_int[7]                           ; max_rpm:u6|LessThan0          ; yes                    ;
-; max_rpm:u6|rpm_max_int[4]                           ; max_rpm:u6|LessThan0          ; yes                    ;
-; max_rpm:u6|rpm_max_int[3]                           ; max_rpm:u6|LessThan0          ; yes                    ;
-; max_rpm:u6|rpm_max_int[2]                           ; max_rpm:u6|LessThan0          ; yes                    ;
-; RPM_counter:u0|omwentel255[7]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
-; RPM_counter:u0|omwentel255[5]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
-; RPM_counter:u0|omwentel255[6]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
-; RPM_counter:u0|omwentel255[4]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
-; RPM_counter:u0|omwentel255[3]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
-; RPM_counter:u0|omwentel255[2]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
-; RPM_counter:u0|omwentel99[0]                        ; hall_sens                     ; yes                    ;
-; RPM_counter:u0|omwentel255[0]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
-; max_rpm:u6|rpm_max_int[0]                           ; max_rpm:u6|LessThan0          ; yes                    ;
-; max_rpm:u6|rpm_max_int[1]                           ; max_rpm:u6|LessThan0          ; yes                    ;
-; RPM_counter:u0|omwentel255[1]                       ; RPM_counter:u0|omwentel255[7] ; yes                    ;
-; Number of user-specified and inferred latches = 24  ;                               ;                        ;
-+-----------------------------------------------------+-------------------------------+------------------------+
-Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
-
-
 +------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Registers Removed During Synthesis                                                                                                                         ;
 +--------------------------------------------------------------------------+---------------------------------------------------------------------------------+
@@ -418,14 +405,27 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|RPM_line[6][7]                                                ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|RPM_line[6][6]                                                ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|RPM_line[6][5]                                                ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|RPM_line[6][4]                                                ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|RPM_line[6][3]                                                ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|RPM_line[6][2]                                                ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|RPM_line[6][1]                                                ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|RPM_line[6][0]                                                ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|RPM_line[7][7]                                                ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|RPM_line[7][6]                                                ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|RPM_line[7][5]                                                ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|RPM_line[7][4]                                                ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|RPM_line[7][3]                                                ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|RPM_line[7][2]                                                ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|RPM_line[7][1]                                                ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|RPM_line[7][0]                                                ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|RPM_line[8][7]                                                ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|RPM_line[8][6]                                                ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|RPM_line[8][5]                                                ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|RPM_line[8][4]                                                ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|RPM_line[8][3]                                                ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|RPM_line[8][2]                                                ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|RPM_line[8][1]                                                ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|RPM_line[8][0]                                                ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|RPM_line[9][7]                                                ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|RPM_line[9][6]                                                ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|RPM_line[9][5]                                                ; Stuck at VCC due to stuck port data_in                                          ;
@@ -451,29 +451,9 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|RPM_line[11][1]                                               ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|RPM_line[11][0]                                               ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|RPM_line[12][7]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|RPM_line[12][6]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|RPM_line[12][5]                                               ; Stuck at VCC due to stuck port data_in                                          ;
-; display:u4|RPM_line[12][4]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|RPM_line[12][3]                                               ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|RPM_line[12][2]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|RPM_line[12][1]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|RPM_line[12][0]                                               ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|RPM_line[13][7]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|RPM_line[13][6]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|RPM_line[13][5]                                               ; Stuck at VCC due to stuck port data_in                                          ;
-; display:u4|RPM_line[13][4]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|RPM_line[13][3]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|RPM_line[13][2]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|RPM_line[13][1]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|RPM_line[13][0]                                               ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|RPM_line[14][7]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|RPM_line[14][6]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|RPM_line[14][5]                                               ; Stuck at VCC due to stuck port data_in                                          ;
-; display:u4|RPM_line[14][4]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|RPM_line[14][3]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|RPM_line[14][2]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|RPM_line[14][1]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|RPM_line[14][0]                                               ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|RPM_line[15][7]                                               ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|RPM_line[15][6]                                               ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|RPM_line[15][5]                                               ; Stuck at VCC due to stuck port data_in                                          ;
@@ -526,60 +506,147 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|tijd_line[7][7]                                               ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[7][6]                                               ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[7][5]                                               ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|tijd_line[7][4]                                               ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line[7][3]                                               ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line[7][2]                                               ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line[7][1]                                               ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line[7][0]                                               ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[8][7]                                               ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[8][6]                                               ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[8][5]                                               ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|tijd_line[8][4]                                               ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line[8][3]                                               ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line[8][2]                                               ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line[8][1]                                               ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line[8][0]                                               ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[9][7]                                               ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[9][6]                                               ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[9][5]                                               ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|tijd_line[9][4]                                               ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line[9][3]                                               ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[9][2]                                               ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line[9][1]                                               ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[9][0]                                               ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[10][7]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[10][6]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[10][5]                                              ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|tijd_line[10][4]                                              ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line[10][3]                                              ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line[10][2]                                              ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line[10][1]                                              ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line[10][0]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[11][7]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[11][6]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[11][5]                                              ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|tijd_line[11][4]                                              ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line[11][3]                                              ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line[11][2]                                              ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line[11][1]                                              ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line[11][0]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[12][7]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[12][6]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[12][5]                                              ; Stuck at VCC due to stuck port data_in                                          ;
-; display:u4|tijd_line[12][4]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[12][3]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[12][2]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[12][1]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[12][0]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[13][7]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[13][6]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[13][5]                                              ; Stuck at VCC due to stuck port data_in                                          ;
-; display:u4|tijd_line[13][4]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[13][3]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[13][2]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[13][1]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[13][0]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[14][7]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[14][6]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[14][5]                                              ; Stuck at VCC due to stuck port data_in                                          ;
-; display:u4|tijd_line[14][4]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[14][3]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[14][2]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[14][1]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[14][0]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[15][7]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[15][6]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[15][5]                                              ; Stuck at VCC due to stuck port data_in                                          ;
-; display:u4|tijd_line[15][4]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[15][3]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[15][2]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[15][1]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[15][0]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[16][7]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[16][6]                                              ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|tijd_line[16][5]                                              ; Stuck at VCC due to stuck port data_in                                          ;
-; display:u4|tijd_line[16][4]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[16][3]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[16][2]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[16][1]                                              ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[16][0]                                              ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[1][7]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[1][4]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[1][3]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[1][2]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[1][1]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[1][0]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[2][7]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[2][6]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[2][5]                                           ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[2][4]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[2][3]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[2][2]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[2][1]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[2][0]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[3][7]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[3][5]                                           ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[3][3]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[3][1]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[3][0]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[4][7]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[4][5]                                           ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[4][4]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[4][2]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[4][1]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[5][7]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[5][5]                                           ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[5][4]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[5][1]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[6][7]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[6][5]                                           ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[6][4]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[6][3]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[6][1]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[7][7]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[7][6]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[7][5]                                           ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[7][2]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[7][0]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[8][7]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[8][6]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[8][5]                                           ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[8][4]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[8][3]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[8][2]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[8][1]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[8][0]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[9][7]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[9][6]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[9][5]                                           ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[9][4]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[9][3]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[9][2]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[9][1]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[9][0]                                           ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[10][7]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[10][6]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[10][5]                                          ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[10][4]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[10][3]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[10][2]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[10][1]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[10][0]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[11][7]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[11][6]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[11][5]                                          ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[11][4]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[11][3]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[11][2]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[11][1]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[11][0]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[12][7]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[12][6]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[12][5]                                          ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[13][7]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[13][6]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[13][5]                                          ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[14][7]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[14][6]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[14][5]                                          ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[14][2]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[14][0]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[15][7]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[15][6]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[15][5]                                          ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[16][7]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[16][6]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[16][5]                                          ; Stuck at VCC due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[1][7]                                         ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[1][4]                                         ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[1][3]                                         ; Stuck at GND due to stuck port data_in                                          ;
@@ -630,30 +697,30 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|gemiddelde_line[10][7]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[10][6]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[10][5]                                        ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|gemiddelde_line[10][4]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[10][3]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[10][2]                                        ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|gemiddelde_line[10][1]                                        ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|gemiddelde_line[10][0]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[11][7]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[11][6]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[11][5]                                        ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|gemiddelde_line[11][4]                                        ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|gemiddelde_line[11][3]                                        ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|gemiddelde_line[11][2]                                        ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|gemiddelde_line[11][1]                                        ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|gemiddelde_line[11][0]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[12][7]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[12][6]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[12][5]                                        ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|gemiddelde_line[12][3]                                        ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|gemiddelde_line[12][2]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[13][7]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[13][6]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[13][5]                                        ; Stuck at VCC due to stuck port data_in                                          ;
-; display:u4|gemiddelde_line[13][4]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|gemiddelde_line[13][3]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|gemiddelde_line[13][2]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|gemiddelde_line[13][1]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|gemiddelde_line[13][0]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[14][7]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[14][6]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[14][5]                                        ; Stuck at VCC due to stuck port data_in                                          ;
-; display:u4|gemiddelde_line[14][4]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|gemiddelde_line[14][3]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|gemiddelde_line[14][2]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|gemiddelde_line[14][1]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|gemiddelde_line[14][0]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[15][7]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[15][6]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|gemiddelde_line[15][5]                                        ; Stuck at VCC due to stuck port data_in                                          ;
@@ -716,14 +783,24 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|totale_omw_line[10][7]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[10][6]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[10][5]                                        ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|totale_omw_line[10][4]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[10][3]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[10][2]                                        ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|totale_omw_line[10][1]                                        ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|totale_omw_line[10][0]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[11][7]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[11][6]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[11][5]                                        ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|totale_omw_line[11][4]                                        ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|totale_omw_line[11][3]                                        ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|totale_omw_line[11][2]                                        ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|totale_omw_line[11][1]                                        ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|totale_omw_line[11][0]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[12][7]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[12][6]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[12][5]                                        ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|totale_omw_line[12][3]                                        ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|totale_omw_line[12][2]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[13][7]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[13][6]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[13][5]                                        ; Stuck at VCC due to stuck port data_in                                          ;
@@ -733,19 +810,9 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|totale_omw_line[15][7]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[15][6]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[15][5]                                        ; Stuck at VCC due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[15][4]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[15][3]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[15][2]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[15][1]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[15][0]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[16][7]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[16][6]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|totale_omw_line[16][5]                                        ; Stuck at VCC due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[16][4]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[16][3]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[16][2]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[16][1]                                        ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|totale_omw_line[16][0]                                        ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[1][7]                                           ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[1][4]                                           ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[1][1]                                           ; Stuck at GND due to stuck port data_in                                          ;
@@ -799,30 +866,30 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|maximale_line[10][7]                                          ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[10][6]                                          ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[10][5]                                          ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|maximale_line[10][4]                                          ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[10][3]                                          ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[10][2]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|maximale_line[10][1]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|maximale_line[10][0]                                          ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[11][7]                                          ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[11][6]                                          ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[11][5]                                          ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|maximale_line[11][4]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|maximale_line[11][3]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|maximale_line[11][2]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|maximale_line[11][1]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|maximale_line[11][0]                                          ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[12][7]                                          ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[12][6]                                          ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[12][5]                                          ; Stuck at VCC due to stuck port data_in                                          ;
+; display:u4|maximale_line[12][3]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|maximale_line[12][2]                                          ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[13][7]                                          ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[13][6]                                          ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[13][5]                                          ; Stuck at VCC due to stuck port data_in                                          ;
-; display:u4|maximale_line[13][4]                                          ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|maximale_line[13][3]                                          ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|maximale_line[13][2]                                          ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|maximale_line[13][1]                                          ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|maximale_line[13][0]                                          ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[14][7]                                          ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[14][6]                                          ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[14][5]                                          ; Stuck at VCC due to stuck port data_in                                          ;
-; display:u4|maximale_line[14][4]                                          ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|maximale_line[14][3]                                          ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|maximale_line[14][2]                                          ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|maximale_line[14][1]                                          ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|maximale_line[14][0]                                          ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[15][7]                                          ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[15][6]                                          ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|maximale_line[15][5]                                          ; Stuck at VCC due to stuck port data_in                                          ;
@@ -930,18 +997,20 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|weerstand_line[16][1]                                         ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|weerstand_line[16][0]                                         ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|lcd_driver_hd44780_module:lcdm|use_bf_int                     ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[7][3]                                               ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|tijd_line[10][3]                                              ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line[12][3]                                              ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line[15][3]                                              ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[12][3]                                          ; Stuck at GND due to stuck port data_in                                          ;
+; display:u4|tijd_line_max[15][3]                                          ; Stuck at GND due to stuck port data_in                                          ;
 ; resistor:u9|resist_int[3]                                                ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|weerstand_line[12][3]                                         ; Stuck at GND due to stuck port data_in                                          ;
-; display:u4|maximale_line[1][5]                                           ; Merged with display:u4|weerstand_line[1][5]                                     ;
-; display:u4|weerstand_line[1][5]                                          ; Merged with display:u4|totale_omw_line[1][5]                                    ;
-; display:u4|totale_omw_line[1][5]                                         ; Merged with display:u4|gemiddelde_line[1][5]                                    ;
-; display:u4|gemiddelde_line[1][5]                                         ; Merged with display:u4|tijd_line[1][5]                                          ;
+; display:u4|maximale_line[1][5]                                           ; Merged with display:u4|totale_omw_line[1][5]                                    ;
+; display:u4|totale_omw_line[1][5]                                         ; Merged with display:u4|weerstand_line[1][5]                                     ;
+; display:u4|weerstand_line[1][5]                                          ; Merged with display:u4|gemiddelde_line[1][5]                                    ;
+; display:u4|gemiddelde_line[1][5]                                         ; Merged with display:u4|tijd_line_max[1][5]                                      ;
+; display:u4|tijd_line_max[1][5]                                           ; Merged with display:u4|tijd_line[1][5]                                          ;
 ; display:u4|tijd_line[1][5]                                               ; Merged with display:u4|RPM_line[3][5]                                           ;
 ; display:u4|RPM_line[3][5]                                                ; Merged with display:u4|RPM_line[2][5]                                           ;
 ; display:u4|RPM_line[2][5]                                                ; Merged with display:u4|RPM_line[1][5]                                           ;
-; display:u4|weerstand_line[8][1]                                          ; Merged with display:u4|weerstand_line[8][2]                                     ;
 ; display:u4|weerstand_line[8][2]                                          ; Merged with display:u4|weerstand_line[8][3]                                     ;
 ; display:u4|weerstand_line[8][3]                                          ; Merged with display:u4|weerstand_line[8][6]                                     ;
 ; display:u4|weerstand_line[8][6]                                          ; Merged with display:u4|weerstand_line[7][0]                                     ;
@@ -954,7 +1023,8 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|weerstand_line[5][1]                                          ; Merged with display:u4|weerstand_line[5][4]                                     ;
 ; display:u4|weerstand_line[5][4]                                          ; Merged with display:u4|weerstand_line[5][6]                                     ;
 ; display:u4|weerstand_line[5][6]                                          ; Merged with display:u4|weerstand_line[4][1]                                     ;
-; display:u4|weerstand_line[4][1]                                          ; Merged with display:u4|weerstand_line[4][6]                                     ;
+; display:u4|weerstand_line[4][1]                                          ; Merged with display:u4|weerstand_line[4][4]                                     ;
+; display:u4|weerstand_line[4][4]                                          ; Merged with display:u4|weerstand_line[4][6]                                     ;
 ; display:u4|weerstand_line[4][6]                                          ; Merged with display:u4|weerstand_line[3][0]                                     ;
 ; display:u4|weerstand_line[3][0]                                          ; Merged with display:u4|weerstand_line[3][2]                                     ;
 ; display:u4|weerstand_line[3][2]                                          ; Merged with display:u4|weerstand_line[3][6]                                     ;
@@ -966,10 +1036,10 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|weerstand_line[1][1]                                          ; Merged with display:u4|weerstand_line[1][2]                                     ;
 ; display:u4|weerstand_line[1][2]                                          ; Merged with display:u4|weerstand_line[1][4]                                     ;
 ; display:u4|weerstand_line[1][4]                                          ; Merged with display:u4|weerstand_line[1][6]                                     ;
-; display:u4|weerstand_line[1][6]                                          ; Merged with display:u4|maximale_line[12][4]                                     ;
-; display:u4|maximale_line[12][4]                                          ; Merged with display:u4|maximale_line[11][4]                                     ;
-; display:u4|maximale_line[11][4]                                          ; Merged with display:u4|maximale_line[10][4]                                     ;
-; display:u4|maximale_line[10][4]                                          ; Merged with display:u4|maximale_line[8][1]                                      ;
+; display:u4|weerstand_line[1][6]                                          ; Merged with display:u4|maximale_line[14][4]                                     ;
+; display:u4|maximale_line[14][4]                                          ; Merged with display:u4|maximale_line[13][4]                                     ;
+; display:u4|maximale_line[13][4]                                          ; Merged with display:u4|maximale_line[12][4]                                     ;
+; display:u4|maximale_line[12][4]                                          ; Merged with display:u4|maximale_line[8][1]                                      ;
 ; display:u4|maximale_line[8][1]                                           ; Merged with display:u4|maximale_line[8][3]                                      ;
 ; display:u4|maximale_line[8][3]                                           ; Merged with display:u4|maximale_line[8][4]                                      ;
 ; display:u4|maximale_line[8][4]                                           ; Merged with display:u4|maximale_line[7][0]                                      ;
@@ -990,12 +1060,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|maximale_line[1][0]                                           ; Merged with display:u4|maximale_line[1][2]                                      ;
 ; display:u4|maximale_line[1][2]                                           ; Merged with display:u4|maximale_line[1][3]                                      ;
 ; display:u4|maximale_line[1][3]                                           ; Merged with display:u4|maximale_line[1][6]                                      ;
-; display:u4|maximale_line[1][6]                                           ; Merged with display:u4|totale_omw_line[14][4]                                   ;
+; display:u4|maximale_line[1][6]                                           ; Merged with display:u4|totale_omw_line[16][4]                                   ;
+; display:u4|totale_omw_line[16][4]                                        ; Merged with display:u4|totale_omw_line[15][4]                                   ;
+; display:u4|totale_omw_line[15][4]                                        ; Merged with display:u4|totale_omw_line[14][4]                                   ;
 ; display:u4|totale_omw_line[14][4]                                        ; Merged with display:u4|totale_omw_line[13][4]                                   ;
 ; display:u4|totale_omw_line[13][4]                                        ; Merged with display:u4|totale_omw_line[12][4]                                   ;
-; display:u4|totale_omw_line[12][4]                                        ; Merged with display:u4|totale_omw_line[11][4]                                   ;
-; display:u4|totale_omw_line[11][4]                                        ; Merged with display:u4|totale_omw_line[10][4]                                   ;
-; display:u4|totale_omw_line[10][4]                                        ; Merged with display:u4|totale_omw_line[8][1]                                    ;
+; display:u4|totale_omw_line[12][4]                                        ; Merged with display:u4|totale_omw_line[8][1]                                    ;
 ; display:u4|totale_omw_line[8][1]                                         ; Merged with display:u4|totale_omw_line[8][3]                                    ;
 ; display:u4|totale_omw_line[8][3]                                         ; Merged with display:u4|totale_omw_line[8][4]                                    ;
 ; display:u4|totale_omw_line[8][4]                                         ; Merged with display:u4|totale_omw_line[7][0]                                    ;
@@ -1011,8 +1081,8 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|totale_omw_line[5][0]                                         ; Merged with display:u4|totale_omw_line[5][1]                                    ;
 ; display:u4|totale_omw_line[5][1]                                         ; Merged with display:u4|totale_omw_line[5][2]                                    ;
 ; display:u4|totale_omw_line[5][2]                                         ; Merged with display:u4|totale_omw_line[5][3]                                    ;
-; display:u4|totale_omw_line[5][3]                                         ; Merged with display:u4|weerstand_line[4][4]                                     ;
-; display:u4|weerstand_line[4][4]                                          ; Merged with display:u4|totale_omw_line[3][2]                                    ;
+; display:u4|totale_omw_line[5][3]                                         ; Merged with display:u4|totale_omw_line[5][6]                                    ;
+; display:u4|totale_omw_line[5][6]                                         ; Merged with display:u4|totale_omw_line[3][2]                                    ;
 ; display:u4|totale_omw_line[3][2]                                         ; Merged with display:u4|totale_omw_line[3][4]                                    ;
 ; display:u4|totale_omw_line[3][4]                                         ; Merged with display:u4|totale_omw_line[3][6]                                    ;
 ; display:u4|totale_omw_line[3][6]                                         ; Merged with display:u4|totale_omw_line[2][0]                                    ;
@@ -1022,12 +1092,11 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|totale_omw_line[2][3]                                         ; Merged with display:u4|totale_omw_line[2][6]                                    ;
 ; display:u4|totale_omw_line[2][6]                                         ; Merged with display:u4|totale_omw_line[1][2]                                    ;
 ; display:u4|totale_omw_line[1][2]                                         ; Merged with display:u4|totale_omw_line[1][4]                                    ;
-; display:u4|totale_omw_line[1][4]                                         ; Merged with display:u4|weerstand_line[12][4]                                    ;
-; display:u4|weerstand_line[12][4]                                         ; Merged with display:u4|totale_omw_line[1][6]                                    ;
-; display:u4|totale_omw_line[1][6]                                         ; Merged with display:u4|gemiddelde_line[12][4]                                   ;
-; display:u4|gemiddelde_line[12][4]                                        ; Merged with display:u4|gemiddelde_line[11][4]                                   ;
-; display:u4|gemiddelde_line[11][4]                                        ; Merged with display:u4|gemiddelde_line[10][4]                                   ;
-; display:u4|gemiddelde_line[10][4]                                        ; Merged with display:u4|gemiddelde_line[8][1]                                    ;
+; display:u4|totale_omw_line[1][4]                                         ; Merged with display:u4|totale_omw_line[1][6]                                    ;
+; display:u4|totale_omw_line[1][6]                                         ; Merged with display:u4|gemiddelde_line[14][4]                                   ;
+; display:u4|gemiddelde_line[14][4]                                        ; Merged with display:u4|gemiddelde_line[13][4]                                   ;
+; display:u4|gemiddelde_line[13][4]                                        ; Merged with display:u4|gemiddelde_line[12][4]                                   ;
+; display:u4|gemiddelde_line[12][4]                                        ; Merged with display:u4|gemiddelde_line[8][1]                                    ;
 ; display:u4|gemiddelde_line[8][1]                                         ; Merged with display:u4|gemiddelde_line[8][3]                                    ;
 ; display:u4|gemiddelde_line[8][3]                                         ; Merged with display:u4|gemiddelde_line[8][4]                                    ;
 ; display:u4|gemiddelde_line[8][4]                                         ; Merged with display:u4|gemiddelde_line[7][0]                                    ;
@@ -1050,16 +1119,41 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|gemiddelde_line[2][2]                                         ; Merged with display:u4|gemiddelde_line[2][4]                                    ;
 ; display:u4|gemiddelde_line[2][4]                                         ; Merged with display:u4|gemiddelde_line[2][6]                                    ;
 ; display:u4|gemiddelde_line[2][6]                                         ; Merged with display:u4|gemiddelde_line[1][0]                                    ;
-; display:u4|gemiddelde_line[1][0]                                         ; Merged with display:u4|weerstand_line[10][1]                                    ;
-; display:u4|weerstand_line[10][1]                                         ; Merged with display:u4|gemiddelde_line[1][6]                                    ;
-; display:u4|gemiddelde_line[1][6]                                         ; Merged with display:u4|weerstand_line[10][3]                                    ;
-; display:u4|weerstand_line[10][3]                                         ; Merged with display:u4|tijd_line[10][4]                                         ;
-; display:u4|tijd_line[10][4]                                              ; Merged with display:u4|tijd_line[9][1]                                          ;
-; display:u4|tijd_line[9][1]                                               ; Merged with display:u4|tijd_line[9][3]                                          ;
-; display:u4|tijd_line[9][3]                                               ; Merged with display:u4|tijd_line[9][4]                                          ;
-; display:u4|tijd_line[9][4]                                               ; Merged with display:u4|tijd_line[8][4]                                          ;
-; display:u4|tijd_line[8][4]                                               ; Merged with display:u4|tijd_line[7][4]                                          ;
-; display:u4|tijd_line[7][4]                                               ; Merged with display:u4|tijd_line[5][1]                                          ;
+; display:u4|gemiddelde_line[1][0]                                         ; Merged with display:u4|weerstand_line[12][4]                                    ;
+; display:u4|weerstand_line[12][4]                                         ; Merged with display:u4|gemiddelde_line[1][6]                                    ;
+; display:u4|gemiddelde_line[1][6]                                         ; Merged with display:u4|tijd_line_max[16][4]                                     ;
+; display:u4|tijd_line_max[16][4]                                          ; Merged with display:u4|tijd_line_max[15][4]                                     ;
+; display:u4|tijd_line_max[15][4]                                          ; Merged with display:u4|tijd_line_max[14][1]                                     ;
+; display:u4|tijd_line_max[14][1]                                          ; Merged with display:u4|tijd_line_max[14][3]                                     ;
+; display:u4|tijd_line_max[14][3]                                          ; Merged with display:u4|tijd_line_max[14][4]                                     ;
+; display:u4|tijd_line_max[14][4]                                          ; Merged with display:u4|tijd_line_max[13][4]                                     ;
+; display:u4|tijd_line_max[13][4]                                          ; Merged with display:u4|tijd_line_max[12][4]                                     ;
+; display:u4|tijd_line_max[12][4]                                          ; Merged with display:u4|tijd_line_max[7][1]                                      ;
+; display:u4|tijd_line_max[7][1]                                           ; Merged with display:u4|tijd_line_max[7][3]                                      ;
+; display:u4|tijd_line_max[7][3]                                           ; Merged with display:u4|tijd_line_max[7][4]                                      ;
+; display:u4|tijd_line_max[7][4]                                           ; Merged with display:u4|tijd_line_max[6][0]                                      ;
+; display:u4|tijd_line_max[6][0]                                           ; Merged with display:u4|tijd_line_max[6][2]                                      ;
+; display:u4|tijd_line_max[6][2]                                           ; Merged with display:u4|tijd_line_max[6][6]                                      ;
+; display:u4|tijd_line_max[6][6]                                           ; Merged with display:u4|tijd_line_max[5][0]                                      ;
+; display:u4|tijd_line_max[5][0]                                           ; Merged with display:u4|tijd_line_max[5][2]                                      ;
+; display:u4|tijd_line_max[5][2]                                           ; Merged with display:u4|tijd_line_max[5][3]                                      ;
+; display:u4|tijd_line_max[5][3]                                           ; Merged with display:u4|tijd_line_max[5][6]                                      ;
+; display:u4|tijd_line_max[5][6]                                           ; Merged with display:u4|tijd_line_max[4][0]                                      ;
+; display:u4|tijd_line_max[4][0]                                           ; Merged with display:u4|tijd_line_max[4][3]                                      ;
+; display:u4|tijd_line_max[4][3]                                           ; Merged with display:u4|weerstand_line[10][1]                                    ;
+; display:u4|weerstand_line[10][1]                                         ; Merged with display:u4|tijd_line_max[3][2]                                      ;
+; display:u4|tijd_line_max[3][2]                                           ; Merged with display:u4|tijd_line_max[3][4]                                      ;
+; display:u4|tijd_line_max[3][4]                                           ; Merged with display:u4|tijd_line_max[3][6]                                      ;
+; display:u4|tijd_line_max[3][6]                                           ; Merged with display:u4|weerstand_line[10][3]                                    ;
+; display:u4|weerstand_line[10][3]                                         ; Merged with display:u4|tijd_line_max[1][6]                                      ;
+; display:u4|tijd_line_max[1][6]                                           ; Merged with display:u4|tijd_line[16][4]                                         ;
+; display:u4|tijd_line[16][4]                                              ; Merged with display:u4|tijd_line[15][4]                                         ;
+; display:u4|tijd_line[15][4]                                              ; Merged with display:u4|tijd_line[14][1]                                         ;
+; display:u4|tijd_line[14][1]                                              ; Merged with display:u4|tijd_line[14][3]                                         ;
+; display:u4|tijd_line[14][3]                                              ; Merged with display:u4|tijd_line[14][4]                                         ;
+; display:u4|tijd_line[14][4]                                              ; Merged with display:u4|tijd_line[13][4]                                         ;
+; display:u4|tijd_line[13][4]                                              ; Merged with display:u4|tijd_line[12][4]                                         ;
+; display:u4|tijd_line[12][4]                                              ; Merged with display:u4|tijd_line[5][1]                                          ;
 ; display:u4|tijd_line[5][1]                                               ; Merged with display:u4|tijd_line[5][3]                                          ;
 ; display:u4|tijd_line[5][3]                                               ; Merged with display:u4|tijd_line[5][4]                                          ;
 ; display:u4|tijd_line[5][4]                                               ; Merged with display:u4|tijd_line[4][2]                                          ;
@@ -1069,32 +1163,47 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|tijd_line[3][3]                                               ; Merged with display:u4|tijd_line[3][6]                                          ;
 ; display:u4|tijd_line[3][6]                                               ; Merged with display:u4|tijd_line[2][0]                                          ;
 ; display:u4|tijd_line[2][0]                                               ; Merged with display:u4|tijd_line[2][3]                                          ;
-; display:u4|tijd_line[2][3]                                               ; Merged with display:u4|tijd_line[2][6]                                          ;
-; display:u4|tijd_line[2][6]                                               ; Merged with display:u4|tijd_line[1][2]                                          ;
+; display:u4|tijd_line[2][3]                                               ; Merged with display:u4|tijd_line_max[4][6]                                      ;
+; display:u4|tijd_line_max[4][6]                                           ; Merged with display:u4|tijd_line[1][2]                                          ;
 ; display:u4|tijd_line[1][2]                                               ; Merged with display:u4|tijd_line[1][4]                                          ;
-; display:u4|tijd_line[1][4]                                               ; Merged with display:u4|totale_omw_line[5][6]                                    ;
-; display:u4|totale_omw_line[5][6]                                         ; Merged with display:u4|tijd_line[1][6]                                          ;
-; display:u4|tijd_line[1][6]                                               ; Merged with display:u4|RPM_line[8][4]                                           ;
-; display:u4|RPM_line[8][4]                                                ; Merged with display:u4|RPM_line[7][4]                                           ;
-; display:u4|RPM_line[7][4]                                                ; Merged with display:u4|RPM_line[6][4]                                           ;
-; display:u4|RPM_line[6][4]                                                ; Merged with display:u4|RPM_line[4][1]                                           ;
+; display:u4|tijd_line[1][4]                                               ; Merged with display:u4|weerstand_line[10][4]                                    ;
+; display:u4|weerstand_line[10][4]                                         ; Merged with display:u4|tijd_line[1][6]                                          ;
+; display:u4|tijd_line[1][6]                                               ; Merged with display:u4|RPM_line[14][4]                                          ;
+; display:u4|RPM_line[14][4]                                               ; Merged with display:u4|RPM_line[13][4]                                          ;
+; display:u4|RPM_line[13][4]                                               ; Merged with display:u4|RPM_line[12][4]                                          ;
+; display:u4|RPM_line[12][4]                                               ; Merged with display:u4|RPM_line[4][1]                                           ;
 ; display:u4|RPM_line[4][1]                                                ; Merged with display:u4|RPM_line[4][3]                                           ;
 ; display:u4|RPM_line[4][3]                                                ; Merged with display:u4|RPM_line[4][4]                                           ;
 ; display:u4|RPM_line[4][4]                                                ; Merged with display:u4|RPM_line[3][0]                                           ;
 ; display:u4|RPM_line[3][0]                                                ; Merged with display:u4|RPM_line[3][2]                                           ;
 ; display:u4|RPM_line[3][2]                                                ; Merged with display:u4|RPM_line[3][3]                                           ;
-; display:u4|RPM_line[3][3]                                                ; Merged with display:u4|weerstand_line[10][4]                                    ;
-; display:u4|weerstand_line[10][4]                                         ; Merged with display:u4|RPM_line[3][6]                                           ;
+; display:u4|RPM_line[3][3]                                                ; Merged with display:u4|weerstand_line[9][2]                                     ;
+; display:u4|weerstand_line[9][2]                                          ; Merged with display:u4|RPM_line[3][6]                                           ;
 ; display:u4|RPM_line[3][6]                                                ; Merged with display:u4|RPM_line[2][4]                                           ;
-; display:u4|RPM_line[2][4]                                                ; Merged with display:u4|weerstand_line[9][2]                                     ;
-; display:u4|weerstand_line[9][2]                                          ; Merged with display:u4|RPM_line[2][6]                                           ;
+; display:u4|RPM_line[2][4]                                                ; Merged with display:u4|weerstand_line[9][6]                                     ;
+; display:u4|weerstand_line[9][6]                                          ; Merged with display:u4|RPM_line[2][6]                                           ;
 ; display:u4|RPM_line[2][6]                                                ; Merged with display:u4|RPM_line[1][1]                                           ;
 ; display:u4|RPM_line[1][1]                                                ; Merged with display:u4|RPM_line[1][4]                                           ;
-; display:u4|RPM_line[1][4]                                                ; Merged with display:u4|weerstand_line[9][6]                                     ;
-; display:u4|weerstand_line[9][6]                                          ; Merged with display:u4|RPM_line[1][6]                                           ;
-; display:u4|RPM_line[1][6]                                                ; Merged with display:u4|tijd_line[11][4]                                         ;
-; display:u4|tijd_line[11][4]                                              ; Merged with display:u4|RPM_line[1][5]                                           ;
+; display:u4|RPM_line[1][4]                                                ; Merged with display:u4|weerstand_line[8][1]                                     ;
+; display:u4|weerstand_line[8][1]                                          ; Merged with display:u4|RPM_line[1][6]                                           ;
+; display:u4|RPM_line[1][6]                                                ; Merged with display:u4|tijd_line[2][6]                                          ;
+; max_rpm:u6|rpm_max[7]                                                    ; Merged with max_rpm:u6|rpm_max_int[7]                                           ;
+; max_rpm:u6|rpm_max[6]                                                    ; Merged with max_rpm:u6|rpm_max_int[6]                                           ;
+; max_rpm:u6|rpm_max[5]                                                    ; Merged with max_rpm:u6|rpm_max_int[5]                                           ;
+; max_rpm:u6|rpm_max[4]                                                    ; Merged with max_rpm:u6|rpm_max_int[4]                                           ;
+; max_rpm:u6|rpm_max[3]                                                    ; Merged with max_rpm:u6|rpm_max_int[3]                                           ;
+; max_rpm:u6|rpm_max[2]                                                    ; Merged with max_rpm:u6|rpm_max_int[2]                                           ;
+; max_rpm:u6|rpm_max[1]                                                    ; Merged with max_rpm:u6|rpm_max_int[1]                                           ;
+; max_rpm:u6|rpm_max[0]                                                    ; Merged with max_rpm:u6|rpm_max_int[0]                                           ;
+; display:u4|tijd_line[2][6]                                               ; Merged with display:u4|RPM_line[1][5]                                           ;
+; display:u4|RPM_line[12][5]                                               ; Merged with display:u4|RPM_line[12][6]                                          ;
+; display:u4|RPM_line[13][6]                                               ; Merged with display:u4|RPM_line[12][6]                                          ;
+; display:u4|RPM_line[13][5]                                               ; Merged with display:u4|RPM_line[12][6]                                          ;
+; display:u4|RPM_line[14][6]                                               ; Merged with display:u4|RPM_line[12][6]                                          ;
+; display:u4|RPM_line[14][5]                                               ; Merged with display:u4|RPM_line[12][6]                                          ;
+; display:u4|RPM_line[12][3]                                               ; Merged with display:u4|RPM_line[12][6]                                          ;
 ; display:u4|data[7]                                                       ; Stuck at GND due to stuck port data_in                                          ;
+; division:u5|tix_int[15]                                                  ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|lcd_driver_hd44780_module:lcdm|current_state.command_init     ; Merged with display:u4|lcd_driver_hd44780_module:lcdm|current_state.command_cls ;
 ; display:u4|lcd_driver_hd44780_module:lcdm|current_state.command_init12   ; Merged with display:u4|lcd_driver_hd44780_module:lcdm|current_state.command_cls ;
 ; display:u4|lcd_driver_hd44780_module:lcdm|return_state.command_goto10    ; Merged with display:u4|lcd_driver_hd44780_module:lcdm|return_state.command_cls  ;
@@ -1128,7 +1237,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:u4|lcd_driver_hd44780_module:lcdm|current_state.command_cls      ; Stuck at GND due to stuck port data_in                                          ;
 ; display:u4|state.write_char_wait                                         ; Merged with display:u4|wr                                                       ;
 ; resistor:u9|restarget[3]                                                 ; Stuck at GND due to stuck port data_in                                          ;
-; Total Number of Removed Registers = 740                                  ;                                                                                 ;
+; Total Number of Removed Registers = 862                                  ;                                                                                 ;
 +--------------------------------------------------------------------------+---------------------------------------------------------------------------------+
 
 
@@ -1153,12 +1262,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 415   ;
-; Number of registers using Synchronous Clear  ; 60    ;
-; Number of registers using Synchronous Load   ; 49    ;
-; Number of registers using Asynchronous Clear ; 282   ;
+; Total registers                              ; 566   ;
+; Number of registers using Synchronous Clear  ; 56    ;
+; Number of registers using Synchronous Load   ; 45    ;
+; Number of registers using Asynchronous Clear ; 334   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 294   ;
+; Number of registers using Clock Enable       ; 398   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -1168,7 +1277,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +------------------------------------------------+---------+
 ; Inverted Register                              ; Fan out ;
 +------------------------------------------------+---------+
-; RPM_counter:u0|count[0]                        ; 3       ;
+; division:u5|x[16]                              ; 2       ;
 ; division:u5|x[13]                              ; 2       ;
 ; division:u5|x[10]                              ; 2       ;
 ; division:u5|x[9]                               ; 2       ;
@@ -1176,52 +1285,149 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; division:u5|x[7]                               ; 2       ;
 ; division:u5|x[6]                               ; 2       ;
 ; division:u5|x[19]                              ; 2       ;
-; division:u5|x[16]                              ; 2       ;
-; RPM_counter:u0|tix_mem[0]                      ; 2       ;
 ; resistor:u9|res_up                             ; 2       ;
 ; resistor:u9|res_down                           ; 2       ;
-; division:u5|stop                               ; 3       ;
+; RPM_counter:u0|tix_mem[0]                      ; 2       ;
+; division:u5|stop                               ; 4       ;
+; ontdender:u3a|output_int                       ; 2       ;
 ; resistor:u9|restarget[1]                       ; 2       ;
-; display:u4|lcd_driver_hd44780_module:lcdm|busy ; 11      ;
-; display:u4|character_counter[0]                ; 27      ;
-; display:u4|line_counter[0]                     ; 84      ;
-; display:u4|RPM_line[1][5]                      ; 41      ;
+; RPM_counter:u0|count[0]                        ; 3       ;
+; ontdender:u3a|ffa[5]                           ; 7       ;
+; ontdender:u3a|ffa[6]                           ; 3       ;
+; ontdender:u3a|ffa[2]                           ; 3       ;
+; display:u4|lcd_driver_hd44780_module:lcdm|busy ; 10      ;
+; display:u4|character_counter[0]                ; 28      ;
+; display:u4|line_counter[0]                     ; 81      ;
+; ontdender:u3f|output_int                       ; 2       ;
+; ontdender:u3e|output_int                       ; 2       ;
+; ontdender:u3f|ffa[5]                           ; 7       ;
+; ontdender:u3f|ffa[6]                           ; 3       ;
+; ontdender:u3f|ffa[2]                           ; 3       ;
+; ontdender:u3e|ffa[5]                           ; 7       ;
+; ontdender:u3e|ffa[6]                           ; 3       ;
+; ontdender:u3e|ffa[2]                           ; 3       ;
+; mode                                           ; 74      ;
+; display:u4|RPM_line[1][5]                      ; 37      ;
+; ontdender:u3d|output_int                       ; 2       ;
 ; gem_RPM:u8|stop                                ; 3       ;
-; Total number of inverted registers = 19        ;         ;
+; ontdender:u3b|output_int                       ; 2       ;
+; ontdender:u3c|ffa[5]                           ; 8       ;
+; ontdender:u3c|ffa[6]                           ; 3       ;
+; ontdender:u3c|ffa[2]                           ; 3       ;
+; ontdender:u3c|output_int                       ; 2       ;
+; ontdender:u3d|ffa[5]                           ; 7       ;
+; ontdender:u3d|ffa[6]                           ; 3       ;
+; ontdender:u3d|ffa[2]                           ; 3       ;
+; ontdender:u3b|ffa[5]                           ; 7       ;
+; ontdender:u3b|ffa[6]                           ; 3       ;
+; ontdender:u3b|ffa[2]                           ; 3       ;
+; Total number of inverted registers = 44        ;         ;
 +------------------------------------------------+---------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------+
-; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |PRODIG_RPM|gem_RPM:u8|tot_RPM[7]                                                    ;
-; 3:1                ; 14 bits   ; 28 LEs        ; 0 LEs                ; 28 LEs                 ; Yes        ; |PRODIG_RPM|RPM_counter:u0|tix_mem[13]                                               ;
-; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |PRODIG_RPM|RPM_counter:u0|count[7]                                                  ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |PRODIG_RPM|RPM_counter:u0|wait_time[6]                                              ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |PRODIG_RPM|resistor:u9|restarget[0]                                                 ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|goto20                                                        ;
-; 5:1                ; 6 bits    ; 18 LEs        ; 6 LEs                ; 12 LEs                 ; Yes        ; |PRODIG_RPM|timer:u7|seconds_int[0]                                                  ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |PRODIG_RPM|gem_RPM:u8|gem_RPM_int[0]                                                ;
-; 5:1                ; 12 bits   ; 36 LEs        ; 24 LEs               ; 12 LEs                 ; Yes        ; |PRODIG_RPM|gem_RPM:u8|tot_RPM_int[0]                                                ;
-; 6:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |PRODIG_RPM|timer:u7|minutes_int[0]                                                  ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |PRODIG_RPM|division:u5|rpm[6]                                                       ;
-; 6:1                ; 12 bits   ; 48 LEs        ; 12 LEs               ; 36 LEs                 ; Yes        ; |PRODIG_RPM|division:u5|x[11]                                                        ;
-; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[14]              ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[18]              ;
-; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[12]              ;
-; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[10]              ;
-; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[0]               ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 8 LEs                ; 24 LEs                 ; Yes        ; |PRODIG_RPM|division:u5|x[10]                                                        ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |PRODIG_RPM|display:u4|character_counter                                             ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |PRODIG_RPM|display:u4|line_counter                                                  ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |PRODIG_RPM|display:u4|Selector10                                                    ;
-; 5:1                ; 23 bits   ; 69 LEs        ; 23 LEs               ; 46 LEs                 ; No         ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|return_state.pulse_busy_flag_4 ;
-; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |PRODIG_RPM|display:u4|Selector1                                                     ;
-; 12:1               ; 18 bits   ; 144 LEs       ; 90 LEs               ; 54 LEs                 ; No         ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|Selector31                     ;
-; 13:1               ; 2 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; No         ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|Selector52                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------+
+; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |PRODIG_RPM|timer:u7|minutes_max[3]                                               ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |PRODIG_RPM|max_rpm:u6|rpm_max_int[2]                                             ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |PRODIG_RPM|gem_RPM:u8|tot_RPM[8]                                                 ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |PRODIG_RPM|gem_RPM:u8|tot_RPM[0]                                                 ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 0 LEs                ; 28 LEs                 ; Yes        ; |PRODIG_RPM|RPM_counter:u0|tix_mem[12]                                            ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |PRODIG_RPM|RPM_counter:u0|count[5]                                               ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |PRODIG_RPM|RPM_counter:u0|wait_time[8]                                           ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |PRODIG_RPM|resistor:u9|restarget[0]                                              ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |PRODIG_RPM|RPM_counter:u0|omwentel99[3]                                          ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|goto30                                                     ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 6 LEs                ; 12 LEs                 ; Yes        ; |PRODIG_RPM|timer:u7|seconds_int[3]                                               ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |PRODIG_RPM|division:u5|rpm_mem[7]                                                ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |PRODIG_RPM|RPM_counter:u0|omwentel255[0]                                         ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |PRODIG_RPM|gem_RPM:u8|gem_RPM_int[7]                                             ;
+; 5:1                ; 12 bits   ; 36 LEs        ; 24 LEs               ; 12 LEs                 ; Yes        ; |PRODIG_RPM|gem_RPM:u8|tot_RPM_int[11]                                            ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |PRODIG_RPM|timer:u7|minutes_int[0]                                               ;
+; 6:1                ; 12 bits   ; 48 LEs        ; 12 LEs               ; 36 LEs                 ; Yes        ; |PRODIG_RPM|division:u5|x[0]                                                      ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 24 LEs               ; 16 LEs                 ; Yes        ; |PRODIG_RPM|division:u5|rpm[6]                                                    ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[2]            ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[20]           ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[12]           ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[10]           ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|delay_counter[0]            ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 8 LEs                ; 24 LEs                 ; Yes        ; |PRODIG_RPM|division:u5|x[13]                                                     ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |PRODIG_RPM|display:u4|character_counter                                          ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |PRODIG_RPM|display:u4|line_counter                                               ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |PRODIG_RPM|display:u4|Selector10                                                 ;
+; 5:1                ; 23 bits   ; 69 LEs        ; 23 LEs               ; 46 LEs                 ; No         ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|return_state.command_goto30 ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |PRODIG_RPM|display:u4|Selector1                                                  ;
+; 12:1               ; 18 bits   ; 144 LEs       ; 90 LEs               ; 54 LEs                 ; No         ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|Selector42                  ;
+; 13:1               ; 2 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; No         ; |PRODIG_RPM|display:u4|lcd_driver_hd44780_module:lcdm|Selector53                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ontdender:u3a ;
++----------------+-------+-----------------------------------+
+; Parameter Name ; Value ; Type                              ;
++----------------+-------+-----------------------------------+
+; delay          ; 100   ; Signed Integer                    ;
+; long_press     ; 10000 ; Signed Integer                    ;
++----------------+-------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ontdender:u3b ;
++----------------+-------+-----------------------------------+
+; Parameter Name ; Value ; Type                              ;
++----------------+-------+-----------------------------------+
+; delay          ; 100   ; Signed Integer                    ;
+; long_press     ; 10000 ; Signed Integer                    ;
++----------------+-------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ontdender:u3c ;
++----------------+-------+-----------------------------------+
+; Parameter Name ; Value ; Type                              ;
++----------------+-------+-----------------------------------+
+; delay          ; 100   ; Signed Integer                    ;
+; long_press     ; 10000 ; Signed Integer                    ;
++----------------+-------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ontdender:u3d ;
++----------------+-------+-----------------------------------+
+; Parameter Name ; Value ; Type                              ;
++----------------+-------+-----------------------------------+
+; delay          ; 100   ; Signed Integer                    ;
+; long_press     ; 10000 ; Signed Integer                    ;
++----------------+-------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ontdender:u3e ;
++----------------+-------+-----------------------------------+
+; Parameter Name ; Value ; Type                              ;
++----------------+-------+-----------------------------------+
+; delay          ; 100   ; Signed Integer                    ;
+; long_press     ; 10000 ; Signed Integer                    ;
++----------------+-------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ontdender:u3f ;
++----------------+-------+-----------------------------------+
+; Parameter Name ; Value ; Type                              ;
++----------------+-------+-----------------------------------+
+; delay          ; 100   ; Signed Integer                    ;
+; long_press     ; 10000 ; Signed Integer                    ;
++----------------+-------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +----------------------------------------------------------------------------------------+
@@ -1255,16 +1461,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-----------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "timer:u7"                                                                                  ;
-+-------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port        ; Type   ; Severity ; Details                                                                             ;
-+-------------+--------+----------+-------------------------------------------------------------------------------------+
-; seconds_max ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; minutes_max ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+-------------+--------+----------+-------------------------------------------------------------------------------------+
-
-
 +--------------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "display:u4|bin_bcd:totale_omw_1bcd"                                                           ;
 +----------------+--------+----------+-------------------------------------------------------------------------------------+
@@ -1275,7 +1471,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "display:u4|bin_bcd:tijd_min_maxbcd"                                                           ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port           ; Type   ; Severity ; Details                                                                             ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; bin_in[7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; bcd_out[11..8] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "display:u4|bin_bcd:tijd_minbcd"                                                               ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port           ; Type   ; Severity ; Details                                                                             ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; bin_in[7..6]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; bcd_out[11..8] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "display:u4|bin_bcd:tijd_sec_maxbcd"                                                           ;
 +----------------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port           ; Type   ; Severity ; Details                                                                             ;
 +----------------+--------+----------+-------------------------------------------------------------------------------------+
@@ -1294,6 +1510,60 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ontdender:u3f"                                                                      ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; long ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ontdender:u3e"                                                                      ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; long ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ontdender:u3d"                                                                      ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; long ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ontdender:u3c"                                                                        ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; output ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ontdender:u3b"                                                                      ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; long ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ontdender:u3a"                                                                      ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; long ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
 +-------------------------------+
 ; Elapsed Time Per Partition    ;
 +----------------+--------------+
@@ -1309,18 +1579,21 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Tue Oct 08 17:02:32 2019
+    Info: Processing started: Fri Oct 11 13:53:39 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off PRODIG_RPM -c PRODIG_RPM
 Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file ingedrukt.vhd
+    Info (12022): Found design unit 1: areset-behavior
+    Info (12023): Found entity 1: areset
+Info (12021): Found 2 design units, including 1 entities, in source file ontdender.vhd
+    Info (12022): Found design unit 1: ontdender-bhv
+    Info (12023): Found entity 1: ontdender
 Info (12021): Found 2 design units, including 1 entities, in source file gem_rpm.vhd
     Info (12022): Found design unit 1: gem_RPM-rtl
     Info (12023): Found entity 1: gem_RPM
 Info (12021): Found 2 design units, including 1 entities, in source file resistor.vhd
     Info (12022): Found design unit 1: resistor-main
     Info (12023): Found entity 1: resistor
-Info (12021): Found 2 design units, including 1 entities, in source file tb_display.vhd
-    Info (12022): Found design unit 1: tb_Display-test
-    Info (12023): Found entity 1: tb_Display
 Info (12021): Found 2 design units, including 1 entities, in source file lcd_driver_hd44780_module.vhd
     Info (12022): Found design unit 1: lcd_driver_hd44780_module-hardware_driver
     Info (12023): Found entity 1: lcd_driver_hd44780_module
@@ -1330,12 +1603,6 @@ Info (12021): Found 2 design units, including 1 entities, in source file display
 Info (12021): Found 2 design units, including 1 entities, in source file division.vhd
     Info (12022): Found design unit 1: division-rtl
     Info (12023): Found entity 1: division
-Info (12021): Found 2 design units, including 1 entities, in source file tb_rpm_counter.vhd
-    Info (12022): Found design unit 1: tb_RPM_counter-test
-    Info (12023): Found entity 1: tb_RPM_counter
-Info (12021): Found 2 design units, including 1 entities, in source file tb_prodig_rpm.vhd
-    Info (12022): Found design unit 1: tb_PRODIG_RPM-test
-    Info (12023): Found entity 1: tb_PRODIG_RPM
 Info (12021): Found 2 design units, including 1 entities, in source file prescaler.vhd
     Info (12022): Found design unit 1: prescaler-behav
     Info (12023): Found entity 1: prescaler
@@ -1348,9 +1615,6 @@ Info (12021): Found 2 design units, including 1 entities, in source file prodig_
 Info (12021): Found 2 design units, including 1 entities, in source file prodig_7_seg_decoder.vhd
     Info (12022): Found design unit 1: prodig_7_seg_decoder-rtl
     Info (12023): Found entity 1: prodig_7_seg_decoder
-Info (12021): Found 2 design units, including 1 entities, in source file ontdender.vhd
-    Info (12022): Found design unit 1: ontdender-arch
-    Info (12023): Found entity 1: ontdender
 Info (12021): Found 2 design units, including 1 entities, in source file bin_bcd.vhd
     Info (12022): Found design unit 1: bin_bcd-rtl
     Info (12023): Found entity 1: bin_bcd
@@ -1361,88 +1625,21 @@ Info (12021): Found 2 design units, including 1 entities, in source file timer.v
     Info (12022): Found design unit 1: timer-rtl
     Info (12023): Found entity 1: timer
 Info (12127): Elaborating entity "PRODIG_RPM" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at PRODIG_RPM.vhd(83): object "seconds_max" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at PRODIG_RPM.vhd(84): object "minutes_max" assigned a value but never read
-Warning (10492): VHDL Process Statement warning at PRODIG_RPM.vhd(253): signal "BUTTON" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10036): Verilog HDL or VHDL warning at PRODIG_RPM.vhd(82): object "knop_reset" assigned a value but never read
 Info (12128): Elaborating entity "RPM_counter" for hierarchy "RPM_counter:u0"
-Warning (10492): VHDL Process Statement warning at RPM_counter.vhd(36): signal "hall_sens" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10631): VHDL Process Statement warning at RPM_counter.vhd(21): inferring latch(es) for signal or variable "omwentel99", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at RPM_counter.vhd(21): inferring latch(es) for signal or variable "omwentel255", which holds its previous value in one or more paths through the process
-Info (10041): Inferred latch for "omwentel255[0]" at RPM_counter.vhd(29)
-Info (10041): Inferred latch for "omwentel255[1]" at RPM_counter.vhd(29)
-Info (10041): Inferred latch for "omwentel255[2]" at RPM_counter.vhd(29)
-Info (10041): Inferred latch for "omwentel255[3]" at RPM_counter.vhd(29)
-Info (10041): Inferred latch for "omwentel255[4]" at RPM_counter.vhd(29)
-Info (10041): Inferred latch for "omwentel255[5]" at RPM_counter.vhd(29)
-Info (10041): Inferred latch for "omwentel255[6]" at RPM_counter.vhd(29)
-Info (10041): Inferred latch for "omwentel255[7]" at RPM_counter.vhd(29)
-Info (10041): Inferred latch for "omwentel99[0]" at RPM_counter.vhd(29)
-Info (10041): Inferred latch for "omwentel99[1]" at RPM_counter.vhd(29)
-Info (10041): Inferred latch for "omwentel99[2]" at RPM_counter.vhd(29)
-Info (10041): Inferred latch for "omwentel99[3]" at RPM_counter.vhd(29)
-Info (10041): Inferred latch for "omwentel99[4]" at RPM_counter.vhd(29)
-Info (10041): Inferred latch for "omwentel99[5]" at RPM_counter.vhd(29)
-Info (10041): Inferred latch for "omwentel99[6]" at RPM_counter.vhd(29)
-Info (10041): Inferred latch for "omwentel99[7]" at RPM_counter.vhd(29)
 Info (12128): Elaborating entity "prescaler" for hierarchy "prescaler:u1"
 Info (12128): Elaborating entity "prodig_7_seg_decoder" for hierarchy "prodig_7_seg_decoder:u2"
+Info (12128): Elaborating entity "ontdender" for hierarchy "ontdender:u3a"
+Warning (10036): Verilog HDL or VHDL warning at ontdender.vhd(23): object "counter" assigned a value but never read
+Warning (10492): VHDL Process Statement warning at ontdender.vhd(31): signal "areset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Info (12128): Elaborating entity "display" for hierarchy "display:u4"
 Info (12128): Elaborating entity "lcd_driver_hd44780_module" for hierarchy "display:u4|lcd_driver_hd44780_module:lcdm"
 Info (12128): Elaborating entity "bin_bcd" for hierarchy "display:u4|bin_bcd:RPM2bcd"
 Info (12128): Elaborating entity "division" for hierarchy "division:u5"
 Info (12128): Elaborating entity "max_rpm" for hierarchy "max_rpm:u6"
-Warning (10492): VHDL Process Statement warning at Max_rpm.vhd(22): signal "areset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Max_rpm.vhd(26): signal "rpm_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Max_rpm.vhd(27): signal "rpm_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10631): VHDL Process Statement warning at Max_rpm.vhd(18): inferring latch(es) for signal or variable "rpm_max_int", which holds its previous value in one or more paths through the process
-Info (10041): Inferred latch for "rpm_max_int[0]" at Max_rpm.vhd(22)
-Info (10041): Inferred latch for "rpm_max_int[1]" at Max_rpm.vhd(22)
-Info (10041): Inferred latch for "rpm_max_int[2]" at Max_rpm.vhd(22)
-Info (10041): Inferred latch for "rpm_max_int[3]" at Max_rpm.vhd(22)
-Info (10041): Inferred latch for "rpm_max_int[4]" at Max_rpm.vhd(22)
-Info (10041): Inferred latch for "rpm_max_int[5]" at Max_rpm.vhd(22)
-Info (10041): Inferred latch for "rpm_max_int[6]" at Max_rpm.vhd(22)
-Info (10041): Inferred latch for "rpm_max_int[7]" at Max_rpm.vhd(22)
 Info (12128): Elaborating entity "timer" for hierarchy "timer:u7"
-Warning (10492): VHDL Process Statement warning at Timer.vhd(66): signal "seconds_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Timer.vhd(67): signal "minutes_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Timer.vhd(68): signal "rpm_max" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Timer.vhd(69): signal "minutes_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Timer.vhd(70): signal "seconds_int" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10631): VHDL Process Statement warning at Timer.vhd(30): inferring latch(es) for signal or variable "seconds_max", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at Timer.vhd(30): inferring latch(es) for signal or variable "minutes_max", which holds its previous value in one or more paths through the process
-Info (10041): Inferred latch for "minutes_max[0]" at Timer.vhd(30)
-Info (10041): Inferred latch for "minutes_max[1]" at Timer.vhd(30)
-Info (10041): Inferred latch for "minutes_max[2]" at Timer.vhd(30)
-Info (10041): Inferred latch for "minutes_max[3]" at Timer.vhd(30)
-Info (10041): Inferred latch for "minutes_max[4]" at Timer.vhd(30)
-Info (10041): Inferred latch for "minutes_max[5]" at Timer.vhd(30)
-Info (10041): Inferred latch for "seconds_max[0]" at Timer.vhd(30)
-Info (10041): Inferred latch for "seconds_max[1]" at Timer.vhd(30)
-Info (10041): Inferred latch for "seconds_max[2]" at Timer.vhd(30)
-Info (10041): Inferred latch for "seconds_max[3]" at Timer.vhd(30)
-Info (10041): Inferred latch for "seconds_max[4]" at Timer.vhd(30)
-Info (10041): Inferred latch for "seconds_max[5]" at Timer.vhd(30)
 Info (12128): Elaborating entity "gem_RPM" for hierarchy "gem_RPM:u8"
-Warning (10492): VHDL Process Statement warning at gem_RPM.vhd(27): signal "areset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Info (12128): Elaborating entity "resistor" for hierarchy "resistor:u9"
-Warning (10492): VHDL Process Statement warning at resistor.vhd(44): signal "areset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (13012): Latch RPM_counter:u0|omwentel255[7] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal RPM_counter:u0|Equal0~synth
-Warning (13012): Latch RPM_counter:u0|omwentel255[5] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal RPM_counter:u0|Equal0~synth
-Warning (13012): Latch RPM_counter:u0|omwentel255[6] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal RPM_counter:u0|Equal0~synth
-Warning (13012): Latch RPM_counter:u0|omwentel255[4] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal RPM_counter:u0|Equal0~synth
-Warning (13012): Latch RPM_counter:u0|omwentel255[3] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal RPM_counter:u0|Equal0~synth
-Warning (13012): Latch RPM_counter:u0|omwentel255[2] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal RPM_counter:u0|Equal0~synth
-Warning (13012): Latch RPM_counter:u0|omwentel255[0] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal RPM_counter:u0|Equal0~synth
-Warning (13012): Latch RPM_counter:u0|omwentel255[1] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal RPM_counter:u0|Equal0~synth
 Info (13000): Registers with preset signals will power-up high
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
@@ -1524,15 +1721,15 @@ Warning (21074): Design contains 22 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "BUTTON[1]"
     Warning (15610): No output dependent on input pin "BUTTON[2]"
     Warning (15610): No output dependent on input pin "KNOP[4]"
-Info (21057): Implemented 1252 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1480 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 39 input pins
-    Info (21059): Implemented 114 output pins
+    Info (21059): Implemented 90 output pins
     Info (21060): Implemented 8 bidirectional pins
-    Info (21061): Implemented 1091 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 113 warnings
-    Info: Peak virtual memory: 4660 megabytes
-    Info: Processing ended: Tue Oct 08 17:02:42 2019
+    Info (21061): Implemented 1343 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 81 warnings
+    Info: Peak virtual memory: 4667 megabytes
+    Info: Processing ended: Fri Oct 11 13:53:49 2019
     Info: Elapsed time: 00:00:10
-    Info: Total CPU time (on all processors): 00:00:09
+    Info: Total CPU time (on all processors): 00:00:10
 
 
