@@ -10,8 +10,8 @@ entity RPM_counter is
 		hall_sens 	: in std_logic;
 		calc			: out std_logic;
 		tix_mem		: out unsigned(15 downto 0);
-		-- Voor de totale omwentelingen
 		start			: in std_logic;
+		-- Voor de totale omwentelingen
 		tot_omwentel99 : out std_logic_vector(7 downto 0); -- telt tot 99 en begint daarna weer vanaf 0
 		tot_omwentel255 : out std_logic_vector(7 downto 0) -- wordt groter met 1 zodra de teller van omwentel99 opnieuw begint
 		);
@@ -31,26 +31,32 @@ variable stop : std_logic;
 variable omwentel99 : unsigned(7 downto 0);
 variable omwentel255 : unsigned(7 downto 0);
 begin
-
-	if areset = '0' then
+	-- Als areset actief is wordt alles gereset
+	if areset = '0' then 
 		count := "0000000000000001";
 		tix_mem <= count;
 		-- Reset de totale omwentelingen
-		omwentel99 := "00000000"; -- eentje om tot 99 te tellen
-		omwentel255 := "00000000"; -- eentje om tot 255 te tellen
+		omwentel99 := "00000000"; -- Telt tot 100 (0 tot 99)
+		omwentel255 := "00000000"; -- Telt tot 256 (0 tot 255)
 	else
+	-- Teller wordt geactiveerd de hallsensor geactiveerd is.
 		if rising_edge(clock) then
-			if hall_sens = '1' and hal_state = '0'  and start = '1' then -- zodra hallsensor langsgekomen is wordt activeert de teller
-					omwentel99 := omwentel99 + 1; -- teller verhoogt met 1 zodra hallsensor geactiveerd is
-				if omwentel99 = "01100100" then -- Kijkt of omwentel99 de waarde 99 heeft bereikt
-					omwentel255 := omwentel255 + 1; -- vergroot de waarde van omwentel255 met 1 zodra de waarde 99 bereikt is in omwentel99
-					omwentel99 := "00000000"; -- Reset omwentel99 zodra de waarde 99 bereikt is
-				elsif omwentel255 = "11111111" then -- Kijkt of omwentel255 de maximale waarde heeft bereikt
-					omwentel255 := "00000000"; -- Reset omwentel255 zodra de maximale waarde ervan is bereikt
+			if hall_sens = '1' and hal_state = '0'  and start = '1' then
+					-- Teller wordt met de waarde één verhoogd
+					omwentel99 := omwentel99 + 1; 
+				-- Zodra de eerste twee bits de waarde 100 (0 tot 99) bevat, wordt in een nieuwe variabele 'omwentel255' de waarde met één verhoogd.
+				if omwentel99 = "01100100" then 
+					omwentel255 := omwentel255 + 1;
+					-- De waarde 100 is bereikt en wordt dus gereset naar 0
+					omwentel99 := "00000000"; 
+				-- Zodra de maximale waarde van omwentel255 is bereikt, wordt deze gereset naar 0.
+				elsif omwentel255 = "11111111" then 
+					omwentel255 := "00000000";
 				end if;
+			-- Als de reset (actief laag) geavtiveerd is worden alle variabelen op 0 gezet.
 			elsif reset = '0' then
-				omwentel99 := "00000000"; -- eentje om tot 99 te tellen
-				omwentel255 := "00000000"; -- eentje om tot 255 te tellen
+				omwentel99 := "00000000";
+				omwentel255 := "00000000";
 			end if;
 			hal_state <= hall_sens;
 		
@@ -79,6 +85,7 @@ begin
 			end if;
 		end if;
 	end if;	 
+	-- Zet waarden in std_logic_vector om en kent daarna de variabele toe aan een port
 	tot_omwentel99 <= std_logic_vector(omwentel99);
 	tot_omwentel255 <= std_logic_vector(omwentel255);
 end process;
