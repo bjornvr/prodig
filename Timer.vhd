@@ -4,7 +4,7 @@ use ieee.numeric_std.all;
  
 entity timer is
 generic(
-	ClockFrequencyHz : integer := 10000
+	PrescalerFrequency : integer := 10000
 	);
 	
 port(
@@ -38,7 +38,7 @@ begin
         elsif rising_edge(clk) then
 				if reset = '1' then
 					if start_stop = '1' then
-						if ticks = clockFrequencyHz - 1 then
+						if ticks = PrescalerFrequency - 1 then
 							ticks <= 0;
 	 
 							-- elke minuut
