@@ -1,3 +1,14 @@
+-- Name:				Max_rpm.vhd
+-- Filetype:		VHDL Hardware Discription
+-- Date:				11 october 2019
+-- Update:			Updated with comments for readability
+-- Description:	Regestration of maximal rpm and signal to registrate max time rpm
+-- Author:			Jacco van Egmond for PRODIG-PETERS-PG1
+-- State:			Release
+-- Error:			-
+-- Version:			1.4.1
+-- License:			Mozilla Public License Version 2.0
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -5,7 +16,7 @@ use ieee.numeric_std.all;
 
 entity max_rpm is
 	port (
-			areset : in std_logic;
+			areset : in std_logic;	-- Asynchronous reset
 			reset  : in std_logic;
 			clk 	 : in std_logic;
 			rpm_in : in unsigned (7 downto 0);
