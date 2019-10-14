@@ -25,6 +25,16 @@
 -- clock frequency change over.
 
 library ieee;
+-- Name:				Max_rpm.vhd
+-- Filetype:		VHDL Hardware Discription
+-- Date:				11 october 2019
+-- Update:			Updated with comments for readability
+-- Description:	Maximale RPM calculator
+-- Author:			Jacco van Egmond for PRODIG-PETERS-PG1
+-- State:			Release
+-- Error:			-
+-- Version:			1.4.1
+-- License:			Mozilla Public License Version 2.0
 use ieee.std_logic_1164.all;
 
 entity prescaler is

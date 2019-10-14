@@ -1,3 +1,13 @@
+-- Name:				Max_rpm.vhd
+-- Filetype:		VHDL Hardware Discription
+-- Date:				11 october 2019
+-- Update:			Updated with comments for readability
+-- Description:	Maximale RPM calculator
+-- Author:			Jordi Aldewereld  for PRODIG-PETERS-PG1
+-- State:			Release
+-- Error:			-
+-- Version:			1.4.1
+-- License:			Mozilla Public License Version 2.0
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 use IEEE.NUMERIC_STD.ALL;
