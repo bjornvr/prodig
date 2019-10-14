@@ -6,7 +6,7 @@
 -- Author:			Bjoern van Rozelaar for PRODIG-PETERS-PG1
 -- State:			Release
 -- Error:			-
--- Version:			1.3
+-- Version:			1.3.1
 -- License:			Mozilla Public License Version 2.0
 
 LIBRARY ieee;
@@ -56,7 +56,7 @@ variable reset		: integer range 0 to 1 := 0;		-- Intern singaal voor reset flag
 begin
 	if areset = '0' then
 --		ADC_data <= levela;
-		resstart <= '0';
+		resstart <= '0';										-- Zet alle flaggen op beginwaarden en start reset
 		pass		:= 0;
 		readADC	<= '0';
 		res_up	<= '1';
@@ -64,6 +64,7 @@ begin
 		N_readADC<= '1';
 		N_convst	<= '0';
 		reset		:= 1;
+		restarget<= "0010";									-- Consistent op level 2 na reset
 	else
 		if rising_edge(clock) then							-- Als klokpuls omhoog
 			if reset		= 1 then								-- Als er gereset moet worden, zet uit leesstand
