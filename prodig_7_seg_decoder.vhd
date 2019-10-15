@@ -22,53 +22,61 @@ entity prodig_7_seg_decoder is
 end entity prodig_7_seg_decoder;
 
 architecture rtl of prodig_7_seg_decoder is
-	signal bcd : std_logic_vector (11 downto 0);
+	signal binU0 :std_logic_vector (3 downto 0);
+	signal binU1 :std_logic_vector (3 downto 0);
+	signal binU2 :std_logic_vector (3 downto 0);
+	signal binU3 :std_logic_vector (3 downto 0);
+	signal binU4 :std_logic_vector (3 downto 0);
+	signal binU5 :std_logic_vector (3 downto 0);
+	signal binU6 :std_logic_vector (3 downto 0);
+	signal bcdU0 :std_logic_vector (3 downto 0);
+	signal bcdU1 :std_logic_vector (3 downto 0);
+	signal bcdU2 :std_logic_vector (3 downto 0);
+	signal bcdU3 :std_logic_vector (3 downto 0);
+	signal bcdU4 :std_logic_vector (3 downto 0);
+	signal bcdU5 :std_logic_vector (3 downto 0);
+	signal bcdU6 :std_logic_vector (3 downto 0);
+	signal bcd   :std_logic_vector(11 downto 0);
 	
-    procedure add3 (signal rpm_mem: in  std_logic_vector (3 downto 0); 
-                    signal bcd: out std_logic_vector (3 downto 0)) is
-    variable is_gt_4:  std_logic;
-    begin
-        is_gt_4 := rpm_mem(3) or (rpm_mem(2) and (rpm_mem(1) or rpm_mem(0)));
+component add3 is
+	port(
+		bin	: in std_logic_vector(3 downto 0);
+		bcd 	: out std_logic_vector (3 downto 0)
+		);
+end component;
 
-        if is_gt_4 = '1' then
-        -- if to_integer(unsigned (bin)) > 4 then
-            bcd <= std_logic_vector(unsigned(rpm_mem) + "0011");
-        else
-            bcd <= rpm_mem;
-        end if;
-    end procedure;
-
-    signal U0bin,U1bin,U2bin,U3bin,U4bin,U5bin,U6bin:
-                std_logic_vector (3 downto 0);
-
-    signal U0bcd,U1bcd,U2bcd,U3bcd,U4bcd,U5bcd,U6bcd:
-                std_logic_vector (3 downto 0);       
 begin
-    U0bin <= std_logic_vector(unsigned('0' & rpm_mem (7 downto 5)));
-    U1bin <= U0bcd(2 downto 0) & rpm_mem(4);
-    U2bin <= U1bcd(2 downto 0) & rpm_mem(3);
-    U3bin <= U2bcd(2 downto 0) & rpm_mem(2);
-    U4bin <= U3bcd(2 downto 0) & rpm_mem(1);
+	binU0 <= std_logic_vector(unsigned('0' & rpm_mem(7 downto 5)));
+	binU1 <= bcdU0(2 downto 0) & rpm_mem(4);
+	binU2 <= bcdU1(2 downto 0) & rpm_mem (3);
+	binU3	<= bcdU2(2 downto 0) & rpm_mem(2);
+	binU4 <= bcdU3(2 downto 0) & rpm_mem(1);
+	binU5 <=	'0' & bcdU0(3) & bcdU1(3) & bcdU2(3) ;
+	binU6 <= bcdU5(2 downto 0) & bcdU3(3);
 
-    U5bin <= '0' & U0bcd(3) & U1bcd(3) & U2bcd(3);
-    U6bin <= U5bcd(2 downto 0) & U3bcd(3);
+u0: add3
+port map(bin => binU0, bcd => bcdU0);
+	
+u1: add3	
+port map(bin => binU1, bcd => bcdU1);
 
-U0: add3(U0bin,U0bcd);
+u2: add3
+port map(bin => binU2, bcd => bcdU2);
 
-U1: add3(U1bin,U1bcd);
+u3: add3
+port map(bin => binU3, bcd => bcdU3);
 
-U2: add3(U2bin,U2bcd);
+u4: add3
+port map(bin => binU4, bcd => bcdU4);
 
-U3: add3(U3bin,U3bcd);
+u5: add3
+port map(bin => binU5, bcd => bcdU5);
 
-U4: add3(U4bin,U4bcd);
+u6: add3
+port map(bin => binU6, bcd => bcdU6);
 
-U5: add3(U5bin,U5bcd);
 
-U6: add3(U6bin,U6bcd);
-
-OUTP:
-    bcd <= '0' & '0' & U5bcd(3) & U6bcd & U4bcd & rpm_mem(0);
+ bcd <= '0' & '0' & bcdU5(3) & bcdU6 & bcdU4 & rpm_mem(0);
 	 
 
 		with bcd(3  downto 0)  select
