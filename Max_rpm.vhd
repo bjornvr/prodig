@@ -1,9 +1,9 @@
 -- Name:				Max_rpm.vhd
 -- Filetype:		VHDL Hardware Discription
--- Date:				11 october 2019
+-- Date:				11 oktober 2019
 -- Update:			Updated with comments for readability
 -- Description:	Maximale RPM calculator
--- Author:			Jacco van Egmond for PRODIG-PETERS-PG1
+-- Author:			Jacco van Egmond
 -- State:			Release
 -- Error:			-
 -- Version:			1.4.1
@@ -32,7 +32,7 @@ begin
 	process (clk, areset)
 		variable rpm_max_int : std_logic_vector (7 downto 0) := "00000000";	-- Interne variabele voor de Maximale RPM
 		begin
-		
+
 		if areset = '0' then											-- Als de reset actief is wordt alles op 0 gezet
 			rpm_max <= "00000000";
 			rpm_max_int := "00000000";
@@ -44,7 +44,7 @@ begin
 				rpm_max <= "00000000";
 				rpm_int <= "00000000";
 				rpm_max_int := "00000000";
-			elsif rpm_int > rpm_max_int and start = '1' then-- Als rpm_int groter is als rpm_max_int en start=1 
+			elsif rpm_int > rpm_max_int and start = '1' then-- Als rpm_int groter is als rpm_max_int en start=1
 				rpm_max_int := rpm_int;								-- Waarde van rpm_int wordt in rpm_max_int gezet
 				time_save <= '1';										-- time_save wordt op 1 gezet zodat de tijd opgeslagen wordt op het moment van rpm_int > rpm_max_int
 			else

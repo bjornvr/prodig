@@ -1,6 +1,6 @@
 -- Name:				division.vhd
 -- Filetype:		VHDL Hardware Discription
--- Date:				11 october 2019
+-- Date:				11 oktober 2019
 -- Update:			Updated with comments for readability
 -- Description:	psuedo-divides tix to calculate RPM
 -- Author:			Bjoern van Rozelaar for PRODIG-PETERS-PG1
@@ -72,7 +72,7 @@ begin
 						rpm  := "00000000";				-- Ticks te groot om te berekenen, stop berekening (RPM < 20)
 						stop := '1'  ;
 					end if;
-				else
+				else											-- RPM bijwerken
 					rpm_mem <= rpm;
 				end if;
 			end if;

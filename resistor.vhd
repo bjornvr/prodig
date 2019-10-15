@@ -1,5 +1,5 @@
 -- Filename:		Resistor.vhd
--- Filetype:		VHDL Source Code
+-- Filetype:		VHDL Hardware Discription
 -- Date:				13 oct 2019
 -- Update:			Updated with comments for readability
 -- Description:	VHDL Description of Display.vhd to control the 16x4 display

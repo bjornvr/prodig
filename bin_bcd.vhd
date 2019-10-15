@@ -1,9 +1,9 @@
 -- Name:				bin_bcd.vhd
 -- Filetype:		VHDL Hardware Discription
--- Date:				15 october 2019
+-- Date:				15 oktober 2019
 -- Update:			Updated with comments for readability
 -- Description:	het om zetten van binair naar bcd
--- Author:			Jacco van Egmond for PRODIG-PETERS-PG1
+-- Author:			Jacco van Egmond
 -- State:			Release
 -- Error:			-
 -- Version:			1.4.1
@@ -36,7 +36,7 @@ architecture rtl of bin_bcd is							-- signalen aan gemaakt om te specificeren
 	signal bcdU6 :std_logic_vector (3 downto 0);
 
 
-component add3 is			
+component add3 is
 	port(
 		bin	: in std_logic_vector(3 downto 0);
 		bcd 	: out std_logic_vector (3 downto 0)
@@ -54,8 +54,8 @@ begin
 
 u0: add3															-- aan maken van alle add3 en signalen aan elkaar kopellen
 port map(bin => binU0, bcd => bcdU0);
-	
-u1: add3	
+
+u1: add3
 port map(bin => binU1, bcd => bcdU1);
 
 u2: add3

@@ -1,9 +1,9 @@
--- Name:				Max_rpm.vhd
+-- Name:				RPM_counter.vhd
 -- Filetype:		VHDL Hardware Discription
--- Date:				11 october 2019
+-- Date:				11 oktober 2019
 -- Update:			Updated with comments for readability
 -- Description:	Maximale RPM calculator
--- Author:			Jordi Aldewereld  for PRODIG-PETERS-PG1
+-- Author:			Jordi Aldewereld
 -- State:			Release
 -- Error:			-
 -- Version:			1.4.1
@@ -42,7 +42,7 @@ variable omwentel99 : unsigned(7 downto 0);
 variable omwentel255 : unsigned(7 downto 0);
 begin
 	-- Als areset actief is wordt alles gereset
-	if areset = '0' then 
+	if areset = '0' then
 		count := "0000000000000001";
 		tix_mem <= count;
 		-- Reset de totale omwentelingen
@@ -53,14 +53,14 @@ begin
 		if rising_edge(clock) then
 			if hall_sens = '1' and hal_state = '0'  and start = '1' then
 					-- Teller wordt met de waarde één verhoogd
-					omwentel99 := omwentel99 + 1; 
+					omwentel99 := omwentel99 + 1;
 				-- Zodra de eerste twee bits de waarde 100 (0 tot 99) bevat, wordt in een nieuwe variabele 'omwentel255' de waarde met één verhoogd.
-				if omwentel99 = "01100100" then 
+				if omwentel99 = "01100100" then
 					omwentel255 := omwentel255 + 1;
 					-- De waarde 100 is bereikt en wordt dus gereset naar 0
-					omwentel99 := "00000000"; 
+					omwentel99 := "00000000";
 				-- Zodra de maximale waarde van omwentel255 is bereikt, wordt deze gereset naar 0.
-				elsif omwentel255 = "11111111" then 
+				elsif omwentel255 = "11111111" then
 					omwentel255 := "00000000";
 				end if;
 			-- Als de reset (actief laag) geavtiveerd is worden alle variabelen op 0 gezet.
@@ -69,16 +69,16 @@ begin
 				omwentel255 := "00000000";
 			end if;
 			hal_state <= hall_sens;
-		
-		
-		
+
+
+
 			if hall_sens = '1' and wait_time = 2000 then
 				tix_mem <= count;
 				count := "0000000000000001";
 				calc <= '1';
 				wait_time := 0;
 				stop := '0';
-			else 
+			else
 				if count > 30000 then
 					tix_mem <= count;
 					count := "0000000000000000";
@@ -94,7 +94,7 @@ begin
 				calc <= '0';
 			end if;
 		end if;
-	end if;	 
+	end if;
 	-- Zet waarden in std_logic_vector om en kent daarna de variabele toe aan een port
 	tot_omwentel99 <= std_logic_vector(omwentel99);
 	tot_omwentel255 <= std_logic_vector(omwentel255);

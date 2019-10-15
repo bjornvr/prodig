@@ -1,6 +1,6 @@
 -- Name:				Prodig_7_seg_decoder.vhd
 -- Filetype:		VHDL Hardware Discription
--- Date:				15 october 2019
+-- Date:				15 oktober 2019
 -- Update:			Updated with comments for readability
 -- Description:	het om zetten van 8 bit ingang naar 7 segment display
 -- Author:			Jacco van Egmond for PRODIG-PETERS-PG1
@@ -10,7 +10,7 @@
 -- License:			Mozilla Public License Version 2.0
 
 
--- bigin bin_bcd 
+-- bigin bin_bcd
 -- kijk voor werking van dit stuk naar de bin_bcd file
 library ieee;
 use ieee.std_logic_1164.all;
@@ -20,7 +20,7 @@ entity prodig_7_seg_decoder is
 	port(
 			rpm_mem 	: in unsigned(7 downto 0);
 			bcd_hun 	: out std_logic_vector (6 downto 0);
-			bcd_ten	: out std_logic_vector (6 downto 0); 
+			bcd_ten	: out std_logic_vector (6 downto 0);
 			bcd_one	: out std_logic_vector (6 downto 0)
 			);
 end entity prodig_7_seg_decoder;
@@ -41,7 +41,7 @@ architecture rtl of prodig_7_seg_decoder is
 	signal bcdU5 :std_logic_vector (3 downto 0);
 	signal bcdU6 :std_logic_vector (3 downto 0);
 	signal bcd   :std_logic_vector(11 downto 0);
-	
+
 component add3 is
 	port(
 		bin	: in std_logic_vector(3 downto 0);
@@ -60,8 +60,8 @@ begin
 
 u0: add3
 port map(bin => binU0, bcd => bcdU0);
-	
-u1: add3	
+
+u1: add3
 port map(bin => binU1, bcd => bcdU1);
 
 u2: add3
@@ -82,7 +82,7 @@ port map(bin => binU6, bcd => bcdU6);
 
  bcd <= '0' & '0' & bcdU5(3) & bcdU6 & bcdU4 & rpm_mem(0);
 	-- end bin_bcd
-	
+
 
 		with bcd(3  downto 0)  select						-- hierwordt aan gegeven voor welk getal
 				--				 6543210							-- welke onderdelen van het 7 segment display
@@ -97,7 +97,7 @@ port map(bin => binU6, bcd => bcdU6);
 								"0000000" when "1000",--8
 								"0010000" when "1001",--9
 								"-------" when others;
-		
+
 		with bcd(7  downto 4)  select
 				--				 6543210
 				bcd_ten <=	"1000000" when "0000",--0
@@ -125,7 +125,7 @@ port map(bin => binU6, bcd => bcdU6);
 								"0000000" when "1000",--8
 								"0010000" when "1001",--9
 								"-------" when others;
-			
+
 
 
 end rtl ;

@@ -196,7 +196,6 @@ set_location_assignment PIN_N24 -to KNOP[6]
 set_global_assignment -name USE_CONFIGURATION_DEVICE ON
 set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
 set_global_assignment -name RESERVE_ASDO_AFTER_CONFIGURATION "USE AS REGULAR IO"
-set_global_assignment -name VHDL_FILE Ingedrukt.vhd
 set_global_assignment -name VHDL_FILE ontdender.vhd
 set_global_assignment -name VHDL_FILE gem_RPM.vhd
 set_global_assignment -name VHDL_FILE resistor.vhd
