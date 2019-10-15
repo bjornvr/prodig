@@ -1,8 +1,8 @@
--- Name:				Max_rpm.vhd
+-- Name:				bin_bcd.vhd
 -- Filetype:		VHDL Hardware Discription
 -- Date:				11 october 2019
 -- Update:			Updated with comments for readability
--- Description:	Maximale RPM calculator
+-- Description:	Binary to BCD converter
 -- Author:			Jacco van Egmond for PRODIG-PETERS-PG1
 -- State:			Release
 -- Error:			-
@@ -22,8 +22,8 @@ end entity bin_bcd;
 architecture rtl of bin_bcd is
 	signal bcd : std_logic_vector (11 downto 0);
 	signal bin : unsigned(7 downto 0);
-	
-    procedure add3 (signal bin: in  std_logic_vector (3 downto 0); 
+
+    procedure add3 (signal bin: in  std_logic_vector (3 downto 0);
                     signal bcd: out std_logic_vector (3 downto 0)) is
     variable is_gt_4:  std_logic;
     begin
@@ -41,7 +41,7 @@ architecture rtl of bin_bcd is
                 std_logic_vector (3 downto 0);
 
     signal U0bcd,U1bcd,U2bcd,U3bcd,U4bcd,U5bcd,U6bcd:
-                std_logic_vector (3 downto 0);       
+                std_logic_vector (3 downto 0);
 begin
 	 bin <= unsigned(bin_in(7 downto 0));
     U0bin <= std_logic_vector(unsigned('0' & bin (7 downto 5)));

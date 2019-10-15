@@ -2,7 +2,7 @@
 -- Filetype:		VHDL Hardware Discription
 -- Date:				11 october 2019
 -- Update:			Updated with comments for readability
--- Description:	psuedo-divides tix to calculate RPM
+-- Description:	Pseudo-divides ticks to determine RPM of hometrainer
 -- Author:			Bjoern van Rozelaar for PRODIG-PETERS-PG1
 -- State:			Release
 -- Error:			-

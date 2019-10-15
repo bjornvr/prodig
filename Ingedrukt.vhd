@@ -1,8 +1,8 @@
--- Name:				Max_rpm.vhd
+-- Name:				ingedrukt.vhd
 -- Filetype:		VHDL Hardware Discription
 -- Date:				11 october 2019
 -- Update:			Updated with comments for readability
--- Description:	Maximale RPM calculator
+-- Description:	Button delay??
 -- Author:			Jacco van Egmond for PRODIG-PETERS-PG1
 -- State:			Release
 -- Error:			-
@@ -35,8 +35,8 @@ process (CLK_10kHz, input)
 variable ffa : integer range 0 to 100 := 100; -- 100 * 100us = 10ms debounce
 variable t : integer range 0 to 100 := 0;
 
-begin 
-	
+begin
+
 	if rising_edge(CLK_10kHz) then
 			ffa := ffa+1;
 		if ffa >= delay then
@@ -57,4 +57,3 @@ begin
 	end if;
 end process;
 end architecture behavior;
-	

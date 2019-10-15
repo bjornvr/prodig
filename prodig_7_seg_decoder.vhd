@@ -1,8 +1,8 @@
--- Name:				Max_rpm.vhd
+-- Name:			   prodig_7_seg_decoder.vhd
 -- Filetype:		VHDL Hardware Discription
 -- Date:				11 october 2019
 -- Update:			Updated with comments for readability
--- Description:	Maximale RPM calculator
+-- Description:	7 segment display decoder
 -- Author:			Jacco van Egmond for PRODIG-PETERS-PG1
 -- State:			Release
 -- Error:			-
@@ -16,15 +16,15 @@ entity prodig_7_seg_decoder is
 	port(
 			rpm_mem 	: in unsigned(7 downto 0);
 			bcd_hun 	: out std_logic_vector (6 downto 0);
-			bcd_ten	: out std_logic_vector (6 downto 0); 
+			bcd_ten	: out std_logic_vector (6 downto 0);
 			bcd_one	: out std_logic_vector (6 downto 0)
 			);
 end entity prodig_7_seg_decoder;
 
 architecture rtl of prodig_7_seg_decoder is
 	signal bcd : std_logic_vector (11 downto 0);
-	
-    procedure add3 (signal rpm_mem: in  std_logic_vector (3 downto 0); 
+
+    procedure add3 (signal rpm_mem: in  std_logic_vector (3 downto 0);
                     signal bcd: out std_logic_vector (3 downto 0)) is
     variable is_gt_4:  std_logic;
     begin
@@ -42,7 +42,7 @@ architecture rtl of prodig_7_seg_decoder is
                 std_logic_vector (3 downto 0);
 
     signal U0bcd,U1bcd,U2bcd,U3bcd,U4bcd,U5bcd,U6bcd:
-                std_logic_vector (3 downto 0);       
+                std_logic_vector (3 downto 0);
 begin
     U0bin <= std_logic_vector(unsigned('0' & rpm_mem (7 downto 5)));
     U1bin <= U0bcd(2 downto 0) & rpm_mem(4);
@@ -69,7 +69,7 @@ U6: add3(U6bin,U6bcd);
 
 OUTP:
     bcd <= '0' & '0' & U5bcd(3) & U6bcd & U4bcd & rpm_mem(0);
-	 
+
 
 		with bcd(3  downto 0)  select
 				--				 6543210
@@ -84,7 +84,7 @@ OUTP:
 								"0000000" when "1000",--8
 								"0010000" when "1001",--9
 								"-------" when others;
-		
+
 		with bcd(7  downto 4)  select
 				--				 6543210
 				bcd_ten <=	"1000000" when "0000",--0
@@ -112,7 +112,7 @@ OUTP:
 								"0000000" when "1000",--8
 								"0010000" when "1001",--9
 								"-------" when others;
-			
+
 
 
 end rtl ;

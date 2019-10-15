@@ -1,8 +1,8 @@
--- Name:				Max_rpm.vhd
+-- Name:				ontdender.vhd
 -- Filetype:		VHDL Hardware Discription
 -- Date:				11 october 2019
 -- Update:			Updated with comments for readability
--- Description:	Maximale RPM calculator
+-- Description:	Debouncer for buttons and other inputs
 -- Author:			Jacco van Egmond for PRODIG-PETERS-PG1
 -- State:			Release
 -- Error:			-
@@ -37,8 +37,8 @@ process (CLK_10kHz, input)
 variable ffa : integer range 0 to 100 := 100; -- 100 * 100us = 10ms debounce
 variable long_press_counter : unsigned(15 downto 0);
 
-begin 
-	if areset = '0' then 
+begin
+	if areset = '0' then
 	long_press_counter := "0000000000000000";
 	elsif rising_edge(CLK_10kHz) then
 		if ffa < delay then
@@ -56,7 +56,7 @@ begin
 			end if;
 		end if;
 		output <= output_int;
-		
+
 		if "0010011100010000" > long_press_counter and output_int = '0'  then
 					long_press_counter := long_press_counter + "0000000000000001";
 		end if;
@@ -69,4 +69,3 @@ begin
 	counter <= std_logic_vector(long_press_counter);
 end process;
 end architecture bhv;
-	
