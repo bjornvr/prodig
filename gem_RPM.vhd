@@ -50,15 +50,15 @@ begin
 				else 
 					wait_gem_RPM <= wait_gem_RPM + 1;
 				end if;
-				if reset = '0' then 				-- wanneer de reset op de hometrainer wordt ingedrukt
+				if reset = '0' then 				-- Wanneer de reset op de hometrainer wordt ingedrukt.
 					tot_RPM <= "000000000000" + RPM;
 					tot_RPM_int <= "000000000000";
 					count_RPM <= "00000000";
 					gem_RPM_int <= "00000000";
 					stop <= '1';
 				else
-					if wait_gem_RPM = 10000 and start = '1' then		-- als de hall_sens wordt geactiveerd wordt de rpm bij totale rpm opgeteld en daarna 
-						tot_RPM <= tot_RPM + RPM;		-- gedeeld door de hoevaak de rpm er bij opgeteld is om zo het gemiddelde rpm te berekenen
+					if wait_gem_RPM = 10000 and start = '1' then		-- Elke seconde wordt de rpm bij totale rpm opgeteld en daarna gedeeld door 
+						tot_RPM <= tot_RPM + RPM;							-- hoevaak de rpm er bij opgeteld is om zo het gemiddelde rpm te berekenen.
 						count_RPM <= count_RPM + 1;
 						stop <= '0';
 						tot_RPM_int <= tot_RPM;
