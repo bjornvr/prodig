@@ -1,9 +1,9 @@
 -- Filename:		Resistor.vhd
 -- Filetype:		VHDL Hardware Discription
--- Date:				13 oct 2019
+-- Date:				13 oktober 2019
 -- Update:			Updated with comments for readability
 -- Description:	VHDL Description of Display.vhd to control the 16x4 display
--- Author:			Bjoern van Rozelaar for PRODIG-PETERS-PG1
+-- Author:			Bjoern van Rozelaar
 -- State:			Release
 -- Error:			-
 -- Version:			1.3.1

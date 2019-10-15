@@ -1,8 +1,8 @@
--- Name:				Max_rpm.vhd
+-- Name:				gem_rpm.vhd
 -- Filetype:		VHDL Hardware Discription
--- Date:				11 october 2019
+-- Date:				11 oktober 2019
 -- Update:			Updated with comments for readability
--- Description:	Maximale RPM calculator
+-- Description:	Gemiddelde aantal RPM bepalen
 -- Author:			Kevin Schrama
 -- State:			Release
 -- Error:			-
@@ -47,7 +47,7 @@ begin
 			if rising_edge(clock) then
 				if wait_gem_RPM = 10000 then		-- interval van 1 seconde
 					wait_gem_RPM <= 0;
-				else 
+				else
 					wait_gem_RPM <= wait_gem_RPM + 1;
 				end if;
 				if reset = '0' then 				-- Wanneer de reset op de hometrainer wordt ingedrukt.
@@ -57,7 +57,7 @@ begin
 					gem_RPM_int <= "00000000";
 					stop <= '1';
 				else
-					if wait_gem_RPM = 10000 and start = '1' then		-- Elke seconde wordt de rpm bij totale rpm opgeteld en daarna gedeeld door 
+					if wait_gem_RPM = 10000 and start = '1' then		-- Elke seconde wordt de rpm bij totale rpm opgeteld en daarna gedeeld door
 						tot_RPM <= tot_RPM + RPM;							-- hoevaak de rpm er bij opgeteld is om zo het gemiddelde rpm te berekenen.
 						count_RPM <= count_RPM + 1;
 						stop <= '0';
@@ -67,7 +67,7 @@ begin
 						if tot_RPM_int >= count_RPM then
 							tot_RPM_int <= tot_RPM_int - count_RPM;
 							gem_RPM_int <= gem_RPM_int + 1;
-						else 
+						else
 							stop <= '1';
 							gem_RPM <= gem_RPM_int;
 						end if;
@@ -76,19 +76,5 @@ begin
 			end if;
 		end if;
 	end process;
-	
+
 end architecture;
-
-
-
-
-
-
-
-
-
-
-
-
-
-

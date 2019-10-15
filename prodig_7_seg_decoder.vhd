@@ -10,8 +10,11 @@
 -- License:			Mozilla Public License Version 2.0
 
 
--- bigin bin_bcd
--- kijk voor werking van dit stuk naar de bin_bcd file
+--******************* LEES DIT EERST *******************
+-- KIJK VOOR WERKING VAN DIT STUK NAAR DE BIN_BCD.VHD FILE ---
+--******************* LEES DIT EERST *******************
+
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;

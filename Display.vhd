@@ -1,6 +1,6 @@
 -- Filename:     Display.vhd
 -- Filetype:     VHDL Source Code
--- Date:         27 sep 2019
+-- Date:         27 september 2019
 -- Update:       -
 -- Description:  VHDL Description of Display.vhd to control the 16x4 display
 -- Author:       Mirko
@@ -251,7 +251,7 @@ begin
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_min_BCD(3 downto 0))))))) &
 							":" &
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_sec_BCD(7 downto 4))))))) &
-							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_sec_BCD(3 downto 0))))))) & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_sec_BCD(3 downto 0))))))) &
 							"");
 			tijd_line_max <= ("@ time:    " &
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_min_max_BCD(7 downto 4))))))) &

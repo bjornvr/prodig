@@ -1,13 +1,13 @@
--- Filename:     prescaler.vhd
--- Filetype:     VHDL Hardware Discription
--- Date:         23 september 2019
--- Update:       -
--- Description:  Zet 5MHz om naar 10KHz
--- Author:       Mirko Bosch
--- State:        Release
--- Error:        -
--- Version:      1.0
--- Copyright:    (c)2012, De Haagse Hogeschool
+-- Filename:      prescaler.vhd
+-- Filetype:      VHDL Hardware Discription
+-- Date:          23 september 2019
+-- Update:        -
+-- Description:   Zet 5MHz om naar 10KHz
+-- Author:        Mirko Bosch
+-- State:         Release
+-- Error:         -
+-- Version:	      1.0
+-- License:			Mozilla Public License Version 2.0
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -26,7 +26,7 @@ signal count : integer range 0 to 2499;	-- Counter voor de deling van 50 MHz naa
 begin
 	process (clkin, areset) is
 	variable clkint : std_logic;
-	begin
+	begin										--Als areset reset
 		if areset = '0' then
 			count <= 0;
 			clkint := '0';
