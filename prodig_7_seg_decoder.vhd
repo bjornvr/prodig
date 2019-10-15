@@ -1,13 +1,17 @@
--- Name:				Max_rpm.vhd
+-- Name:				Prodig_7_seg_decoder.vhd
 -- Filetype:		VHDL Hardware Discription
--- Date:				11 october 2019
+-- Date:				15 october 2019
 -- Update:			Updated with comments for readability
--- Description:	Maximale RPM calculator
+-- Description:	het om zetten van 8 bit ingang naar 7 segment display
 -- Author:			Jacco van Egmond for PRODIG-PETERS-PG1
 -- State:			Release
 -- Error:			-
 -- Version:			1.4.1
 -- License:			Mozilla Public License Version 2.0
+
+
+-- bigin bin_bcd 
+-- kijk voor werking van dit stuk naar de bin_bcd file
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -77,11 +81,12 @@ port map(bin => binU6, bcd => bcdU6);
 
 
  bcd <= '0' & '0' & bcdU5(3) & bcdU6 & bcdU4 & rpm_mem(0);
-	 
+	-- end bin_bcd
+	
 
-		with bcd(3  downto 0)  select
-				--				 6543210
-				bcd_one <=	"1000000" when "0000",--0
+		with bcd(3  downto 0)  select						-- hierwordt aan gegeven voor welk getal
+				--				 6543210							-- welke onderdelen van het 7 segment display
+				bcd_one <=	"1000000" when "0000",--0	-- aanmoet om het gewenste getal te kunnen aflezen
 								"1111001" when "0001",--1
 								"0100100" when "0010",--2
 								"0110000" when "0011",--3
