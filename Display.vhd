@@ -4,7 +4,7 @@
 -- Update:       -
 -- Description:  VHDL Description of Display.vhd to control the 16x4 display
 -- Author:       Mirko
--- State:        
+-- State:
 -- Error:        -
 -- Version:      1.0
 -- Copyright:    (c)2012, De Haagse Hogeschool
@@ -42,10 +42,10 @@ entity display is
 			modus 			: in std_logic;
 			te_hoog			: in std_logic
 	);
-	
+
 end entity display;
 
- 
+
 
 -- The architecture!
 architecture hardware of display is
@@ -160,7 +160,7 @@ begin
 
 	-- The clock
 	clk <= clk_in;
-	
+
 	-- Use LCD module.
 	lcdm : lcd_driver_hd44780_module
 	generic map (freq => sys_freq, areset_pol => '1', time_cycle_e => 2000 ns, time_pweh => 500 ns,
@@ -168,48 +168,48 @@ begin
 	port map (clk => clk, areset => areset, init => init, data => data, wr => wr, cls => cls,
 				 home => home, goto10 => goto10, goto20 => goto20, goto30 => goto30, busy => busy,
 				 LCD_E => LCD_EN, LCD_RS => LCD_RS, LCD_RW => LCD_RW, LCD_DB => LCD_DATA);
-			
-	
-	
-	-- De omzetting van bin naar bcd 
+
+
+
+	-- De omzetting van bin naar bcd
 	RPM2bcd: bin_bcd
 		port map (bin_in => RPM, bcd_out => RPM_BCD);
-		
+
 	gemiddelde2bcd: bin_bcd
 		port map (bin_in => gemiddelde, bcd_out => gemiddelde_BCD);
-		
+
 	maximale2bcd: bin_bcd
 		port map (bin_in => maximale, bcd_out => maximale_BCD);
-		
+
 	tijd_secbcd: bin_bcd
 		port map (bin_in => ("00" & tijd_sec), bcd_out => tijd_sec_bcd);
-		
+
 	tijd_sec_maxbcd: bin_bcd
 		port map (bin_in => ("00" & tijd_sec_max), bcd_out => tijd_sec_max_bcd);
-		
+
 	tijd_minbcd: bin_bcd
 		port map(bin_in => ("00" & tijd_min), bcd_out => tijd_min_bcd);
-		
+
 	tijd_min_maxbcd: bin_bcd
 		port map(bin_in => ("00" & tijd_min_max), bcd_out => tijd_min_max_bcd);
-		
+
 	totale_omw_1bcd: bin_bcd
 		port map (bin_in => totale_omw_1, bcd_out => totale_omw_BCD(11 downto 0));
-		
+
 	totale_omw_2bcd: bin_bcd
-		port map (bin_in => totale_omw_2, bcd_out => totale_omw_BCD(23 downto 12));	
-		
-	
-	
+		port map (bin_in => totale_omw_2, bcd_out => totale_omw_BCD(23 downto 12));
+
+
+
 
 
 	-- The client side
 	drive: process (clk, areset) is
-	
-	
+
+
 	variable aline : string16_type; -- variable voor het schrijven van de regel
 
-	
+
 	begin
 		if areset = '0' then
 			wr <= '0';
@@ -232,71 +232,71 @@ begin
 			goto20 <= '0';
 			goto30 <= '0';
 			data <= "00000000";
-			
-			--update lines doe dit voor elke soort waarde
-			if te_hoog = '0' then 
+
+			--update lines doe dit voor elke soort waarde (dit is hieronder beschreven voor elke waarde die wordt heengestuurd)
+			if te_hoog = '0' then
 				-- Schrijf alleen de gekregen waarde als deze geldig onder de 200 RPM blijft
-				rpm_line <= ("RPM:       " & 
-								character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & RPM_BCD(11 downto 8))))))) & 
-								character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & RPM_BCD(7 downto 4))))))) & 
-								character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & RPM_BCD(3 downto 0))))))) & 
+				rpm_line <= ("RPM:       " &
+								character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & RPM_BCD(11 downto 8))))))) &
+								character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & RPM_BCD(7 downto 4))))))) &
+								character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & RPM_BCD(3 downto 0))))))) &
 								"  ");
-			else 
+			else
 				-- Geen geldige RPM waarde schrijf dan XXX
 				rpm_line <= ("RPM:       XXX  ");
-			end if;	
-			
+			end if;
+
 			tijd_line <= ("Tijd:      " &
-							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_min_BCD(7 downto 4))))))) & 
-							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_min_BCD(3 downto 0))))))) & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_min_BCD(7 downto 4))))))) &
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_min_BCD(3 downto 0))))))) &
 							":" &
-							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_sec_BCD(7 downto 4))))))) & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_sec_BCD(7 downto 4))))))) &
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_sec_BCD(3 downto 0))))))) & 
 							"");
 			tijd_line_max <= ("@ time:    " &
-							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_min_max_BCD(7 downto 4))))))) & 
-							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_min_max_BCD(3 downto 0))))))) & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_min_max_BCD(7 downto 4))))))) &
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_min_max_BCD(3 downto 0))))))) &
 							":" &
-							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_sec_max_BCD(7 downto 4))))))) & 
-							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_sec_max_BCD(3 downto 0))))))) & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_sec_max_BCD(7 downto 4))))))) &
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & tijd_sec_max_BCD(3 downto 0))))))) &
 							"");
-			gemiddelde_line <= ("Average:   " & 
-							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & Gemiddelde_BCD(11 downto 8))))))) & 
-							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & Gemiddelde_BCD(7 downto 4))))))) & 
-							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & Gemiddelde_BCD(3 downto 0))))))) & 
+			gemiddelde_line <= ("Average:   " &
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & Gemiddelde_BCD(11 downto 8))))))) &
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & Gemiddelde_BCD(7 downto 4))))))) &
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & Gemiddelde_BCD(3 downto 0))))))) &
 							"  ");
-			totale_omw_line <= ("Tot omw:   " & 
-							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(23 downto 20))))))) & 
-							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(19 downto 16))))))) & 
-							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(15 downto 12))))))) & 
+			totale_omw_line <= ("Tot omw:   " &
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(23 downto 20))))))) &
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(19 downto 16))))))) &
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(15 downto 12))))))) &
 							--character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(11 downto 8))))))) & -- valt weg omdat we de eerste alleen maar laten tellen tot 99
-							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(7 downto 4))))))) & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(7 downto 4))))))) &
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & totale_omw_BCD(3 downto 0))))))) &
 							"");
 			maximale_line <= ("Max rpm:   " &
-							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & maximale_BCD(11 downto 8))))))) & 
-							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & maximale_BCD(7 downto 4))))))) & 
-							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & maximale_BCD(3 downto 0))))))) & 
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & maximale_BCD(11 downto 8))))))) &
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & maximale_BCD(7 downto 4))))))) &
+							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & maximale_BCD(3 downto 0))))))) &
 							"  ");
 			weerstand_line <= ("Weerstand: " &
 							character'val(integer(conv_integer(unsigned((std_logic_vector("0011" & weerstand(3 downto 0))))))) &
 							"    ");
-		
+
 			if start_screen = '1' then
 				-- Bij opstarten wachten met schrijven van waardes tot gebruiker op start drukt.
 				start <= '1';
-			end if;		
-		
-		
-		
-		
-		
-			
+			end if;
+
+
+
+
+
+
 			case state is
 				when write_char =>
-					-- Gebruik de lijnen die eerder gedeclareerd zijn. 
+					-- Gebruik de lijnen die eerder gedeclareerd zijn.
 					-- modus zorgt er voor dat er verschillende beelden kunnen worden weergegeven.
-					
+
 					if start = '0' then
 						aline := message(line_counter);		--word gebruikt om een hele array door te sturen, dit is het welkoms scherm.
 					elsif modus = '1' then
@@ -316,14 +316,14 @@ begin
 							when others => null;
 						end case;
 					end if;
-					
-					
+
+
 					data <= std_logic_vector(conv_unsigned( character'pos(aline(character_counter)),8));
  					wr <= '1';
 					state <= write_char_wait;
 
-					
-					
+
+
 -- Onderstaande behoord bij de lcd driver
 				when reset =>
 					-- Wait for the LCD module ready
@@ -333,7 +333,7 @@ begin
 					-- Setup message counter, start at 1.
 					character_counter <= 1;
 					line_counter <= 1;
-					
+
 				when write_char_wait =>
 					-- This state is needed so that the LCD driver
 					-- can process the write command. Note that data
@@ -342,14 +342,14 @@ begin
 					-- want this behaviour, please make your outputs
 					-- non-registered.
 					state <= update;
-					
+
 				when update =>
 					-- Wait for the write complete
 					if busy = '0' then
 						-- If end of string, goto hold mode...
 						if line_counter = 4 and character_counter = 16 then
 							state <= hold;
-						-- If end of line...	
+						-- If end of line...
 						elsif character_counter = 16 then
 							case line_counter is
 								when 1 => goto10 <= '1';
@@ -370,7 +370,7 @@ begin
 							state <= write_char;
 						end if;
 					end if;
-				
+
 				when update_linecount =>
 					-- This state is needed so that the LCD driver
 					-- can process the gotoXX command. Note that the gotoXX
@@ -379,13 +379,13 @@ begin
 					-- want this behaviour, please make your outputs
 					-- non-registered.
 					state <= update_linecount_wait;
-					
+
 				when update_linecount_wait =>
 					-- Wait for the LCD module ready
 					if busy = '0' then
 						state <= write_char;
 					end if;
-				
+
 				-- Done welkoms scherm
 				when hold =>
 					--state <= hold;
@@ -393,15 +393,15 @@ begin
 					home <= '1';
 				when hold2 =>
 					state <= reset;
-					
+
 				when others =>
 					null;
 
 			end case;
 		end if;
 	end process;
-				 
-	
+
+
 
 
 end architecture hardware;
