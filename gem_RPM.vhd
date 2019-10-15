@@ -1,8 +1,8 @@
--- Name:				Max_rpm.vhd
+-- Name:				gem_RPM.vhd
 -- Filetype:		VHDL Hardware Discription
 -- Date:				11 october 2019
 -- Update:			Updated with comments for readability
--- Description:	Maximale RPM calculator
+-- Description:	average RPM calculator
 -- Author:			Kevin Schrama
 -- State:			Release
 -- Error:			-

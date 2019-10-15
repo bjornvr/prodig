@@ -1,9 +1,9 @@
--- Name:				Max_rpm.vhd
+-- Name:				RPM_counter.vhd
 -- Filetype:		VHDL Hardware Discription
 -- Date:				11 october 2019
 -- Update:			Updated with comments for readability
--- Description:	Maximale RPM calculator
--- Author:			Jordi Aldewereld  for PRODIG-PETERS-PG1
+-- Description:	RPM counter
+-- Author:			Jordi Aldewereld (Totale omwentelingen) en Kevin Schrama (RPM counter)  for PRODIG-PETERS-PG1
 -- State:			Release
 -- Error:			-
 -- Version:			1.4.1
@@ -51,6 +51,7 @@ begin
 	else
 	-- Teller wordt geactiveerd de hallsensor geactiveerd is.
 		if rising_edge(clock) then
+			-- Totale omwentelingen
 			if hall_sens = '1' and hal_state = '0'  and start = '1' then
 					-- Teller wordt met de waarde één verhoogd
 					omwentel99 := omwentel99 + 1; 
@@ -71,19 +72,19 @@ begin
 			hal_state <= hall_sens;
 		
 		
-		
-			if hall_sens = '1' and wait_time = 2000 then
-				tix_mem <= count;
+			-- RPM Counter
+			if hall_sens = '1' and wait_time = 2000 then -- Als het pedaal langs de hallsensor komt wordt de tijd dat het duurde 
+				tix_mem <= count;									-- opgeslagen en wordt de teller weer op nul gezet zodat er weer opnieuw wordt geteld.
 				count := "0000000000000001";
-				calc <= '1';
-				wait_time := 0;
+				calc <= '1';	-- Er wordt verteld dat de rpm moet worden berekend, dit zodat er niet de hele tijd wordt gerekend, anders komen er verkeerd waardes uit.
+				wait_time := 0;	-- De wait time is zodat het opnieuw tellen van de tijd niet constant gebeurt wanneer de hallsensor getriggerd wordt maar dat er een buffer tussen zit van 0,2 seconde.
 				stop := '0';
-			else 
-				if count > 30000 then
+			else 	-- Nadat er langs de hallsensor is gegaan en de hall_sens weer 0 is begint er weer te tellen totdat de hall_sens weer 1 is.
+				if count > 30000 then	-- Als er voor 3 seconde niet wordt getrapt wordt de rpm op 0 gezet.
 					tix_mem <= count;
 					count := "0000000000000000";
 					stop := '1';
-				else
+				else	-- Er wordt begonnen met tellen tussen hall_sens pulsen om RPM te meten.
 					if stop = '0' then
 						count := count + "0000000000000001";
 					end if;
