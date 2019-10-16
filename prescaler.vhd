@@ -2,7 +2,7 @@
 -- Filetype:      VHDL Hardware Discription
 -- Date:          23 september 2019
 -- Update:        -
--- Description:   Zet 5MHz om naar 10KHz
+-- Description:   Zet 50MHz om naar 10KHz
 -- Author:        Mirko Bosch for PRODIG-PETERS-PG1
 -- State:         Release
 -- Error:         -

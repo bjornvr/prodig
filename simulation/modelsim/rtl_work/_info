@@ -2,224 +2,76 @@ m255
 K3
 13
 cModel Technology
-Z0 dC:\Git\PRODIG\prodig\simulation\modelsim
-Edivision
-Z1 w1570189373
-Z2 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
-Z3 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
-Z4 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
-Z5 dC:\Git\PRODIG\prodig\simulation\modelsim
-Z6 8../../division.vhd
-Z7 F../../division.vhd
+Z0 dD:\Documents\GitHub\prodig\simulation\modelsim
+Eprescaler
+Z1 w1571248399
+Z2 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z3 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z4 dD:\Documents\GitHub\prodig\simulation\modelsim
+Z5 8../../prescaler.vhd
+Z6 F../../prescaler.vhd
 l0
-L14
-VRASF5R>oh<75c^jD1ik;Z1
-!s100 BlL5`S`^W2bQ`?F^oQS0=3
-Z8 OV;C;10.1d;51
+L15
+V_HeWZaHdXOUhCMVQn7f]A1
+Z7 OV;C;10.1d;51
 31
+Z8 !s108 1571248991.224000
+Z9 !s90 -reportprogress|300|-93|-work|work|../../prescaler.vhd|
+Z10 !s107 ../../prescaler.vhd|
+Z11 o-93 -work work -O0
+Z12 tExplicit 1
+!s100 AR=gmHHNJIPL?CZQb8Di?2
 !i10b 1
-Z9 !s108 1570196593.697000
-Z10 !s90 -reportprogress|300|-93|-work|work|../../division.vhd|
-Z11 !s107 ../../division.vhd|
-Z12 o-93 -work work -O0
-Z13 tExplicit 1
-Artl
+Abehav
 R2
 R3
-R4
-DEx4 work 8 division 0 22 RASF5R>oh<75c^jD1ik;Z1
-l25
+DEx4 work 9 prescaler 0 22 _HeWZaHdXOUhCMVQn7f]A1
+l26
 L23
-VZJd1QKDV>SgLL6Ea[KSP[2
-!s100 _Bk]hBU8M<P2fIk3IcU1J2
-R8
+V8eMV>mnLfGXS_gI[TdLRB0
+R7
 31
-!i10b 1
+R8
 R9
 R10
 R11
 R12
-R13
-Eprescaler
-Z14 w1569314364
+!s100 JA_NA1aM`9cUP<3:d6Lo[0
+!i10b 1
+Etb_prescaler
+Z13 w1571248955
+Z14 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+R2
 R3
 R4
-R5
-Z15 8../../prescaler.vhd
-Z16 F../../prescaler.vhd
+Z15 8../../tb_prescaler.vhd
+Z16 F../../tb_prescaler.vhd
 l0
-L30
-V_HeWZaHdXOUhCMVQn7f]A1
-R8
+L5
+VUJR4O<o9mKE1BInYAhbhJ3
+!s100 1IeWz[z9;WWoDGA0IHJ;33
+R7
 31
-Z17 !s108 1570196593.396000
-Z18 !s90 -reportprogress|300|-93|-work|work|../../prescaler.vhd|
-Z19 !s107 ../../prescaler.vhd|
-R12
-R13
-!s100 hI`:j^f1[hNzoU_iii]zj3
 !i10b 1
-Abehav
-R3
-R4
-DEx4 work 9 prescaler 0 22 _HeWZaHdXOUhCMVQn7f]A1
-l42
-L38
-V8eMV>mnLfGXS_gI[TdLRB0
-R8
-31
-R17
-R18
-R19
+Z17 !s108 1571248991.668000
+Z18 !s90 -reportprogress|300|-93|-work|work|../../tb_prescaler.vhd|
+Z19 !s107 ../../tb_prescaler.vhd|
+R11
 R12
-R13
-!s100 Zz[_nP7fZ`G3UCo>hAe>^2
-!i10b 1
-Eprodig_7_seg_decoder
+Atb
 R14
 R2
 R3
-R4
-R5
-Z20 8../../prodig_7_seg_decoder.vhd
-Z21 F../../prodig_7_seg_decoder.vhd
-l0
-L5
-V38k7mz8`BU7==9WM=P89_1
-R8
-31
-Z22 !s108 1570196593.512000
-Z23 !s90 -reportprogress|300|-93|-work|work|../../prodig_7_seg_decoder.vhd|
-Z24 !s107 ../../prodig_7_seg_decoder.vhd|
-R12
-R13
-!s100 MWUaG2jB[1i;biViTQ:lm1
-!i10b 1
-Artl
-R2
-R3
-R4
-DEx4 work 20 prodig_7_seg_decoder 0 22 38k7mz8`BU7==9WM=P89_1
-l36
-L14
-V=NCB6T4RcJDYz5LQER:TS3
-R8
-31
-R22
-R23
-R24
-R12
-R13
-!s100 UW8E;6@2gIGmBC^A<k<>13
-!i10b 1
-Eprodig_rpm
-Z25 w1570196433
-R2
-R3
-R4
-R5
-Z26 8../../PRODIG_RPM.vhd
-Z27 F../../PRODIG_RPM.vhd
-l0
-L5
-V[OE=VdU5l9WFB]IMXZ@fE1
-R8
-31
-Z28 !s108 1570196593.196000
-Z29 !s90 -reportprogress|300|-93|-work|work|../../PRODIG_RPM.vhd|
-Z30 !s107 ../../PRODIG_RPM.vhd|
-R12
-R13
-!s100 @lg[]38K3MR_5oaYZJC:_2
-!i10b 1
-Acode
-R2
-R3
-R4
-DEx4 work 10 prodig_rpm 0 22 [OE=VdU5l9WFB]IMXZ@fE1
-l88
-L34
-VbLD<d`RK=YQZV58:bY@8E1
-R8
-31
-R28
-R29
-R30
-R12
-R13
-!s100 3YT1=8`zgGT6`O;6HPH_M3
-!i10b 1
-Eprodig_rpm_counter
-Z31 w1570189377
-R2
-R3
-R4
-R5
-Z32 8../../RPM_counter.vhd
-Z33 F../../RPM_counter.vhd
-l0
-L5
-V=To1Da6@9lR0nJc63@jHY1
-R8
-31
-Z34 !s108 1570196593.597000
-Z35 !s90 -reportprogress|300|-93|-work|work|../../RPM_counter.vhd|
-Z36 !s107 ../../RPM_counter.vhd|
-R12
-R13
-!s100 LUc@UN2_OAUT=?hCz^Pgn0
-!i10b 1
-Amain
-R2
-R3
-R4
-DEx4 work 18 prodig_rpm_counter 0 22 =To1Da6@9lR0nJc63@jHY1
-l19
-L15
-VYBIIfn3GGJLhPnXb5lni_0
-R8
-31
-R34
-R35
-R36
-R12
-R13
-!s100 VPLS7H]`HB<nL`:j_LXWT2
-!i10b 1
-Etb_prodig_rpm
-Z37 w1570196549
-R2
-R3
-R4
-R5
-Z38 8../../tb_PRODIG_RPM.vhd
-Z39 F../../tb_PRODIG_RPM.vhd
-l0
-L5
-V2QEKCG?bH`I7zCGR5`UCI0
-R8
-31
-Z40 !s108 1570196593.311000
-Z41 !s90 -reportprogress|300|-93|-work|work|../../tb_PRODIG_RPM.vhd|
-Z42 !s107 ../../tb_PRODIG_RPM.vhd|
-R12
-R13
-!s100 PXIR@TLkLkh9`=B:JP4@j0
-!i10b 1
-Atest
-R2
-R3
-R4
-DEx4 work 13 tb_prodig_rpm 0 22 2QEKCG?bH`I7zCGR5`UCI0
-l41
+DEx4 work 12 tb_prescaler 0 22 UJR4O<o9mKE1BInYAhbhJ3
+l20
 L8
-V@8GE`4DLme@gP0CIlI_m12
-R8
+Vcn7CO;T4;6zCXcdH<L40T1
+!s100 PMmYmkJ8:h[UQC?6]T[gC3
+R7
 31
-R40
-R41
-R42
-R12
-R13
-!s100 LXnoRSBGV=UJ3JTjSVcUj0
 !i10b 1
+R17
+R18
+R19
+R11
+R12
