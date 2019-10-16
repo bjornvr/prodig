@@ -6,7 +6,7 @@
 -- Author:			Bjoern van Rozelaar
 -- State:			Release
 -- Error:			-
--- Version:			1.3.1
+-- Version:			1.4
 -- License:			Mozilla Public License Version 2.0
 
 LIBRARY ieee;
@@ -25,7 +25,6 @@ entity resistor is
 		res_down	: out std_logic;	--TO H-bridge	(Weerstand omlaag aansturing)
 		N_readADC: out std_logic;	--TO ADC			(Read Flag to ADC)
 		N_convst : out std_logic;	--TO ADC			(Start converion of input ADC)
-		ADC_data_out:	out std_logic_vector(7 downto 0) := "00000000";	-- DEBUG stuurt weerstandsWAARDE naar buiten
 		resistance: out std_logic_vector(3 downto 0) 						-- Intern signaal weerstandslevel
 		);
 end entity;
@@ -55,7 +54,6 @@ variable reset		: integer range 0 to 1 := 0;		-- Intern singaal voor reset flag
 --Process voor bepalen huidige weerstand
 begin
 	if areset = '0' then
---		ADC_data <= levela;
 		resstart <= '0';										-- Zet alle flaggen op beginwaarden en start reset
 		pass		:= 0;
 		readADC	<= '0';
@@ -164,6 +162,5 @@ begin
 	end if;
 
 end process;
-	ADC_data_out <= res_data;								-- DEBUG ruwe weerstandswaarde naar buiten sturen
 	resistance <= resist_int;								-- Intern signaal weerstandslevel koppelen naar display
 end architecture;
