@@ -42,7 +42,7 @@ entity PRODIG_RPM is
 		HEX5_DP 			: out std_logic;
 		HEX6_DP 			: out std_logic;
 		HEX7_DP 			: out std_logic;
-		-- LCD 
+		-- LCD
 		LCD_EN   		: out std_logic;
 		LCD_RS   		: out std_logic;
 		LCD_RW   		: out std_logic;
@@ -61,7 +61,7 @@ entity PRODIG_RPM is
 		BUSY				: in std_logic;
 		RD					: OUT std_logic;
 		Convstart		: OUT std_logic
-		
+
 		);
 end entity;
 
@@ -139,7 +139,7 @@ component prodig_7_seg_decoder is
 	port(
 		rpm_mem 			: in  unsigned (7 downto 0);
 		bcd_hun 			: out std_logic_vector (6 downto 0);
-		bcd_ten			: out std_logic_vector (6 downto 0); 
+		bcd_ten			: out std_logic_vector (6 downto 0);
 		bcd_one			: out std_logic_vector (6 downto 0)
 		);
 end component;
@@ -230,7 +230,6 @@ component resistor is
 		res_down		: out std_logic;
 		N_readADC	: out std_logic;
 		N_convst 	: out std_logic;
-		ADC_data_out:	out std_logic_vector(7 downto 0) := "00000000";
 		resistance	: out std_logic_vector(3 downto 0)
 		);
 end component;
@@ -277,7 +276,7 @@ port map(CLK_10kHz => clock_int, areset => BUTTON(3), input => KNOP(5), output =
 
 u4: Display
 port map(clk_in => CLOCK_50, areset_in => BUTTON(3), LCD_EN => LCD_EN, LCD_RS => LCD_RS, LCD_RW => LCD_RW, LCD_DATA => LCD_DATA, modus => mode, start_screen => start,
-			RPM => RPM_mem, weerstand => weerstand, gemiddelde => gemiddelde, totale_omw_1 => totale_omw_1, totale_omw_2 => totale_omw_2, maximale => maximale_rpm, tijd_sec => tijd_sec, 
+			RPM => RPM_mem, weerstand => weerstand, gemiddelde => gemiddelde, totale_omw_1 => totale_omw_1, totale_omw_2 => totale_omw_2, maximale => maximale_rpm, tijd_sec => tijd_sec,
 			tijd_min => tijd_min, tijd_sec_max => seconds_max, tijd_min_max => minutes_max, te_hoog => te_hoog);
 
 u5: division
@@ -287,15 +286,15 @@ u6: max_rpm
 port map(areset => BUTTON(3), reset => long_reset, clk => clock_int, rpm_in => rpm_mem, rpm_max => maximale_rpm, time_save => time_save, start => start);
 
 u7: timer
-port map (clk => clock_int, areset => BUTTON(3), reset => long_reset, start_stop => start, seconds => tijd_sec, minutes => tijd_min, rpm_max => time_save, seconds_max => seconds_max, 
+port map (clk => clock_int, areset => BUTTON(3), reset => long_reset, start_stop => start, seconds => tijd_sec, minutes => tijd_min, rpm_max => time_save, seconds_max => seconds_max,
 minutes_max => minutes_max);
 
 u8: gem_RPM
 port map (clock => clock_int, areset => BUTTON(3), reset => long_reset, RPM => RPM_mem, gem_RPM => gemiddelde, start => start);
 
-u9: resistor 
-port map(clock => clock_int, areset => BUTTON(3), res_busy => BUSY, res_data => DB, res_up => MOTOR_UP, res_down => MOTOR_DOWN, N_readADC => RD, N_convst => Convstart, 
-resistance => weerstand, BUT_UP => knop_up, BUT_DOWN => knop_down , ADC_data_out => LEDR(7 downto 0));
+u9: resistor
+port map(clock => clock_int, areset => BUTTON(3), res_busy => BUSY, res_data => DB, res_up => MOTOR_UP, res_down => MOTOR_DOWN, N_readADC => RD, N_convst => Convstart,
+resistance => weerstand, BUT_UP => knop_up, BUT_DOWN => knop_down);
 
 
 
@@ -309,13 +308,13 @@ begin
 		start <= '1';
 		mode <= '0';
 	elsif rising_edge(clock_int) then
-	
+
 		-- Switch voor start/stop knop
 		if knop_start = '0' and start_stop_state = '1' then
 			start <= not(start);
 		end if;
 		start_stop_state <= knop_start;
-		
+
 		-- Switch voor modus knop
 		if knop_mode = '0' and knop_mode_state = '1' then
 			mode <= not(mode);
@@ -344,6 +343,6 @@ HEX5_DP <= '1';
 HEX6_DP <= '1';
 HEX7_DP <= '1';
 LEDG(8 downto 2) <= (others => '0');
-LEDR(9 downto 8) <= (others => '0');
+LEDR(9 downto 0) <= (others => '0');
 
 end architecture;
