@@ -3,7 +3,7 @@
 -- Date:				11 oktober 2019
 -- Update:			Updated with comments for readability
 -- Description:	Gemiddelde aantal RPM bepalen
--- Author:			Kevin Schrama
+-- Author:			Kevin Schrama for PRODIG-PETERS-PG1
 -- State:			Release
 -- Error:			-
 -- Version:			1.4.1

@@ -3,7 +3,7 @@
 -- Date:         27 september 2019
 -- Update:       -
 -- Description:  VHDL Description of Display.vhd to control the 16x4 display
--- Author:       Mirko
+-- Author:       Mirko Bosch for PRODIG-PETERS-PG1
 -- State:
 -- Error:        -
 -- Version:      1.0

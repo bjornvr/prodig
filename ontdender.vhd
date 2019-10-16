@@ -3,7 +3,7 @@
 -- Date:				11 oktober 2019
 -- Update:			Updated with comments for readability
 -- Description:	Ontdenderaar voor knoppen
--- Author:			Thomas Ypma
+-- Author:			Thomas Ypma for PRODIG-PETERS-PG1
 -- State:			Release
 -- Error:			-
 -- Version:			1

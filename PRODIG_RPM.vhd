@@ -3,7 +3,7 @@
 -- Date:				11 october 2019
 -- Update:			Updated with comments for readability
 -- Description:	Maximale RPM calculator
--- Author:			Jacco van Egmond for PRODIG-PETERS-PG1
+-- Author:			Mirko Bosch & Kevin Schrama for PRODIG-PETERS-PG1
 -- State:			Release
 -- Error:			-
 -- Version:			1.4.1

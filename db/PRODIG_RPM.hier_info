@@ -132,10 +132,10 @@ BUTTON[3] => max_rpm:u6.areset
 BUTTON[3] => timer:u7.areset
 BUTTON[3] => gem_RPM:u8.areset
 BUTTON[3] => resistor:u9.areset
-BUTTON[3] => start.ACLR
+BUTTON[3] => mode.ACLR
+BUTTON[3] => start.PRESET
 BUTTON[3] => knop_mode_state.ENA
 BUTTON[3] => start_stop_state.ENA
-BUTTON[3] => mode.ENA
 KNOP[1] => ontdender:u3e.input
 KNOP[2] => ontdender:u3d.input
 KNOP[3] => ontdender:u3b.input
@@ -2788,7 +2788,6 @@ LCD_DATA[4] <> lcd_driver_hd44780_module:lcdm.LCD_DB[4]
 LCD_DATA[5] <> lcd_driver_hd44780_module:lcdm.LCD_DB[5]
 LCD_DATA[6] <> lcd_driver_hd44780_module:lcdm.LCD_DB[6]
 LCD_DATA[7] <> lcd_driver_hd44780_module:lcdm.LCD_DB[7]
-start_screen => start.ENA
 RPM[0] => bin_bcd:RPM2bcd.bin_in[0]
 RPM[1] => bin_bcd:RPM2bcd.bin_in[1]
 RPM[2] => bin_bcd:RPM2bcd.bin_in[2]
@@ -2985,6 +2984,7 @@ modus => aline.OUTPUTSELECT
 modus => aline.OUTPUTSELECT
 modus => aline.OUTPUTSELECT
 modus => aline.OUTPUTSELECT
+start_screen => start.ENA
 te_hoog => RPM_line.OUTPUTSELECT
 te_hoog => RPM_line.OUTPUTSELECT
 te_hoog => RPM_line.OUTPUTSELECT
