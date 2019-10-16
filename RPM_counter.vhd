@@ -3,7 +3,7 @@
 -- Date:				11 oktober 2019
 -- Update:			Updated with comments for readability
 -- Description:	Maximale RPM calculator
--- Author:			Jordi Aldewereld
+-- Author:			Jordi Aldewereld for PRODIG-PETERS-PG1
 -- State:			Release
 -- Error:			-
 -- Version:			1.4.1
@@ -51,6 +51,7 @@ begin
 	else
 	-- Teller wordt geactiveerd de hallsensor geactiveerd is.
 		if rising_edge(clock) then
+			-- Totale omwentelingen
 			if hall_sens = '1' and hal_state = '0'  and start = '1' then
 					-- Teller wordt met de waarde één verhoogd
 					omwentel99 := omwentel99 + 1;
@@ -71,24 +72,28 @@ begin
 			hal_state <= hall_sens;
 
 
-
-			if hall_sens = '1' and wait_time = 2000 then
-				tix_mem <= count;
+			-- RPM counter
+			if hall_sens = '1' and wait_time = 2000 then	-- Als de hallsensor een puls geeft wordt de tijd tussen de huidige puls en de vorige puls
+				tix_mem <= count;									-- doorgegeven
 				count := "0000000000000001";
+				-- Er wordt doorgegeven dat er de RPM berekend moet worden aan Division, zodat die niet constant blijft delen en zo verkeerd waardes geeft
 				calc <= '1';
+				-- De wait_time is er zodat er maar 1 keer per puls van de hallsensor de tijd wordt doorgegeven,
+				-- omdat er anders meerdere keren een tijd wordt doorgegeven wat er voor zorgt dat de RPM een heel hoog getal weergeeft
+				-- de wait_time is dus een buffer vooor het doorgegeven van de RPM
 				wait_time := 0;
 				stop := '0';
 			else
-				if count > 30000 then
+				if count > 30000 then	-- Als er langer dan 3 seconden geen puls is geweest van de hallsensor wordt dit gezien als niet meer trappen en gaat de RPM op 0
 					tix_mem <= count;
 					count := "0000000000000000";
 					stop := '1';
 				else
-					if stop = '0' then
+					if stop = '0' then	-- Er wordt geteld
 						count := count + "0000000000000001";
 					end if;
 				end if;
-				if wait_time /= 2000 then
+				if wait_time /= 2000 then	-- Er wordt 0,2 seconden gewacht tot er een volgende tijd wordt gemeten en dat is genoeg om 1 keer een tijd door te geven
 					wait_time := wait_time + 1;
 				end if;
 				calc <= '0';

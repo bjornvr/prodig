@@ -25,7 +25,7 @@ architecture rtl of add3 is
 begin		
 	   with bin(3  downto 0)  select						-- simpelen add 3 volgends de waarheidstabel van een add 3
 							 --waarheids tabel	
-				bcd <=		"0000" when "0000",--0		-- als ingang 0000 is dan uitgang 0000
+				bcd <=		"0000" when "0000",--0		-- Ingang is het zelfde als de uitgang
 								"0001" when "0001",--1		-- "		" 		"		"		"			"		   
 								"0010" when "0010",--2		-- "		" 		"		"		"			"	
 								"0011" when "0011",--3		-- "		" 		"		"		"			"	

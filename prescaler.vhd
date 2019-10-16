@@ -3,7 +3,7 @@
 -- Date:          23 september 2019
 -- Update:        -
 -- Description:   Zet 5MHz om naar 10KHz
--- Author:        Mirko Bosch
+-- Author:        Mirko Bosch for PRODIG-PETERS-PG1
 -- State:         Release
 -- Error:         -
 -- Version:	      1.0

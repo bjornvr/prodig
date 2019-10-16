@@ -3,7 +3,7 @@
 -- Date:				11 october 2019
 -- Update:			Updated with comments for readability
 -- Description:	Maximale RPM calculator
--- Author:			Jacco van Egmond for PRODIG-PETERS-PG1
+-- Author:			Mirko Bosch & Kevin Schrama for PRODIG-PETERS-PG1
 -- State:			Release
 -- Error:			-
 -- Version:			1.4.1
@@ -69,20 +69,27 @@ architecture code of PRODIG_RPM is
 
 
 signal clock_int 		: std_logic;
-signal tix_mem 		: unsigned(15 downto 0);
-signal rpm_mem 		: unsigned(7 downto 0);
-signal calc_int		: std_logic;
-signal tijd_sec 		: std_logic_vector (5 downto 0) := "010101";
-signal tijd_min 		: std_logic_vector (5 downto 0) := "010101";
-signal weerstand 		: std_logic_vector (3 downto 0) := "0101";
-signal maximale_rpm 	: std_logic_vector (7 downto 0) := "01111011";
-signal totale_omw_1 	: std_logic_vector (7 downto 0) := "00000000";
-signal totale_omw_2 	: std_logic_vector (7 downto 0) := "00000000";
-signal gemiddelde 	: unsigned (7 downto 0);
-signal time_save 		: std_logic;
-signal seconds_max 	: std_logic_vector (5 downto 0);
-signal minutes_max 	: std_logic_vector (5 downto 0);
-signal te_hoog 		: std_logic;
+
+-- RPM invloeden signalen
+signal tix_mem 		: unsigned(15 downto 0);								-- Bevat de ruwe getelde tijd
+signal rpm_mem 		: unsigned(7 downto 0);									-- bevat de RPM waarde tot 200
+signal calc_int		: std_logic;												-- Geeft aan of de RPM berekend kan worden, nieuwe waarde beschikbaar op klok flank
+--Overige RPM signalen
+signal maximale_rpm 	: std_logic_vector (7 downto 0) := "01111011";	-- Bevat de maximale RPM waarde
+signal totale_omw_1 	: std_logic_vector (7 downto 0) := "00000000";	-- Bevat de minst significante bid's van de totale omwentelingen 0-99
+signal totale_omw_2 	: std_logic_vector (7 downto 0) := "00000000";	-- Bevat de meest significante bid's van de totale omwentelingen 100-25500
+signal gemiddelde 	: unsigned (7 downto 0);								-- Bevat het Gemiddelde RPM
+signal te_hoog 		: std_logic;												-- Geeft aan of het RPM hoger is dan 200 RPM
+
+-- Tijd signalen
+signal tijd_sec 		: std_logic_vector (5 downto 0) := "010101";		-- Bevat de gefietste tijd van de seconden
+signal tijd_min 		: std_logic_vector (5 downto 0) := "010101";		-- Bevat de gefietste tijd van de minuten
+signal time_save 		: std_logic;												-- Is logisch hoge zodra er een nieuwe maximale RPM word gemeten
+signal seconds_max 	: std_logic_vector (5 downto 0);						-- Bevat de gefietste tijd van de seconden, op het moment dat de maximale rpm is bereikt
+signal minutes_max 	: std_logic_vector (5 downto 0);						-- Bevat de gefietste tijd van de minuten, op het moment dat de maximale rpm is bereikt
+
+--Weerstand signalen
+signal weerstand 		: std_logic_vector (3 downto 0) := "0101";		-- Bevat de weerstands waarde 0-7
 
 
 -- ontdenderde en lang ingedrukte input signalen
@@ -95,13 +102,16 @@ signal hall_sens_ontd : std_logic;
 signal long_reset 	: std_logic;
 
 
--- Signal voor omschakel knoppen
-signal start 				: std_logic := '0';
-signal mode					: std_logic := '1';
+-- Signal voor het omschakelen van knoppen
+signal start 				: std_logic := '0';	-- Start stop knop
+signal mode					: std_logic := '1';	-- mode knop
 signal start_stop_state : std_logic := '0';
 signal knop_mode_state 	: std_logic := '0';
 
-
+--***************************************************************************
+-- Declaratie van de compontnets
+-- Zie de compontnets voor meer informatie.
+--***************************************************************************
 component RPM_counter is
 	port (
 		clock				: in  std_logic;
@@ -236,7 +246,7 @@ end component;
 
 
 begin
-
+-- Alle gedefineerde portmappen
 u0: RPM_counter
 port map(clock => clock_int, areset => BUTTON(3), reset => long_reset, start => start, hall_sens => hall_sens_ontd, tix_mem => tix_mem, calc => calc_int, tot_omwentel99 => totale_omw_1, tot_omwentel255 => totale_omw_2);
 
@@ -290,12 +300,15 @@ resistance => weerstand, BUT_UP => knop_up, BUT_DOWN => knop_down);
 
 
 
-
+-- Start een eenvoudig process om te zorgen dat de knoppen niet continue moeten worden ingedrukt.
+-- Reset de waardes ook op een areset
 drive: process (clock_int, BUTTON(3)) is
 begin
 	if BUTTON(3) = '0' then
-		start <= '0';
+		start <= '1';
+		mode <= '0';
 	elsif rising_edge(clock_int) then
+
 		-- Switch voor start/stop knop
 		if knop_start = '0' and start_stop_state = '1' then
 			start <= not(start);
@@ -310,11 +323,12 @@ begin
 	end if;
 end process;
 
--- Leds worden gebruikt voor debuggen
+-- Leds worden gebruikt voor debuggen van Hallsensor
 LEDG(1) <= hall_sens;
 LEDG(0) <= hall_sens_ontd;
 
--- niet gebruikte outputs
+
+-- Niet gebruikte outputs op de de2-70 board
 hex3_D <= "1111111";
 hex4_D <= "1111111";
 hex5_D <= "1111111";

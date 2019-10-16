@@ -3,7 +3,7 @@
 -- Date:				11 oktober 2019
 -- Update:			Updated with comments for readability
 -- Description:	Gemiddelde aantal RPM bepalen
--- Author:			Kevin Schrama
+-- Author:			Kevin Schrama for PRODIG-PETERS-PG1
 -- State:			Release
 -- Error:			-
 -- Version:			1.4.1
@@ -58,16 +58,24 @@ begin
 					stop <= '1';
 				else
 					if wait_gem_RPM = 10000 and start = '1' then		-- Elke seconde wordt de rpm bij totale rpm opgeteld en daarna gedeeld door
-						tot_RPM <= tot_RPM + RPM;							-- hoevaak de rpm er bij opgeteld is om zo het gemiddelde rpm te berekenen.
+						-- Het RPM wordt opgeteld								-- hoevaak de rpm er bij opgeteld is om zo het gemiddelde rpm te berekenen.
+						tot_RPM <= tot_RPM + RPM;
+						-- Er wordt geteld hoevaak de RPM wordt opgeteld.
 						count_RPM <= count_RPM + 1;
+						-- Stop zorgt dat er maar 1 keer wordt gedeeld met dezelfde waarde.
 						stop <= '0';
+						-- Het totale RPM wordt doorgegeven zodat dat door de staartdeler kan gaan en het totale RPM niet veranderd wordt.
 						tot_RPM_int <= tot_RPM;
+						-- Het gemiddelde wordt weer op 0 gezet zodat er weer opnieuw kan worden gedeeld.
 						gem_RPM_int <= "00000000";
 					elsif stop = '0' then
+						-- Er wordt afgetrokken zolang het af te trekken getal niet hoger is dan het getal waarvan wordt afgetrokken.
 						if tot_RPM_int >= count_RPM then
+							-- Er wordt afgetrokken en geteld hoevaak dat kan, dit is een deling.
 							tot_RPM_int <= tot_RPM_int - count_RPM;
 							gem_RPM_int <= gem_RPM_int + 1;
 						else
+							-- Als er niet meer kan worden afgetrokken wordt het gemiddelde RPM doorgegeven.
 							stop <= '1';
 							gem_RPM <= gem_RPM_int;
 						end if;
