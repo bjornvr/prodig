@@ -21,13 +21,12 @@ use ieee.std_logic_arith.all;
 entity display is
 	port (clk_in 			: in std_logic;
 			areset_in   	: in std_logic;
-			-- LCD of the DE0 board
+			-- LCD van het DE2-70 board
 			LCD_EN   		: out std_logic;
 			LCD_RS   		: out std_logic;
 			LCD_RW   		: out std_logic;
 			LCD_DATA 		: inout std_logic_vector(7 downto 0);
-			start_screen 	: in std_logic;
-			-- Daadwerkelijke waardes
+			-- Daadwerkelijke waardes die weergegeven moeten worden
 			RPM				: in std_logic_vector (7 downto 0);
 			weerstand		: in std_logic_vector (3 downto 0);
 			gemiddelde		: in std_logic_vector(7 downto 0);
@@ -39,18 +38,19 @@ entity display is
 			tijd_sec_max	: in std_logic_vector (5 downto 0);
 			tijd_min_max 	: in std_logic_vector (5 downto 0);
 			-- Externe inputs
-			modus 			: in std_logic;
-			te_hoog			: in std_logic
+			modus 			: in std_logic; 	-- Mode knop
+			start_screen 	: in std_logic;	-- Start knop
+			te_hoog			: in std_logic		-- Te grote RPM
 	);
 
 end entity display;
 
 
 
--- The architecture!
+
 architecture hardware of display is
 
--- Component declaration of the LCD module driver
+-- Component declaratie van de LCD module driver
 component lcd_driver_hd44780_module is
 	generic (freq         : integer := 50000000;
 				areset_pol   : std_logic := '1';
@@ -93,7 +93,7 @@ component bin_bcd is
 			);
 end component bin_bcd;
 
--- The system's frequency
+
 constant sys_freq : integer := 50000000;
 
 --Signals behorende bij de lcd driver
@@ -116,7 +116,7 @@ type state_type is (reset, write_char, write_char_wait, update, update_linecount
 						  hold2);
 signal state : state_type;
 
--- Opstart tekst string en array
+-- Opstart tekst string en array declaratie
 subtype string16_type is string(1 to 16);
 type message4x16_type is array (1 to 4) of string16_type;
 
@@ -140,7 +140,7 @@ signal maximale_line 	: string(1 to 16) := "                ";
 signal weerstand_line	: string(1 to 16) := "                ";
 signal tijd_line_max		: string(1 to 16) := "                ";
 
--- De verschillende signals omgezet in bcd 4bit
+-- De verschillende signals omgezet in bcd 4x4bit
 signal RPM_BCD				: std_logic_vector (11 downto 0);	-- 3 digits
 signal tijd_sec_BCD		: std_logic_vector (11 downto 0);	-- 2 digits 	> blijft 3 om de bin_bcd te gebruiken
 signal tijd_min_BCD		: std_logic_vector (11 downto 0);	-- 2 digits		> blijft 3 om de bin_bcd te gebruiken
@@ -149,19 +149,19 @@ signal tijd_min_max_BCD	: std_logic_vector (11 downto 0);	-- 2 digits		> blijft 
 signal gemiddelde_BCD	: std_logic_vector (11 downto 0);	-- 3 digits
 signal maximale_BCD		: std_logic_vector (11 downto 0);	-- 3 digits
 --signal weerstand_BCD		: std_logic_vector (11 downto 0);	-- 1 digits > dus hoeft deze niet omgezet te worden
-signal totale_omw_BCD	: std_logic_vector (23 downto 0);	-- 5 digits
+signal totale_omw_BCD	: std_logic_vector (23 downto 0);	-- 5 digits		> Dit is een 24 bit vector die in 2 keer omgezet word
+
+-- signal om het start scherm alleen bij de opstart weer te geven
 signal start				: std_logic;
 
 
 begin
 
-	-- Push buttons are active low.
+	-- Areset en clk interne signalen maken
 	areset <= areset_in;
-
-	-- The clock
 	clk <= clk_in;
 
-	-- Use LCD module.
+	-- LCD driver portmap
 	lcdm : lcd_driver_hd44780_module
 	generic map (freq => sys_freq, areset_pol => '1', time_cycle_e => 2000 ns, time_pweh => 500 ns,
 					 cursor_on => false, blink_on => false, use_bf => false)
@@ -172,44 +172,40 @@ begin
 
 
 	-- De omzetting van bin naar bcd
-	RPM2bcd: bin_bcd
+	RPM2bcd: bin_bcd				-- RPM waarde
 		port map (bin_in => RPM, bcd_out => RPM_BCD);
 
-	gemiddelde2bcd: bin_bcd
+	gemiddelde2bcd: bin_bcd		-- Gemiddelde waarde
 		port map (bin_in => gemiddelde, bcd_out => gemiddelde_BCD);
 
-	maximale2bcd: bin_bcd
+	maximale2bcd: bin_bcd		-- Maximale waarde
 		port map (bin_in => maximale, bcd_out => maximale_BCD);
 
-	tijd_secbcd: bin_bcd
+	tijd_secbcd: bin_bcd			-- Tijd Seconden
 		port map (bin_in => ("00" & tijd_sec), bcd_out => tijd_sec_bcd);
 
-	tijd_sec_maxbcd: bin_bcd
+	tijd_sec_maxbcd: bin_bcd	-- Tijd Seconden op max RPM
 		port map (bin_in => ("00" & tijd_sec_max), bcd_out => tijd_sec_max_bcd);
 
-	tijd_minbcd: bin_bcd
+	tijd_minbcd: bin_bcd			-- Tijd minuten
 		port map(bin_in => ("00" & tijd_min), bcd_out => tijd_min_bcd);
 
-	tijd_min_maxbcd: bin_bcd
+	tijd_min_maxbcd: bin_bcd	-- Tijd minuten op max RPM
 		port map(bin_in => ("00" & tijd_min_max), bcd_out => tijd_min_max_bcd);
 
-	totale_omw_1bcd: bin_bcd
+	totale_omw_1bcd: bin_bcd	-- Eerste deel van de totale omwentelingen 0-99
 		port map (bin_in => totale_omw_1, bcd_out => totale_omw_BCD(11 downto 0));
 
-	totale_omw_2bcd: bin_bcd
+	totale_omw_2bcd: bin_bcd	-- Tweede deel van de totale omwentelingen 100-25500
 		port map (bin_in => totale_omw_2, bcd_out => totale_omw_BCD(23 downto 12));
 
 
 
 
 
-	-- The client side
+
 	drive: process (clk, areset) is
-
-
-	variable aline : string16_type; -- variable voor het schrijven van de regel
-
-
+	variable aline : string16_type; -- variable voor het schrijven van de huidige regel
 	begin
 		if areset = '0' then
 			wr <= '0';
@@ -232,8 +228,19 @@ begin
 			goto20 <= '0';
 			goto30 <= '0';
 			data <= "00000000";
-
-			--update lines doe dit voor elke soort waarde (dit is hieronder beschreven voor elke waarde die wordt heengestuurd)
+			
+			-- *****************************************************************************************************************************
+			-- Het printen van de regel gaat met behulp van een string. 
+			-- Voor elke regel dat geprint word is er een nieuwe string nodig.
+			-- Elke regel bevat de volgende informatie
+			--			- Wat de weergegeven waarde is
+			--			- De daadwerkelijke waarde met de juiste notatie
+			--
+			-- Omdat we niet direct van een vector naar een character kunnen moeten we omzetting na omzetting gebruiken
+			-- Let op dat hier gebruik gemaakt word van de juiste libraries
+			--
+			-- Update de lines doe dit voor elke soort waarde (dit is hieronder beschreven voor elke waarde die wordt gestuurd naar het LCD)
+			-- *****************************************************************************************************************************
 			if te_hoog = '0' then
 				-- Schrijf alleen de gekregen waarde als deze geldig onder de 200 RPM blijft
 				rpm_line <= ("RPM:       " &
@@ -283,7 +290,7 @@ begin
 							"    ");
 
 			if start_screen = '1' then
-				-- Bij opstarten wachten met schrijven van waardes tot gebruiker op start drukt.
+				-- Bij opstarten wachten met schrijven van waardes tot gebruiker op start knop drukt.
 				start <= '1';
 			end if;
 
@@ -299,16 +306,16 @@ begin
 
 					if start = '0' then
 						aline := message(line_counter);		--word gebruikt om een hele array door te sturen, dit is het welkoms scherm.
-					elsif modus = '1' then
-						case line_counter is
+					elsif modus = '1' then						--Als niet het welkoms scherm moet worden gedrukt kijk dan of scherm 1 of 2 moet worden weergegeven
+						case line_counter is						-- Case word gebruikt om de verschillende regels te printen
 							when 1 => aline := tijd_line;
 							when 2 => aline := RPM_line;
 							when 3 => aline := gemiddelde_line;
-							when 4 => aline := "Modus:RPM       ";
+							when 4 => aline := "                ";	-- Geen informatie op deze regel is nog in te vullen
 							when others => null;
 						end case;
 					else
-						case line_counter is
+						case line_counter is						-- zie case hier boven
 							when 1 => aline := totale_omw_line;
 							when 2 => aline := maximale_line;
 							when 3 => aline := tijd_line_max;
@@ -317,14 +324,14 @@ begin
 						end case;
 					end if;
 
-
+					-- Verstuur data naar de driver, dit word per character gedaan. 
 					data <= std_logic_vector(conv_unsigned( character'pos(aline(character_counter)),8));
  					wr <= '1';
 					state <= write_char_wait;
 
 
 
--- Onderstaande behoord bij de lcd driver
+-- Onderstaande code behoord bij de lcd driver
 				when reset =>
 					-- Wait for the LCD module ready
 					if busy = '0' then
