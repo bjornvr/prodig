@@ -181,17 +181,17 @@ begin
 	maximale2bcd: bin_bcd		-- Maximale waarde
 		port map (bin_in => maximale, bcd_out => maximale_BCD);
 
---	tijd_secbcd: bin_bcd			-- Tijd Seconden
---		port map (bin_in => ("00" & tijd_sec), bcd_out => tijd_sec_bcd);
---
---	tijd_sec_maxbcd: bin_bcd	-- Tijd Seconden op max RPM
---		port map (bin_in => ("00" & tijd_sec_max), bcd_out => tijd_sec_max_bcd);
---
---	tijd_minbcd: bin_bcd			-- Tijd minuten
---		port map(bin_in => ("00" & tijd_min), bcd_out => tijd_min_bcd);
---
---	tijd_min_maxbcd: bin_bcd	-- Tijd minuten op max RPM
---		port map(bin_in => ("00" & tijd_min_max), bcd_out => tijd_min_max_bcd);
+	tijd_secbcd: bin_bcd			-- Tijd Seconden
+		port map (bin_in => ("00" & tijd_sec), bcd_out => tijd_sec_bcd);
+
+	tijd_sec_maxbcd: bin_bcd	-- Tijd Seconden op max RPM
+		port map (bin_in => ("00" & tijd_sec_max), bcd_out => tijd_sec_max_bcd);
+
+	tijd_minbcd: bin_bcd			-- Tijd minuten
+		port map(bin_in => ("00" & tijd_min), bcd_out => tijd_min_bcd);
+
+	tijd_min_maxbcd: bin_bcd	-- Tijd minuten op max RPM
+		port map(bin_in => ("00" & tijd_min_max), bcd_out => tijd_min_max_bcd);
 
 	totale_omw_1bcd: bin_bcd	-- Eerste deel van de totale omwentelingen 0-99
 		port map (bin_in => totale_omw_1, bcd_out => totale_omw_BCD(11 downto 0));
