@@ -153,13 +153,22 @@ signal totale_omw_BCD	: std_logic_vector (23 downto 0);	-- 5 digits		> Dit is ee
 
 -- signal om het start scherm alleen bij de opstart weer te geven
 signal start				: std_logic;
-
+-- tijd signal
+signal tijd_sec_int	: std_logic_vector (7 downto 0);
+signal tijd_sec_max_int	: std_logic_vector (7 downto 0);
+signal tijd_min_int	: std_logic_vector (7 downto 0);
+signal tijd_min_max_int	: std_logic_vector (7 downto 0);
 
 begin
 
 	-- Areset en clk interne signalen maken
 	areset <= areset_in;
 	clk <= clk_in;
+	-- tijd interne signalen
+	tijd_sec_int <= "00" & tijd_sec;
+	tijd_sec_max_int <= "00" & tijd_sec_max;
+	tijd_min_int <= "00" & tijd_min;
+	tijd_min_max_int <= "00" & tijd_min_max;
 
 	-- LCD driver portmap
 	lcdm : lcd_driver_hd44780_module
@@ -182,16 +191,16 @@ begin
 		port map (bin_in => maximale, bcd_out => maximale_BCD);
 
 	tijd_secbcd: bin_bcd			-- Tijd Seconden
-		port map (bin_in => ("00" & tijd_sec), bcd_out => tijd_sec_bcd);
+		port map (bin_in => (tijd_sec_int), bcd_out => tijd_sec_bcd);
 
 	tijd_sec_maxbcd: bin_bcd	-- Tijd Seconden op max RPM
-		port map (bin_in => ("00" & tijd_sec_max), bcd_out => tijd_sec_max_bcd);
+		port map (bin_in => (tijd_sec_max_int), bcd_out => tijd_sec_max_bcd);
 
 	tijd_minbcd: bin_bcd			-- Tijd minuten
-		port map(bin_in => ("00" & tijd_min), bcd_out => tijd_min_bcd);
+		port map(bin_in => (tijd_min_int), bcd_out => tijd_min_bcd);
 
 	tijd_min_maxbcd: bin_bcd	-- Tijd minuten op max RPM
-		port map(bin_in => ("00" & tijd_min_max), bcd_out => tijd_min_max_bcd);
+		port map(bin_in => (tijd_min_max_int), bcd_out => tijd_min_max_bcd);
 
 	totale_omw_1bcd: bin_bcd	-- Eerste deel van de totale omwentelingen 0-99
 		port map (bin_in => totale_omw_1, bcd_out => totale_omw_BCD(11 downto 0));
