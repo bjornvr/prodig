@@ -29,7 +29,7 @@ architecture rtl of gem_RPM is
 signal tot_RPM : unsigned(11 downto 0);
 signal tot_RPM_int : unsigned(11 downto 0);
 signal count_RPM : unsigned(7 downto 0);
-signal gem_RPM_int : unsigned(7 downto 0);
+signal gem_RPM_int : unsigned(7 downto 0) := "00000000";
 signal wait_gem_RPM : integer range 0 to 10000;		-- interval RPM meting voor gem_RPM
 signal stop : std_logic;
 

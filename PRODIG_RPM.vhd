@@ -72,7 +72,7 @@ signal clock_int 		: std_logic;
 
 -- RPM invloeden signalen
 signal tix_mem 		: unsigned(15 downto 0);								-- Bevat de ruwe getelde tijd
-signal rpm_mem 		: unsigned(7 downto 0);									-- bevat de RPM waarde tot 200
+signal rpm_mem 		: unsigned(7 downto 0):= "00000000";				-- bevat de RPM waarde tot 200
 signal calc_int		: std_logic;												-- Geeft aan of de RPM berekend kan worden, nieuwe waarde beschikbaar op klok flank
 --Overige RPM signalen
 signal maximale_rpm 	: std_logic_vector (7 downto 0) := "01111011";	-- Bevat de maximale RPM waarde
