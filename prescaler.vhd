@@ -25,7 +25,7 @@ signal count : integer range 0 to 2499;	-- Counter voor de deling van 50 MHz naa
 
 begin
 	process (clkin, areset) is
-	variable clkint : std_logic;
+	variable clkint : std_logic := '0';
 	begin										--Als areset reset
 		if areset = '0' then
 			count <= 0;

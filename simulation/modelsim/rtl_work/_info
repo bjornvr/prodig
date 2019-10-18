@@ -3,75 +3,482 @@ K3
 13
 cModel Technology
 Z0 dD:\Documents\GitHub\prodig\simulation\modelsim
-Eprescaler
-Z1 w1571248399
-Z2 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
-Z3 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
-Z4 dD:\Documents\GitHub\prodig\simulation\modelsim
-Z5 8../../prescaler.vhd
-Z6 F../../prescaler.vhd
+Eadd3
+Z1 w1571224822
+Z2 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+Z3 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z4 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z5 dD:\Documents\GitHub\prodig\simulation\modelsim
+Z6 8../../add3.vhd
+Z7 F../../add3.vhd
 l0
-L15
-V_HeWZaHdXOUhCMVQn7f]A1
-Z7 OV;C;10.1d;51
+L16
+V_>n8GSZT4UhiKd72nIR>j2
+!s100 [KC;PaUI:JbX_Ma^m5`aR1
+Z8 OV;C;10.1d;51
 31
-Z8 !s108 1571248991.224000
-Z9 !s90 -reportprogress|300|-93|-work|work|../../prescaler.vhd|
-Z10 !s107 ../../prescaler.vhd|
-Z11 o-93 -work work -O0
-Z12 tExplicit 1
-!s100 AR=gmHHNJIPL?CZQb8Di?2
 !i10b 1
-Abehav
+Z9 !s108 1571407917.930000
+Z10 !s90 -reportprogress|300|-93|-work|work|../../add3.vhd|
+Z11 !s107 ../../add3.vhd|
+Z12 o-93 -work work -O0
+Z13 tExplicit 1
+Artl
 R2
 R3
-DEx4 work 9 prescaler 0 22 _HeWZaHdXOUhCMVQn7f]A1
-l26
+R4
+DEx4 work 4 add3 0 22 _>n8GSZT4UhiKd72nIR>j2
+l25
 L23
-V8eMV>mnLfGXS_gI[TdLRB0
-R7
-31
+VZ;iY0z^Z=<dN^PMBLQ@_J2
+!s100 onO2g[8_KXCM2JkT><KDe2
 R8
+31
+!i10b 1
 R9
 R10
 R11
 R12
-!s100 JA_NA1aM`9cUP<3:d6Lo[0
-!i10b 1
-Etb_prescaler
-Z13 w1571248955
-Z14 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+R13
+Ebin_bcd
+R1
 R2
 R3
 R4
-Z15 8../../tb_prescaler.vhd
-Z16 F../../tb_prescaler.vhd
+R5
+Z14 8../../bin_bcd.vhd
+Z15 F../../bin_bcd.vhd
 l0
-L5
-VUJR4O<o9mKE1BInYAhbhJ3
-!s100 1IeWz[z9;WWoDGA0IHJ;33
-R7
+L15
+V:UX:e_97<K9]:jF0LnVdL0
+R8
 31
-!i10b 1
-Z17 !s108 1571248991.668000
-Z18 !s90 -reportprogress|300|-93|-work|work|../../tb_prescaler.vhd|
-Z19 !s107 ../../tb_prescaler.vhd|
-R11
+Z16 !s108 1571407916.494000
+Z17 !s90 -reportprogress|300|-93|-work|work|../../bin_bcd.vhd|
+Z18 !s107 ../../bin_bcd.vhd|
 R12
-Atb
-R14
+R13
+!s100 SPk=`^<Jm]P`:=5[Jz=W33
+!i10b 1
+Artl
 R2
 R3
-DEx4 work 12 tb_prescaler 0 22 UJR4O<o9mKE1BInYAhbhJ3
-l20
-L8
-Vcn7CO;T4;6zCXcdH<L40T1
-!s100 PMmYmkJ8:h[UQC?6]T[gC3
-R7
+R4
+DEx4 work 7 bin_bcd 0 22 :UX:e_97<K9]:jF0LnVdL0
+l46
+L22
+V:h:7jIOYD0H>LKX:>J<?J1
+R8
 31
-!i10b 1
+R16
 R17
 R18
-R19
-R11
 R12
+R13
+!s100 hYaKTfWnz_0YAUD1`@IVz0
+!i10b 1
+Edivision
+Z19 w1571205501
+R2
+R3
+R4
+R5
+Z20 8../../division.vhd
+Z21 F../../division.vhd
+l0
+L16
+V??[IX]dGCHochkoab3Ye01
+R8
+31
+Z22 !s108 1571407916.021000
+Z23 !s90 -reportprogress|300|-93|-work|work|../../division.vhd|
+Z24 !s107 ../../division.vhd|
+R12
+R13
+!s100 g2=TAH=Fk3Y4I1RWez2:N1
+!i10b 1
+Artl
+R2
+R3
+R4
+DEx4 work 8 division 0 22 ??[IX]dGCHochkoab3Ye01
+l28
+L26
+VFg<TLPOEi:ZY9_g5oMV251
+R8
+31
+R22
+R23
+R24
+R12
+R13
+!s100 ^oRoO^P2S]fG=i3izV1bY3
+!i10b 1
+Egem_rpm
+R1
+R2
+R3
+R4
+R5
+Z25 8../../gem_RPM.vhd
+Z26 F../../gem_RPM.vhd
+l0
+L16
+V?8XoTY9DLm2?]Mndb9LGl3
+R8
+31
+Z27 !s108 1571407915.032000
+Z28 !s90 -reportprogress|300|-93|-work|work|../../gem_RPM.vhd|
+Z29 !s107 ../../gem_RPM.vhd|
+R12
+R13
+!s100 [Ni:9MZKBbkP4@WI6C9zG3
+!i10b 1
+Artl
+R2
+R3
+R4
+DEx4 work 7 gem_rpm 0 22 ?8XoTY9DLm2?]Mndb9LGl3
+l36
+L27
+V1inB8LoOK`_dKSYOeQB@T0
+R8
+31
+R27
+R28
+R29
+R12
+R13
+!s100 UTP<=Kk`9G>O5i<?1L4@F0
+!i10b 1
+Emax_rpm
+R1
+R2
+R3
+R4
+R5
+Z30 8../../Max_rpm.vhd
+Z31 F../../Max_rpm.vhd
+l0
+L17
+V[CGVko;Wk:?Enbnf6>8NW2
+R8
+31
+Z32 !s108 1571407916.996000
+Z33 !s90 -reportprogress|300|-93|-work|work|../../Max_rpm.vhd|
+Z34 !s107 ../../Max_rpm.vhd|
+R12
+R13
+!s100 AhoRmO<PiX[1WMOb0i3=<1
+!i10b 1
+Artl
+R2
+R3
+R4
+DEx4 work 7 max_rpm 0 22 [CGVko;Wk:?Enbnf6>8NW2
+l31
+L29
+VD@oAZcocfKd0=LR6NLg_23
+R8
+31
+R32
+R33
+R34
+R12
+R13
+!s100 N<;WRVj9=mPCgHK@QdNPY0
+!i10b 1
+Eontdender
+Z35 w1571404944
+R2
+R3
+R4
+R5
+Z36 8../../ontdender.vhd
+Z37 F../../ontdender.vhd
+l0
+L15
+VBWkaQ3aJ:Lh2g8C6Uelgo1
+R8
+31
+Z38 !s108 1571407913.138000
+Z39 !s90 -reportprogress|300|-93|-work|work|../../ontdender.vhd|
+Z40 !s107 ../../ontdender.vhd|
+R12
+R13
+!s100 2:DN_Z;_6o5UTggA5lkm:1
+!i10b 1
+Abhv
+R2
+R3
+R4
+DEx4 work 9 ontdender 0 22 BWkaQ3aJ:Lh2g8C6Uelgo1
+l34
+L29
+V25oXQ9@ho>=T_5ieC=P6:0
+R8
+31
+R38
+R39
+R40
+R12
+R13
+!s100 4[HS;6643IU;3ai3lFbU82
+!i10b 1
+Eprescaler
+Z41 w1571404986
+R3
+R4
+R5
+Z42 8../../prescaler.vhd
+Z43 F../../prescaler.vhd
+l0
+L15
+V_HeWZaHdXOUhCMVQn7f]A1
+R8
+31
+Z44 !s108 1571407913.596000
+Z45 !s90 -reportprogress|300|-93|-work|work|../../prescaler.vhd|
+Z46 !s107 ../../prescaler.vhd|
+R12
+R13
+!s100 AR=gmHHNJIPL?CZQb8Di?2
+!i10b 1
+Abehav
+R3
+R4
+DEx4 work 9 prescaler 0 22 _HeWZaHdXOUhCMVQn7f]A1
+l26
+L23
+VJX=3XDhnWF?8;0cAb50D_0
+R8
+31
+R44
+R45
+R46
+R12
+R13
+!s100 WZRZ@5cVIHA]gM4Cknf5;2
+!i10b 1
+Eprodig_7_seg_decoder
+R19
+R2
+R3
+R4
+R5
+Z47 8../../prodig_7_seg_decoder.vhd
+Z48 F../../prodig_7_seg_decoder.vhd
+l0
+L22
+V38k7mz8`BU7==9WM=P89_1
+R8
+31
+Z49 !s108 1571407914.141000
+Z50 !s90 -reportprogress|300|-93|-work|work|../../prodig_7_seg_decoder.vhd|
+Z51 !s107 ../../prodig_7_seg_decoder.vhd|
+R12
+R13
+!s100 _[>O4nDgHD?^9WjJE`eTI2
+!i10b 1
+Artl
+R2
+R3
+R4
+DEx4 work 20 prodig_7_seg_decoder 0 22 38k7mz8`BU7==9WM=P89_1
+l55
+L31
+Vdf<[FBD<LFA`e8S<e?6@91
+R8
+31
+R49
+R50
+R51
+R12
+R13
+!s100 ^cMN8n0n<bLih77h8`aDN0
+!i10b 1
+Eprodig_rpm
+Z52 w1571404909
+R2
+R3
+R4
+R5
+Z53 8../../PRODIG_RPM.vhd
+Z54 F../../PRODIG_RPM.vhd
+l0
+L24
+VhUPL5NOngJh2XAXRNHd_k1
+R8
+31
+Z55 !s108 1571407912.186000
+Z56 !s90 -reportprogress|300|-93|-work|work|../../PRODIG_RPM.vhd|
+Z57 !s107 ../../PRODIG_RPM.vhd|
+R12
+R13
+!s100 DgziC58E>0_L_ED[V0ZLc1
+!i10b 1
+Acode
+R2
+R3
+R4
+DEx4 work 10 prodig_rpm 0 22 hUPL5NOngJh2XAXRNHd_k1
+l248
+L68
+VfX5>^7OWO4AEHezNTef:X3
+R8
+31
+R55
+R56
+R57
+R12
+R13
+!s100 aVD>]4n_7>dc<aT5m^_850
+!i10b 1
+Eresistor
+R35
+R2
+R3
+R4
+R5
+Z58 8../../resistor.vhd
+Z59 F../../resistor.vhd
+l0
+L16
+VD8L3<3bjDkk>2O@1HQ`fI3
+R8
+31
+Z60 !s108 1571407915.527000
+Z61 !s90 -reportprogress|300|-93|-work|work|../../resistor.vhd|
+Z62 !s107 ../../resistor.vhd|
+R12
+R13
+!s100 a]>c<PLQVNKlFMacNz8H93
+!i10b 1
+Amain
+R2
+R3
+R4
+DEx4 work 8 resistor 0 22 D8L3<3bjDkk>2O@1HQ`fI3
+l48
+L32
+V^X23kKV`LOD3KbBNf8U[G0
+R8
+31
+R60
+R61
+R62
+R12
+R13
+!s100 @Tl7kk>6h^T>3<z[SBSDQ0
+!i10b 1
+Erpm_counter
+R1
+R2
+R3
+R4
+R5
+Z63 8../../RPM_counter.vhd
+Z64 F../../RPM_counter.vhd
+l0
+L15
+Vn@20H4K4J<MMm=?KB4<T62
+R8
+31
+Z65 !s108 1571407914.587000
+Z66 !s90 -reportprogress|300|-93|-work|work|../../RPM_counter.vhd|
+Z67 !s107 ../../RPM_counter.vhd|
+R12
+R13
+!s100 <>dP7hb40kmO:4bTQM`YG3
+!i10b 1
+Amain
+R2
+R3
+R4
+DEx4 work 11 rpm_counter 0 22 n@20H4K4J<MMm=?KB4<T62
+l35
+L32
+V7>^@?<K]_gJ9zmU:i5[DM3
+R8
+31
+R65
+R66
+R67
+R12
+R13
+!s100 ?mLWSU=X<<d]=ScW84LSk0
+!i10b 1
+Etb_prodig_rpm
+Z68 w1571407729
+R2
+R3
+R4
+R5
+Z69 8../../tb_PRODIG_RPM.vhd
+Z70 F../../tb_PRODIG_RPM.vhd
+l0
+L5
+V2QEKCG?bH`I7zCGR5`UCI0
+R8
+31
+Z71 !s108 1571407912.643000
+Z72 !s90 -reportprogress|300|-93|-work|work|../../tb_PRODIG_RPM.vhd|
+Z73 !s107 ../../tb_PRODIG_RPM.vhd|
+R12
+R13
+!s100 PXIR@TLkLkh9`=B:JP4@j0
+!i10b 1
+Atest
+R2
+R3
+R4
+DEx4 work 13 tb_prodig_rpm 0 22 2QEKCG?bH`I7zCGR5`UCI0
+l90
+L8
+VLFc2@WiOIba?ha[FDCeXf2
+R8
+31
+R71
+R72
+R73
+R12
+R13
+!s100 Ri_R?G7BLR9E?0e>j^f=_1
+!i10b 1
+Etimer
+R1
+R2
+R3
+R4
+R5
+Z74 8../../timer.vhd
+Z75 F../../timer.vhd
+l0
+L15
+Vm6WzMoz?aFlI>Md]Oh4mI3
+R8
+31
+Z76 !s108 1571407917.467000
+Z77 !s90 -reportprogress|300|-93|-work|work|../../timer.vhd|
+Z78 !s107 ../../timer.vhd|
+R12
+R13
+!s100 HhABo7lL?9SCOEFaE>JRG2
+!i10b 1
+Artl
+R2
+R3
+R4
+DEx4 work 5 timer 0 22 m6WzMoz?aFlI>Md]Oh4mI3
+l38
+L33
+V@ml=HLTMS21=VAkLz2c<P3
+R8
+31
+R76
+R77
+R78
+R12
+R13
+!s100 QEbj<QCeD4YJ`Qgl<_2O>3
+!i10b 1

@@ -26,10 +26,12 @@ vcom -93 -work work ../../bin_bcd.vhd
 vcom -93 -work work ../../Max_rpm.vhd
 vcom -93 -work work ../../timer.vhd
 vcom -93 -work work ../../add3.vhd
+#vcom -93 -work work ../../Display.vhd
+#vcom -93 -work work ../../lcd_driver_hd44780_module.vhd
 
 
 # Start the simulator with 1 ns time resolution
-vsim -t 1ns -L rtl_work -L work -voptargs="+acc" tb_PRODIG_RPM
+vsim -t 10ns -L rtl_work -L work -voptargs="+acc" tb_PRODIG_RPM
 
 # Log all signals in the design, good if the number
 # of signals is small.
@@ -47,6 +49,7 @@ add wave CLOCK_50
 add wave hall_sens
 add wave -divider "Internals"
 add wave	dut\ clock_int
+add wave	dut\ start
 add wave -divider "Outputs"
 add wave HEX0_D
 add wave HEX1_D
@@ -71,7 +74,7 @@ view signals
 view wave
 
 # Run simulation for 5000 ms
-run 5 ms
+run 5000 ms
 
 # Fill up the waveform in the window
 wave zoom full

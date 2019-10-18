@@ -117,10 +117,14 @@ end process;
 process is
 begin
 	areset <= '1';
-	wait for 40 ns;
+	knop(3) <= '1';
+	wait for 40000 ns;
 	areset <= '0';
-	wait for 40 ns;
+	wait for 40000 ns;
 	areset <= '1';
+	knop(3) <= '0';
+	wait for 500000 ns;
+	knop(3) <= '1';
 
 	wait;
 end process;

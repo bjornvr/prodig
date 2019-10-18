@@ -20,4 +20,4 @@ vcom -93 -work work {D:/Documents/GitHub/prodig/Max_rpm.vhd}
 vcom -93 -work work {D:/Documents/GitHub/prodig/Timer.vhd}
 vcom -93 -work work {D:/Documents/GitHub/prodig/add3.vhd}
 
-do "D:/Documents/GitHub/prodig/tb_prescaler.do"
+do "D:/Documents/GitHub/prodig/tb_PRODIG_RPM.do"
