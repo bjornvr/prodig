@@ -38,8 +38,8 @@ process (clock, areset) is
 variable count : unsigned(15 downto 0) := "0000000000000001";
 variable wait_time : integer range 0 to 2000 := 0;
 variable stop : std_logic;
-variable omwentel99 : unsigned(7 downto 0) := "00000000";
-variable omwentel255 : unsigned(7 downto 0) := "00000000";
+variable omwentel99 : unsigned(7 downto 0);
+variable omwentel255 : unsigned(7 downto 0);
 begin
 	-- Als areset actief is wordt alles gereset
 	if areset = '0' then

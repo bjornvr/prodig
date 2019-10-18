@@ -116,14 +116,17 @@ end process;
 
 process is
 begin
-	areset <= '1';
+	BUTTON(3) <= '1';
+	areset <= BUTTON(3);
 	knop(3) <= '1';
 	wait for 40000 ns;
-	areset <= '0';
-	wait for 40000 ns;
-	areset <= '1';
+	BUTTON(3) <= '0';
+	areset <= BUTTON(3);
+	wait for 180000 ns;
+	BUTTON(3) <= '1';
+	areset <= BUTTON(3);
 	knop(3) <= '0';
-	wait for 500000 ns;
+	wait for 1500000 ns;
 	knop(3) <= '1';
 
 	wait;

@@ -38,13 +38,15 @@ architecture rtl of timer is
 begin
     process(clk, areset) is
     begin
-		  if areset = '0' then													-- Als areset actief is worden alle waardes op 0 gezet
+			if areset = '0' then													-- Als areset actief is worden alle waardes op 0 gezet
 						 ticks   <= 0;
 						 seconds_int <=(others => '0');
 						 minutes_int <=(others => '0');
 						 seconds_max <=(others => '0');
 						 minutes_max <=(others => '0');
-        elsif rising_edge(clk) then
+						 seconds <= (others => '0');							-- Interne signaal seconds_int wordt gekoppeld aan uitgaande port seconds
+						 minutes <= (others => '0');							-- Interne signaal minutes_int wordt gekoppeld aan uitgaande port minutes
+			elsif rising_edge(clk) then
 				if reset = '1' then												-- Als reset van de fiets niet geactiveerd is
 					if start_stop = '1' then									-- Als de start op de fiets is geactiveerd
 						if ticks = Clockpulsen - 1 then						-- Kijkt of waarde van ticks gelijk is aan die van clockpulsen
@@ -79,8 +81,8 @@ begin
 					seconds_max	<= std_logic_vector(seconds_int);		-- Huidige waarde van seconds_int wordt aan seconds_max gekoppeld
 				end if;
 				-- Eind Jacco Max_rpm
-			seconds <= std_logic_vector(seconds_int);						-- Interne signaal seconds_int wordt gekoppeld aan uitgaande port seconds
-		   minutes <= std_logic_vector(minutes_int);						-- Interne signaal minutes_int wordt gekoppeld aan uitgaande port minutes
-        end if;
+				seconds <= std_logic_vector(seconds_int);						-- Interne signaal seconds_int wordt gekoppeld aan uitgaande port seconds
+				minutes <= std_logic_vector(minutes_int);						-- Interne signaal minutes_int wordt gekoppeld aan uitgaande port minutes
+			end if;
     end process;
 end architecture;

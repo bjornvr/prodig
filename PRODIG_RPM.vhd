@@ -76,14 +76,14 @@ signal rpm_mem 		: unsigned(7 downto 0):= "00000000";				-- bevat de RPM waarde 
 signal calc_int		: std_logic;												-- Geeft aan of de RPM berekend kan worden, nieuwe waarde beschikbaar op klok flank
 --Overige RPM signalen
 signal maximale_rpm 	: std_logic_vector (7 downto 0) := "01111011";	-- Bevat de maximale RPM waarde
-signal totale_omw_1 	: std_logic_vector (7 downto 0) := "00000000";	-- Bevat de minst significante bid's van de totale omwentelingen 0-99
-signal totale_omw_2 	: std_logic_vector (7 downto 0) := "00000000";	-- Bevat de meest significante bid's van de totale omwentelingen 100-25500
+signal totale_omw_1 	: std_logic_vector (7 downto 0);						-- Bevat de minst significante bid's van de totale omwentelingen 0-99
+signal totale_omw_2 	: std_logic_vector (7 downto 0);						-- Bevat de meest significante bid's van de totale omwentelingen 100-25500
 signal gemiddelde 	: unsigned (7 downto 0);								-- Bevat het Gemiddelde RPM
 signal te_hoog 		: std_logic;												-- Geeft aan of het RPM hoger is dan 200 RPM
 
 -- Tijd signalen
-signal tijd_sec 		: std_logic_vector (5 downto 0) := "010101";		-- Bevat de gefietste tijd van de seconden
-signal tijd_min 		: std_logic_vector (5 downto 0) := "010101";		-- Bevat de gefietste tijd van de minuten
+signal tijd_sec 		: std_logic_vector (5 downto 0);						-- Bevat de gefietste tijd van de seconden
+signal tijd_min 		: std_logic_vector (5 downto 0);						-- Bevat de gefietste tijd van de minuten
 signal time_save 		: std_logic;												-- Is logisch hoge zodra er een nieuwe maximale RPM word gemeten
 signal seconds_max 	: std_logic_vector (5 downto 0);						-- Bevat de gefietste tijd van de seconden, op het moment dat de maximale rpm is bereikt
 signal minutes_max 	: std_logic_vector (5 downto 0);						-- Bevat de gefietste tijd van de minuten, op het moment dat de maximale rpm is bereikt
@@ -107,6 +107,8 @@ signal start 				: std_logic := '0';	-- Start stop knop
 signal mode					: std_logic := '1';	-- mode knop
 signal start_stop_state : std_logic := '0';
 signal knop_mode_state 	: std_logic := '0';
+
+signal testsig : std_logic;
 
 --***************************************************************************
 -- Declaratie van de compontnets
@@ -276,7 +278,7 @@ port map(CLK_10kHz => clock_int, areset => BUTTON(3), input => KNOP(5), output =
 
 u4: Display
 port map(clk_in => CLOCK_50, areset_in => BUTTON(3), LCD_EN => LCD_EN, LCD_RS => LCD_RS, LCD_RW => LCD_RW, LCD_DATA => LCD_DATA, modus => mode, start_screen => start,
-			RPM => RPM_mem, weerstand => weerstand, gemiddelde => gemiddelde, totale_omw_1 => totale_omw_1, totale_omw_2 => totale_omw_2, maximale => maximale_rpm, tijd_sec => tijd_sec,
+			RPM => rpm_mem, weerstand => weerstand, gemiddelde => gemiddelde, totale_omw_1 => totale_omw_1, totale_omw_2 => totale_omw_2, maximale => maximale_rpm, tijd_sec => tijd_sec,
 			tijd_min => tijd_min, tijd_sec_max => seconds_max, tijd_min_max => minutes_max, te_hoog => te_hoog);
 
 u5: division

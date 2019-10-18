@@ -43,6 +43,7 @@ begin
 			gem_RPM_int <= "00000000";
 			stop <= '1';
 			wait_gem_RPM <= 0;
+			gem_RPM <= "00000000";
 		else
 			if rising_edge(clock) then
 				if wait_gem_RPM = 10000 then		-- interval van 1 seconde

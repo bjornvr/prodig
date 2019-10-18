@@ -74,7 +74,7 @@ view signals
 view wave
 
 # Run simulation for 5000 ms
-run 5000 ms
+run 1 ms
 
 # Fill up the waveform in the window
 wave zoom full

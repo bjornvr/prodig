@@ -28,7 +28,7 @@ architecture rtl of division is
 begin
 	process (areset, calc, clock, tix_mem)
 	variable x		: unsigned (19 downto 0);		-- Interne waarde van de deling
-	variable rpm	: unsigned (7 downto 0);		-- Interne waarde van de RPM
+	variable rpm	: unsigned (7 downto 0) := "00000000";	-- Interne waarde van de RPM
 	variable stop	: std_logic;						-- Stop flag indien einde deling bereikt is
    variable tix_int : unsigned (15 downto 0);	-- Interne waarde van het aantal ticks uit RPM_Counter
 	begin
@@ -39,7 +39,7 @@ begin
 			RPM := "00000000";
 			stop := '1';
 			x := "10010010011111000000"; 				-- 600.000 to x (Als startgetal van de deling)
-
+			rpm_mem <= rpm;
 		elsif rising_edge (clock) then				-- Op rising edge klokpuls
 			if tix_mem > 30000 or tix_mem = 0 then
 				rpm_mem <= "00000000";
