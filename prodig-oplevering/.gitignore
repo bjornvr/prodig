@@ -1,0 +1,9 @@
+*.db_info
+*.flock
+*.bak
+*.db_info
+/output_files/*
+/incremental_db
+/simulation/modelsim/*
+*.qws
+*.tmw_info

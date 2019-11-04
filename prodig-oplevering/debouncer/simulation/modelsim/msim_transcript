@@ -1,0 +1,87 @@
+# Reading C:/altera/13.0sp1/modelsim_ase/tcl/vsim/pref.tcl 
+# do ontdender_run_msim_rtl_vhdl.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vcom -93 -work work {C:/Git/PRODIG/prodig/debouncer/ontdender.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity ontdender
+# -- Compiling architecture bhv of ontdender
+# 
+# do "C:/Git/PRODIG/prodig/debouncer/tb_ontdender.do"
+# Filename : tb_ontdender.do
+# Filetype : Modelsim Script File
+# Date : 20-06-2011
+# 
+# Set transcript on
+# transcript on
+# 
+# Recreate the work directory and map to work
+# if {[file exists rtl_work]} {
+# 		vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Modifying modelsim.ini
+# 
+# Compile the Double Dabble VHDL description and testbench
+# vcom -93 -work work ../../ontdender.vhd
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity ontdender
+# -- Compiling architecture bhv of ontdender
+# vcom -93 -work work ../../tb_ontdender.vhd
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity tb_ontdender
+# -- Compiling architecture testbench of tb_ontdender
+# 
+# Start the simulator with 1 ns time resolution
+#vsim -t 1ns -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L
+# vsim -t 1ns -L rtl_work -L work -voptargs="+acc" tb_ontdender
+# vsim -L rtl_work -L work -voptargs=\"+acc\" -t 1ns tb_ontdender 
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_ontdender(testbench)
+# Loading work.ontdender(bhv)
+# 
+# Log all signals in the design, good if the number
+# of signals is small.
+# add log -r *
+# 
+# Add all toplevel signals
+# Add a number of signals of the simulated design
+# add list *
+# add list dut/*
+# 
+# Add all toplevel signals
+# Add a number of signals of the simulated design
+# add wave -divider "Inputs"
+# add wave input
+# add wave	CLK_10kHz
+# add wave -divider "Internals"
+# add wave dut/ffa
+# ** Error: (vish-4014) No objects found matching 'dut/ffa'.
+# Error in macro C:\Git\PRODIG\prodig\debouncer\tb_ontdender.do line 38
+# (vish-4014) No objects found matching 'dut/ffa'.
+#     while executing
+# "add wave dut/ffa"

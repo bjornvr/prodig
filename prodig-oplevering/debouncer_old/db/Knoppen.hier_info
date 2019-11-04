@@ -1,0 +1,14 @@
+|Knoppen
+CLK_10kHz => ffa[0].CLK
+CLK_10kHz => ffa[1].CLK
+CLK_10kHz => ffa[2].CLK
+CLK_10kHz => ffa[3].CLK
+CLK_10kHz => ffa[4].CLK
+input => ffa.OUTPUTSELECT
+input => ffa.OUTPUTSELECT
+input => ffa.OUTPUTSELECT
+input => ffa.OUTPUTSELECT
+input => ffa.OUTPUTSELECT
+output <= LessThan2.DB_MAX_OUTPUT_PORT_TYPE
+
+

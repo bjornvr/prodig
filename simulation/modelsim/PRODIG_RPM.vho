@@ -16,7 +16,7 @@
 -- PROGRAM "Quartus II 64-Bit"
 -- VERSION "Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition"
 
--- DATE "10/18/2019 17:57:51"
+-- DATE "11/04/2019 13:26:58"
 
 -- 
 -- Device: Altera EP2C70F896C6 Package FBGA896
@@ -1887,6 +1887,7 @@ SIGNAL \u9|N_readADC~3_combout\ : std_logic;
 SIGNAL \u9|N_readADC~regout\ : std_logic;
 SIGNAL \u9|N_convst~0_combout\ : std_logic;
 SIGNAL \u9|N_convst~regout\ : std_logic;
+SIGNAL \u9|ADC_data\ : std_logic_vector(7 DOWNTO 0);
 SIGNAL \KNOP~combout\ : std_logic_vector(6 DOWNTO 1);
 SIGNAL \BUTTON~combout\ : std_logic_vector(3 DOWNTO 0);
 SIGNAL \DB~combout\ : std_logic_vector(7 DOWNTO 0);
@@ -1929,7 +1930,6 @@ SIGNAL \u8|count_RPM\ : std_logic_vector(7 DOWNTO 0);
 SIGNAL \u9|restarget\ : std_logic_vector(3 DOWNTO 0);
 SIGNAL \u9|resist_int\ : std_logic_vector(3 DOWNTO 0);
 SIGNAL \u9|pass\ : std_logic_vector(1 DOWNTO 0);
-SIGNAL \u9|ADC_data\ : std_logic_vector(7 DOWNTO 0);
 SIGNAL \ALT_INV_BUTTON~combout\ : std_logic_vector(3 DOWNTO 3);
 SIGNAL \u2|ALT_INV_Mux15~34_combout\ : std_logic;
 SIGNAL \u3c|ALT_INV_long~regout\ : std_logic;

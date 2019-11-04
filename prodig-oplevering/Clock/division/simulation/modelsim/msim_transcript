@@ -1,0 +1,100 @@
+# Reading C:/altera/13.0sp1/modelsim_ase/tcl/vsim/pref.tcl 
+# do division_run_msim_rtl_vhdl.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vcom -93 -work work {C:/Git/PRODIG/prodig/Clock/division/division.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity division
+# -- Compiling architecture rtl of division
+# 
+# do "C:/Git/PRODIG/prodig/Clock/division/tb_division.do"
+# Filename : tb_tb_division.do
+# Filetype : Modelsim Script File
+# Date : 29-09-2019
+# 
+# Set transcript on
+# transcript on
+# 
+# Recreate the work directory and map to work
+# if {[file exists rtl_work]} {
+#  vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Modifying modelsim.ini
+# 
+# Compile the Double Dabble VHDL description and testbench
+# vcom -93 -work work ../../division.vhd
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity division
+# -- Compiling architecture rtl of division
+# vcom -93 -work work ../../tb_division.vhd
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity tb_division
+# -- Compiling architecture sim of tb_division
+# 
+# Start the simulator with 1 ns time resolution
+# vsim -t 1ns -L rtl_work -L work -voptargs="+acc" tb_division
+# vsim -L rtl_work -L work -voptargs=\"+acc\" -t 1ns tb_division 
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_division(sim)
+# Loading work.division(rtl)
+# 
+# Log all signals in the design, good if the number
+# of signals is small.
+# add log -r *
+# 
+# Add all toplevel signals
+# Add a number of signals of the simulated design
+# add list *
+# 
+# Add all toplevel signals
+# Add a number of signals of the simulated design
+# add wave -divider "Inputs"
+# add wave areset
+# add wave CLOCK_50
+# add wave calc
+# add wave tix_mem
+# add wave -divider "Outputs"
+# add wave rpm_mem
+# 
+# Open Structure, Signals (waveform) and List window
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view list
+# .main_pane.list.interior.cs.body
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# view wave
+# .main_pane.wave.interior.cs.body.pw.wf
+# 
+# Run simulation for 5000 us
+# run 3000 us
+# 
+# Fill up the waveform in the window
+# wave zoom full
+# 0 ns
+# 3150 us

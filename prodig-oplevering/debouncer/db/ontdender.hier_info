@@ -1,0 +1,15 @@
+|ontdender
+CLK_10kHz => a.CLK
+CLK_10kHz => output~reg0.CLK
+CLK_10kHz => ffa[0].CLK
+CLK_10kHz => ffa[1].CLK
+CLK_10kHz => ffa[2].CLK
+CLK_10kHz => ffa[3].CLK
+CLK_10kHz => ffa[4].CLK
+CLK_10kHz => ffa[5].CLK
+CLK_10kHz => ffa[6].CLK
+input => process_0.IN1
+input => process_0.IN1
+output <= output~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
